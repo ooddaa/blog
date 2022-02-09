@@ -29,7 +29,8 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
+  /* max-width: 960px; */
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
@@ -44,7 +45,8 @@
 /* For devices larger than 400px */
 @media (min-width: 400px) {
   .container {
-    width: 85%;
+    /* width: 85%; */
+    width: 60%;
     padding: 0;
   }
 }
@@ -52,7 +54,8 @@
 /* For devices larger than 550px */
 @media (min-width: 550px) {
   .container {
-    width: 80%;
+    /* width: 80%; */
+    width: 60%;
   }
   .column,
   .columns {
@@ -186,11 +189,13 @@ html {
   font-size: 62.5%;
 }
 body {
+  margin: 0;
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
+  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
   color: #222;
 }
 
@@ -204,12 +209,13 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 2rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 h1 {
   font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
+  font-weight: 00;
 }
 h2 {
   font-size: 3.6rem;
@@ -556,79 +562,4 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
-}
-
-:root {
-  --footer-height: 32px;
-}
-
-/* AMBER */
-:root {
-  --amber-lighten-5: #fff8e1;
-  --amber-lighten-4: #ffecb3;
-  --amber-lighten-3: #ffe082;
-  --amber-lighten-2: #ffd54f;
-  --amber-lighten-1: #ffca28;
-  --amber: #ffc107;
-  --amber-darken-1: #ffb300;
-  --amber-darken-2: #ffa000;
-  --amber-darken-3: #ff8f00;
-  --amber-darken-4: #ff6f00;
-  --amber-accent-1: #ffe57f;
-  --amber-accent-2: #ffd740;
-  --amber-accent-3: #ffc400;
-  --amber-accent-4: #ffab00;
-}
-
-/* GREY */
-:root {
-  --grey-lighten-5: #fafafa;
-  --grey-lighten-4: #f5f5f5;
-  --grey-lighten-3: #eeeeee;
-  --grey-lighten-2: #e0e0e0;
-  --grey-lighten-1: #bdbdbd;
-  --grey: #9e9e9e;
-  --grey-darken-1: #757575;
-  --grey-darken-2: #616161;
-  --grey-darken-3: #424242;
-  --grey-darken-4: #212121;
-}
-
-.amber-accent-4 {
-  color: var(--amber-accent-4);
-}
-
-.posts-list h4 {
-  /* text-align: center; */
-}
-
-.posts-list li {
-  list-style-type: none;
-}
-
-.tags-list h4 {
-  /* text-align: center; */
-}
-
-.tags-list li {
-  list-style-type: none;
-}
-
-/*****************\
-***** FOOTER  *****
-\*****************/
-.App-footer {
-  width: 100%;
-  flex: 0 0 var(--footer-height, 1000px);
-  background-color: #444;
-}
-.App-footer p {
-  color: var(--grey);
-  font-size: 10px;
-  padding: 10px;
-  margin: 0;
-}
-
-.App-footer span.oda {
-  color: var(--amber);
 }
