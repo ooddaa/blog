@@ -1,35 +1,22 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Blogpost1 from "./routes/blogpost1";
 import App from "./App";
-import AppRoute from "./utils/AppRoute.jsx";
 import reportWebVitals from "./reportWebVitals";
+import AppMain from "./components/AppMain";
+import posts from "./posts/posts";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}></Route>
-      <Route path="blogpost1" element={<Blogpost1 />}></Route>
+      <Route path="/" element={<App />}>
+        <Route path="/" element={<AppMain post={posts[0]} />}></Route>
+        <Route path="blogpost1" element={<AppMain post={posts[1]} />}></Route>
+        <Route path="blogpost2" element={<AppMain post={posts[2]} />}></Route>
+      </Route>
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")
 );
-// ReactDOM.render(
-//   <BrowserRouter>
-//     <Routes>
-//       <Route path="/" element={<App />}></Route>
-//       {/* <Route path="blogpost1" element={<App postId={"post_002"} />}></Route> */}
-//       {/* <Route path="blogpost1" element={<Blogpost1 />}></Route> */}
-//       {/* <Route path="blogpost1" component={Blogpost1}></Route> */}
-//       <AppRoute exact path="blogpost1" component={Blogpost1}></AppRoute>
-//     </Routes>
-//     {/* <React.StrictMode> */}
-//     {/* <App /> */}
-//     {/* </React.StrictMode> */}
-//   </BrowserRouter>,
-//   document.getElementById("root")
-// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
