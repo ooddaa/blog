@@ -1,14 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Blogpost1 from "./routes/blogpost1";
 import App from "./App";
+import AppRoute from "./utils/AppRoute.jsx";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}></Route>
+      <Route path="blogpost1" element={<Blogpost1 />}></Route>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById("root")
 );
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <Routes>
+//       <Route path="/" element={<App />}></Route>
+//       {/* <Route path="blogpost1" element={<App postId={"post_002"} />}></Route> */}
+//       {/* <Route path="blogpost1" element={<Blogpost1 />}></Route> */}
+//       {/* <Route path="blogpost1" component={Blogpost1}></Route> */}
+//       <AppRoute exact path="blogpost1" component={Blogpost1}></AppRoute>
+//     </Routes>
+//     {/* <React.StrictMode> */}
+//     {/* <App /> */}
+//     {/* </React.StrictMode> */}
+//   </BrowserRouter>,
+//   document.getElementById("root")
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

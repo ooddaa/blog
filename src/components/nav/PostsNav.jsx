@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function PostsNav({ displayPost }) {
@@ -14,12 +15,14 @@ function PostsNav({ displayPost }) {
   return (
     <div className="posts-nav">
       {/* <h4>posts</h4> */}
-      <ul class="posts-list">
-        <li>
-          <a href="https://codepen.io/ooddaa/pen/OJORwEm">
-            codepen shoes with grid
-          </a>
-        </li>
+      <ul className="posts-list">
+        {
+          <li>
+            <a href="https://codepen.io/ooddaa/pen/OJORwEm">
+              codepen shoes with grid
+            </a>
+          </li>
+        }
 
         <li>
           <a href="https://docs.google.com/spreadsheets/d/1aPB-q2HFhkqob-1v1u95DHjRBTpfAx-jJsQHrj7d7cA/edit?usp=sharing">
@@ -32,10 +35,13 @@ function PostsNav({ displayPost }) {
           </a>
         </li>
         <li>
+          <Link to="/blogpost1">blog post 1</Link>
+        </li>
+        {/* <li>
           <div className="btn-post" onClick={() => displayPost("post_001")}>
             blog post 1
           </div>
-        </li>
+        </li> */}
         <li>
           <div className="btn-post" onClick={() => displayPost("post_002")}>
             blog post 2
