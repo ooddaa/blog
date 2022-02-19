@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Fragment } from "react";
 
 const propTypes = {
   defaultHeader: PropTypes.string,
@@ -25,22 +26,36 @@ const styles = {
   },
 };
 function BlogPost({ post, defaultHeader }) {
-  const { header, date, body } = post;
-  const [year, month, day] = date;
+  const { header, dateCreated, body } = post;
+  const [year, month, day] = dateCreated;
   return (
-    <div className="row">
-      <div className="one-column">
-        <div className="blog-post" style={styles.blogPost}>
-          <h4 className="blog-post-header">{header || defaultHeader}</h4>
-          <div className="blog-date" style={styles.blogDate}>
-            {day}
-            <span style={styles.super}>th</span> {month}, {year}
-          </div>
-          <div className="blog-content">{body}</div>
+    <Fragment>
+      <div className="main-content-header">
+        <h4>{header || defaultHeader}</h4>
+        <div className="blog-date" style={styles.blogDate}>
+          {day}
+          <span style={styles.super}>th</span> {month}, {year}
         </div>
       </div>
-    </div>
+      <div className="main-content-body">{body}</div>
+    </Fragment>
   );
+  // return (
+  //   // <div className="row">
+  //   <div className="one-column">
+  //     {/* <div className="blog-post" style={styles.blogPost}> */}
+  //     <div className="blog-post-header">
+  //       <h4>{header || defaultHeader}</h4>
+  //       <div className="blog-date" style={styles.blogDate}>
+  //         {day}
+  //         <span style={styles.super}>th</span> {month}, {year}
+  //       </div>
+  //     </div>
+  //     <div className="blog-post-content">{body}</div>
+  //     {/* </div> */}
+  //   </div>
+  //   // </div>
+  // );
 }
 
 BlogPost.propTypes = propTypes;

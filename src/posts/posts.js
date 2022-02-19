@@ -1,9 +1,13 @@
 const posts = [
   {
+    id: 0,
+    routeName: "",
     header: "Initial",
-    date: [2022, 2, 10],
+    subheader: "initial subheader",
+    dateCreated: [2022, 2, 10],
+    author: "oda",
     body: (
-      <>
+      <div className="post-body">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
           cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
@@ -34,14 +38,18 @@ const posts = [
           cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
           unde ad non ducimus cum minus, beatae magni praesentium sed velit!
         </p>
-      </>
+      </div>
     ),
   },
   {
+    id: 1,
+    routeName: "blogpost1",
     header: "Post 1",
-    date: [2022, 2, 9],
+    subheader: "post 1 subheader",
+    dateCreated: [2022, 2, 10],
+    author: "oda",
     body: (
-      <>
+      <div className="post-body">
         <p>
           Lorem, world! I am <span style={{ color: "#ff6f00" }}>oda</span> and
           this is my first (actually, second!) blog. I am going to use it as a
@@ -106,14 +114,18 @@ const posts = [
     </pre>`}
           </code>
         </pre>
-      </>
+      </div>
     ),
   },
   {
+    id: 2,
+    routeName: "blogpost2",
     header: "Post 2",
-    date: [2022, 2, 10],
+    subheader: "post 2 subheader",
+    dateCreated: [2022, 2, 10],
+    author: "oda",
     body: (
-      <>
+      <div className="post-body">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
           cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
@@ -144,7 +156,7 @@ const posts = [
           cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
           unde ad non ducimus cum minus, beatae magni praesentium sed velit!
         </p>
-      </>
+      </div>
     ),
   },
 ];

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import BlogPost from "./BlogPost";
 
 function AppMain({ post }) {
   return (
-    <div className="App-main">
+    // <div className="App-main">
+    <Fragment>
       <BlogPost post={post} />
-    </div>
+    </Fragment>
+    // </div>
   );
 }
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppMain from "./components/AppMain";
+import Grids from "./components/Grids";
 import posts from "./posts/posts";
 
 ReactDOM.render(
@@ -13,6 +14,7 @@ ReactDOM.render(
         <Route path="blogpost1" element={<AppMain post={posts[1]} />}></Route>
         <Route path="blogpost2" element={<AppMain post={posts[2]} />}></Route>
       </Route>
+      <Route path="grids" element={<Grids />}></Route>
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

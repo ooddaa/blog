@@ -11,6 +11,7 @@ const styles = {
     paddingTop: "10px",
     fontWeight: "600",
     // fontFamily: "Inter, sans-serif",
+    color: "#1d0505e0",
   },
   blogSubname: {
     marginTop: "0",
