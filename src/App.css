@@ -8,11 +8,11 @@
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: 100px 130px 1fr 30px;
   grid-template-areas:
-    "header header header"
-    "postnav maincontentheader empty"
-    "postnav maincontentbody sidebar"
-    "footer footer footer";
-  grid-gap: 20px;
+    "headerlogo headernavbar headernavbar"
+    "headerlogo maincontentheader  empty"
+    "postnav maincontentbody sidebar "
+    "footer footer footer ";
+  grid-gap: 40px;
   justify-items: stretch;
 }
 
@@ -25,9 +25,34 @@
 ***** HEADER  *****
 \*****************/
 .App-header {
-  /* grid-column: 1 / -1; */
-  grid-area: header;
+  /* grid-column: 1;
+  grid-row: 1 / 3; */
+  grid-area: headerlogo;
 }
+.header-navbar {
+  grid-area: headernavbar;
+  display: flex;
+  padding-top: 50px;
+  padding-right: 150px;
+  padding-left: 500px;
+  justify-content: space-between;
+}
+.header-navbar-btn,
+.header-navbar-btn:visited {
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header-navbar-btn:hover,
+.header-navbar-btn:focus {
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header-navbar-btn:active {
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
 /* .App-header {
   background-color: #282c34;
   min-height: 100vh;

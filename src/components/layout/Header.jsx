@@ -25,12 +25,20 @@ const styles = {
 
 function Header(props) {
   return (
-    <div className="App-header">
-      <h1 style={styles.blogName}>Oda blogs</h1>
-      <h4 className="amber-accent-4" style={styles.blogSubname}>
-        on re-inventing the will
-      </h4>
-    </div>
+    <>
+      <div className="App-header">
+        <h1 style={styles.blogName}>Oda blogs</h1>
+        <h4 className="amber-accent-4" style={styles.blogSubname}>
+          on re-inventing the will
+        </h4>
+      </div>
+      <div className="header-navbar">
+        <button className="header-navbar-btn">one</button>
+        <button className="header-navbar-btn">two</button>
+        <button className="header-navbar-btn">three</button>
+        <button className="header-navbar-btn">four</button>
+      </div>
+    </>
   );
 }
 
