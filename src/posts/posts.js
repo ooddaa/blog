@@ -4,7 +4,7 @@ const posts = [
   {
     id: 0,
     routeName: "",
-    header: "Initial",
+    header: "Welcome",
     subheader: "Initial subheader",
     dateCreated: [2022, 3, 6],
     author: "oda",

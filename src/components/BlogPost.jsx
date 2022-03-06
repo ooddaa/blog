@@ -15,7 +15,8 @@ const styles = {
     paddingTop: "20px",
   },
   blogDate: {
-    marginBottom: "20px",
+    // marginBottom: "20px",
+    marginBottom: "0",
     color: "grey",
     textAlign: "right",
     fontWeight: "300",
@@ -27,7 +28,7 @@ const styles = {
   },
 };
 function BlogPost({ post, defaultHeader }) {
-  const { header, dateCreated, body } = post;
+  const { header, subheader, dateCreated, body } = post;
   const [year, month, day] = dateCreated;
   return (
     <Fragment>

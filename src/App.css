@@ -6,10 +6,16 @@
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: 100px 130px 1fr 30px;
+  grid-template-rows: auto 130px 1fr 30px;
+  /* grid-template-rows: 100px 130px 1fr 30px; */
+  /* grid-template-areas:
+    "headerlogo maincontentheader empty"
+    "smth maincontentbody  sidebar"
+    "postnav maincontentbody sidebar "
+    "footer footer footer "; */
   grid-template-areas:
     "headerlogo headernavbar headernavbar"
-    "headerlogo maincontentheader  empty"
+    "smth maincontentheader  empty"
     "postnav maincontentbody sidebar "
     "footer footer footer ";
   grid-gap: 40px;
@@ -19,6 +25,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+* {
+  /* border: red 1px solid; */
 }
 
 /*****************\
@@ -68,11 +78,8 @@
 **** POSTS NAV ****
 \*****************/
 .posts-nav {
-  /* grid-column: 1;
-  grid-row: 2; */
   padding: 20px;
   height: calc(100vh - var(--footer-height) - 100px - 62px);
-  /* grid-area: postnav; */
   grid-area: sidebar;
 }
 
@@ -82,15 +89,23 @@
 
 .posts-nav li {
   list-style-type: none;
+  margin: 0;
 }
 
-.posts-list h4 {
-  /* text-align: center; */
+.posts-nav li a,
+.posts-nav li a:active {
+  color: var(--grey-darken-4);
+  text-decoration: none;
 }
-
-.posts-list li {
+.posts-nav li a:focus,
+.posts-nav li a:hover {
+  color: var(--grey-darken-2);
   list-style-type: none;
 }
+/* .posts-nav li a:visited {
+  color: var(--grey-darken-1);
+  list-style-type: none;
+} */
 
 /*****************\
 ******* MAIN ******
@@ -98,15 +113,13 @@
 .App-main {
   grid-column: 2;
   grid-row: 2 / 4;
-  /* grid-area: maincontentheader maincontentbody; */
-  /* grid-area: 2 / 2 / 3 / 2; */
 }
 
 .main-content-header {
   padding: 20px;
+  padding-bottom: 0;
   grid-area: maincontentheader;
-  /* background-color: beige; */
-  /* height: 400px; */
+  border-bottom: var(--grey-lighten-1) 1px solid;
 }
 .main-content-body {
   padding: 20px;
@@ -121,8 +134,6 @@
   width: 100%;
   flex: 0 0 var(--footer-height, 1000px);
   background-color: #282c34;
-  /* grid-column: 1 / -1;
-  grid-row: -1; */
   grid-area: footer;
 }
 

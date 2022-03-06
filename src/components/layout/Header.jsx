@@ -12,13 +12,15 @@ const styles = {
     fontWeight: "600",
     // fontFamily: "Inter, sans-serif",
     color: "#1d0505e0",
+    fontSize: "24px",
+    lineHeight: "1.2",
   },
   blogSubname: {
     marginTop: "0",
     // marginTop: "10px",
     marginLeft: "10px",
     marginBottom: "20px",
-    fontSize: "24px",
+    fontSize: "16px",
     fontWeight: "300",
   },
 };
@@ -27,7 +29,8 @@ function Header(props) {
   return (
     <>
       <div className="App-header">
-        <h1 style={styles.blogName}>Oda blogs</h1>
+        <div style={styles.blogName}>Oda blogs</div>
+        {/* <h1 style={styles.blogName}>Oda blogs</h1> */}
         <h4 className="amber-accent-4" style={styles.blogSubname}>
           on re-inventing the will
         </h4>
