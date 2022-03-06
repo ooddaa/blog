@@ -1,1 +1,8 @@
-language: node_js
+jobs:
+  include:
+    - stage: deploy to staging
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: oda-blog
+        api_key: 8b311212-3929-4796-a532-4d1aa7971255
