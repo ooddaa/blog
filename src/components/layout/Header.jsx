@@ -32,12 +32,12 @@ function Header(props) {
           on re-inventing the will
         </h4>
       </div>
-      <div className="header-navbar">
+      {/* <div className="header-navbar">
         <button className="header-navbar-btn">one</button>
         <button className="header-navbar-btn">two</button>
         <button className="header-navbar-btn">three</button>
         <button className="header-navbar-btn">four</button>
-      </div>
+      </div> */}
     </>
   );
 }
