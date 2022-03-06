@@ -1,9 +1,13 @@
-.App {
-  /* text-align: center; */
-  /* padding: 10px 10px 10px 0; */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: red 1px solid; */
+}
+
+.App {
+  /* text-align: center; */
+  /* padding: 10px 10px 10px 0; */
   display: grid;
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: auto 130px 1fr 30px;
@@ -25,10 +29,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-* {
-  /* border: red 1px solid; */
 }
 
 /*****************\
