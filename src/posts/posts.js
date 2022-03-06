@@ -1,52 +1,12 @@
+import { reverseString } from "../toolbox/index.js";
+
 const posts = [
   {
     id: 0,
     routeName: "",
     header: "Initial",
-    subheader: "initial subheader",
-    dateCreated: [2022, 2, 10],
-    author: "oda",
-    body: (
-      <div className="post-body">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!
-        </p>
-      </div>
-    ),
-  },
-  {
-    id: 1,
-    routeName: "blogpost1",
-    header: "Post 1",
-    subheader: "post 1 subheader",
-    dateCreated: [2022, 2, 10],
+    subheader: "Initial subheader",
+    dateCreated: [2022, 3, 6],
     author: "oda",
     body: (
       <div className="post-body">
@@ -118,10 +78,10 @@ const posts = [
     ),
   },
   {
-    id: 2,
-    routeName: "blogpost2",
-    header: "Post 2",
-    subheader: "post 2 subheader",
+    id: 1,
+    routeName: "blogpost1",
+    header: "Post 1",
+    subheader: "Post 1 subheader",
     dateCreated: [2022, 2, 10],
     author: "oda",
     body: (
@@ -155,6 +115,48 @@ const posts = [
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
           cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
           unde ad non ducimus cum minus, beatae magni praesentium sed velit!
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: 2,
+    routeName: "blogpost2",
+    header: "Post 2",
+    subheader: "post 2 subheader",
+    dateCreated: [2022, 2, 10],
+    author: "oda",
+    body: (
+      <div className="post-body">
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+        </p>
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+        </p>
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+        </p>
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+        </p>
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+        </p>
+        <p>
+          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
+          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
+          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
         </p>
       </div>
     ),

@@ -11,9 +11,11 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/" element={<AppMain post={posts[0]} />}></Route>
+
         <Route path="blogpost1" element={<AppMain post={posts[1]} />}></Route>
         <Route path="blogpost2" element={<AppMain post={posts[2]} />}></Route>
       </Route>
+
       <Route path="grids" element={<Grids />}></Route>
     </Routes>
   </BrowserRouter>,
