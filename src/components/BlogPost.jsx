@@ -11,16 +11,7 @@ const defaultProps = {
 };
 const styles = {
   blogPost: {
-    // marginTop: "20px",
     paddingTop: "20px",
-  },
-  blogDate: {
-    // marginBottom: "20px",
-    marginBottom: "0",
-    color: "grey",
-    textAlign: "right",
-    fontWeight: "300",
-    // fontStyle: "italic",
   },
   super: {
     verticalAlign: "super",
@@ -28,14 +19,14 @@ const styles = {
   },
 };
 function BlogPost({ post, defaultHeader }) {
-  const { header, subheader, dateCreated, body } = post;
+  const { header, subheader, dateCreated, body, author } = post;
   const [year, month, day] = dateCreated;
   return (
     <Fragment>
-      <div className="main-content-header">
-        <h4>{header || defaultHeader}</h4>
-        <div className="blog-date" style={styles.blogDate}>
-          {day}
+      <div className="blogpost-header">
+        <h4 className="blogpost-title">{header || defaultHeader}</h4>
+        <div className="blog-author">
+          by <span style={{ color: "#ff6f00" }}>{author}</span> on {day}
           <span style={styles.super}>th</span> {resolveMonth(month)}, {year}
         </div>
       </div>

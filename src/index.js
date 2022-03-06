@@ -10,12 +10,14 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/" element={<AppMain post={posts[0]} />}></Route>
-
-        <Route path="blogpost1" element={<AppMain post={posts[1]} />}></Route>
-        <Route path="blogpost2" element={<AppMain post={posts[2]} />}></Route>
+        {posts.map((post) => (
+          <Route
+            path={post.routeName}
+            element={<AppMain post={post} />}
+            key={post.id}
+          ></Route>
+        ))}
       </Route>
-
       <Route path="grids" element={<Grids />}></Route>
     </Routes>
   </BrowserRouter>,

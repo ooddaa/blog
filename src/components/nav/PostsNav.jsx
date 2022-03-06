@@ -16,7 +16,7 @@ function PostsNav({ displayPost }) {
   return (
     <div className="posts-nav" style={styles.main}>
       {posts.map((post) => (
-        <li>
+        <li key={post.id}>
           <Link to={`/${post.routeName}`}>{post.header}</Link>
         </li>
       ))}

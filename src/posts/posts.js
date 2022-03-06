@@ -125,7 +125,7 @@ const posts = [
     header: "Post 2",
     subheader: "post 2 subheader",
     dateCreated: [2022, 2, 10],
-    author: "oda",
+    author: "hehe",
     body: (
       <div className="post-body">
         <p>

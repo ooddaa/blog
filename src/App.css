@@ -115,12 +115,22 @@
   grid-row: 2 / 4;
 }
 
-.main-content-header {
+.blogpost-header {
   padding: 20px;
   padding-bottom: 0;
   grid-area: maincontentheader;
   border-bottom: var(--grey-lighten-1) 1px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.blog-author {
+  font-style: italic;
+  color: var(--grey-darken-2);
+  font-weight: 300;
+}
+
 .main-content-body {
   padding: 20px;
   grid-area: maincontentbody;
