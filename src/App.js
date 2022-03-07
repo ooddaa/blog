@@ -8,15 +8,13 @@ import { Fragment } from "react";
 
 function App() {
   return (
-    <Fragment> 
-    <div className="App-wrapper">
-      <div className="main-container">
-      <LeftSidebar />
-      <Outlet />
-     </div>
-    </div>
-    <Footer />
-    </Fragment>   
+    <Fragment>
+      <div className="App-wrapper">
+        <LeftSidebar />
+        <Outlet />
+      </div>
+      <Footer />
+    </Fragment>
   );
 }
 

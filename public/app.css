@@ -5,16 +5,17 @@
 - Palette
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-
 /* Basic styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 * {
   margin: 0;
   padding: 0;
 }
-html, body {
-  height: 100%
+html,
+body {
+  height: 100%;
 }
+
 body {
   box-sizing: border-box;
   /* border: red 1px solid; */
@@ -31,7 +32,6 @@ body {
 
 code {
   background-color: var(--grey-lighten-2);
-
 }
 
 /* Typography
@@ -53,56 +53,31 @@ Scale: 1.250 - Major Third
   --font-size-large-5: 48.83px;
   --font-size-large-4: 39.06px;
   --font-size-large-3: 31.25px;
-  --font-size-large-2: 25.00px;
-  --font-size-large-1: 20.00px;
-  --font-size-base: 16.00px;
-  --font-size-small-1: 12.80px;
+  --font-size-large-2: 25px;
+  --font-size-large-1: 20px;
+  --font-size-base: 16px;
+  --font-size-small-1: 12.8px;
   --font-size-small-2: 10.24px;
   --font-size-small-3: 8.19px;
 }
 
-
 /* App-wrapper
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-.App-wrapper  {
-  min-height: 100%;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-/*****************\
-  MAIN CONTAINER 
-\*****************/
-
-.main-container {
+.App-wrapper {
   display: grid;
-  grid-template-columns: 200px 1fr 400px;
+  grid-template-columns: 200px 1fr 300px;
   grid-template-rows: auto 1fr auto;
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "leftsidebar pagecontent headernavbar"
     "leftsidebar pagecontent sidebar"
     "footer footer footer ";
-  /* grid-template-areas:
-    "headerlogo pagecontent headernavbar"
-    "postnav pagecontent sidebar"
-    "footer footer footer "; */
   justify-items: stretch;
   margin-left: 40px;
   margin-right: 40px;
-  /* height: calc(100vh- var(--footer-height));
-  height: calc(100vh - var(--footer-height) - 100px - 62px); */
-  /* height: calc(100vh - var(--footer-height)); */
-  /* height: auto; */
-  /* min-height: calc(100vh- var(--footer-height));
-  min-height: 1000px; */
-  /* overflow: auto; */
-  overflow:auto;
-	padding-bottom: var(--footer-height);
+  overflow: auto;
+  padding-bottom: var(--footer-height);
 }
 
 /*****************\
@@ -110,10 +85,9 @@ Scale: 1.250 - Major Third
 \*****************/
 .left-sidebar {
   grid-area: leftsidebar;
-  /* position: sticky; */
-  /* box-shadow: 0 0 10px 0 var(--grey);  */
-  box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267); 
+  box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267);
   background-color: var(--white);
+  min-height: calc(100vh - var(--footer-height));
 }
 
 /* Logo
@@ -123,7 +97,6 @@ Scale: 1.250 - Major Third
   padding-bottom: 0; /* to bring title and subtitle closer together */
   font-weight: 600;
   color: var(--red-burgundy-dark);
-  /* color: red; */
   font-size: var(--font-size-large-5);
   line-height: 1.2;
 }
@@ -140,7 +113,6 @@ Scale: 1.250 - Major Third
 .posts-nav {
   padding: 20px;
   grid-area: leftsidebar;
-  /* position: sticky; */
 }
 
 .posts-list {
@@ -157,12 +129,12 @@ Scale: 1.250 - Major Third
   color: var(--grey-darken-4);
   text-decoration: none;
 }
+
 .posts-nav li a:focus,
 .posts-nav li a:hover {
   color: var(--grey-darken-2);
   list-style-type: none;
 }
-
 
 .header-navbar {
   grid-area: headernavbar;
@@ -172,6 +144,7 @@ Scale: 1.250 - Major Third
   padding-left: 500px;
   justify-content: space-between;
 }
+
 .header-navbar-btn,
 .header-navbar-btn:visited {
   border: none;
@@ -188,8 +161,6 @@ Scale: 1.250 - Major Third
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-
-
 /*****************\
     PAGE CONTENT
 \*****************/
@@ -199,7 +170,7 @@ Scale: 1.250 - Major Third
   margin-left: 40px;
   margin-right: 10px;
   /* hor vert blur radius */
-  box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267); 
+  box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267);
   background-color: var(--white);
 }
 
@@ -230,9 +201,10 @@ Scale: 1.250 - Major Third
 \*****************/
 .App-footer {
   position: relative;
-  margin-top: -32px;
+  margin-top: calc(
+    -1 * var(--footer-height)
+  ); /* I need a negative --footer-height */
   height: var(--footer-height);
-  clear: both;
   width: 100%;
   /* flex: 0 0 var(--footer-height, 1000px); */
   background-color: #282c34;
@@ -309,7 +281,7 @@ Scale: 1.250 - Major Third
 :root {
   --red-burgundy-dark: #1d0505e0;
   --red-burgundy: #800020;
-} 
+}
 
 .amber-accent-4 {
   color: var(--amber-accent-4);

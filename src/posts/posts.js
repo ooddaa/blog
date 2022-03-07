@@ -20,13 +20,13 @@ const posts = [
         <p>
           Over the past I have accumulated a bunch of googlesheets, notes,
           genius (arguably) business ideas, half-finished projects and trivia,
-          which I would like to put in one place and may be come across
+          which I would like to put all in one place and may be come across
           like-minded individuals.
         </p>
 
         <h4>
           So this blog is now officially comissioned as my personal idea
-          dumpster and virtual lab. Feel free to poke around.
+          dumbster and virtual lab. Feel free to poke around.
         </h4>
 
         <p>I also like BJJ.</p>
@@ -188,10 +188,7 @@ const posts = [
     author: "hehe",
     body: (
       <div className="post-body">
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet`)}
-        </p>
-  
+        <p>{reverseString(`Lorem ipsum dolor sit amet`)}</p>
       </div>
     ),
   },
