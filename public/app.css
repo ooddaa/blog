@@ -1,15 +1,66 @@
-* {
+/* Table of Contents
+- Body
+- Typography
+- App
+- Palette
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* Body
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* border: red 1px solid; */
+  font-size: var(--font-size-base);
+  /* font-size: 1.5em; currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
+  color: var(--black);
+
+
 }
+/* Typography
+https://type-scale.com/
+Base: 16px
+Scale: 1.250 - Major Third
+
+3.052rem  / 48.83px	
+2.441rem  / 39.06px	
+1.953rem  / 31.25px	
+1.563rem  / 25.00px	
+1.25rem   / 20.00px	
+1rem      / 16.00px	
+0.8rem    / 12.80px	
+0.64rem   / 10.24px	
+0.512rem  / 8.19px	
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --font-size-large-5: 48.83px;
+  --font-size-large-4: 39.06px;
+  --font-size-large-3: 31.25px;
+  --font-size-large-2: 25.00px;
+  --font-size-large-1: 20.00px;
+  --font-size-base: 16.00px;
+  --font-size-small-1: 12.80px;
+  --font-size-small-2: 10.24px;
+  --font-size-small-3: 8.19px;
+}
+
+
+/* App
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .App {
   /* text-align: center; */
   /* padding: 10px 10px 10px 0; */
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  /* grid-template-columns: 200px 1fr 200px; */
+  grid-template-columns: 200px 1fr 400px;
   grid-template-rows: auto 130px 1fr 30px;
   /* grid-template-rows: 100px 130px 1fr 30px; */
   /* grid-template-areas:
@@ -63,17 +114,6 @@
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
-
 /*****************\
 **** POSTS NAV ****
 \*****************/
@@ -119,7 +159,7 @@
   padding: 20px;
   padding-bottom: 0;
   grid-area: maincontentheader;
-  border-bottom: var(--grey-lighten-1) 1px solid;
+  /* border-bottom: var(--grey-lighten-1) 1px solid; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,12 +167,15 @@
 
 .blog-author {
   font-style: italic;
+  font-size: var(--font-size-small-1);
   color: var(--grey-darken-2);
   font-weight: 300;
 }
 
 .main-content-body {
   padding: 20px;
+  padding-left: 80px;
+  padding-right: 80px;
   grid-area: maincontentbody;
 }
 
@@ -149,7 +192,7 @@
 
 .App-footer p {
   color: var(--grey);
-  font-size: 10px;
+  font-size: var(--font-size-small-2);
 
   padding-top: 10px;
   padding-left: 10px;
@@ -167,6 +210,9 @@
 :root {
   --footer-height: 32px;
 }
+
+/* Palette
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 /* AMBER */
 :root {
@@ -198,6 +244,11 @@
   --grey-darken-2: #616161;
   --grey-darken-3: #424242;
   --grey-darken-4: #212121;
+}
+
+/* BLACK */
+:root {
+  --black: #000000;
 }
 
 .amber-accent-4 {
