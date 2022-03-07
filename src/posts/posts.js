@@ -189,35 +189,9 @@ const posts = [
     body: (
       <div className="post-body">
         <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
+          {reverseString(`Lorem ipsum dolor sit amet`)}
         </p>
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
-        </p>
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
-        </p>
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
-        </p>
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
-        </p>
-        <p>
-          {reverseString(`Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum officia
-          cupiditate nemo! Vel inventore, nam aliquid corrupti totam dignissimos
-          unde ad non ducimus cum minus, beatae magni praesentium sed velit!`)}
-        </p>
+  
       </div>
     ),
   },
