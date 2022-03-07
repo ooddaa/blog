@@ -22,16 +22,16 @@ function BlogPost({ post, defaultHeader }) {
   const { header, subheader, dateCreated, body, author } = post;
   const [year, month, day] = dateCreated;
   return (
-    <Fragment>
-      <div className="blogpost-header">
+    <div className='page-content'>
+      <div className="content-header">
         <h4 className="blogpost-title">{header || defaultHeader}</h4>
         <div className="blog-author">
           by <span style={{ color: "#ff6f00" }}>{author}</span> on {day}
           <span style={styles.super}>th</span> {resolveMonth(month)}, {year}
         </div>
       </div>
-      <div className="main-content-body">{body}</div>
-    </Fragment>
+      <div className="content-body">{body}</div>
+    </div>
   );
 }
 

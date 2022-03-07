@@ -1,17 +1,20 @@
 // import "./App.css";
 import { Outlet } from "react-router-dom";
-import Header from "./components/layout/Header";
+import BlogTitle from "./components/layout/BlogTitle";
 import Footer from "./components/layout/Footer";
 import PostsNav from "./components/nav/PostsNav";
+import { Fragment } from "react";
 
 function App() {
   return (
+    <Fragment> 
     <div className="App">
-      <Header />
+      <BlogTitle />
       <Outlet />
       <PostsNav />
-      <Footer />
     </div>
+    <Footer />
+    </Fragment>   
   );
 }
 

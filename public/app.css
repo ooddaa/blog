@@ -21,9 +21,9 @@ body {
   /* font-family: "Inter", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica,
     Arial, sans-serif; */
   color: var(--black);
-
-
+  background-color: var(--amber);
 }
+
 /* Typography
 https://type-scale.com/
 Base: 16px
@@ -56,25 +56,23 @@ Scale: 1.250 - Major Third
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .App {
-  /* text-align: center; */
-  /* padding: 10px 10px 10px 0; */
   display: grid;
-  /* grid-template-columns: 200px 1fr 200px; */
   grid-template-columns: 200px 1fr 400px;
-  grid-template-rows: auto 130px 1fr 30px;
-  /* grid-template-rows: 100px 130px 1fr 30px; */
-  /* grid-template-areas:
-    "headerlogo maincontentheader empty"
-    "smth maincontentbody  sidebar"
-    "postnav maincontentbody sidebar "
-    "footer footer footer "; */
+  grid-template-rows: auto 1fr 30px;
+  /* grid-template-rows: auto 130px 1fr 30px; */
   grid-template-areas:
     "headerlogo headernavbar headernavbar"
-    "smth maincontentheader  empty"
-    "postnav maincontentbody sidebar "
+    "postnav pagecontent sidebar"
     "footer footer footer ";
+  /* grid-template-areas:
+    "headerlogo headernavbar headernavbar"
+    "postnav maincontentheader  empty"
+    "postnav maincontentbody sidebar "
+    "footer footer footer "; */
   grid-gap: 40px;
   justify-items: stretch;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .App-logo {
@@ -83,13 +81,28 @@ Scale: 1.250 - Major Third
 }
 
 /*****************\
-***** HEADER  *****
+      TITLE  
 \*****************/
-.App-header {
-  /* grid-column: 1;
-  grid-row: 1 / 3; */
+.blog-title .main {
   grid-area: headerlogo;
+  padding: 20px;
+  padding-bottom: 0; /* to bring title and subtitle closer together */
+  font-weight: 600;
+  color: var(--red-burgundy-dark);
+  /* color: red; */
+  font-size: var(--font-size-large-5);
+  line-height: 1.2;
 }
+
+.blog-title .subtitle {
+  padding: 20px;
+  padding-top: 10px;
+  font-size: var(--font-size-small-1);
+  font-weight: 300;
+}
+
+
+
 .header-navbar {
   grid-area: headernavbar;
   display: flex;
@@ -115,12 +128,12 @@ Scale: 1.250 - Major Third
 }
 
 /*****************\
-**** POSTS NAV ****
+****** POSTS ******
 \*****************/
 .posts-nav {
   padding: 20px;
   height: calc(100vh - var(--footer-height) - 100px - 62px);
-  grid-area: sidebar;
+  grid-area: postnav;
 }
 
 .posts-list {
@@ -142,10 +155,6 @@ Scale: 1.250 - Major Third
   color: var(--grey-darken-2);
   list-style-type: none;
 }
-/* .posts-nav li a:visited {
-  color: var(--grey-darken-1);
-  list-style-type: none;
-} */
 
 /*****************\
 ******* MAIN ******
@@ -153,12 +162,20 @@ Scale: 1.250 - Major Third
 .App-main {
   grid-column: 2;
   grid-row: 2 / 4;
+  
 }
 
-.blogpost-header {
+.page-content {
+  grid-area: pagecontent;
+  /* border: red 1px solid; */
+  border-radius: 1%;
+  background-color: var(--amber-lighten-3);
+}
+.content-header {
   padding: 20px;
   padding-bottom: 0;
-  grid-area: maincontentheader;
+  /* grid-area: maincontentheader; */
+  
   /* border-bottom: var(--grey-lighten-1) 1px solid; */
   display: flex;
   flex-direction: column;
@@ -172,11 +189,14 @@ Scale: 1.250 - Major Third
   font-weight: 300;
 }
 
-.main-content-body {
+.content-body {
+/* .main-content-body { */
   padding: 20px;
   padding-left: 80px;
   padding-right: 80px;
-  grid-area: maincontentbody;
+  /* grid-area: maincontentbody; */
+  grid-area: pagecontent;
+  background-color: var(--amber-lighten-3);
 }
 
 /*****************\
@@ -250,6 +270,12 @@ Scale: 1.250 - Major Third
 :root {
   --black: #000000;
 }
+
+/* RED */
+:root {
+  --red-burgundy-dark: #1d0505e0;
+  --red-burgundy: #800020;
+} 
 
 .amber-accent-4 {
   color: var(--amber-accent-4);
