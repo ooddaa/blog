@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppMain from "./components/AppMain";
+import Posts from "./components/pages/Posts";
 import Grids from "./components/Grids";
 import posts from "./posts/posts";
 
@@ -10,13 +11,8 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        {posts.map((post) => (
-          <Route
-            path={post.routeName}
-            element={<AppMain post={post} />}
-            key={post.id}
-          ></Route>
-        ))}
+        <Route path="" element={<AppMain post={posts[0]} />}></Route>
+        <Route path="posts" element={<Posts />}></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>
     </Routes>
