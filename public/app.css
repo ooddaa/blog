@@ -6,8 +6,6 @@
 }
 
 .App {
-  /* text-align: center; */
-  /* padding: 10px 10px 10px 0; */
   display: grid;
   grid-template-columns: 200px auto 200px;
   grid-template-rows: 100px 130px 1fr 30px;
@@ -40,9 +38,7 @@
 }
 
 .header-navbar {
-  /* grid-area: headernavbar; */
   display: flex;
-  /* display: inline-flex; */
   padding: 0 35% 0 35%;
   width: 100%;
   justify-content: center;
@@ -53,17 +49,17 @@
 
 /* Links */
 .header-navbar-link {
-  /* padding: 10px; */
-  /* margin: 10px; */
-  /* flex-grow: 0; */
+  display: flex;
   width: 60px;
-  /* flex: 0 1 auto; */
-  font-size: 13px;
-  color: var(--grey);
-  text-decoration: dashed;
+  justify-content: center;
 }
 
-.header-navbar-link:hover {
+.header-navbar-link > a {
+  font-size: 13px;
+  color: var(--grey);
+  text-decoration: none;
+}
+.header-navbar-link > a:hover {
   text-decoration: dashed;
   color: var(--grey-darken-1);
   font-size: 13.5px;

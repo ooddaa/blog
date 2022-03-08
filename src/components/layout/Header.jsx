@@ -40,7 +40,22 @@ function Header(props) {
             on re-inventing the will
           </h4>
         </div> */}
+
         <div className="header-navbar">
+          <div className="header-navbar-link">
+            <Link to="#">Posts</Link>
+          </div>
+          <div className="header-navbar-link">
+            <Link to="#">Books</Link>
+          </div>
+          <div className="header-navbar-link">
+            <Link to="#">Projects</Link>
+          </div>
+          <div className="header-navbar-link">
+            <Link to="#">Trivia</Link>
+          </div>
+        </div>
+        {/* <div className="header-navbar">
           <Link className="header-navbar-link" to="#">
             Posts
           </Link>
@@ -53,11 +68,7 @@ function Header(props) {
           <Link className="header-navbar-link" to="#">
             Trivia
           </Link>
-          {/* <button className="header-navbar-btn">one</button>
-          <button className="header-navbar-btn">two</button>
-          <button className="header-navbar-btn">three</button>
-          <button className="header-navbar-btn">four</button> */}
-        </div>
+        </div> */}
       </div>
     </>
   );
