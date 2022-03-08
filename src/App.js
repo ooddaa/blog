@@ -6,10 +6,9 @@ import PostsNav from "./components/nav/PostsNav";
 
 function App() {
   return (
-    <div className="App">
+    <div className="wrapper">
       <Header />
       <Outlet />
-      {/* <PostsNav /> */}
       <Footer />
     </div>
   );

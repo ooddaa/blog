@@ -1,3 +1,12 @@
+/* Table of Contents
+- Body
+- Typography
+- Basic styles
+- Palette
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Basic styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 * {
   margin: 0;
   padding: 0;
@@ -5,32 +14,81 @@
   /* border: red 1px solid; */
 }
 
-.App {
-  display: grid;
-  grid-template-columns: 200px auto 200px;
-  grid-template-rows: 100px 130px auto 30px;
-  /* grid-template-rows: 100px auto auto 30px; */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  /* border: red 1px solid; */
+  font-size: var(--font-size-base);
+  /* font-size: 1.5em; currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica,
+    Arial, sans-serif; */
+  color: var(--black);
+  background-color: var(--amber-lighten-5);
+  background-color: var(--white);
+}
+
+/* Typography
+https://type-scale.com/
+Base: 16px
+Scale: 1.250 - Major Third
+
+3.052rem  / 48.83px	
+2.441rem  / 39.06px	
+1.953rem  / 31.25px	
+1.563rem  / 25.00px	
+1.25rem   / 20.00px	
+1rem      / 16.00px	
+0.8rem    / 12.80px	
+0.64rem   / 10.24px	
+0.512rem  / 8.19px	
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --font-size-large-5: 48.83px;
+  --font-size-large-4: 39.06px;
+  --font-size-large-3: 31.25px;
+  --font-size-large-2: 25px;
+  --font-size-large-1: var(---20);
+  --font-size-base: 16px;
+  --font-size-small-1: 12.8px;
+  --font-size-small-2: 10.24px;
+  --font-size-small-3: 8.19px;
+}
+
+/* Wrapper - Main grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.wrapper {
+  /* display: grid; */
+  /* grid-template-columns: 200px auto 200px;
+  grid-template-rows: 100px auto auto;
   grid-template-areas:
     "header header header"
-    "smth maincontentheader  empty"
-    "postnav maincontentbody sidebar "
+    "leftsidebar pagecontent rightsidebar"
     "footer footer footer ";
   grid-gap: 40px;
-  justify-items: stretch;
-}
+  justify-items: stretch; */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-/*****************\
-***** HEADER  *****
-\*****************/
-.App-header {
-  grid-area: header;
   display: flex;
+  flex-direction: column;
+  /* overflow: auto; */
+  /* padding-bottom: var(--footer-height); */
+  /* min-height: calc(100vh - var(--footer-height)); */
+}
+
+/* Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.App-header {
+  position: fixed; /* don't forget to add --app-header-height as margin-top to App-content */
+  height: var(--app-header-height);
   width: 100%;
+
+  display: flex;
   justify-content: center;
 }
 
@@ -39,16 +97,18 @@
 }
 
 .header-navbar {
+  background-color: var(--white);
   display: flex;
   padding: 0 35% 0 35%;
   width: 100%;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-  gap: 30px;
+  gap: var(---30);
 }
 
-/* Links */
+/* Header links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .header-navbar-link {
   display: flex;
   width: 60px;
@@ -56,27 +116,27 @@
 }
 
 .header-navbar-link > a {
-  font-size: 13px;
+  font-size: var(--font-size-small-1);
   color: var(--grey);
   text-decoration: none;
 }
+
 .header-navbar-link > a:hover {
   text-decoration: dashed;
   color: var(--grey-darken-1);
-  font-size: 13.5px;
+  font-size: calc(1.1 * var(--font-size-small-1));
 }
 
-/*****************\
-**** POSTS NAV ****
-\*****************/
+/* Posts navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .posts-nav {
-  padding: 20px;
-  height: calc(100vh - var(--footer-height) - 100px - 62px);
+  padding: var(---20);
+  /* height: calc(100vh - var(--footer-height) - 100px - 62px); */
   grid-area: sidebar;
 }
 
 .posts-list {
-  padding-top: 20px;
+  padding-top: var(---20);
 }
 
 .posts-nav li {
@@ -94,57 +154,67 @@
   color: var(--grey-darken-2);
   list-style-type: none;
 }
-/* .posts-nav li a:visited {
-  color: var(--grey-darken-1);
-  list-style-type: none;
-} */
 
-/*****************\
-******* MAIN ******
-\*****************/
-.App-main {
-  grid-column: 2;
-  grid-row: 2 / 4;
+/* Main content
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.App-content {
+  /* grid-area: pagecontent; */
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  margin-top: var(--app-header-height);
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* hor vert blur radius */
+  /* box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267); */
+  background-color: var(--white);
 }
 
-.blogpost-header {
-  padding: 20px;
-  padding-bottom: 0;
-  grid-area: maincontentheader;
-  border-bottom: var(--grey-lighten-1) 1px solid;
+.content-header {
+  padding: var(---20);
+  /* padding-bottom: 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.blog-author {
+.blog-post-title {
+  margin: 0;
+}
+
+.blog-post-author {
   font-style: italic;
+  font-size: var(--font-size-small-1);
   color: var(--grey-darken-2);
   font-weight: 300;
 }
 
-.main-content-body {
-  padding: 20px;
-  grid-area: maincontentbody;
+.content-body {
+  padding: var(---20);
+  padding-left: var(---80);
+  padding-right: var(---80);
+  /* grid-area: pagecontent; */
 }
 
-/*****************\
-***** FOOTER  *****
-\*****************/
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .App-footer {
-  height: 30px;
+  position: relative;
+  /* margin-top: calc(
+    -1 * var(--footer-height)
+  ); I need a negative --footer-height */
+  height: var(--footer-height);
   width: 100%;
-  flex: 0 0 var(--footer-height, 1000px);
   background-color: #282c34;
   grid-area: footer;
 }
 
 .App-footer p {
   color: var(--grey);
-  font-size: 10px;
+  font-size: var(---10);
 
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: var(---10);
+  padding-left: var(---10);
   margin: 0;
 }
 
@@ -156,8 +226,45 @@
   color: #61dafb;
 }
 
+/* Dimensions
+Base: 16px
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* Basic */
 :root {
-  --footer-height: 32px;
+  ---80: 80px;
+  ---64: 64px;
+  ---40: 40px;
+  ---32: 32px;
+  ---20: 20px;
+  ---16: 16px;
+  ---10: 10px;
+  ---8: 8px;
+}
+
+/* Heights */
+:root {
+  --app-header-height: var(---64);
+  --footer-height: var(---32);
+}
+
+/* Widths */
+
+/* Palette
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* BLACK */
+:root {
+  --black: #000000;
+}
+
+/* WHITE */
+:root {
+  --white: #ffffff;
+}
+
+/* RED */
+:root {
+  --red-burgundy-dark: #1d0505e0;
+  --red-burgundy: #800020;
 }
 
 /* AMBER */
