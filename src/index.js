@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import AppMain from "./components/AppMain";
 import Posts from "./components/pages/Posts";
 import Grids from "./components/Grids";
+import BEMs from "./components/BEMs";
 import posts from "./posts/posts";
 
 ReactDOM.render(
@@ -15,6 +16,7 @@ ReactDOM.render(
         <Route path="posts" element={<Posts />}></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>
+      <Route path="bems" element={<BEMs />}></Route>
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

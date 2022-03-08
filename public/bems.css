@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  height: 350px;
+  width: auto;
+  border: orange 1px solid;
+  margin-top: 20px;
+  /* justify-content: stretch; */
+}
+
+.bem {
+  display: flex;
+  /* height: auto;
+  width: auto; */
+  border: black 2px solid;
+}
+
+.bem.main {
+  /* flex: 0 1 auto; */
+  width: 900px;
+}
+
+/* will pick four six and chocolate class as all are "last" divs - recursively */
+/* .bem div:last-child {
+  border: pink 3px dashed;
+} */
+
+/* picks two */
+/* .bem:nth-child(2) {
+  border: pink 3px dashed;
+} */
+
+/* picks every 2nd */
+/* .bem:nth-child(2n) {
+  border: pink 3px dashed;
+} */
+
+.bem__elem {
+  height: 100px;
+  width: 100px;
+  border: green 2px solid;
+  padding: 10px;
+  margin: 10px;
+}
+.bem--bg-wheat {
+  background-color: wheat;
+}
+.bem--bg-aquamarine {
+  background-color: rgba(127, 255, 212, 0.5);
+}
+.bem--bg-chocolate {
+  background-color: rgba(210, 105, 30, 0.568);
+}
+.bem__elem.one {
+  background-color: red;
+}
+.bem__elem.two.one {
+  background-color: lightcoral;
+}
+
+.bem--red-border {
+  border: red 2px solid;
+}
+.bem--no-border {
+  border: none;
+}
+
+/* Adjacent sibling combinator */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Adjacent_sibling_combinator */
+
+.one + .two:hover {
+  background-color: lime;
+  padding-top: 20px;
+}
+
+/* same as 
+ul, li {}
+or
+ul > li {}
+or 
+li {}
+*/
+ul {
+  padding: 10px;
+}
+
+/* class1 class2 == class1 > class2 */
+.ul__one .special_li {
+  color: red;
+}
+
+/* Attribute selectors */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors */
+
+/* Internal links, beginning with "#" */
+a[href^="#"] {
+  background-color: gold;
+}
