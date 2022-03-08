@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const propTypes = {};
 const defaultProps = {};
@@ -24,23 +24,41 @@ const styles = {
     fontWeight: "300",
   },
 };
-
+/**
+ * @todo header contains
+ * Logo - on the left
+ * center - Posts, Projects, Books, Hz
+ *
+ */
 function Header(props) {
   return (
     <>
       <div className="App-header">
-        <div style={styles.blogName}>Oda blogs</div>
-        {/* <h1 style={styles.blogName}>Oda blogs</h1> */}
-        <h4 className="amber-accent-4" style={styles.blogSubname}>
-          on re-inventing the will
-        </h4>
+        {/* <div className="title">
+          <div style={styles.blogName}>Oda blogs</div>
+          <h4 className="amber-accent-4" style={styles.blogSubname}>
+            on re-inventing the will
+          </h4>
+        </div> */}
+        <div className="header-navbar">
+          <Link className="header-navbar-link" to="#">
+            Posts
+          </Link>
+          <Link className="header-navbar-link" to="#">
+            Books
+          </Link>
+          <Link className="header-navbar-link" to="#">
+            Projects
+          </Link>
+          <Link className="header-navbar-link" to="#">
+            Trivia
+          </Link>
+          {/* <button className="header-navbar-btn">one</button>
+          <button className="header-navbar-btn">two</button>
+          <button className="header-navbar-btn">three</button>
+          <button className="header-navbar-btn">four</button> */}
+        </div>
       </div>
-      {/* <div className="header-navbar">
-        <button className="header-navbar-btn">one</button>
-        <button className="header-navbar-btn">two</button>
-        <button className="header-navbar-btn">three</button>
-        <button className="header-navbar-btn">four</button>
-      </div> */}
     </>
   );
 }
