@@ -24,12 +24,7 @@ const styles = {
     fontWeight: "300",
   },
 };
-/**
- * @todo header contains
- * Logo - on the left
- * center - Posts, Projects, Books, Hz
- *
- */
+
 function Header(props) {
   return (
     <>
@@ -43,6 +38,9 @@ function Header(props) {
 
         <div className="header-navbar">
           <div className="header-navbar-link">
+            <Link to="/">Main</Link>
+          </div>
+          <div className="header-navbar-link">
             <Link to="/posts">Posts</Link>
           </div>
           <div className="header-navbar-link">
@@ -55,20 +53,6 @@ function Header(props) {
             <Link to="#">Trivia</Link>
           </div>
         </div>
-        {/* <div className="header-navbar">
-          <Link className="header-navbar-link" to="#">
-            Posts
-          </Link>
-          <Link className="header-navbar-link" to="#">
-            Books
-          </Link>
-          <Link className="header-navbar-link" to="#">
-            Projects
-          </Link>
-          <Link className="header-navbar-link" to="#">
-            Trivia
-          </Link>
-        </div> */}
       </div>
     </>
   );
