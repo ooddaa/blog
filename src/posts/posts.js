@@ -3,7 +3,7 @@ import { reverseString } from "../toolbox/index.js";
 const posts = [
   {
     id: 0,
-    routeName: "",
+    routeName: "welcome",
     header: "Welcome",
     subheader: "Initial subheader",
     dateCreated: [2022, 3, 6],

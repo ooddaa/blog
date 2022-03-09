@@ -3,15 +3,19 @@ import { Link } from "react-router-dom";
 
 function Posts() {
   return (
-    <>
+    <div className="posts">
       <ul>
-        {posts.map((post) => (
+        {posts.slice(1).map((post) => (
           <li key={post.id}>
-            {post.header} by {post.author}
+            {
+              <Link to={post.routeName}>
+                {post.header} by {post.author}
+              </Link>
+            }
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 

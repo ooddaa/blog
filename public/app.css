@@ -146,7 +146,6 @@ p {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .posts-nav {
   padding: var(---20);
-  /* height: calc(100vh - var(--footer-height) - 100px - 62px); */
   grid-area: sidebar;
 }
 
@@ -178,17 +177,12 @@ p {
   margin-right: auto;
   width: 60%;
   margin-top: var(--app-header-height);
-  /* margin-left: auto;
-  margin-right: auto; */
-  /* hor vert blur radius */
-  /* box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267); */
   background-color: var(--white);
   min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
 }
 
 .content-header {
   padding: var(---20);
-  /* padding-bottom: 0; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,13 +206,22 @@ p {
   /* grid-area: pagecontent; */
 }
 
+/* Posts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.posts {
+  display: flex;
+  justify-content: center;
+  margin-top: var(---40);
+}
+
+.posts ul {
+  list-style: none;
+}
+
 /* Footer
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .App-footer {
-  position: relative;
-  /* margin-top: calc(
-    -1 * var(--footer-height)
-  ); I need a negative --footer-height */
+  /* position: relative; */
   height: var(--footer-height);
   width: 100%;
   background-color: #282c34;
@@ -261,6 +264,7 @@ Base: 16px
   ---10: 0.625rem;
   ---8: 0.5rem;
 }
+
 :root {
   ---5rem: 5rem;
   ---4rem: 4rem;

@@ -21,14 +21,13 @@ ReactDOM.render(
           path="posts"
           element={<AppContent children={<Posts />} />}
         ></Route>
-        <Route
-          path="blogpost1"
-          element={<AppContent children={<BlogPost post={posts[1]} />} />}
-        ></Route>
-        <Route
-          path="blogpost2"
-          element={<AppContent children={<BlogPost post={posts[2]} />} />}
-        ></Route>
+        {posts.slice(1).map((post) => (
+          <Route
+            key={post.id}
+            path={`posts/${post.routeName}`}
+            element={<AppContent children={<BlogPost post={post} />} />}
+          ></Route>
+        ))}
       </Route>
 
       <Route path="grids" element={<Grids />}></Route>
