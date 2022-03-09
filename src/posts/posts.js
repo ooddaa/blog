@@ -11,9 +11,9 @@ const posts = [
     body: (
       <div className="post-body">
         <p>
-          Lorem, world! I am <span style={{ color: "#ff6f00" }}>oda</span> and
-          this is my first (actually, second!) blog. I am going to use it as a
-          tool to learn new skills and not forget what I already learned.
+          Lorem, world! I am <span className="oda">oda</span> and this is my
+          first (actually, second!) blog. I am going to use it as a tool to
+          learn new skills and not forget what I already learned.
         </p>
 
         <p>Reinventing the wheel is my hobby, so is reading and breathing.</p>
@@ -24,7 +24,7 @@ const posts = [
           like-minded individuals.
         </p>
 
-        <h4>
+        <h4 className="pt-2-5rem">
           So this blog is now officially comissioned as my personal idea
           dumpster and virtual lab. Feel free to poke around.
         </h4>

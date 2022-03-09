@@ -2,7 +2,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AppMain from "./components/AppMain";
+import AppContent from "./components/AppContent";
+import BlogPost from "./components/BlogPost";
 import Posts from "./components/pages/Posts";
 import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
@@ -12,8 +13,14 @@ ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="" element={<AppMain post={posts[0]} />}></Route>
-        <Route path="posts" element={<Posts />}></Route>
+        <Route
+          path=""
+          element={<AppContent children={<BlogPost post={posts[0]} />} />}
+        ></Route>
+        <Route
+          path="posts"
+          element={<AppContent children={<Posts />} />}
+        ></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>
       <Route path="bems" element={<BEMs />}></Route>
