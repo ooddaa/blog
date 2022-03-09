@@ -21,7 +21,16 @@ ReactDOM.render(
           path="posts"
           element={<AppContent children={<Posts />} />}
         ></Route>
+        <Route
+          path="blogpost1"
+          element={<AppContent children={<BlogPost post={posts[1]} />} />}
+        ></Route>
+        <Route
+          path="blogpost2"
+          element={<AppContent children={<BlogPost post={posts[2]} />} />}
+        ></Route>
       </Route>
+
       <Route path="grids" element={<Grids />}></Route>
       <Route path="bems" element={<BEMs />}></Route>
     </Routes>

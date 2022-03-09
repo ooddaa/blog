@@ -183,6 +183,7 @@ p {
   /* hor vert blur radius */
   /* box-shadow: 0 0 10px 0 rgba(17, 16, 16, 0.267); */
   background-color: var(--white);
+  min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
 }
 
 .content-header {
