@@ -223,14 +223,18 @@ p {
 .blog-post-content-header {
   padding: var(---20);
   padding-top: var(---80);
-  /* margin-top: var(---40); */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .blog-post-title {
-  /* margin: 0; */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.25;
+  letter-spacing: -0.1rem;
 }
 
 .blog-post-author {
@@ -244,7 +248,23 @@ p {
   padding: var(---20);
   padding-left: var(---80);
   padding-right: var(---80);
-  /* grid-area: pagecontent; */
+}
+
+.blog-post-content-body p {
+  padding-bottom: var(---1rem);
+}
+
+.blog-post-content-body > p p {
+  padding-top: var(---1rem);
+}
+
+/* add 1rem padding after code section */
+.blog-post-content-body pre {
+  padding-bottom: var(---1rem);
+}
+/* this does the same, but adds to the p after code section */
+.blog-post-content-body pre + p {
+  /* padding-top: var(---1rem); */
 }
 
 .blog-post-navigation {

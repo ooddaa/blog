@@ -16,7 +16,10 @@ function BlogPost({ post, defaultHeader }) {
   return (
     <>
       <div className="blog-post-content-header">
-        <h1 className="blog-post-title">{header || defaultHeader}</h1>
+        <div className="blog-post-title">
+          {header || defaultHeader}
+          {/* <h2>{header || defaultHeader}</h2> */}
+        </div>
         <div className="blog-post-author">
           by <span className="oda">{author}</span> on {day}
           <span className="superscript">th</span> {resolveMonth(month)}, {year}
