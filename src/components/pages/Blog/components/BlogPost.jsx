@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Fragment } from "react";
-import { resolveMonth } from "../toolbox/index.js";
+import { resolveMonth } from "../../../../toolbox/index.js";
 
 const propTypes = {
   defaultHeader: PropTypes.string,
@@ -15,14 +15,14 @@ function BlogPost({ post, defaultHeader }) {
   const [year, month, day] = dateCreated;
   return (
     <>
-      <div className="content-header">
-        <h4 className="blog-post-title">{header || defaultHeader}</h4>
+      <div className="blog-post-content-header">
+        <h1 className="blog-post-title">{header || defaultHeader}</h1>
         <div className="blog-post-author">
           by <span className="oda">{author}</span> on {day}
           <span className="superscript">th</span> {resolveMonth(month)}, {year}
         </div>
       </div>
-      <div className="content-body">{body}</div>
+      <div className="blog-post-content-body">{body}</div>
     </>
   );
 }

@@ -41,7 +41,7 @@ function Header(props) {
             <Link to="/">Main</Link>
           </div>
           <div className="header-navbar-link">
-            <Link to="/posts">Posts</Link>
+            <Link to="/blog">Blog</Link>
           </div>
           <div className="header-navbar-link">
             <Link to="#">Books</Link>
