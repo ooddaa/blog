@@ -8,6 +8,15 @@ const posts = [
     subheader: "Without the docs, it's unusable.",
     dateCreated: [2020, 12, 22],
     author: "oda",
+    tags: [
+      "python",
+      "api",
+      "postman",
+      "heroku",
+      "documentation",
+      "yahoo finance",
+      "options trading",
+    ],
     body: (
       <div className="blog-post-content-body">
         <p>
@@ -46,13 +55,150 @@ const posts = [
           <p>
             <ol>
               <li>launch a Python Yahoo Prices API on Heroku,</li>
+              <li>call it from the Sheets and</li>
               <li>
-                call it from the Sheets and automatically update K's trading
-                logs with
+                automatically update K's trading logs with underlying prices.
               </li>
-              <li>underlying prices.</li>
             </ol>
           </p>
+        </p>
+        <p>
+          I did the first step - which is now accessible on{" "}
+          <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
+          simply POST a JSON as follows:
+          <pre>
+            <code>{`{ "data": Ticker[] }`}</code>
+          </pre>
+        </p>
+        <p>
+          Where each Ticker is a list of:
+          <pre>
+            <code>
+              {`[
+    ticker: str, 
+    # price may be skipped for POST request, add null in Postman
+    price: null, 
+    # at the moment of writing this post, it's hard to remember
+    # why I split time into two lists like this.         
+    [
+      year:int, 
+      month:int, 
+      day:int
+    ], 
+    [
+      hour:int, 
+      min:int, 
+      sec:int
+    ]
+]`}
+            </code>
+          </pre>
+        </p>
+        <p>
+          If it all goes right, Yahoo Prices API will add a
+          <pre>
+            <code>price: float</code>
+          </pre>
+          to each Ticker.
+        </p>
+        <div className="three-days-later pt--2rem">
+          <img src="/img/3dayslater.jpeg" alt="Some time has passed" />
+        </div>
+        <p>
+          As I am writing this, a month has passed since I launched the stuff
+          above, and I hardly can remember how things were arranged!
+        </p>
+        <p>
+          I am sending a POST request with Postman to{" "}
+          <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
+          JSON:
+          <pre>
+            <code>
+              {`{ 
+    "data": [
+        ["AMD", null, [2022, 3, 10], [15, 0, 0]]
+    ]
+}`}
+            </code>
+          </pre>
+          But get a{" "}
+          <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
+            500 Internal Server Error
+          </a>{" "}
+          response, which is 😬
+        </p>
+        <p className="pt--1rem">
+          Let's investigate 🕵🏻‍♂️
+          <pre>
+            <code>heroku logs -app=yahooprices --tail</code>
+          </pre>
+        </p>
+        <p>Lo and behold, we've got ourselves a bug!</p>
+        <div className="yahoo-prices-bug">
+          <img src="/img/ypb.png" alt="Screenshot of Heroku logs" />
+        </div>
+        <p>
+          It all comes back to me now - the last feature that I added was to
+          allow for all prices from the query to be returned as part of the
+          response. So that users could sort themselves out should the main
+          timestamp not be available. I did it by adding a new route:
+          <pre>
+            <code>
+              <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
+            </code>
+          </pre>
+        </p>
+        <p>
+          But in so doing, I forgot to set a default value to the new argument
+          <pre>
+            <code>attach_prices=False</code>
+          </pre>
+          of the underlying function that handles data requests for both routes.
+          I should have done like this:
+          <pre>
+            <code>
+              {`# yahoo.py 
+def get_prices(tickers, attach_prices=False): ...`}
+            </code>
+          </pre>
+          Now, when users call the old route:
+          <pre>
+            <code>
+              <strong>POST</strong> https://yahooprices.herokuapp.com/
+            </code>
+          </pre>
+          they get
+          <pre>
+            <code>
+              {`{
+    "data": [
+        [
+            "AMD",
+            105.810302734375,
+            [
+                2022,
+                3,
+                10
+            ],
+            [
+                15,
+                0,
+                0
+            ]
+        ]
+    ]
+}`}
+            </code>
+          </pre>
+        </p>
+
+        <h5 className="pt--2rem">I'll have a takeaway, please 🍟 </h5>
+        <p>
+          <ol>
+            <li>Write more WHY-comments in your code.</li>
+            <li>Set sensible defaults.</li>
+            <li>Test all the time.</li>
+          </ol>
         </p>
       </div>
     ),

@@ -168,33 +168,6 @@ p {
   font-size: calc(1.1 * var(--font-size-small-1));
 }
 
-/* Posts navigation
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.posts-nav {
-  padding: var(---20);
-  grid-area: sidebar;
-}
-
-.posts-list {
-  padding-top: var(---20);
-}
-
-.posts-nav li {
-  list-style-type: none;
-  margin: 0;
-}
-
-.posts-nav li a,
-.posts-nav li a:active {
-  color: var(--grey-darken-4);
-  text-decoration: none;
-}
-.posts-nav li a:focus,
-.posts-nav li a:hover {
-  color: var(--grey-darken-2);
-  list-style-type: none;
-}
-
 /* Main content
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .App-content {
@@ -258,13 +231,19 @@ p {
   padding-top: var(---1rem);
 }
 
-/* add 1rem padding after code section */
+/* add 1rem padding after every pre section that wraps code */
 .blog-post-content-body pre {
   padding-bottom: var(---1rem);
 }
-/* this does the same, but adds to the p after code section */
-.blog-post-content-body pre + p {
-  /* padding-top: var(---1rem); */
+
+/* let any p after divs have some padding as well */
+.blog-post-content-body div + p {
+  padding-top: var(---1rem);
+}
+
+/* also add top padding if wrapped code appears inside a paragraph */
+.blog-post-content-body > p pre {
+  padding-top: var(---1rem);
 }
 
 .blog-post-navigation {
@@ -491,4 +470,41 @@ pre > code {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .oda {
   color: var(--amber-darken-4);
+}
+
+/* Images
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.three-days-later img {
+  width: 100%;
+}
+.yahoo-prices-bug img {
+  display: block;
+  width: 100%;
+}
+
+/* Posts navigation
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.posts-nav {
+  padding: var(---20);
+  grid-area: sidebar;
+}
+
+.posts-list {
+  padding-top: var(---20);
+}
+
+.posts-nav li {
+  list-style-type: none;
+  margin: 0;
+}
+
+.posts-nav li a,
+.posts-nav li a:active {
+  color: var(--grey-darken-4);
+  text-decoration: none;
+}
+.posts-nav li a:focus,
+.posts-nav li a:hover {
+  color: var(--grey-darken-2);
+  list-style-type: none;
 }
