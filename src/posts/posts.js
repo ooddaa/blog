@@ -6,7 +6,7 @@ const posts = [
     routeName: "setting-up-yahoo-prices-api-on-heroku",
     header: "Setting up Yahoo Prices API on Heroku",
     subheader: "Without the docs, it's unusable.",
-    dateCreated: [2020, 12, 22],
+    dateCreated: [2022, 3, 12],
     author: "oda",
     tags: [
       "python",
