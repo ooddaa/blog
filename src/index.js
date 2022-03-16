@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import AppContent from "./components/AppContent";
 import BlogPost from "./components/pages/Blog/components/BlogPost";
 import Blog from "./components/pages/Blog";
+import Projects from "./components/pages/Projects";
 import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
 import welcome from "./posts/welcome";
@@ -34,6 +35,10 @@ ReactDOM.render(
             ></Route>
           );
         })}
+        <Route
+          path="projects"
+          element={<AppContent children={<Projects />} />}
+        ></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>
       <Route path="bems" element={<BEMs />}></Route>
