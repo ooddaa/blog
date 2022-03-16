@@ -1,4 +1,4 @@
-import { reverseString } from "../toolbox/index.js";
+import { reverseString } from "../../../../toolbox/index.js";
 
 const posts = [
   {

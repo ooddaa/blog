@@ -8,8 +8,8 @@ import Blog from "./components/pages/Blog";
 import Projects from "./components/pages/Projects";
 import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
-import welcome from "./posts/welcome";
-import posts from "./posts/posts";
+import welcome from "./welcome";
+import posts from "./components/pages/Blog/components/posts";
 
 ReactDOM.render(
   <BrowserRouter>

@@ -92,6 +92,6 @@ ul {
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors */
 
 /* Internal links, beginning with "#" */
-a[href^="#"] {
+/* a[href^="#"] {
   background-color: gold;
-}
+} */
