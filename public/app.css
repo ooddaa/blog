@@ -275,7 +275,6 @@ p {
   align-items: center;
   align-content: center;
   justify-content: flex-start;
-  /* border: var(--red-border); */
   flex-wrap: wrap;
 }
 
@@ -283,28 +282,23 @@ p {
 .project-card {
   display: flex;
   flex-direction: column;
-
-  /* overflow: auto; */
+  background-color: var(--grey-lighten-5);
   padding: var(---1rem);
-  border: 1px var(--grey) solid;
+  border: 1px var(--grey-lighten-3) solid;
   border-radius: 10%;
-  /* min-height: var(---20rem); */
   height: var(---20rem);
-  /* width: var(---20rem); */
-  flex-basis: var(---20rem); /* instead of width */
   flex: 0 0 var(---20rem); /* grow shrink basis */
-  /* box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
   /* transition-delay: 0.1s; */
 }
 
 .project-card:hover {
-  /* box-shadow: 0 6px 6px 4px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 5px 5px 2px rgba(0, 0, 0, 0.1);
 }
 
 .project-card__header {
   padding-top: var(---0-5rem);
   padding-bottom: var(---1rem);
-  /* color: red; */
   text-align: center;
   font-size: var(---20);
   border-bottom: 1px var(--grey) solid;
@@ -313,16 +307,14 @@ p {
 .project-card__description {
   padding-top: var(---1rem);
   padding-bottom: var(---1rem);
-  /* background-color: var(--amber-accent-1); */
   line-height: var(---1-4rem);
-  min-height: 130px;
+  min-height: var(---110);
 }
 
 .project-card__links {
   display: flex;
   flex-direction: column;
-  height: 80px;
-  /* background-color: var(--amber-lighten-1); */
+  height: var(---5rem);
 }
 .project-card__link-item {
   display: flex;
@@ -331,13 +323,16 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* justify-items: center; */
   flex-basis: var(---2rem);
 }
 .project-card__link-item__header img {
   /* I pass height/width to each img from projectList.js */
   /* width: var(---1rem);
   height: var(---1rem); */
+}
+
+.project-card__progress-bar {
+  padding-top: var(---0-5rem);
 }
 
 .project-card__link-item__body a {
@@ -391,8 +386,12 @@ Base: 16px
   ---48: 3rem;
   ---64: 4rem;
   ---80: 5rem;
+  ---100: 6.4rem;
+  ---110: 7.025rem;
+  ---120: 7.5rem;
   ---160: 10rem;
   ---320: 20rem;
+  ---400: 25rem;
 }
 
 :root {
@@ -406,8 +405,11 @@ Base: 16px
   ---3rem: var(---48);
   ---4rem: var(---64);
   ---5rem: var(---80);
+  ---6-4rem: var(---100);
+  ---7-025rem: var(---110);
   ---10rem: var(---160);
   ---20rem: var(---320);
+  ---25rem: var(---400);
 }
 
 /* Whitespace */
