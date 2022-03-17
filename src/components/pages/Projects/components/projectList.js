@@ -35,7 +35,7 @@ const projectList = [
     name: "Mango",
     avatar: "Mango avatar",
     description:
-      "A user-friendly Object-to-Graph Mapping tool that makes it easy for Node.js developer to interact with Neo4j Graph Database.",
+      "A user-friendly Object-to-Graph Mapping tool for Node.js and Neo4j.",
     progress: {
       imgSrc: "/img/mango-progress-bar--green-100.png",
       imgAlt: "Mango project made good progress, 100%",
@@ -115,7 +115,7 @@ const projectList = [
 
   {
     id: 4,
-    name: "Legal NLP",
+    name: "LegalNLP",
     avatar: "Legal NLP avatar",
     description:
       "NLP application to make UK legislation usable by an average intelligent person.",

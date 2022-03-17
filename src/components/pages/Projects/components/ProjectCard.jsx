@@ -26,7 +26,7 @@ function ProjectCardLinkItem({
 function ProjectCard({ project }) {
   const { id, name, description, progress, links } = project;
   return (
-    <div className="project-card">
+    <div className={`project-card ${name}`}>
       <div className="project-card__header">{name}</div>
 
       <div className="project-card__progress-bar">

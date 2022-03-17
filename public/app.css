@@ -283,18 +283,24 @@ p {
 .project-card {
   display: flex;
   flex-direction: column;
-
-  /* overflow: auto; */
-  padding: var(---1rem);
+  background-color: var(--grey-lighten-5);
   border: 1px var(--grey-lighten-3) solid;
-  border-radius: 10%;
-  /* min-height: var(---20rem); */
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: var(---1rem);
+  border-radius: 5%;
   height: var(---20rem);
   /* width: var(---20rem); */
   flex-basis: var(---20rem); /* instead of width */
   flex: 0 0 var(---20rem); /* grow shrink basis */
-  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
   /* transition-delay: 0.1s; */
+}
+
+.project-card.Homi,
+.project-card.Solaris,
+.project-card.LegalNLP {
+  background-color: var(--white);
+  border: 1px var(--grey-lighten-4) solid;
+  box-shadow: none;
 }
 
 .project-card:hover {
@@ -306,6 +312,7 @@ p {
   padding-bottom: var(---1rem);
   text-align: center;
   font-size: var(---20);
+  font-weight: 600;
   border-bottom: 1px var(--grey) solid;
 }
 
