@@ -1,6 +1,37 @@
 const projectList = [
   {
     id: 0,
+    name: "Yahoo Prices API",
+    avatar: "Yahoo avatar",
+    description:
+      "An open source API server to query stock prices from Yahoo! Finance.",
+    progress: {
+      imgSrc: "/img/yahoo-progress-bar--green-100.png",
+      imgAlt: "Yahoo API is at 100%",
+    },
+    links: [
+      {
+        linkIconScr: "/img/source-code.png",
+        linkIconAlt: "Yahoo Prices API github source code",
+        linkDescr: "source code",
+        link: "#",
+      },
+      {
+        linkIconScr: "img/api.png",
+        linkIconAlt: "Yahoo Prices API server",
+        linkDescr: "Heroku API server",
+        link: "https://yahooprices.herokuapp.com/",
+      },
+      {
+        linkIconScr: "/img/documentation.png",
+        linkIconAlt: "documentation for Yahoo Prices API project",
+        linkDescr: "documentation",
+        link: "#",
+      },
+    ],
+  },
+  {
+    id: 1,
     name: "Mango",
     avatar: "Mango avatar",
     description:
@@ -33,7 +64,7 @@ const projectList = [
     ],
   },
   {
-    id: 1,
+    id: 2,
     name: "Weed",
     avatar: "Weed avatar",
     description: "Knowledge graph of the UK Medical Cannabis Industry.",
@@ -67,7 +98,7 @@ const projectList = [
     name: "Solaris",
     avatar: "Solaris avatar",
     description:
-      "A user-friendly tool to organize enterprise knowledge. Offers a single-source-of-truth solution that interacts via a smart chat-bot. Helps humans do less routine tasks. ",
+      "A user-friendly tool to create and maintain Enterprise Knowledge Graphs.",
     progress: {
       imgSrc: "/img/solaris-progress-bar--amber-35.png",
       imgAlt: "Solaris is at 35%",
@@ -75,54 +106,71 @@ const projectList = [
     links: [
       {
         linkIconScr: "/img/source-code.png",
-        linkIconAlt: "smth",
+        linkIconAlt: "Solaris github source code",
         linkDescr: "source code",
         link: "#",
       },
     ],
   },
+
   {
     id: 4,
-    name: "Homi",
-    avatar: "Homi avatar",
-    description: "A mobile app that brings neighbours on the same page.",
-    progress: "Homi progress",
+    name: "Legal NLP",
+    avatar: "Legal NLP avatar",
+    description:
+      "NLP application to make UK legislation usable by an average intelligent person.",
+    progress: {
+      imgSrc: "/img/legal-nlp-progress-bar--amber-30.png",
+      imgAlt: "Legal NLP is at 30%",
+    },
     links: [
       {
-        linkIconScr: "#",
-        linkIconAlt: "smth",
-        linkDescr: "Homi Presentation",
+        linkIconScr: "/img/source-code.png",
+        linkIconAlt: "Legal NLP github source code",
+        linkDescr: "source code",
+        link: "#",
+      },
+      {
+        linkIconScr: "/img/figma-designs-icon.png",
+        linkIconAlt: "Legal NLP Figma designs",
+        linkDescr: "figma designs",
+        link: "#",
+      },
+      {
+        linkIconScr: "/img/example-icon.png",
+        linkIconAlt: "Legal NLP example app",
+        linkDescr: "example",
         link: "#",
       },
     ],
   },
+
   {
     id: 5,
-    name: "Yahoo Prices API",
-    avatar: "Yahoo avatar",
-    description: "API to query stock prices from Yahoo Finance.",
-    progress: "Yahoo progress",
+    name: "Homi",
+    avatar: "Homi avatar",
+    description: "A mobile app that brings neighbours on the same page.",
+    progress: {
+      imgSrc: "/img/homi-progress-bar--red-20.png",
+      imgAlt: "Homi is at 20%",
+    },
     links: [
       {
-        linkIconScr: "#",
-        linkIconAlt: "smth",
-        linkDescr: "Yahoo Presentation",
-        link: "https://yahooprices.herokuapp.com/",
+        linkIconScr: "/img/presentation-icon.png",
+        linkIconAlt: "Homi presentation",
+        linkDescr: "presentation",
+        link: "#",
       },
-    ],
-  },
-  {
-    id: 6,
-    name: "Legal NLP",
-    avatar: "Legal NLP avatar",
-    description:
-      "Parse UK legislation to make it available to an average intelligent person.",
-    progress: "Legal NLP progress",
-    links: [
       {
-        linkIconScr: "#",
-        linkIconAlt: "smth",
-        linkDescr: "Legal NLP Presentation",
+        linkIconScr: "/img/figma-designs-icon.png",
+        linkIconAlt: "Homi Figma designs",
+        linkDescr: "figma designs",
+        link: "#",
+      },
+      {
+        linkIconScr: "/img/market-research-icon.png",
+        linkIconAlt: "Homi market research",
+        linkDescr: "market research",
         link: "#",
       },
     ],
