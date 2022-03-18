@@ -1,11 +1,10 @@
-.container {
+/* .container {
   display: flex;
   height: 350px;
   width: auto;
   border: orange 1px solid;
   margin-top: 20px;
-  /* justify-content: stretch; */
-}
+} */
 
 .bem {
   display: flex;

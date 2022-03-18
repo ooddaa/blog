@@ -38,6 +38,11 @@ body {
   background-color: var(--white);
 }
 
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Typography
 https://type-scale.com/
 Base: 16px
@@ -122,6 +127,7 @@ p {
 .wrapper {
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
 }
 
 /* Header
@@ -171,10 +177,9 @@ p {
 /* Main content
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .App-content {
-  /* grid-area: pagecontent; */
-  margin-left: auto;
-  margin-right: auto;
-  width: 60%;
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
   margin-top: var(--app-header-height);
   background-color: var(--white);
   min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
@@ -191,6 +196,7 @@ p {
 
 .blog-toc ul {
   list-style: none;
+  padding: 0;
 }
 
 .blog-post-content-header {
@@ -266,16 +272,23 @@ p {
 
 /* Projects
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.projects-grid {
+.projects {
+  background-color: var(--amber);
+}
+
+.projects .container {
+  width: 80%;
   display: flex;
+
   padding-top: var(---5rem);
   padding-bottom: var(---5rem);
-  gap: var(---1rem);
+  gap: var(---2rem);
   height: 800px;
+  height: auto;
   align-items: center;
   align-content: center;
   justify-content: flex-start;
-  /* border: var(--red-border); */
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -284,10 +297,12 @@ p {
   display: flex;
   flex-direction: column;
   background-color: var(--grey-lighten-5);
-  border: 1px var(--grey-lighten-3) solid;
+  /* border: 1px var(--grey-lighten-3) solid; */
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
   padding: var(---1rem);
-  border-radius: 5%;
+  padding-left: var(---1-4rem);
+  padding-right: var(---1-4rem);
+  border-radius: 3%;
   height: var(---20rem);
   /* width: var(---20rem); */
   flex-basis: var(---20rem); /* instead of width */
@@ -295,12 +310,27 @@ p {
   /* transition-delay: 0.1s; */
 }
 
-.project-card.Homi,
-.project-card.Solaris,
-.project-card.LegalNLP {
-  background-color: var(--white);
-  border: 1px var(--grey-lighten-4) solid;
-  box-shadow: none;
+.project-card * {
+  /* border: var(--red-border); */
+}
+
+.project-card.yahoo {
+  background-color: var(--amber-darken-3);
+}
+.project-card.mango {
+  background-color: var(--amber-darken-2);
+}
+.project-card.weed {
+  background-color: var(--amber-darken-1);
+}
+.project-card.homi {
+  background-color: var(--amber-lighten-1);
+}
+.project-card.legalnlp {
+  background-color: var(--amber-lighten-2);
+}
+.project-card.solaris {
+  background-color: var(--amber-lighten-3);
 }
 
 .project-card:hover {
@@ -328,15 +358,19 @@ p {
   flex-direction: column;
   height: 80px;
 }
+
 .project-card__link-item {
   display: flex;
 }
+
 .project-card__link-item__header {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: flex-start;
   flex-basis: var(---2rem);
 }
+
 .project-card__link-item__header img {
   /* I pass height/width to each img from projectList.js */
   /* width: var(---1rem);
@@ -344,7 +378,7 @@ p {
 }
 
 .project-card__link-item__body a {
-  color: var(--black);
+  color: var(--grey-darken-3);
 }
 
 /* Footer
@@ -380,7 +414,7 @@ Base: 16px
 /* Basic */
 :root {
   --base-px: 16px;
-  --red-border: red 1px solid;
+  --red-border: red 0.025rem solid;
 }
 
 :root {

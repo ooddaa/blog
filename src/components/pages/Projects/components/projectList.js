@@ -2,6 +2,7 @@ const projectList = [
   {
     id: 0,
     name: "Yahoo Prices API",
+    className: "yahoo",
     avatar: "Yahoo avatar",
     description:
       "An open source API server to query stock prices from Yahoo! Finance.",
@@ -33,6 +34,7 @@ const projectList = [
   {
     id: 1,
     name: "Mango",
+    className: "mango",
     avatar: "Mango avatar",
     description:
       "A user-friendly Object-to-Graph Mapping tool for Node.js and Neo4j.",
@@ -66,6 +68,7 @@ const projectList = [
   {
     id: 2,
     name: "Weed",
+    className: "weed",
     avatar: "Weed avatar",
     description: "Knowledge graph of the UK Medical Cannabis Industry.",
     progress: {
@@ -96,6 +99,7 @@ const projectList = [
   {
     id: 3,
     name: "Solaris",
+    className: "solaris",
     avatar: "Solaris avatar",
     description:
       "A user-friendly tool to create and maintain Enterprise Knowledge Graphs.",
@@ -115,7 +119,8 @@ const projectList = [
 
   {
     id: 4,
-    name: "LegalNLP",
+    name: "Legal NLP",
+    className: "legalnlp",
     avatar: "Legal NLP avatar",
     description:
       "NLP application to make UK legislation usable by an average intelligent person.",
@@ -148,6 +153,7 @@ const projectList = [
   {
     id: 5,
     name: "Homi",
+    className: "homi",
     avatar: "Homi avatar",
     description: "A mobile app that brings neighbours on the same page.",
     progress: {

@@ -78,18 +78,20 @@ function Blog({ posts, postId }) {
 
   if (posts && posts.length && isNaN(postId) === false) {
     return (
-      <>
+      <div className="container">
         <BlogPost post={posts[postId]} />
         <BlogPostNavigation
           previousPost={posts[previousPostId]}
           nextPost={posts[nextPostId]}
         />
-      </>
+      </div>
     );
   }
   return (
-    <div className="blog-toc">
-      {BlogTableOfContents({ posts, handlePostNavigation })}
+    <div className="container">
+      <div className="blog-toc">
+        {BlogTableOfContents({ posts, handlePostNavigation })}
+      </div>
     </div>
   );
 }

@@ -8,10 +8,12 @@ import projectList from "./components/projectList.js";
  */
 function Projects() {
   return (
-    <div className="projects-grid">
-      {projectList.map((project) => {
-        return <ProjectCard key={project.id} project={project} />;
-      })}
+    <div className="projects">
+      <div className="container">
+        {projectList.map((project) => {
+          return <ProjectCard key={project.id} project={project} />;
+        })}
+      </div>
     </div>
   );
 }
