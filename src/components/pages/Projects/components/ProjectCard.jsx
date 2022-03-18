@@ -28,36 +28,37 @@ function ProjectCard({ project }) {
   return (
     <div className={`project-card ${className}`}>
       <div className="project-card__header">{name}</div>
+      <div className="project-card__body">
+        <div className="project-card__progress-bar">
+          <img src={progress.imgSrc} alt={progress.imgAlt} />
+        </div>
 
-      <div className="project-card__progress-bar">
-        <img src={progress.imgSrc} alt={progress.imgAlt} />
-      </div>
+        <div className="project-card__description">{description}</div>
 
-      <div className="project-card__description">{description}</div>
-
-      <div className="project-card__links">
-        {links.map(
-          ({
-            link,
-            linkDescr,
-            linkIconScr,
-            linkIconAlt,
-            imgHeight,
-            imgWidth,
-          }) => {
-            return (
-              <ProjectCardLinkItem
-                key={`${id}_${linkDescr}`}
-                link={link}
-                linkDescr={linkDescr}
-                linkIconScr={linkIconScr}
-                linkIconAlt={linkIconAlt}
-                imgHeight={imgHeight}
-                imgWidth={imgWidth}
-              />
-            );
-          }
-        )}
+        <div className="project-card__links">
+          {links.map(
+            ({
+              link,
+              linkDescr,
+              linkIconScr,
+              linkIconAlt,
+              imgHeight,
+              imgWidth,
+            }) => {
+              return (
+                <ProjectCardLinkItem
+                  key={`${id}_${linkDescr}`}
+                  link={link}
+                  linkDescr={linkDescr}
+                  linkIconScr={linkIconScr}
+                  linkIconAlt={linkIconAlt}
+                  imgHeight={imgHeight}
+                  imgWidth={imgWidth}
+                />
+              );
+            }
+          )}
+        </div>
       </div>
     </div>
   );

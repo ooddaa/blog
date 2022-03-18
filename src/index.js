@@ -3,22 +3,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppContent from "./components/AppContent";
+import Main from "./components/pages/Main";
 import BlogPost from "./components/pages/Blog/components/BlogPost";
 import Blog from "./components/pages/Blog";
 import Projects from "./components/pages/Projects";
 import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
-import welcome from "./welcome";
 import posts from "./components/pages/Blog/components/posts";
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route
-          path=""
-          element={<AppContent children={<BlogPost post={welcome} />} />}
-        ></Route>
+        <Route path="" element={<AppContent children={<Main />} />}></Route>
         {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
         <Route
           path="blog"

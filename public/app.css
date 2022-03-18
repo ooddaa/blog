@@ -181,8 +181,22 @@ p {
   margin-right: auto; */
   width: 100%;
   margin-top: var(--app-header-height);
-  background-color: var(--white);
   min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
+}
+
+/* Main Welcome Page
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.main {
+}
+
+.main .container {
+  width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+  .main .container {
+    width: 90%;
+  }
 }
 
 /* Blog
@@ -273,18 +287,23 @@ p {
 /* Projects
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .projects {
-  background-color: var(--amber);
+  /* background-color: var(--amber); */
+  background-color: var(--apricot);
 }
 
 .projects .container {
   width: 80%;
+
+  min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
+  /* height: 800px; */
+  /* height: auto; */
+
   display: flex;
 
-  padding-top: var(---5rem);
-  padding-bottom: var(---5rem);
+  padding-top: var(---4rem);
+  padding-bottom: var(---4rem);
   gap: var(---2rem);
-  height: 800px;
-  height: auto;
+
   align-items: center;
   align-content: center;
   justify-content: flex-start;
@@ -294,20 +313,39 @@ p {
 
 /* ProjectCard */
 .project-card {
+  height: var(---20rem);
+
   display: flex;
   flex-direction: column;
-  background-color: var(--grey-lighten-5);
+  background-color: var(--gainsboro);
+  /* background-color: var(--grey-lighten-5); */
+  /* background-color: var(--tumbleweed); */
   /* border: 1px var(--grey-lighten-3) solid; */
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
-  padding: var(---1rem);
+  border-radius: 5px;
+
+  flex: 0 0 var(---20rem); /* grow shrink basis */
+}
+
+.project-card__header {
+  padding-top: var(---1rem);
+  padding-bottom: var(---1rem);
+  /* padding-top: var(---1rem);
+  padding-left: var(---1-4rem);
+  padding-right: var(---1-4rem); */
+  text-align: center;
+  font-size: var(---20);
+  font-weight: 600;
+  /* border-bottom: 1px var(--grey) solid; */
+}
+
+.project-card__body {
+  /* padding: var(---1rem); */
+  padding-top: var(---1rem);
   padding-left: var(---1-4rem);
   padding-right: var(---1-4rem);
-  border-radius: 3%;
-  height: var(---20rem);
-  /* width: var(---20rem); */
-  flex-basis: var(---20rem); /* instead of width */
-  flex: 0 0 var(---20rem); /* grow shrink basis */
-  /* transition-delay: 0.1s; */
+  padding-bottom: var(---1rem);
+  border-radius: 0 0 5% 5%;
 }
 
 .project-card * {
@@ -316,34 +354,45 @@ p {
 
 .project-card.yahoo {
   background-color: var(--amber-darken-3);
+  background-color: var(--apricot-darken-1);
+  background-color: transparent;
+  background-color: var(--gainsboro);
+  /* background-color: rgb(220, 227, 228, 0.5);
+  background-color: #84dccf;
+  background-color: rgba(132, 220, 207, 0.5); */
+  box-shadow: none;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+.project-card.yahoo .project-card__header {
+  background-color: rgba(132, 220, 207, 0.5);
+  border-radius: 5px 5px 0 0;
+}
+
+/*
 .project-card.mango {
   background-color: var(--amber-darken-2);
+  background-color: var(--apricot-darken-1);
 }
 .project-card.weed {
   background-color: var(--amber-darken-1);
+  background-color: var(--apricot-darken-1);
 }
 .project-card.homi {
   background-color: var(--amber-lighten-1);
+  background-color: var(--apricot-darken-1);
 }
 .project-card.legalnlp {
   background-color: var(--amber-lighten-2);
+  background-color: var(--apricot-darken-1);
 }
 .project-card.solaris {
   background-color: var(--amber-lighten-3);
-}
+  background-color: var(--apricot-darken-1);
+} */
 
 .project-card:hover {
   box-shadow: 0 5px 5px 2px rgba(0, 0, 0, 0.1);
-}
-
-.project-card__header {
-  padding-top: var(---0-5rem);
-  padding-bottom: var(---1rem);
-  text-align: center;
-  font-size: var(---20);
-  font-weight: 600;
-  border-bottom: 1px var(--grey) solid;
 }
 
 .project-card__description {
@@ -387,7 +436,8 @@ p {
   /* position: relative; */
   height: var(--footer-height);
   width: 100%;
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: var(--dark-slate-gray);
   grid-area: footer;
 }
 
@@ -507,7 +557,7 @@ li {
   margin-bottom: var(---1rem);
 }
 
-/* Palette
+/* Colors
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* BLACK */
 :root {
@@ -557,10 +607,29 @@ li {
   --grey-darken-4: #212121;
 }
 
+/* https://coolors.co/3e4f51-facfad-f8bd7f-f5ac72-f2aa7e */
+:root {
+  --gainsboro: #dce3e4;
+  --dark-slate-gray-lighten-2: #506568;
+  --dark-slate-gray-lighten-1: #475a5c;
+  --dark-slate-gray: #3e4e50ff;
+  --dark-slate-gray-darken-1: #354345;
+  --dark-slate-gray-darken-2: #2c383a;
+  --apricot: #facfadff;
+  --apricot-darken-1: #f9c69f;
+  --apricot-darken-2: #f8bb8c;
+  --apricot-darken-3: #f7af78;
+  --mellow-apricot: #f8bd7fff;
+  --sandy-brown: #f5ac72ff;
+  --tumbleweed: #f2aa7eff;
+}
+
 .amber-accent-4 {
   color: var(--amber-accent-4);
 }
 
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .btn-post:hover {
   color: #61dafb;
   cursor: pointer;
