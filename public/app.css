@@ -288,7 +288,7 @@ p {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .projects {
   /* background-color: var(--amber); */
-  background-color: var(--apricot);
+  /* background-color: var(--apricot); */
 }
 
 .projects .container {
@@ -314,6 +314,7 @@ p {
 /* ProjectCard */
 .project-card {
   height: var(---20rem);
+  height: var(---25rem);
 
   display: flex;
   flex-direction: column;
