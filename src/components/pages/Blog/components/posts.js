@@ -1,4 +1,7 @@
-import { reverseString } from "../../../../toolbox/index.js";
+/* code highlighting https://highlightjs.org/usage/ */
+// import hljs from 'highlight.js';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// hljs.registerLanguage('javascript', javascript);
 
 const posts = [
   {
@@ -220,13 +223,12 @@ def get_prices(tickers, attach_prices=False): ...`}
 
         <p>
           <strong>TL/DR: </strong>If you write code first, and think later learn to use these babies:
-          <ul>
+        </p>
+        <ul>
             <li><code>git stash</code></li>
             <li><code>git stash list</code></li>
             <li><code>git stash pop</code></li>
           </ul>
-          
-        </p>
 
         <h3>
           Mein Workflow
@@ -237,7 +239,7 @@ def get_prices(tickers, attach_prices=False): ...`}
 
         <p>Which more often than not creates a lot of unnecessary code re-writing. Or, even more often, after I wrote something I realise that it logically belongs to another branch.</p>
 
-        <p>If there is no other branch, I simply 
+        <p>If there is no other branch, I simply </p>
           <pre>
             <code>
             {`$ git checkout -b newBranch
@@ -245,9 +247,9 @@ $ git add .
 $ git commit -m "stuff that should be on newBranch"`}
             </code>
           </pre> 
-        </p>
+        
 
-        <p>If there IS the other branch that logically owns the changes, no biggie, <code>git stash</code> to the rescue!  
+        <p>If there IS the other branch that logically owns the changes, no biggie, <code>git stash</code> to the rescue!  </p>
           <pre>
             <code>
             
@@ -260,7 +262,7 @@ $ git add .
 $ git commit -m "stuff that should have been on anotherBranch"`}
             </code>
           </pre> 
-        </p>
+        
         <p>
         Voila!
 
@@ -290,9 +292,6 @@ Now we have appropriately positioned and accounted for our code.
         <p>
         <strong>TL/DR: </strong>Transition between hoarding behaviour and open source (in my case vs private Bitbucket and public GitHub) - takes a mindshift. The question boils down to: Do I want to be a better developer/coder/programmer/professional? If the answer is YES - go public. If the answer is NO - stick with a private repo.
         </p>
-
-        
-        
 
         <h3>Public vs Private</h3>
         <p>Since the beginning of my coding hobby, in 2012, I was under the impression that what I code matters.
