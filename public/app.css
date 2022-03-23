@@ -80,7 +80,7 @@ h1 {
   font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
-  font-weight: 00;
+  font-weight: 600;
 }
 h2 {
   font-size: 3.6rem;
@@ -218,13 +218,14 @@ p {
 }
 
 .blog-post-content-body {
-  padding: var(---20);
+  padding: var(---40);
   padding-left: var(---80);
   padding-right: var(---80);
 }
 
 .blog-post-content-body p {
   padding-bottom: var(---1rem);
+  padding-bottom: var(---3rem);
 }
 
 .blog-post-content-body > p p {
@@ -233,6 +234,7 @@ p {
 
 /* add 1rem padding after every pre section that wraps code */
 .blog-post-content-body pre {
+  padding-top: var(---1rem);
   padding-bottom: var(---1rem);
 }
 
