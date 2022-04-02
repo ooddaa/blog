@@ -224,28 +224,32 @@ p {
 }
 
 .blog-post-content-body p {
-  padding-bottom: var(---1rem);
-  padding-bottom: var(---3rem);
+  /* padding-bottom: var(---1rem); */
+  padding-bottom: var(---2rem);
 }
 
 .blog-post-content-body > p p {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
 }
 
 /* add 1rem padding after every pre section that wraps code */
 .blog-post-content-body pre {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
   padding-bottom: var(---1rem);
 }
 
 /* let any p after divs have some padding as well */
 .blog-post-content-body div + p {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
 }
 
 /* also add top padding if wrapped code appears inside a paragraph */
 .blog-post-content-body > p pre {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
+}
+
+.blog-post-content-body ul li {
+  list-style: none;
 }
 
 .blog-post-navigation {
@@ -264,6 +268,10 @@ p {
 
 .blog-post-navigation .next-blog-post a {
   float: right;
+}
+
+.blog-post-table-of-contents a:hover {
+  /* color: red; */
 }
 
 /* Projects
@@ -472,7 +480,8 @@ ol ul {
   font-size: 90%;
 }
 li {
-  margin-bottom: var(---1rem);
+  /* margin-bottom: var(---1rem); */
+  margin-bottom: var(---0-5rem);
 }
 
 /* Palette

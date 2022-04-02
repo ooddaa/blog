@@ -19,10 +19,10 @@ const welcome = {
 
       <p className="pb--1rem">
         Over the past I have accumulated a bunch of googlesheets, notes, some
-        genius business ideas ($1bln++ each), uncountable half-finished projects
-        and trivia. I would like to put all that in one place and may be come
-        across like-minded individuals. Or just de-clutter the back of my mind a
-        bit.
+        genius business ideas (surely > $1bln each ), uncountable number of
+        half-finished projects and just various trivia. I would like to put all
+        that in one place and may be come across like-minded individuals share.
+        And just de-clutter the back of my mind a bit.
       </p>
 
       <p className="pb--1rem">
@@ -31,7 +31,7 @@ const welcome = {
       </p>
 
       <p className="pb--1rem">
-        I have an amazing wife and a wonderful toddler son.
+        I have an amazing wife and a wonderful toddler son ☺️
       </p>
       <p className="pb--1rem">I also like BJJ.</p>
     </>

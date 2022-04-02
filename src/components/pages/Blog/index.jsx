@@ -17,7 +17,7 @@ function BlogTableOfContents({ posts, handlePostNavigation } = {}) {
                   to={post.routeName}
                   onClick={(e) => handlePostNavigation(idx)}
                 >
-                  {post.header} by {post.author}
+                  {post.header}
                 </Link>
               }
             </li>

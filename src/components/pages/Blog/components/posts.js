@@ -31,13 +31,13 @@ const posts = [
           Unfortunately, option trade data does not come with precise price of
           the underlying at the moment of option trade's execution.
         </p>
-        <p>Let's say she has this record:</p>
-        <pre>
-          <code>
+        <div className="pb--1rem">Let's say she has this record:</div>
+        <div className="pb--1rem">
+          <Code block>
             AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
             0.57 3.59
-          </code>
-        </pre>
+          </Code>
+        </div>
         <p>
           It would be handy to know how much AMD traded for at 11:43:35 on
           November 19, 2020, right? Ok, maybe we aren't that fastidious, and can
@@ -52,31 +52,30 @@ const posts = [
           Ran! We are going to use this module to set up our simple Yahoo Prices
           API on Heroku.
         </p>
-        <p>
-          My initial logic was to:
-          <p>
-            <ol>
-              <li>launch a Python Yahoo Prices API on Heroku,</li>
-              <li>call it from the Sheets and</li>
-              <li>
-                automatically update K's trading logs with underlying prices.
-              </li>
-            </ol>
-          </p>
-        </p>
-        <p>
-          I did the first step - which is now accessible on{" "}
+        <div className="pb--1rem">
+          <strong>My initial logic was to:</strong>
+        </div>
+        <div className="pb--3rem">
+          <ol>
+            <li>launch a Python Yahoo Prices API on Heroku,</li>
+            <li>call it from the Sheets and</li>
+            <li>
+              automatically update K's trading logs with underlying prices.
+            </li>
+          </ol>
+        </div>
+
+        <div className="pb--1rem">
+          The API is now accessible on{" "}
           <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
-          simply POST a JSON as follows:
-          <pre>
-            <code>{`{ "data": Ticker[] }`}</code>
-          </pre>
-        </p>
-        <p>
-          Where each Ticker is a list of:
-          <pre>
-            <code>
-              {`[
+          simply POST with an application/json body set as follows:
+        </div>
+        <div className="pb--2rem">
+          <Code block>{`{ "data": Ticker[] }`}</Code>
+        </div>
+        <div className="pb--1rem">Where each Ticker is:</div>
+        <div className="pb--2rem">
+          <Code block language="python">{`[
     ticker: str, 
     # price may be skipped for POST request, add null in Postman
     price: null, 
@@ -92,87 +91,98 @@ const posts = [
       min:int, 
       sec:int
     ]
-]`}
-            </code>
-          </pre>
-        </p>
-        <p>
+]`}</Code>
+        </div>
+        <div className="pb--1rem">
           If it all goes right, Yahoo Prices API will add a
-          <pre>
-            <code>price: float</code>
-          </pre>
-          to each Ticker.
-        </p>
-        <div className="three-days-later pt--2rem">
+        </div>
+        <div className="pb--1rem">
+          <Code block>price: float</Code>
+        </div>
+        <div className="pb--2rem">to each Ticker.</div>
+
+        <div className="three-days-later pb--2rem">
           <img src="/img/3dayslater.jpeg" alt="Some time has passed" />
         </div>
         <p>
           As I am writing this, a month has passed since I launched the stuff
           above, and I hardly can remember how things were arranged!
         </p>
-        <p>
+        <div className="pb--1rem">
           I am sending a POST request with Postman to{" "}
           <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
           JSON:
-          <pre>
-            <code>
-              {`{ 
+        </div>
+        <div className="pb--1rem">
+          <Code block>
+            {`{ 
     "data": [
         ["AMD", null, [2022, 3, 10], [15, 0, 0]]
     ]
 }`}
-            </code>
-          </pre>
+          </Code>
+        </div>
+        <div className="pb--2rem">
           But get a{" "}
           <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
             500 Internal Server Error
           </a>{" "}
           response, which is 😬
-        </p>
-        <p className="pt--1rem">
-          Let's investigate 🕵🏻‍♂️
-          <pre>
-            <code>heroku logs -app=yahooprices --tail</code>
-          </pre>
-        </p>
-        <p>Lo and behold, we've got ourselves a bug!</p>
-        <div className="yahoo-prices-bug">
+        </div>
+
+        <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
+        <div className="pb--2rem">
+          <Code block>$ heroku logs -app=yahooprices --tail</Code>
+        </div>
+
+        <div className="pb--1rem">
+          Lo and behold, we've got ourselves a bug!
+        </div>
+        <div className="yahoo-prices-bug pb--2rem">
           <img src="/img/ypb.png" alt="Screenshot of Heroku logs" />
         </div>
-        <p>
-          It all comes back to me now - the last feature that I added was to
-          allow for all prices from the query to be returned as part of the
-          response. So that users could sort themselves out should the main
+        <div className="pb--1rem">🤔 ???</div>
+        <div className="pb--1rem">
+          Ah yes, it all comes back to me now - the last feature that I added
+          was to allow for all prices from the query to be returned as part of
+          the response. Then users could sort themselves out should the main
           timestamp not be available. I did it by adding a new route:
-          <pre>
-            <code>
-              <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
-            </code>
-          </pre>
-        </p>
-        <p>
+        </div>
+        <div className="pb--2rem">
+          <Code block>
+            <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
+          </Code>
+        </div>
+
+        <div className="pb--1rem">
           But in so doing, I forgot to set a default value to the new argument
-          <pre>
-            <code>attach_prices=False</code>
-          </pre>
+        </div>
+        <div className="pb--1rem">
+          <Code block>attach_prices=False</Code>
+        </div>
+        <div className="pb--1rem">
           of the underlying function that handles data requests for both routes.
           I should have done like this:
-          <pre>
-            <code>
-              {`# yahoo.py 
+        </div>
+        <div className="pb--1rem">
+          <Code block>
+            {`# yahoo.py 
 def get_prices(tickers, attach_prices=False): ...`}
-            </code>
-          </pre>
-          Now, when users call the old route:
-          <pre>
-            <code>
-              <strong>POST</strong> https://yahooprices.herokuapp.com/
-            </code>
-          </pre>
-          they get
-          <pre>
-            <code>
-              {`{
+          </Code>
+        </div>
+
+        <div className="pb--1rem">Now, when users call the old route:</div>
+        <div className="pb--1rem">
+          <Code block>
+            <strong>POST</strong> https://yahooprices.herokuapp.com/
+          </Code>
+        </div>
+
+        <div className="pb--1rem">they get</div>
+
+        <div className="pb--1rem">
+          <Code block>
+            {`{
     "data": [
         [
             "AMD",
@@ -190,9 +200,8 @@ def get_prices(tickers, attach_prices=False): ...`}
         ]
     ]
 }`}
-            </code>
-          </pre>
-        </p>
+          </Code>
+        </div>
 
         <h5 className="pt--2rem">I'll have a takeaway, please 🍟 </h5>
         <p>
@@ -223,13 +232,13 @@ def get_prices(tickers, attach_prices=False): ...`}
           to use these babies:
           <ul>
             <li>
-              <code>git stash</code>
+              <Code>git stash</Code>
             </li>
             <li>
-              <code>git stash list</code>
+              <Code>git stash list</Code>
             </li>
             <li>
-              <code>git stash pop</code>
+              <Code>git stash pop</Code>
             </li>
           </ul>
         </p>
@@ -248,32 +257,31 @@ def get_prices(tickers, attach_prices=False): ...`}
           that it logically belongs to another branch.
         </p>
 
-        <p>
-          If there is no other branch, I simply
-          <pre>
-            <code>
-              {`$ git checkout -b newBranch
+        <div className="pb--1rem">If there is no other branch, I simply</div>
+        <div className="pb--2rem">
+          <Code block>
+            {`$ git checkout -b newBranch
 $ git add .
 $ git commit -m "stuff that should be on newBranch"`}
-            </code>
-          </pre>
-        </p>
+          </Code>
+        </div>
 
-        <p>
+        <div className="pb--1rem">
           If there IS the other branch that logically owns the changes, no
-          biggie, <code>git stash</code> to the rescue!
-          <pre>
-            <code>
-              {`$ git stash     // all changes on current branch are 
+          biggie, <Code>git stash</Code> to the rescue!
+        </div>
+        <div className="pb--2rem">
+          <Code block>
+            {`$ git stash     // all changes on current branch are 
                 // reverted, equals to git reset --hard
 $ git checkout anotherBranch
 $ git stash pop // there might be some conflicts for manual resolution, 
                 // I accept all incoming (stashed) changes
 $ git add .
 $ git commit -m "stuff that should have been on anotherBranch"`}
-            </code>
-          </pre>
-        </p>
+          </Code>
+        </div>
+
         <p>
           Voila! Now we have appropriately positioned and accounted for our
           code.
@@ -347,7 +355,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
               Hoarding code in my drawer kills any opportunity for it to be
               grown into something usable by actual humans. Pushing it out there
               in the public gives it at least a chance (however small). There is
-              lots of work to do after just simple <code>git push</code> but
+              lots of work to do after just simple <Code>git push</Code> but
               without the first step, there won't be any others.
             </li>
           </ol>
@@ -415,8 +423,10 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           </a>{" "}
           which introduced me to <a href="https://mantine.dev">Mantine!</a>
         </p>
-        <div className="pb--3rem">
+        <div className="pb--1rem">
           So now instead of writing a bunch of ugly spans and styles like this:
+        </div>
+        <div className="pb--2rem">
           <pre>
             <code>
               <span style={{ color: "green" }}>
@@ -463,10 +473,11 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
             </code>
           </pre>
         </div>
+
         <div className="pb--1rem">
           ... I can just use a <Code>{"<Prism />"}</Code> component from{" "}
-          <a href="https://mantine.dev/others/prism/">Mantine Prism Code</a> to
-          highlight my code strings. Voilà:
+          <a href="https://mantine.dev/others/prism/">Mantine Prism</a> to
+          highlight my code snippets. Voilà:
         </div>
         <div className="pb--3rem">
           <Prism language="tsx">{`const a = 1;
