@@ -17,7 +17,8 @@ function BlogPost({ post, defaultHeader }) {
     <>
       <div className="blog-post-content-header">
         <div className="blog-post-title">
-          {header || defaultHeader}
+          <h1>{header || defaultHeader}</h1>
+          
           {/* <h2>{header || defaultHeader}</h2> */}
         </div>
         <div className="blog-post-author">
