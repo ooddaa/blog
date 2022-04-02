@@ -419,7 +419,8 @@ Base: 16px
   padding-top: var(---1rem);
 }
 .pb--1rem {
-  padding-bottom: var(---1rem);
+  /* padding-bottom: var(---1rem); */
+  padding-bottom: 0px;
 }
 .pt--2rem {
   padding-top: var(---2rem);
@@ -432,6 +433,9 @@ Base: 16px
 }
 .pb--2-5rem {
   padding-bottom: var(---2-5rem);
+}
+.pb--3rem {
+  padding-bottom: var(---3rem);
 }
 .pt--4rem {
   padding-top: var(---4rem);
