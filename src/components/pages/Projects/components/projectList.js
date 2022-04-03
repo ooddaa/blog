@@ -35,7 +35,7 @@ const projectList = [
     name: "Mango",
     avatar: "Mango avatar",
     description:
-      "A user-friendly Object-to-Graph Mapping tool that makes it easy for Node.js developer to interact with Neo4j Graph Database.",
+      "A user-friendly Object-to-Graph Mapping tool that makes it easy for Node.js developers to interact with Neo4j Graph Database.",
     progress: {
       imgSrc: "/img/mango-progress-bar--green-100.png",
       imgAlt: "Mango project made good progress, 100%",
@@ -93,88 +93,88 @@ const projectList = [
       },
     ],
   },
-  {
-    id: 3,
-    name: "Solaris",
-    avatar: "Solaris avatar",
-    description:
-      "A user-friendly tool to create and maintain Enterprise Knowledge Graphs.",
-    progress: {
-      imgSrc: "/img/solaris-progress-bar--amber-35.png",
-      imgAlt: "Solaris is at 35%",
-    },
-    links: [
-      {
-        linkIconScr: "/img/source-code.png",
-        linkIconAlt: "Solaris github source code",
-        linkDescr: "source code",
-        link: "#",
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   name: "Solaris",
+  //   avatar: "Solaris avatar",
+  //   description:
+  //     "A user-friendly tool to create and maintain Enterprise Knowledge Graphs.",
+  //   progress: {
+  //     imgSrc: "/img/solaris-progress-bar--amber-35.png",
+  //     imgAlt: "Solaris is at 35%",
+  //   },
+  //   links: [
+  //     {
+  //       linkIconScr: "/img/source-code.png",
+  //       linkIconAlt: "Solaris github source code",
+  //       linkDescr: "source code",
+  //       link: "#",
+  //     },
+  //   ],
+  // },
 
-  {
-    id: 4,
-    name: "Legal NLP",
-    avatar: "Legal NLP avatar",
-    description:
-      "NLP application to make UK legislation usable by an average intelligent person.",
-    progress: {
-      imgSrc: "/img/legal-nlp-progress-bar--amber-30.png",
-      imgAlt: "Legal NLP is at 30%",
-    },
-    links: [
-      {
-        linkIconScr: "/img/source-code.png",
-        linkIconAlt: "Legal NLP github source code",
-        linkDescr: "source code",
-        link: "#",
-      },
-      {
-        linkIconScr: "/img/figma-designs-icon.png",
-        linkIconAlt: "Legal NLP Figma designs",
-        linkDescr: "figma designs",
-        link: "#",
-      },
-      {
-        linkIconScr: "/img/example-icon.png",
-        linkIconAlt: "Legal NLP example app",
-        linkDescr: "example",
-        link: "#",
-      },
-    ],
-  },
+  // {
+  //   id: 4,
+  //   name: "Legal NLP",
+  //   avatar: "Legal NLP avatar",
+  //   description:
+  //     "NLP application to make UK legislation usable by an average intelligent person.",
+  //   progress: {
+  //     imgSrc: "/img/legal-nlp-progress-bar--amber-30.png",
+  //     imgAlt: "Legal NLP is at 30%",
+  //   },
+  //   links: [
+  //     {
+  //       linkIconScr: "/img/source-code.png",
+  //       linkIconAlt: "Legal NLP github source code",
+  //       linkDescr: "source code",
+  //       link: "#",
+  //     },
+  //     {
+  //       linkIconScr: "/img/figma-designs-icon.png",
+  //       linkIconAlt: "Legal NLP Figma designs",
+  //       linkDescr: "figma designs",
+  //       link: "#",
+  //     },
+  //     {
+  //       linkIconScr: "/img/example-icon.png",
+  //       linkIconAlt: "Legal NLP example app",
+  //       linkDescr: "example",
+  //       link: "#",
+  //     },
+  //   ],
+  // },
 
-  {
-    id: 5,
-    name: "Homi",
-    avatar: "Homi avatar",
-    description: "A mobile app that brings neighbours on the same page.",
-    progress: {
-      imgSrc: "/img/homi-progress-bar--red-20.png",
-      imgAlt: "Homi is at 20%",
-    },
-    links: [
-      {
-        linkIconScr: "/img/presentation-icon.png",
-        linkIconAlt: "Homi presentation",
-        linkDescr: "presentation",
-        link: "#",
-      },
-      {
-        linkIconScr: "/img/figma-designs-icon.png",
-        linkIconAlt: "Homi Figma designs",
-        linkDescr: "figma designs",
-        link: "#",
-      },
-      {
-        linkIconScr: "/img/market-research-icon.png",
-        linkIconAlt: "Homi market research",
-        linkDescr: "market research",
-        link: "#",
-      },
-    ],
-  },
+  // {
+  //   id: 5,
+  //   name: "Homi",
+  //   avatar: "Homi avatar",
+  //   description: "A mobile app that brings neighbours on the same page.",
+  //   progress: {
+  //     imgSrc: "/img/homi-progress-bar--red-20.png",
+  //     imgAlt: "Homi is at 20%",
+  //   },
+  //   links: [
+  //     {
+  //       linkIconScr: "/img/presentation-icon.png",
+  //       linkIconAlt: "Homi presentation",
+  //       linkDescr: "presentation",
+  //       link: "#",
+  //     },
+  //     {
+  //       linkIconScr: "/img/figma-designs-icon.png",
+  //       linkIconAlt: "Homi Figma designs",
+  //       linkDescr: "figma designs",
+  //       link: "#",
+  //     },
+  //     {
+  //       linkIconScr: "/img/market-research-icon.png",
+  //       linkIconAlt: "Homi market research",
+  //       linkDescr: "market research",
+  //       link: "#",
+  //     },
+  //   ],
+  // },
 ];
 
 export default projectList;

@@ -121,6 +121,7 @@ p {
 .wrapper {
   display: flex;
   flex-direction: column;
+  background: #e0e0e0;
 }
 
 /* Header
@@ -177,7 +178,6 @@ p {
 /* Main content
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .App-content {
-  /* grid-area: pagecontent; */
   margin-left: auto;
   margin-right: auto;
   width: 60%;
@@ -200,7 +200,8 @@ p {
 
 /* Blog
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-/* Table Of Contents */
+/* Table Of Contents
+––––––––––––––––––––––––––––––––– */
 .blog-toc {
   display: flex;
   justify-content: center;
@@ -211,15 +212,20 @@ p {
   list-style: none;
 }
 
-.blog-post-content-header {
-  padding: var(---20);
-  padding-top: var(---80);
+/* Blogpost
+––––––––––––––––––––––––––––––––– */
+.blog-post {
+  padding: var(---80);
+}
+
+.blog-post__header {
+  padding-bottom: var(---80);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.blog-post-title {
+.blog-post__header__title {
   margin-top: 0;
   margin-bottom: 1rem;
   font-weight: 400;
@@ -228,51 +234,30 @@ p {
   letter-spacing: -0.1rem;
 }
 
-.blog-post-author {
-  font-style: italic;
+.blog-post__header__author {
   font-size: var(--font-size-small-1);
   color: var(--grey-darken-2);
   font-weight: 300;
+  align-self: flex-start;
 }
 
-.blog-post-content-body {
-  padding: var(---40);
-  padding-left: var(---80);
-  padding-right: var(---80);
+.blog-post__body {
 }
 
-@media screen and (max-width: 900px) {
-  .blog-post-content-body {
-    padding: var(---20);
-  }
+.blog-post__body__tldr {
+  padding-bottom: var(---4rem);
 }
 
-.blog-post-content-body p {
-  /* padding-bottom: var(---1rem); */
+.blog-post__body p {
   padding-bottom: var(---2rem);
 }
 
-.blog-post-content-body > p p {
-  /* padding-top: var(---1rem); */
-}
-
 /* add 1rem padding after every pre section that wraps code */
-.blog-post-content-body pre {
-  /* padding-top: var(---1rem); */
+.blog-post__body pre {
   padding-bottom: var(---1rem);
 }
 
-/* let any p after divs have some padding as well */
-.blog-post-content-body div + p {
-  /* padding-top: var(---1rem); */
-}
-
-/* also add top padding if wrapped code appears inside a paragraph */
-.blog-post-content-body > p pre {
-  /* padding-top: var(---1rem); */
-}
-
-.blog-post-content-body li {
+.blog-post__body li {
   list-style: none;
 }
 
@@ -288,9 +273,6 @@ p {
 
 @media screen and (max-width: 900px) {
   .blog-post-navigation {
-    padding-left: var(---20);
-    padding-right: var(---20);
-    gap: 0;
   }
 }
 
@@ -644,18 +626,4 @@ pre > code {
 .posts-nav li a:hover {
   color: var(--grey-darken-2);
   list-style-type: none;
-}
-
-/* Media
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-
-@media screen and (max-width: 900px) {
-  .blog-post-content-body {
-    padding: var(---20);
-  }
-  .blog-post-navigation {
-    padding-left: var(---20);
-    padding-right: var(---20);
-    gap: 0;
-  }
 }

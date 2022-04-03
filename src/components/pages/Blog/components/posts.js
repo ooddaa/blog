@@ -2,6 +2,15 @@ import { reverseString } from "../../../../toolbox/index.js";
 import { Code, Text } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 
+/* https://mantine.dev/core/text/ */
+function Span({ children, ...props }) {
+  return (
+    <Text component="span" {...props}>
+      {children}
+    </Text>
+  );
+}
+
 const posts = [
   {
     id: 1,
@@ -9,6 +18,8 @@ const posts = [
     header: "Setting up Yahoo Prices API on Heroku",
     subheader: "Without the docs, it's unusable.",
     dateCreated: [2022, 3, 12],
+    timeToRead: "2 min",
+    timeToThink: "10 min",
     author: "oda",
     tags: [
       "python",
@@ -20,7 +31,7 @@ const posts = [
       "options trading",
     ],
     body: (
-      <div className="blog-post-content-body">
+      <div className="blog-post__body__content">
         <p>
           Ok, so my dear wife, K, needed US stocks prices to be added to her
           option trading log, which she runs on Google Sheets.
@@ -222,11 +233,11 @@ def get_prices(tickers, attach_prices=False): ...`}
       "Haven't thought it through before making changes on this branch? No biggie - git stash it!",
     dateCreated: [2022, 3, 5],
     author: "oda",
-    timeToRead: "3min",
-    timeToThink: "3min",
+    timeToRead: "3 min",
+    timeToThink: "4.5 min",
     tags: ["git"],
     body: (
-      <div className=".blog-post-content-body">
+      <div className="blog-post__body__content">
         <p>
           <strong>TL/DR: </strong>If you write code first, and think later learn
           to use these babies:
@@ -296,18 +307,41 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     subheader: "post 3 subheader",
     dateCreated: [2022, 3, 23],
     author: "oda",
-    timeToRead: "3min",
-    timeToThink: "3min",
+    timeToRead: "3 min",
+    timeToThink: "3 min",
     tags: ["open source", "GitHub", "BitBucket", "git push"],
     body: (
-      <div className=".blog-post-content-body">
-        <p>
-          <strong>TL/DR: </strong>Transition between hoarding behaviour and open
-          source (in my case vs private Bitbucket and public GitHub) - takes a
-          mindshift. The question boils down to: Do I want to be a better
-          developer/coder/programmer/professional? If the answer is YES - go
-          public. If the answer is NO - stick with a private repo.
-        </p>
+      <>
+        <div className="blog-post__body__tldr">
+          <Span
+            variant="gradient"
+            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+            weight={600}
+          >
+            TL/DR:{" "}
+          </Span>
+          Transition between hoarding behaviour and open source (in my case
+          private Bitbucket vs public GitHub) - takes a mindshift. The question
+          boils down to: Do I want to be a better
+          developer/coder/programmer/professional? If the answer is{" "}
+          <Span
+            variant="gradient"
+            gradient={{ from: "green", to: "lime", deg: 45 }}
+            weight={600}
+          >
+            YES
+          </Span>{" "}
+          - go public. If the answer is{" "}
+          <Span
+            variant="gradient"
+            gradient={{ from: "red", to: "pink", deg: 45 }}
+            weight={600}
+          >
+            {" "}
+            NO{" "}
+          </Span>
+          - stick with a private repo.
+        </div>
 
         <h3>Public vs Private</h3>
         <p>
@@ -367,7 +401,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           identifiable data from your repo) vs hoarding all in a private repo
           gives you a chance and a stimulus to improve your work.
         </p>
-      </div>
+      </>
     ),
   },
   {
@@ -377,11 +411,11 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     subheader: "What I need to write about",
     dateCreated: [2022, 3, 23],
     author: "oda",
-    timeToRead: "3min",
-    timeToThink: "3min",
+    timeToRead: "3 min",
+    timeToThink: "hours and hours",
     tags: [],
     body: (
-      <div className=".blog-post-content-body">
+      <div className="blog-post__body__content">
         <ol>
           <li>
             find library that styles html code - mine looks horrible and takes
@@ -401,14 +435,14 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     id: 5,
     routeName: "blogpost5",
     header: "Using Mantine Prism to highlight code",
-    subheader: "Mantine pwns #1",
+    subheader: "'Mantine pwns!' S1E1",
     dateCreated: [2022, 4, 2],
     author: "oda",
-    timeToRead: "3min",
-    timeToThink: "3min",
+    timeToRead: "3 min",
+    timeToThink: "15 min",
     tags: ["Mantine.dev", "CSS-in-JS", "Styled components", "React"],
     body: (
-      <div className=".blog-post-content-body">
+      <div className="blog-post__body__content">
         <p>
           First thing that I discovered after starting this blog is that it is
           not exactly easy to present a code snippet so that it doesn't look
@@ -505,7 +539,7 @@ const stub = {
   timeToThink: "3min",
   tags: [],
   body: (
-    <div className=".blog-post-content-body">
+    <div className="blog-post__body__content">
       <p></p>
     </div>
   ),
