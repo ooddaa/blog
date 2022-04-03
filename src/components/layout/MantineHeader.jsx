@@ -13,11 +13,11 @@ import { useBooleanToggle } from "@mantine/hooks";
 import { ChevronDown } from "tabler-icons-react";
 import { Link } from "react-router-dom";
 
-const HEADER_HEIGHT = 56;
+const HEADER_HEIGHT = 64;
 
 const useStyles = createStyles((theme) => ({
   inner: {
-    height: 56,
+    height: HEADER_HEIGHT,
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",

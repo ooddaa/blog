@@ -183,7 +183,8 @@ p {
   width: 60%;
   margin-top: var(--app-header-height);
   background-color: var(--white);
-  min-height: calc(100vh - var(--app-header-height) - var(--footer-height));
+  /* after adding Mantine header I have to substract 2 * --app-header-height (2 * 64px) */
+  min-height: calc(100vh - var(--app-header-height) * 2 - var(--footer-height));
 }
 
 @media screen and (max-width: 900px) {
