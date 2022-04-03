@@ -146,17 +146,20 @@ p {
   gap: 2rem;
 }
 
+.header-navbar * {
+  border: 1px red solid;
+}
+
 @media screen and (max-width: 750px) {
   /* header-navbar needs to collapse into one MENU button */
 }
 
-/* Header links
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 .header-navbar-link {
   display: flex;
   width: 80px;
   margin: 0 1rem 0 1rem;
   justify-content: center;
+  flex-shrink: 1;
 }
 
 .header-navbar-link > a {
@@ -268,7 +271,7 @@ p {
   /* padding-top: var(---1rem); */
 }
 
-.blog-post-content-body ul li {
+.blog-post-content-body li {
   list-style: none;
 }
 
