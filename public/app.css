@@ -121,7 +121,7 @@ p {
 .wrapper {
   display: flex;
   flex-direction: column;
-  background: #e0e0e0;
+  background: #f3f3f3;
 }
 
 /* Header
@@ -215,7 +215,8 @@ p {
 /* Blogpost
 ––––––––––––––––––––––––––––––––– */
 .blog-post {
-  padding: var(---80);
+  padding: var(---120);
+  /* border-radius: 5px; */
 }
 
 .blog-post__header {

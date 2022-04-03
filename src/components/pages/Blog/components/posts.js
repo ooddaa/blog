@@ -11,6 +11,14 @@ function Span({ children, ...props }) {
   );
 }
 
+function Bold({ children, ...props }) {
+  return (
+    <Span weight={700} {...props}>
+      {children}
+    </Span>
+  );
+}
+
 const posts = [
   {
     id: 1,
@@ -31,7 +39,7 @@ const posts = [
       "options trading",
     ],
     body: (
-      <div className="blog-post__body__content">
+      <>
         <p>
           Ok, so my dear wife, K, needed US stocks prices to be added to her
           option trading log, which she runs on Google Sheets.
@@ -222,7 +230,7 @@ def get_prices(tickers, attach_prices=False): ...`}
             <li>Test all the time.</li>
           </ol>
         </p>
-      </div>
+      </>
     ),
   },
   {
@@ -237,10 +245,17 @@ def get_prices(tickers, attach_prices=False): ...`}
     timeToThink: "4.5 min",
     tags: ["git"],
     body: (
-      <div className="blog-post__body__content">
+      <>
         <p>
-          <strong>TL/DR: </strong>If you write code first, and think later learn
-          to use these babies:
+          <Span
+            variant="gradient"
+            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+            weight={600}
+          >
+            TL/DR:{" "}
+          </Span>
+          If you practice <i>write code first - think later approach</i>, then
+          learn to use these babies:
           <ul>
             <li>
               <Code>git stash</Code>
@@ -297,7 +312,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           Voila! Now we have appropriately positioned and accounted for our
           code.
         </p>
-      </div>
+      </>
     ),
   },
   {
@@ -351,41 +366,77 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           anyone would ever spend any of their valuable time
           reading/stealing/using my precious code.
         </p>
-        <p>
+        <div className="pb--2rem">
           Uploading my work to a public place changes how I think about the
           quality of my work. I have three rules:
+        </div>
+        <div className="pb--2rem">
           <ol>
-            <li>
-              <strong>To push is better than to hoard.</strong> Pushing to main
-              branch forces me to focus on solving an issue within the
-              restricted timespan (I like those green commits, I do). But at the
-              same time I realise I don't want to push garbage, so a this
-              becomes a battle against <strong>Unrelenting Standards</strong>{" "}
-              (ie "it's better now and imperfect that perfect and never").
+            <li className="pb--2rem">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+                  weight={600}
+                >
+                  To push is better than to hoard.{" "}
+                </Span>
+              </div>
+              Pushing to main branch forces me to focus on solving an issue
+              within the restricted timespan (I like those green commits, I do).
+              But at the same time I realise I don't want to push garbage, so a
+              this becomes a battle against{" "}
+              <strong>Unrelenting Standards</strong> (ie "it's better now and
+              imperfect that perfect and never").
             </li>
 
-            <li>
-              <strong>To write documentation is better than write code.</strong>{" "}
-              I want my work to be something that I am not ashamed of. The only
-              sure way to get there for me is to incrementally improve my code
-              (logic, organization, comments). Since "incrementally" means "step
-              by step over time" - I ran into the old{" "}
-              <strong>WHAT_THE_HELL_IS_THIS_DOING_HERE</strong> problem. When it
-              takes me more time to remember what I was trying to achieve than
-              actually incrementing the quality. Hence I make myself spend time
-              on adding code comments, documentation, and notes. And if I'm
-              completely honest, the benefit that I get when I actually think of
-              what I am trying to achive via code far outweighs the benefits of
-              having banged out some code for the sake of code lines (what?).{" "}
+            <li className="pb--2rem">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "green", to: "yellow", deg: 45 }}
+                  weight={600}
+                >
+                  To write documentation is better than to write code.{" "}
+                </Span>
+              </div>
+              <div className="pb--1rem">
+                I want my work to be something that I am not ashamed of. The
+                only sure way to get there for me is to incrementally improve my
+                code (logic, organization, comments). Since "incrementally"
+                means "step by step over time" - I ran into the old{" "}
+                <strong>WHAT_THE_HELL_IS_THIS_DOING_HERE</strong> problem.
+              </div>
+              When it takes me more time to remember what I was trying to
+              achieve than actually incrementing the quality. Hence I make
+              myself spend time on adding code comments, documentation, and
+              notes. And if I'm completely honest, the benefit that I get when I
+              actually think of what I am trying to achive via writing code far
+              outweighs the benefits of having banged out some code for the sake
+              of code lines.{" "}
             </li>
 
-            <li>
-              <strong>To compete is better that to delude yourself.</strong>{" "}
-              This is the big one for me. I think open source allows ideas to
-              compete. Even if they compete only within my own head, because,
-              let's get real for a sec, no one is going to go through my repos
-              with any level of attention. If they do, I'd be chaffed to bits to
-              listen to their comments (after a couple of deep breaths that is).
+            <li className="pb--2rem">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "orange", to: "red", deg: 45 }}
+                  weight={600}
+                >
+                  To compete is better that to delude yourself.{" "}
+                </Span>
+              </div>
+              <div className="pb--1rem">
+                This is the biggest one for me. I think open source allows ideas
+                to compete. Even if they compete only within my own head,
+                because, let's get real for a sec, no one is going to go through
+                my repos with any level of attention. If they do, I'd be chaffed
+                to bits to listen to their comments (after a couple of deep
+                breaths that is).
+              </div>
               Hoarding code in my drawer kills any opportunity for it to be
               grown into something usable by actual humans. Pushing it out there
               in the public gives it at least a chance (however small). There is
@@ -393,13 +444,13 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
               without the first step, there won't be any others.
             </li>
           </ol>
-        </p>
-
+        </div>
         <h3>Conclusion</h3>
         <p>
-          Pushing code to a public repo (and do remove all PID - privately
-          identifiable data from your repo) vs hoarding all in a private repo
-          gives you a chance and a stimulus to improve your work.
+          Pushing code to a public repo (and please remove all PID -{" "}
+          <Bold>P</Bold>rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata
+          from your repo) vs hoarding all in a private repo gives you a chance
+          and a stimulus to improve your work.
         </p>
       </>
     ),
@@ -415,7 +466,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     timeToThink: "hours and hours",
     tags: [],
     body: (
-      <div className="blog-post__body__content">
+      <>
         <ol>
           <li>
             find library that styles html code - mine looks horrible and takes
@@ -428,7 +479,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           <li>add links</li>
         </ol>
         <p></p>
-      </div>
+      </>
     ),
   },
   {
@@ -442,7 +493,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     timeToThink: "15 min",
     tags: ["Mantine.dev", "CSS-in-JS", "Styled components", "React"],
     body: (
-      <div className="blog-post__body__content">
+      <>
         <p>
           First thing that I discovered after starting this blog is that it is
           not exactly easy to present a code snippet so that it doesn't look
@@ -521,7 +572,7 @@ function fun() {;
 }`}</Prism>
         </div>
         <Text>Isn't it lovely? 💥</Text>
-      </div>
+      </>
     ),
   },
 ];
@@ -539,8 +590,8 @@ const stub = {
   timeToThink: "3min",
   tags: [],
   body: (
-    <div className="blog-post__body__content">
+    <>
       <p></p>
-    </div>
+    </>
   ),
 };
