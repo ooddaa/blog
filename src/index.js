@@ -8,7 +8,7 @@ import Blog from "./components/pages/Blog";
 import Projects from "./components/pages/Projects";
 import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
-import welcome from "./welcome";
+import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
 
 ReactDOM.render(
@@ -17,7 +17,8 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route
           path=""
-          element={<AppContent children={<BlogPost post={welcome} />} />}
+          element={<AppContent children={<Welcome />} />}
+          // element={<AppContent children={<BlogPost post={welcome} />} />}
         ></Route>
         {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
         <Route

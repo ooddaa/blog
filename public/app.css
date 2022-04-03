@@ -79,7 +79,7 @@ h1 {
   font-size: 4rem;
   line-height: 1.2;
   letter-spacing: -0.1rem;
-  font-weight: 00;
+  font-weight: 600;
 }
 h2 {
   font-size: 3.6rem;
@@ -232,7 +232,7 @@ p {
 }
 
 .blog-post-content-body {
-  padding: var(---20);
+  padding: var(---40);
   padding-left: var(---80);
   padding-right: var(---80);
 }
@@ -244,26 +244,32 @@ p {
 }
 
 .blog-post-content-body p {
-  padding-bottom: var(---1rem);
+  /* padding-bottom: var(---1rem); */
+  padding-bottom: var(---2rem);
 }
 
 .blog-post-content-body > p p {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
 }
 
 /* add 1rem padding after every pre section that wraps code */
 .blog-post-content-body pre {
+  /* padding-top: var(---1rem); */
   padding-bottom: var(---1rem);
 }
 
 /* let any p after divs have some padding as well */
 .blog-post-content-body div + p {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
 }
 
 /* also add top padding if wrapped code appears inside a paragraph */
 .blog-post-content-body > p pre {
-  padding-top: var(---1rem);
+  /* padding-top: var(---1rem); */
+}
+
+.blog-post-content-body ul li {
+  list-style: none;
 }
 
 .blog-post-navigation {
@@ -290,6 +296,10 @@ p {
 
 .blog-post-navigation .next-blog-post a {
   float: right;
+}
+
+.blog-post-table-of-contents a:hover {
+  /* color: red; */
 }
 
 /* Projects
@@ -461,6 +471,9 @@ Base: 16px
 .pb--2-5rem {
   padding-bottom: var(---2-5rem);
 }
+.pb--3rem {
+  padding-bottom: var(---3rem);
+}
 .pt--4rem {
   padding-top: var(---4rem);
 }
@@ -497,7 +510,8 @@ ol ul {
   font-size: 90%;
 }
 li {
-  margin-bottom: var(---1rem);
+  /* margin-bottom: var(---1rem); */
+  margin-bottom: var(---0-5rem);
 }
 
 /* Palette
