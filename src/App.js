@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/layout/Header";
 import MantineHeader from "./components/layout/MantineHeader";
 import Footer from "./components/layout/Footer";
-import { Link } from "react-router-dom";
 
 const links = [
   {
@@ -10,7 +9,6 @@ const links = [
     label: "Main",
   },
   {
-    // link: <Link to="/blog">Blog</Link>,
     link: "/blog",
     label: "Blog",
   },

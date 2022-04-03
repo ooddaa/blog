@@ -1,5 +1,5 @@
 import { reverseString } from "../../../../toolbox/index.js";
-import { Code, Text } from "@mantine/core";
+import { Code, Text, Blockquote } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 
 /* https://mantine.dev/core/text/ */
@@ -14,6 +14,17 @@ function Span({ children, ...props }) {
 function Bold({ children, ...props }) {
   return (
     <Span weight={700} {...props}>
+      {children}
+    </Span>
+  );
+}
+
+function Super({ children, ...props }) {
+  return (
+    <Span
+      className="super-scripted"
+      style={{ verticalAlign: "super", display: "inline-block" }}
+    >
       {children}
     </Span>
   );
@@ -199,7 +210,7 @@ def get_prices(tickers, attach_prices=False): ...`}
 
         <div className="pb--1rem">they get</div>
 
-        <div className="pb--1rem">
+        <div className="pb--3rem">
           <Code block>
             {`{
     "data": [
@@ -222,14 +233,14 @@ def get_prices(tickers, attach_prices=False): ...`}
           </Code>
         </div>
 
-        <h5 className="pt--2rem">I'll have a takeaway, please 🍟 </h5>
-        <p>
+        <h5>I'll have a takeaway, please 🍟 </h5>
+        <div className="pb--3rem">
           <ol>
             <li>Write more WHY-comments in your code.</li>
             <li>Set sensible defaults.</li>
             <li>Test all the time.</li>
           </ol>
-        </p>
+        </div>
       </>
     ),
   },
@@ -246,7 +257,7 @@ def get_prices(tickers, attach_prices=False): ...`}
     tags: ["git"],
     body: (
       <>
-        <p>
+        <div className="pb--3rem">
           <Span
             variant="gradient"
             gradient={{ from: "indigo", to: "cyan", deg: 45 }}
@@ -267,7 +278,7 @@ def get_prices(tickers, attach_prices=False): ...`}
               <Code>git stash pop</Code>
             </li>
           </ul>
-        </p>
+        </div>
 
         <h3>Mein Workflow</h3>
         <p>
@@ -328,34 +339,41 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     body: (
       <>
         <div className="blog-post__body__tldr">
-          <Span
-            variant="gradient"
-            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-            weight={600}
-          >
-            TL/DR:{" "}
-          </Span>
-          Transition between hoarding behaviour and open source (in my case
-          private Bitbucket vs public GitHub) - takes a mindshift. The question
-          boils down to: Do I want to be a better
-          developer/coder/programmer/professional? If the answer is{" "}
-          <Span
-            variant="gradient"
-            gradient={{ from: "green", to: "lime", deg: 45 }}
-            weight={600}
-          >
-            YES
-          </Span>{" "}
-          - go public. If the answer is{" "}
-          <Span
-            variant="gradient"
-            gradient={{ from: "red", to: "pink", deg: 45 }}
-            weight={600}
-          >
-            {" "}
-            NO{" "}
-          </Span>
-          - stick with a private repo.
+          <div className="pb--2rem">
+            <Span
+              variant="gradient"
+              gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+              weight={600}
+            >
+              TL/DR:{" "}
+            </Span>
+            Transition between hoarding behaviour and open source (in my case
+            private Bitbucket vs public GitHub) - takes a mindshift. The
+            question boils down to the famous quote from Aristotel:
+          </div>
+          <Blockquote className="pb--3rem" cite="- Aristotel">
+            Do I want to be a better developer/coder/programmer/professional?
+          </Blockquote>
+          <div className="pb--1rem">
+            If the answer is{" "}
+            <Span
+              variant="gradient"
+              gradient={{ from: "green", to: "lime", deg: 45 }}
+              weight={600}
+            >
+              YES
+            </Span>{" "}
+            - go public. If the answer is{" "}
+            <Span
+              variant="gradient"
+              gradient={{ from: "red", to: "pink", deg: 45 }}
+              weight={600}
+            >
+              {" "}
+              NO{" "}
+            </Span>
+            - stick with a private repo.
+          </div>
         </div>
 
         <h3>Public vs Private</h3>
@@ -388,7 +406,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
               But at the same time I realise I don't want to push garbage, so a
               this becomes a battle against{" "}
               <strong>Unrelenting Standards</strong> (ie "it's better now and
-              imperfect that perfect and never").
+              imperfect than perfect and never").
             </li>
 
             <li className="pb--2rem">
@@ -447,11 +465,20 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
         </div>
         <h3>Conclusion</h3>
         <p>
-          Pushing code to a public repo (and please remove all PID -{" "}
-          <Bold>P</Bold>rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata
-          from your repo) vs hoarding all in a private repo gives you a chance
-          and a stimulus to improve your work.
+          Choosing to keep my code in a public repo<Super>🍉</Super> vs hoarding
+          all of it in a private repo gives me motivation to develop myself as a
+          professional.
         </p>
+        <div className="subscript">
+          <Text color="grey">
+            <Super>🍉</Super>{" "}
+            <i>
+              do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
+              rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
+              repo before you push!
+            </i>
+          </Text>
+        </div>
       </>
     ),
   },
