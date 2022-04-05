@@ -1,6 +1,7 @@
 import { reverseString } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote } from "@mantine/core";
 import { Prism } from "@mantine/prism";
+import { Link } from "react-router-dom";
 
 /* https://mantine.dev/core/text/ */
 function Span({ children, ...props }) {
@@ -27,6 +28,31 @@ function Super({ children, ...props }) {
     >
       {children}
     </Span>
+  );
+}
+
+function GradientSpan({ children, from, to, ...props }) {
+  return (
+    <Span
+      variant="gradient"
+      gradient={{
+        from: from ?? "indigo",
+        to: to ?? "cyan",
+        deg: 45,
+      }}
+      weight={props?.weight ?? 600}
+      {...props}
+    >
+      {children}
+    </Span>
+  );
+}
+
+function JS({ children, ...props }) {
+  return (
+    <Prism language="javascript" {...props}>
+      {children}
+    </Prism>
   );
 }
 
@@ -602,6 +628,85 @@ function fun() {;
       </>
     ),
   },
+  {
+    id: 6,
+    routeName: "blogpost6",
+    header: "setting document event listeners with React useEffect hook",
+    subheader: "Dependency array is key",
+    dateCreated: [2022, 4, 5],
+    author: "oda",
+    timeToRead: "4min",
+    timeToThink: "10min",
+    tags: ["react", "useEffect", "useState", "x11"],
+    body: (
+      <Text>
+        <div className="pb--2rem">
+          {/* <Text> */}I have been helping my dear wife 👩‍💻 with her
+          multiplication{" "}
+          <Link to="https://github.com/med4kat/x11">project</Link>. She needed
+          the user to give an answer to a{" "}
+          <GradientSpan from="orange" to="cyan">
+            x * 11
+          </GradientSpan>{" "}
+          problem. So my task was simple - to figure out how to do it without an{" "}
+          <Code>{`<input>`}</Code> tag.
+          {/* </Text> */}
+        </div>
+        <div className="pb--2rem">
+          <Text>
+            I figured I could grab keyboard events and take it from there.
+          </Text>
+        </div>
+
+        <div className="pb--1rem">
+          {/* <Text> */}
+          Last time I used the <Code>useEffect</Code> hook, it was to initialize
+          my Component's state. It looked quite straightforward:
+          {/* </Text> */}
+        </div>
+        <div className="pb--1rem">
+          <Prism language="tsx">{`useEffect(() => {
+    initState();
+  }, []);
+`}</Prism>
+          {/* <Prism>{`useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [answerArr, task.product, isCorrectAnswer]);`}</Prism> */}
+        </div>
+        <div className="pb--1rem">
+          Important detail is the empty array passed as the second argument.
+          This sets the <Code>useEffect</Code> to fire only once per the
+          Component's lifecycle. Namely - right after the Component has been
+          rendered to the DOM.
+        </div>
+        <div className="pb--3rem">
+          This signature gives us the functionality of{" "}
+          <Code>componentDidMount</Code> lifecycle method of the classic style
+          of <Prism language="tsx">MyComponent extends React.Component</Prism>{" "}
+        </div>
+        {/* <div className="pb--1rem"></div> */}
+
+        <div className="pb--1rem">
+          Today, however, I needed useEffect to help me do more than this. As I
+          needed tp grab user's key strokes I had to listen to{" "}
+          <Code>keydown</Code> events.
+        </div>
+        <div className="pb--1rem">
+          <ol>
+            <li>
+              I'll listen to <Code>keydown</Code> events -{" "}
+              <JS>document.addEventListener</JS>
+            </li>
+            <li></li>
+            <li></li>
+          </ol>
+        </div>
+      </Text>
+    ),
+  },
 ];
 
 export default posts;
@@ -618,7 +723,7 @@ const stub = {
   tags: [],
   body: (
     <>
-      <p></p>
+      <div className="pb--2rem"></div>
     </>
   ),
 };
