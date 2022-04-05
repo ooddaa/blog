@@ -496,14 +496,14 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
       <>
         <ol>
           <li>
-            find library that styles html code - mine looks horrible and takes
-            forever to add
+            1. <Span color="green">Done</Span> find library that styles html
+            code - mine looks horrible and takes forever to add
           </li>
           <li>
-            write a bunch of <i>1min solutions</i> based on the problems &
+            2. write a bunch of <i>1min solutions</i> based on the problems &
             solutions from my google sheets
           </li>
-          <li>add links</li>
+          <li>3. add links to whatever I mention in my posts</li>
         </ol>
         <p></p>
       </>

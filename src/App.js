@@ -16,6 +16,10 @@ const links = [
     link: "/projects",
     label: "Projects",
   },
+  {
+    link: "/trivia",
+    label: "Trivia",
+  },
 ];
 
 function App() {

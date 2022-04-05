@@ -9,6 +9,7 @@ import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
 import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
+import Trivia from "./components/pages/Trivia/Trivia";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -38,6 +39,11 @@ ReactDOM.render(
         <Route
           path="projects"
           element={<AppContent children={<Projects />} />}
+        ></Route>
+        <Route
+          path="trivia"
+          element={<Trivia />}
+          // element={<AppContent children={<Trivia />} />}
         ></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>

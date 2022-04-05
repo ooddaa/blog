@@ -373,7 +373,6 @@ p {
   height: var(--footer-height);
   width: 100%;
   background-color: #282c34;
-  grid-area: footer;
 }
 
 .App-footer p {
