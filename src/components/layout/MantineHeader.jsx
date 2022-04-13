@@ -118,9 +118,9 @@ export default function MantineHeader({ links }: HeaderSearchProps) {
     }
 
     return (
-      <Link key={link.label} to={link.link} className={classes.link}>
+      <a key={link.label} href={link.link} className={classes.link}>
         {link.label}
-      </Link>
+      </a>
     );
   });
 

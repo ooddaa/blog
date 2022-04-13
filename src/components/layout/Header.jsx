@@ -18,7 +18,7 @@ function Header(props) {
             <Link to="#">Books</Link>
           </div>
           <div className="header-navbar-link">
-            <Link to="/projects">Projects</Link>
+            <Link to="https://github.com/ooddaa">Projects</Link>
           </div>
           <div className="header-navbar-link">
             <Link to="#">Trivia</Link>

@@ -13,7 +13,7 @@ const links = [
     label: "Blog",
   },
   {
-    link: "/projects",
+    link: "https://github.com/ooddaa",
     label: "Projects",
   },
   {
