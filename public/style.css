@@ -274,21 +274,12 @@ p {
   padding-right: var(---80);
 }
 
-@media screen and (max-width: 900px) {
-  .blog-post-navigation {
-  }
-}
-
 .blog-post-navigation > div {
   width: 100px;
 }
 
 .blog-post-navigation .next-blog-post a {
   float: right;
-}
-
-.blog-post-table-of-contents a:hover {
-  /* color: red; */
 }
 
 /* Projects

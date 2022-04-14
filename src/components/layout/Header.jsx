@@ -20,9 +20,9 @@ function Header(props) {
           <div className="header-navbar-link">
             <Link to="https://github.com/ooddaa">Projects</Link>
           </div>
-          <div className="header-navbar-link">
+          {/* <div className="header-navbar-link">
             <Link to="#">Trivia</Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

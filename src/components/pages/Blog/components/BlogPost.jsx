@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { Fragment } from "react";
 import { resolveMonth } from "../../../../toolbox/index.js";
+import { Text, Image } from "@mantine/core";
+import { Span } from "../../../../toolbox";
 
 const propTypes = {
   defaultHeader: PropTypes.string,
@@ -30,12 +32,16 @@ function BlogPost({ post, defaultHeader }) {
           {/* <h2>{header || defaultHeader}</h2> */}
         </div>
         <div className="blog-post__header__author">
-          by <span className="oda">{author}</span> on {day}
-          <span className="superscript">th</span> {resolveMonth(month)}, {year}
-          <br></br>
-          🤓 reading time: {timeToRead}
-          <br></br>
-          🤔 thinking time: {timeToThink}
+          <Span>
+            {" "}
+            by <Span className="oda">{author}</Span> on {day}
+            <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
+            {year}
+            <br></br>
+            <Span>🤓 reading time: {timeToRead}</Span>
+            <br></br>
+            <Span>🤔 thinking time: {timeToThink}</Span>{" "}
+          </Span>
         </div>
       </div>
       <div className="blog-post__body">{body}</div>

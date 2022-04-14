@@ -1,60 +1,13 @@
-import { reverseString } from "../../../../toolbox/index.js";
+import {
+  Span,
+  Bold,
+  Super,
+  GradientSpan,
+  JS,
+} from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import { Link } from "react-router-dom";
-
-/* https://mantine.dev/core/text/ */
-function Span({ children, ...props }) {
-  return (
-    <Text component="span" {...props}>
-      {children}
-    </Text>
-  );
-}
-
-function Bold({ children, ...props }) {
-  return (
-    <Span weight={700} {...props}>
-      {children}
-    </Span>
-  );
-}
-
-function Super({ children, ...props }) {
-  return (
-    <Span
-      className="super-scripted"
-      style={{ verticalAlign: "super", display: "inline-block" }}
-    >
-      {children}
-    </Span>
-  );
-}
-
-function GradientSpan({ children, from, to, ...props }) {
-  return (
-    <Span
-      variant="gradient"
-      gradient={{
-        from: from ?? "indigo",
-        to: to ?? "cyan",
-        deg: 45,
-      }}
-      weight={props?.weight ?? 600}
-      {...props}
-    >
-      {children}
-    </Span>
-  );
-}
-
-function JS({ children, ...props }) {
-  return (
-    <Prism language="javascript" {...props}>
-      {children}
-    </Prism>
-  );
-}
 
 const posts = [
   {
@@ -631,7 +584,7 @@ function fun() {;
   {
     id: 6,
     routeName: "blogpost6",
-    header: "setting document event listeners with React useEffect hook",
+    header: "Setting document event listeners with React useEffect hook",
     subheader: "Dependency array is key",
     dateCreated: [2022, 4, 5],
     author: "oda",

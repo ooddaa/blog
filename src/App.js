@@ -16,10 +16,10 @@ const links = [
     link: "https://github.com/ooddaa",
     label: "Projects",
   },
-  {
-    link: "/trivia",
-    label: "Trivia",
-  },
+  // {
+  //   link: "/trivia",
+  //   label: "Trivia",
+  // },
 ];
 
 function App() {
