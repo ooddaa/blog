@@ -186,7 +186,6 @@ p {
   background-color: transparent;
   /* after adding Mantine header I have to substract 2 * --app-header-height (2 * 64px) */
   min-height: calc(100vh - var(--app-header-height) * 2 - var(--footer-height));
-  /* min-height: calc(2200px); */
 }
 
 @media screen and (max-width: 900px) {
@@ -365,7 +364,8 @@ p {
   /* position: relative; */
   height: var(--footer-height);
   width: 100%;
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: rgb(5, 4, 4);
 }
 
 .App-footer p {
