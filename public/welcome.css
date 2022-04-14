@@ -1,0 +1,13 @@
+.welcome {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: transparent;
+}
+
+.welcome-bg-img {
+  width: 1400px;
+  width: 100%;
+
+  height: 100%;
+  background-image: url("./img/greg-torosiants.jpg");
+}

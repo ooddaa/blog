@@ -17,8 +17,8 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route
           path=""
-          element={<AppContent children={<Welcome />} />}
-          // element={<AppContent children={<BlogPost post={welcome} />} />}
+          element={<Welcome />}
+          // element={<AppContent children={<Welcome />} />}
         ></Route>
         {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
         <Route
@@ -40,11 +40,7 @@ ReactDOM.render(
           path="projects"
           element={<AppContent children={<Projects />} />}
         ></Route>
-        <Route
-          path="trivia"
-          element={<Trivia />}
-          // element={<AppContent children={<Trivia />} />}
-        ></Route>
+        <Route path="trivia" element={<Trivia />}></Route>
       </Route>
       <Route path="grids" element={<Grids />}></Route>
       <Route path="bems" element={<BEMs />}></Route>

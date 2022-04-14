@@ -1,15 +1,11 @@
 import React from "react";
 import welcome from "./components/welcome";
-
-const myStyle = {
-  paddingTop: "100px",
-  paddingBottom: "100px",
-};
+import AppContent from "../../AppContent";
 
 function Welcome() {
   return (
-    <div className="welcome" style={myStyle}>
-      {welcome.body}
+    <div className="welcome-bg-img">
+      <AppContent children={<div className="welcome">{welcome.body}</div>} />
     </div>
   );
 }
