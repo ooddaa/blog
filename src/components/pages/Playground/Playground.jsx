@@ -1,25 +1,78 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "@mantine/core";
-import { AspectRatio } from "@mantine/core";
+import {
+  AppShell,
+  Navbar,
+  Header,
+  createStyles,
+  keyframes,
+} from "@mantine/core";
+import { Bluetooth } from "tabler-icons-react";
 // https://mantine.dev/core/app-shell/
-
-function Trivia2() {
-  return (
-    <AspectRatio ratio={16 / 9}>
-      <iframe
-        src="https://www.youtube.com/watch?v=gdw17h4hPOw"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
-    </AspectRatio>
-  );
-}
 
 const log = (...args) => console.log(...args);
 
-function Trivia() {
+const roundTrip = keyframes({
+  "0%": { transform: "translate(0)" },
+  // "33%": { transform: "translateY(100%)" },
+  // "66%": { transform: "translate(100%, 100%)" },
+  "100%": { transform: "translateX(100%)" },
+});
+const useStyles = createStyles((theme, _params, getRef) => ({
+  parent: {
+    backgroundColor: "darkblue",
+    height: "400px",
+    width: "800px",
+    [`&:hover .${getRef("child")}`]: {
+      // transform: "translateX(100%)",
+      // backgroundColor: "yellow",
+
+      animation: `${roundTrip} 1s ease-in forwards`,
+    },
+  },
+
+  child: {
+    ref: getRef("child"),
+    backgroundColor: "red",
+    height: "50%",
+    width: "25%",
+    transition: "transform 1s ease-in",
+  },
+}));
+
+function Playground() {
+  const { classes, cx } = useStyles();
+  return (
+    <AppShell
+      padding="md"
+      navbar={
+        <Navbar width={{ base: 300 }} p="xs">
+          {/* Navbar content */}
+        </Navbar>
+      }
+      header={
+        <Header height={60} p="xs">
+          {/* Header content */}
+        </Header>
+      }
+      styles={(theme) => ({
+        main: {
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+        },
+      })}
+    >
+      <>
+        <div className={cx("parent", classes.parent)}>
+          <div className={cx("child", classes.child)}></div>
+        </div>
+      </>
+    </AppShell>
+  );
+}
+
+function Playground1() {
   // return (
   //   <Navbar
   //     fixed
@@ -46,7 +99,7 @@ function Trivia() {
       56
   );
   const [footerHeight] = useState(
-    document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 32
+    document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 0
   );
   const [navbarHeight, setNavbarHeight] = useState(
     window.innerHeight - headerHeight - footerHeight
@@ -64,7 +117,7 @@ function Trivia() {
   }, []);
 
   return (
-    <div className="trivia" style={{ display: "flex" }}>
+    <div className="playground" style={{ display: "flex" }}>
       <Navbar height={navbarHeight} p="xs" width={{ base: 300 }}>
         <Navbar.Section>{/* Header with logo */}</Navbar.Section>
         <Navbar.Section grow mt="md">
@@ -76,4 +129,4 @@ function Trivia() {
   );
 }
 
-export default Trivia;
+export default Playground;

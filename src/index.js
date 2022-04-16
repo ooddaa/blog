@@ -9,7 +9,7 @@ import Grids from "./components/Grids";
 import BEMs from "./components/BEMs";
 import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
-import Trivia from "./components/pages/Trivia/Trivia";
+import Playground from "./components/pages/Playground/Playground.jsx";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -36,8 +36,8 @@ ReactDOM.render(
           path="projects"
           element={<AppContent children={<Projects />} />}
         ></Route>
-        {/* <Route path="trivia" element={<Trivia />}></Route> */}
       </Route>
+      <Route path="playground" element={<Playground />}></Route>
       {/* <Route path="grids" element={<Grids />}></Route>
       <Route path="bems" element={<BEMs />}></Route> */}
     </Routes>

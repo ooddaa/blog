@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-import Header from "./components/layout/Header";
 import MantineHeader from "./components/layout/MantineHeader";
 import Footer from "./components/layout/Footer";
 
@@ -16,17 +15,16 @@ const links = [
     link: "https://github.com/ooddaa",
     label: "Projects",
   },
-  // {
-  //   link: "/trivia",
-  //   label: "Trivia",
-  // },
+  {
+    link: "/playground",
+    label: "Playground",
+  },
 ];
 
 function App() {
   return (
     <div className="wrapper">
       <MantineHeader links={links} />
-      {/* <Header /> */}
       <Outlet />
       <Footer />
     </div>

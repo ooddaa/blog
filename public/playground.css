@@ -1,0 +1,38 @@
+.parent:hover .child {
+  /* transform: "translateX(100%)";
+  background: yellow; */
+  /* animation: round-trip 1s ease-in forwards; */
+  /* animation-name: round-trip;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards; */
+}
+
+/* @keyframes round-trip {
+  0% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translateX(100%);
+  }
+  66% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
+} */
+/* @keyframes round-trip {
+  0% {
+    transform: translate(0);
+  }
+  33% {
+    transform: translateY(100%);
+  }
+  66% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+} */
