@@ -5,6 +5,7 @@ import {
   GradientSpan,
   JS,
   Emoji,
+  H3,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote } from "@mantine/core";
 import { Prism } from "@mantine/prism";
@@ -30,62 +31,64 @@ const posts = [
       "options trading",
     ],
     body: (
-      <>
-        <p>
-          Ok, so my dear wife, K, needed US stocks prices to be added to her
-          option trading log, which she runs on Google Sheets.
-        </p>
-        <p>
-          K, after a hard trading day, copy-pastes her option combos, strangles
-          and whatnot data to Sheets from Interactive Brokers' TWS.
-          Unfortunately, option trade data does not come with precise price of
-          the underlying at the moment of option trade's execution.
-        </p>
-        <div className="pb--1rem">Let's say she has this record:</div>
-        <div className="pb--1rem">
-          <Code block>
-            AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
-            0.57 3.59
-          </Code>
-        </div>
-        <p>
-          It would be handy to know how much AMD traded for at 11:43:35 on
-          November 19, 2020, right? Ok, maybe we aren't that fastidious, and can
-          round time to 11:43.
-        </p>
-        <p>
-          If so, then the easiest way to get stock prices is to use YahooPrices
-          API. ...of which no documentation in human-readable format exists...
-        </p>
-        <p>
-          Ran Aroussi published a nice Python module - yfinance. Many thanks,
-          Ran! We are going to use this module to set up our simple Yahoo Prices
-          API on Heroku.
-        </p>
-        <div className="pb--1rem">
-          <strong>My initial logic was to:</strong>
-        </div>
-        <div className="pb--3rem">
-          <ol>
-            <li>launch a Python Yahoo Prices API on Heroku,</li>
-            <li>call it from the Sheets and</li>
-            <li>
-              automatically update K's trading logs with underlying prices.
-            </li>
-          </ol>
-        </div>
+      <Text>
+        <>
+          <p>
+            Ok, so my dear wife, K, needed US stocks prices to be added to her
+            option trading log, which she runs on Google Sheets.
+          </p>
+          <p>
+            K, after a hard trading day, copy-pastes her option combos,
+            strangles and whatnot data to Sheets from Interactive Brokers' TWS.
+            Unfortunately, option trade data does not come with precise price of
+            the underlying at the moment of option trade's execution.
+          </p>
+          <div className="pb--1rem">Let's say she has this record:</div>
+          <div className="pb--1rem">
+            <Code block>
+              AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
+              0.57 3.59
+            </Code>
+          </div>
+          <p>
+            It would be handy to know how much AMD traded for at 11:43:35 on
+            November 19, 2020, right? Ok, maybe we aren't that fastidious, and
+            can round time to 11:43.
+          </p>
+          <p>
+            If so, then the easiest way to get stock prices is to use
+            YahooPrices API. ...of which no documentation in human-readable
+            format exists...
+          </p>
+          <p>
+            Ran Aroussi published a nice Python module - yfinance. Many thanks,
+            Ran! We are going to use this module to set up our simple Yahoo
+            Prices API on Heroku.
+          </p>
+          <div className="pb--1rem">
+            <strong>My initial logic was to:</strong>
+          </div>
+          <div className="pb--3rem">
+            <ol>
+              <li>launch a Python Yahoo Prices API on Heroku,</li>
+              <li>call it from the Sheets and</li>
+              <li>
+                automatically update K's trading logs with underlying prices.
+              </li>
+            </ol>
+          </div>
 
-        <div className="pb--1rem">
-          The API is now accessible on{" "}
-          <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
-          simply POST with an application/json body set as follows:
-        </div>
-        <div className="pb--2rem">
-          <Code block>{`{ "data": Ticker[] }`}</Code>
-        </div>
-        <div className="pb--1rem">Where each Ticker is:</div>
-        <div className="pb--2rem">
-          <Code block language="python">{`[
+          <div className="pb--1rem">
+            The API is now accessible on{" "}
+            <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
+            simply POST with an application/json body set as follows:
+          </div>
+          <div className="pb--2rem">
+            <Code block>{`{ "data": Ticker[] }`}</Code>
+          </div>
+          <div className="pb--1rem">Where each Ticker is:</div>
+          <div className="pb--2rem">
+            <Code block language="python">{`[
     ticker: str, 
     # price may be skipped for POST request, add null in Postman
     price: null, 
@@ -102,97 +105,97 @@ const posts = [
       sec:int
     ]
 ]`}</Code>
-        </div>
-        <div className="pb--1rem">
-          If it all goes right, Yahoo Prices API will add a
-        </div>
-        <div className="pb--1rem">
-          <Code block>price: float</Code>
-        </div>
-        <div className="pb--2rem">to each Ticker.</div>
+          </div>
+          <div className="pb--1rem">
+            If it all goes right, Yahoo Prices API will add a
+          </div>
+          <div className="pb--1rem">
+            <Code block>price: float</Code>
+          </div>
+          <div className="pb--2rem">to each Ticker.</div>
 
-        <div className="three-days-later pb--2rem">
-          <img src="/img/3dayslater.jpeg" alt="Some time has passed" />
-        </div>
-        <p>
-          As I am writing this, a month has passed since I launched the stuff
-          above, and I hardly can remember how things were arranged!
-        </p>
-        <div className="pb--1rem">
-          I am sending a POST request with Postman to{" "}
-          <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
-          JSON:
-        </div>
-        <div className="pb--1rem">
-          <Code block>
-            {`{ 
+          <div className="three-days-later pb--2rem">
+            <img src="/img/3dayslater.jpeg" alt="Some time has passed" />
+          </div>
+          <p>
+            As I am writing this, a month has passed since I launched the stuff
+            above, and I hardly can remember how things were arranged!
+          </p>
+          <div className="pb--1rem">
+            I am sending a POST request with Postman to{" "}
+            <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
+            JSON:
+          </div>
+          <div className="pb--1rem">
+            <Code block>
+              {`{ 
     "data": [
         ["AMD", null, [2022, 3, 10], [15, 0, 0]]
     ]
 }`}
-          </Code>
-        </div>
-        <div className="pb--2rem">
-          But get a{" "}
-          <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
-            500 Internal Server Error
-          </a>{" "}
-          response, which is 😬
-        </div>
+            </Code>
+          </div>
+          <div className="pb--2rem">
+            But get a{" "}
+            <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
+              500 Internal Server Error
+            </a>{" "}
+            response, which is 😬
+          </div>
 
-        <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
-        <div className="pb--2rem">
-          <Code block>$ heroku logs -app=yahooprices --tail</Code>
-        </div>
+          <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
+          <div className="pb--2rem">
+            <Code block>$ heroku logs -app=yahooprices --tail</Code>
+          </div>
 
-        <div className="pb--1rem">
-          Lo and behold, we've got ourselves a bug!
-        </div>
-        <div className="yahoo-prices-bug pb--2rem">
-          <img src="/img/ypb.png" alt="Screenshot of Heroku logs" />
-        </div>
-        <div className="pb--1rem">🤔 ???</div>
-        <div className="pb--1rem">
-          Ah yes, it all comes back to me now - the last feature that I added
-          was to allow for all prices from the query to be returned as part of
-          the response. Then users could sort themselves out should the main
-          timestamp not be available. I did it by adding a new route:
-        </div>
-        <div className="pb--2rem">
-          <Code block>
-            <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
-          </Code>
-        </div>
+          <div className="pb--1rem">
+            Lo and behold, we've got ourselves a bug!
+          </div>
+          <div className="yahoo-prices-bug pb--2rem">
+            <img src="/img/ypb.png" alt="Screenshot of Heroku logs" />
+          </div>
+          <div className="pb--1rem">🤔 ???</div>
+          <div className="pb--1rem">
+            Ah yes, it all comes back to me now - the last feature that I added
+            was to allow for all prices from the query to be returned as part of
+            the response. Then users could sort themselves out should the main
+            timestamp not be available. I did it by adding a new route:
+          </div>
+          <div className="pb--2rem">
+            <Code block>
+              <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
+            </Code>
+          </div>
 
-        <div className="pb--1rem">
-          But in so doing, I forgot to set a default value to the new argument
-        </div>
-        <div className="pb--1rem">
-          <Code block>attach_prices=False</Code>
-        </div>
-        <div className="pb--1rem">
-          of the underlying function that handles data requests for both routes.
-          I should have done like this:
-        </div>
-        <div className="pb--1rem">
-          <Code block>
-            {`# yahoo.py 
+          <div className="pb--1rem">
+            But in so doing, I forgot to set a default value to the new argument
+          </div>
+          <div className="pb--1rem">
+            <Code block>attach_prices=False</Code>
+          </div>
+          <div className="pb--1rem">
+            of the underlying function that handles data requests for both
+            routes. I should have done like this:
+          </div>
+          <div className="pb--1rem">
+            <Code block>
+              {`# yahoo.py 
 def get_prices(tickers, attach_prices=False): ...`}
-          </Code>
-        </div>
+            </Code>
+          </div>
 
-        <div className="pb--1rem">Now, when users call the old route:</div>
-        <div className="pb--1rem">
-          <Code block>
-            <strong>POST</strong> https://yahooprices.herokuapp.com/
-          </Code>
-        </div>
+          <div className="pb--1rem">Now, when users call the old route:</div>
+          <div className="pb--1rem">
+            <Code block>
+              <strong>POST</strong> https://yahooprices.herokuapp.com/
+            </Code>
+          </div>
 
-        <div className="pb--1rem">they get</div>
+          <div className="pb--1rem">they get</div>
 
-        <div className="pb--3rem">
-          <Code block>
-            {`{
+          <div className="pb--3rem">
+            <Code block>
+              {`{
     "data": [
         [
             "AMD",
@@ -210,18 +213,19 @@ def get_prices(tickers, attach_prices=False): ...`}
         ]
     ]
 }`}
-          </Code>
-        </div>
+            </Code>
+          </div>
 
-        <h5>I'll have a takeaway, please 🍟 </h5>
-        <div className="pb--3rem">
-          <ol>
-            <li>Write more WHY-comments in your code.</li>
-            <li>Set sensible defaults.</li>
-            <li>Test all the time.</li>
-          </ol>
-        </div>
-      </>
+          <h5>I'll have a takeaway, please 🍟 </h5>
+          <div className="pb--3rem">
+            <ol>
+              <li>Write more WHY-comments in your code.</li>
+              <li>Set sensible defaults.</li>
+              <li>Test all the time.</li>
+            </ol>
+          </div>
+        </>
+      </Text>
     ),
   },
   {
@@ -262,7 +266,7 @@ def get_prices(tickers, attach_prices=False): ...`}
           </ul>
         </div>
 
-        <h3 className="font-bold text-2xl pb-4">My workflow</h3>
+        <H3>My workflow</H3>
         <p>
           Sometimes I struggle with keeping my coding organised - not least
           because I haven't really coded as part of a large team with strict
@@ -320,154 +324,157 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     timeToThink: "3 min",
     tags: ["open source", "GitHub", "BitBucket", "git push"],
     body: (
-      <>
-        <div className="blog-post__body__tldr">
+      <Text>
+        <>
+          <div className="blog-post__body__tldr">
+            <div className="pb--2rem">
+              <Span
+                variant="gradient"
+                gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+                weight={600}
+              >
+                TL/DR:{" "}
+              </Span>
+              Transition between hoarding behaviour and open source (in my case
+              private Bitbucket vs public GitHub) - takes a mindshift. The
+              question boils down to the famous quote from Aristotel:
+            </div>
+            <Blockquote className="pb--3rem" cite="- Aristotel">
+              Do I want to be a better developer/coder/programmer/professional?
+            </Blockquote>
+            <div className="pb--1rem">
+              If the answer is{" "}
+              <Span
+                variant="gradient"
+                gradient={{ from: "green", to: "lime", deg: 45 }}
+                weight={600}
+              >
+                YES
+              </Span>{" "}
+              - go public. If the answer is{" "}
+              <Span
+                variant="gradient"
+                gradient={{ from: "red", to: "pink", deg: 45 }}
+                weight={600}
+              >
+                {" "}
+                NO{" "}
+              </Span>
+              - stick with a private repo.
+            </div>
+          </div>
+
+          <H3>Public vs Private</H3>
+          <p>
+            Since the beginning of my coding hobby, in 2012, I was under the
+            impression that what I code matters. Not that I would be able to put
+            my finger on how exactly it mattered or why. Or why I was so sure
+            that anyone would ever spend any of their valuable time
+            reading/stealing/using my precious code.
+          </p>
           <div className="pb--2rem">
-            <Span
-              variant="gradient"
-              gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-              weight={600}
-            >
-              TL/DR:{" "}
-            </Span>
-            Transition between hoarding behaviour and open source (in my case
-            private Bitbucket vs public GitHub) - takes a mindshift. The
-            question boils down to the famous quote from Aristotel:
+            Uploading my work to a public place changes how I think about the
+            quality of my work. I have three rules:
           </div>
-          <Blockquote className="pb--3rem" cite="- Aristotel">
-            Do I want to be a better developer/coder/programmer/professional?
-          </Blockquote>
-          <div className="pb--1rem">
-            If the answer is{" "}
-            <Span
-              variant="gradient"
-              gradient={{ from: "green", to: "lime", deg: 45 }}
-              weight={600}
-            >
-              YES
-            </Span>{" "}
-            - go public. If the answer is{" "}
-            <Span
-              variant="gradient"
-              gradient={{ from: "red", to: "pink", deg: 45 }}
-              weight={600}
-            >
-              {" "}
-              NO{" "}
-            </Span>
-            - stick with a private repo.
+          <div className="pb--2rem">
+            <ol>
+              <li className="pb--2rem">
+                <div className="pb--1rem">
+                  <Span
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+                    weight={600}
+                  >
+                    To push is better than to hoard.{" "}
+                  </Span>
+                </div>
+                Pushing to main branch forces me to focus on solving an issue
+                within the restricted timespan (I like those green commits, I
+                do). But at the same time I realise I don't want to push
+                garbage, so a this becomes a battle against{" "}
+                <strong>Unrelenting Standards</strong> (ie "it's better now and
+                imperfect than perfect and never").
+              </li>
+
+              <li className="pb--2rem">
+                <div className="pb--1rem">
+                  <Span
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "green", to: "yellow", deg: 45 }}
+                    weight={600}
+                  >
+                    To write documentation is better than to write code.{" "}
+                  </Span>
+                </div>
+                <div className="pb--1rem">
+                  I want my work to be something that I am not ashamed of. The
+                  only sure way to get there for me is to incrementally improve
+                  my code (logic, organization, comments). Since "incrementally"
+                  means "step by step over time" - I ran into the old{" "}
+                  <strong>WHAT_THE_HELL_IS_THIS_DOING_HERE</strong> problem.
+                </div>
+                When it takes me more time to remember what I was trying to
+                achieve than actually incrementing the quality. Hence I make
+                myself spend time on adding code comments, documentation, and
+                notes. And if I'm completely honest, the benefit that I get when
+                I actually think of what I am trying to achive via writing code
+                far outweighs the benefits of having banged out some code for
+                the sake of code lines.{" "}
+              </li>
+
+              <li className="pb--2rem">
+                <div className="pb--1rem">
+                  <Span
+                    size="lg"
+                    variant="gradient"
+                    gradient={{ from: "orange", to: "red", deg: 45 }}
+                    weight={600}
+                  >
+                    To compete is better that to delude yourself.{" "}
+                  </Span>
+                </div>
+                <div className="pb--1rem">
+                  This is the biggest one for me. I think open source allows
+                  ideas to compete. Even if they compete only within my own
+                  head, because, let's get real for a sec, no one is going to go
+                  through my repos with any level of attention. If they do, I'd
+                  be chaffed to bits to listen to their comments (after a couple
+                  of deep breaths that is).
+                </div>
+                Hoarding code in my drawer kills any opportunity for it to be
+                grown into something usable by actual humans. Pushing it out
+                there in the public gives it at least a chance (however small).
+                There is lots of work to do after just simple{" "}
+                <Code>git push</Code> but without the first step, there won't be
+                any others.
+              </li>
+            </ol>
           </div>
-        </div>
-
-        <h3>Public vs Private</h3>
-        <p>
-          Since the beginning of my coding hobby, in 2012, I was under the
-          impression that what I code matters. Not that I would be able to put
-          my finger on how exactly it mattered or why. Or why I was so sure that
-          anyone would ever spend any of their valuable time
-          reading/stealing/using my precious code.
-        </p>
-        <div className="pb--2rem">
-          Uploading my work to a public place changes how I think about the
-          quality of my work. I have three rules:
-        </div>
-        <div className="pb--2rem">
-          <ol>
-            <li className="pb--2rem">
-              <div className="pb--1rem">
-                <Span
-                  size="lg"
-                  variant="gradient"
-                  gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-                  weight={600}
-                >
-                  To push is better than to hoard.{" "}
-                </Span>
-              </div>
-              Pushing to main branch forces me to focus on solving an issue
-              within the restricted timespan (I like those green commits, I do).
-              But at the same time I realise I don't want to push garbage, so a
-              this becomes a battle against{" "}
-              <strong>Unrelenting Standards</strong> (ie "it's better now and
-              imperfect than perfect and never").
-            </li>
-
-            <li className="pb--2rem">
-              <div className="pb--1rem">
-                <Span
-                  size="lg"
-                  variant="gradient"
-                  gradient={{ from: "green", to: "yellow", deg: 45 }}
-                  weight={600}
-                >
-                  To write documentation is better than to write code.{" "}
-                </Span>
-              </div>
-              <div className="pb--1rem">
-                I want my work to be something that I am not ashamed of. The
-                only sure way to get there for me is to incrementally improve my
-                code (logic, organization, comments). Since "incrementally"
-                means "step by step over time" - I ran into the old{" "}
-                <strong>WHAT_THE_HELL_IS_THIS_DOING_HERE</strong> problem.
-              </div>
-              When it takes me more time to remember what I was trying to
-              achieve than actually incrementing the quality. Hence I make
-              myself spend time on adding code comments, documentation, and
-              notes. And if I'm completely honest, the benefit that I get when I
-              actually think of what I am trying to achive via writing code far
-              outweighs the benefits of having banged out some code for the sake
-              of code lines.{" "}
-            </li>
-
-            <li className="pb--2rem">
-              <div className="pb--1rem">
-                <Span
-                  size="lg"
-                  variant="gradient"
-                  gradient={{ from: "orange", to: "red", deg: 45 }}
-                  weight={600}
-                >
-                  To compete is better that to delude yourself.{" "}
-                </Span>
-              </div>
-              <div className="pb--1rem">
-                This is the biggest one for me. I think open source allows ideas
-                to compete. Even if they compete only within my own head,
-                because, let's get real for a sec, no one is going to go through
-                my repos with any level of attention. If they do, I'd be chaffed
-                to bits to listen to their comments (after a couple of deep
-                breaths that is).
-              </div>
-              Hoarding code in my drawer kills any opportunity for it to be
-              grown into something usable by actual humans. Pushing it out there
-              in the public gives it at least a chance (however small). There is
-              lots of work to do after just simple <Code>git push</Code> but
-              without the first step, there won't be any others.
-            </li>
-          </ol>
-        </div>
-        <h3 className="font-bold text-2xl pb-4">Conclusion</h3>
-        <p>
-          Choosing to keep my code in a public repo
-          <Emoji>
-            <Super>🍉</Super>
-          </Emoji>
-          vs hoarding all of it in a private repo gives me motivation to develop
-          myself as a professional.
-        </p>
-        <div className="subscript">
-          <Text color="grey">
+          <H3>Conclusion</H3>
+          <>
+            Choosing to keep my code in a public repo
             <Emoji>
               <Super>🍉</Super>
             </Emoji>
-            <i>
-              do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
-              rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
-              repo before you push!
-            </i>
-          </Text>
-        </div>
-      </>
+            vs hoarding all of it in a private repo gives me motivation to
+            develop myself as a professional.
+          </>
+          <div className="subscript">
+            <Text color="grey">
+              <Emoji>
+                <Super>🍉</Super>
+              </Emoji>
+              <i>
+                do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
+                rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
+                repo before you push!
+              </i>
+            </Text>
+          </div>
+        </>
+      </Text>
     ),
   },
   {

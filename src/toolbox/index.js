@@ -1,4 +1,4 @@
-import { Text } from "@mantine/core";
+import { Text, createStyles } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 
 function reverseString(str /* : string */) /* :string */ {
@@ -85,9 +85,31 @@ function Emoji({ children, props, style }) {
           ? { display: "inline-block", ...style }
           : { display: "inline-block", paddingRight: "1rem" }
       }
+      {...props}
     >
       {children}
     </div>
+  );
+}
+
+interface H3Props {
+  children: any;
+  props?: Object;
+  style?: Object;
+  tailwindClasses?: string[];
+}
+
+function H3<H3Props>({ children, props, style, tailwindClasses }) {
+  const useStyles = createStyles(() => ({}));
+  const { classes, cx } = useStyles();
+  return (
+    <h3
+      className={cx(tailwindClasses ?? "font-bold text-2xl pb-4")}
+      style={style ?? {}}
+      {...props}
+    >
+      {children}
+    </h3>
   );
 }
 
@@ -100,4 +122,5 @@ export {
   GradientSpan,
   JS,
   Emoji,
+  H3,
 };
