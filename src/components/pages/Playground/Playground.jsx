@@ -6,26 +6,23 @@ import {
   createStyles,
   keyframes,
 } from "@mantine/core";
-import { Bluetooth } from "tabler-icons-react";
 // https://mantine.dev/core/app-shell/
 
 const log = (...args) => console.log(...args);
 
 const roundTrip = keyframes({
   "0%": { transform: "translate(0)" },
-  // "33%": { transform: "translateY(100%)" },
-  // "66%": { transform: "translate(100%, 100%)" },
+  "33%": { transform: "translateY(100%)" },
+  "66%": { transform: "translate(100%, 100%)" },
   "100%": { transform: "translateX(100%)" },
 });
+
 const useStyles = createStyles((theme, _params, getRef) => ({
   parent: {
-    backgroundColor: "darkblue",
+    backgroundColor: "white",
     height: "400px",
     width: "800px",
     [`&:hover .${getRef("child")}`]: {
-      // transform: "translateX(100%)",
-      // backgroundColor: "yellow",
-
       animation: `${roundTrip} 1s ease-in forwards`,
     },
   },
@@ -38,6 +35,26 @@ const useStyles = createStyles((theme, _params, getRef) => ({
     transition: "transform 1s ease-in",
   },
 }));
+
+// function ChatNotification() {
+//   return (
+//     <>
+//       <div class="chat-notification">
+//         <div class="chat-notification-logo-wrapper">
+//           <img
+//             class="chat-notification-logo"
+//             src="/img/logo.svg"
+//             alt="ChitChat Logo"
+//           ></img>
+//         </div>
+//         <div class="chat-notification-content">
+//           <h4 class="chat-notification-title">ChitChat</h4>
+//           <p class="chat-notification-message">You have a new message!</p>
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
 
 function Playground() {
   const { classes, cx } = useStyles();
@@ -65,7 +82,26 @@ function Playground() {
     >
       <>
         <div className={cx("parent", classes.parent)}>
-          <div className={cx("child", classes.child)}></div>
+          {/* <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-6">
+            <div className="shrink-0S">
+              <img
+                className="h-12 w-12"
+                src="img/fingerprint.png"
+                alt="ChitChat Logo"
+              ></img>
+            </div>
+            <div>
+              <div className="text-xl font-bold text-black">Dear Human</div>
+              <p className="text-slate-500">You have a new message!</p>
+            </div>
+          </div> */}
+          <>
+            <div className="h-40 w-40 bg-red-900 mx-auto">
+              <div className="middle box h-39 w-39 bg-red-300 mx-auto">
+                {/* <div className="center m-10 box h-12 w-12 bg-red-900 mx-auto"></div> */}
+              </div>
+            </div>
+          </>
         </div>
       </>
     </AppShell>

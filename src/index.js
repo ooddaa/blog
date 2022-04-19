@@ -1,15 +1,20 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
+import "./index.tailwind.css";
+
 import reportWebVitals from "./reportWebVitals";
 import AppContent from "./components/AppContent";
 import Blog from "./components/pages/Blog/Blog";
 import Projects from "./components/pages/Projects";
-import Grids from "./components/Grids";
-import BEMs from "./components/BEMs";
+// import Grids from "./components/Grids";
+// import BEMs from "./components/BEMs";
 import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
 import Playground from "./components/pages/Playground/Playground.jsx";
+
+// experiments.topLevelAwait = true;
+// await import("./index.css");
 
 ReactDOM.render(
   <BrowserRouter>
