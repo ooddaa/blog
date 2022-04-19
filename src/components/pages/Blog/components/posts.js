@@ -4,6 +4,7 @@ import {
   Super,
   GradientSpan,
   JS,
+  Emoji,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote } from "@mantine/core";
 import { Prism } from "@mantine/prism";
@@ -225,7 +226,7 @@ def get_prices(tickers, attach_prices=False): ...`}
   },
   {
     id: 2,
-    routeName: "blogpost2",
+    routeName: "git-stash",
     header: "Git stash",
     subheader:
       "Haven't thought it through before making changes on this branch? No biggie - git stash it!",
@@ -236,7 +237,7 @@ def get_prices(tickers, attach_prices=False): ...`}
     tags: ["git"],
     body: (
       <>
-        <div className="pb--3rem">
+        <div className="pb-4">
           <Span
             variant="gradient"
             gradient={{ from: "indigo", to: "cyan", deg: 45 }}
@@ -246,6 +247,8 @@ def get_prices(tickers, attach_prices=False): ...`}
           </Span>
           If you practice <i>write code first - think later approach</i>, then
           learn to use these babies:
+        </div>
+        <div className="pb-8">
           <ul>
             <li>
               <Code>git stash</Code>
@@ -259,12 +262,12 @@ def get_prices(tickers, attach_prices=False): ...`}
           </ul>
         </div>
 
-        <h3>Mein Workflow</h3>
+        <h3 className="font-bold text-2xl pb-4">My workflow</h3>
         <p>
-          Sorry for the title, couldn't resist. I do struggle with keeping my
-          coding organised - not least because I haven't really coded as part of
-          any large team with strict coding practices/guidelines. So my projects
-          are fair game for me - I can touch any part of it whenever I want.
+          Sometimes I struggle with keeping my coding organised - not least
+          because I haven't really coded as part of a large team with strict
+          coding practices/guidelines. So my projects are fair game for me - I
+          can touch any part of it whenever I want.
         </p>
 
         <p>
@@ -283,8 +286,9 @@ $ git commit -m "stuff that should be on newBranch"`}
         </div>
 
         <div className="pb--1rem">
-          If there IS the other branch that logically owns the changes, no
-          biggie, <Code>git stash</Code> to the rescue!
+          If there <span className="text-lg font-bold">IS</span> the other
+          branch that logically owns the changes, no biggie,{" "}
+          <Code>git stash</Code> to the rescue!
         </div>
         <div className="pb--2rem">
           <Code block>
@@ -298,16 +302,16 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           </Code>
         </div>
 
-        <p>
+        <div>
           Voila! Now we have appropriately positioned and accounted for our
-          code.
-        </p>
+          code. 🥳
+        </div>
       </>
     ),
   },
   {
     id: 3,
-    routeName: "blogpost3",
+    routeName: "how-i-stopped-worrying-and-started-to-love-open-source",
     header: "How I stopped worrying and started to love open source",
     subheader: "post 3 subheader",
     dateCreated: [2022, 3, 23],
@@ -442,15 +446,20 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
             </li>
           </ol>
         </div>
-        <h3>Conclusion</h3>
+        <h3 className="font-bold text-2xl pb-4">Conclusion</h3>
         <p>
-          Choosing to keep my code in a public repo<Super>🍉</Super> vs hoarding
-          all of it in a private repo gives me motivation to develop myself as a
-          professional.
+          Choosing to keep my code in a public repo
+          <Emoji>
+            <Super>🍉</Super>
+          </Emoji>
+          vs hoarding all of it in a private repo gives me motivation to develop
+          myself as a professional.
         </p>
         <div className="subscript">
           <Text color="grey">
-            <Super>🍉</Super>{" "}
+            <Emoji>
+              <Super>🍉</Super>
+            </Emoji>
             <i>
               do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
               rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
@@ -463,7 +472,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
   },
   {
     id: 4,
-    routeName: "blogpost4",
+    routeName: "future-posts",
     header: "Future posts",
     subheader: "What I need to write about",
     dateCreated: [2022, 3, 23],
@@ -490,7 +499,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
   },
   {
     id: 5,
-    routeName: "blogpost5",
+    routeName: "using-mantine-prism-to-highlight-code",
     header: "Using Mantine Prism to highlight code",
     subheader: "'Mantine pwns!' S1E1",
     dateCreated: [2022, 4, 2],
@@ -583,7 +592,7 @@ function fun() {;
   },
   {
     id: 6,
-    routeName: "blogpost6",
+    routeName: "setting-document-event-listeners-with-React-useEffect-hook",
     header: "Setting document event listeners with React useEffect hook",
     subheader: "Dependency array is key",
     dateCreated: [2022, 4, 5],

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Fragment } from "react";
 import { resolveMonth } from "../../../../toolbox/index.js";
 import { Text, Image } from "@mantine/core";
-import { Span } from "../../../../toolbox";
+import { Span, Emoji } from "../../../../toolbox";
 
 const propTypes = {
   defaultHeader: PropTypes.string,
@@ -26,7 +26,7 @@ function BlogPost({ post, defaultHeader }) {
   return (
     <div className="blog-post">
       <div className="blog-post__header">
-        <div className="log-post__header__title">
+        <div className="log-post__header__title pb-8 font-bold text-6xl">
           <h1>{header || defaultHeader}</h1>
 
           {/* <h2>{header || defaultHeader}</h2> */}
@@ -34,13 +34,15 @@ function BlogPost({ post, defaultHeader }) {
         <div className="blog-post__header__author">
           <Span>
             {" "}
-            by <Span className="oda">{author}</Span> on {day}
+            <Span className="oda">{author}</Span> | {day}
             <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
             {year}
             <br></br>
-            <Span>🤓 reading time: {timeToRead}</Span>
+            <Emoji>🤓</Emoji>
+            <Span>reading time: {timeToRead}</Span>
             <br></br>
-            <Span>🤔 thinking time: {timeToThink}</Span>{" "}
+            <Emoji>🤔</Emoji>
+            <Span>thinking time: {timeToThink}</Span>{" "}
           </Span>
         </div>
       </div>

@@ -76,4 +76,28 @@ function JS({ children, ...props }) {
   );
 }
 
-export { reverseString, resolveMonth, Span, Bold, Super, GradientSpan, JS };
+function Emoji({ children, props, style }) {
+  return (
+    <div
+      className="emoji"
+      style={
+        style
+          ? { display: "inline-block", ...style }
+          : { display: "inline-block", paddingRight: "1rem" }
+      }
+    >
+      {children}
+    </div>
+  );
+}
+
+export {
+  reverseString,
+  resolveMonth,
+  Span,
+  Bold,
+  Super,
+  GradientSpan,
+  JS,
+  Emoji,
+};
