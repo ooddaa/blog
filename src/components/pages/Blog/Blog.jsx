@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { Center } from "@mantine/core";
 import { Link } from "react-router-dom";
 import BlogPost from "./components/BlogPost";
 import BlogPostNavigation from "./components/BlogPostNavigation";
 import BlogTableOfContents from "./components/BlogTableOfContents";
+import BlogTags from "./components/BlogTags";
+import { log } from "../../../toolbox/index";
+import { TagContainer } from "../../../toolbox/types.d.ts";
+import flatten from "lodash/flatten";
 
 function Blog({ posts, postId }) {
   const [currentPostId, setCurrentPostId] = useState(null);
@@ -22,11 +27,35 @@ function Blog({ posts, postId }) {
 
     /* calculate next */
     if (isNaN(currentPostId_) || currentPostId_ >= posts.length - 1) {
-      console.log(posts.length);
+      // console.log(posts.length);
       setNextPostId(null);
     } else {
       setNextPostId(currentPostId_ + 1);
     }
+  }
+
+  function generateTagContainers(posts): TagContainer[] {
+    /**
+     * @todo this also needs to add refs but atm I
+     * have no idea how to do it.
+     * @param {Set} acc
+     * @param {Post} post
+     */
+    function postsToTags(acc, post) {
+      post?.tags?.forEach((elm) => acc.add(elm));
+      return acc;
+    }
+
+    const allTags: Set = posts.reduce(postsToTags, new Set());
+
+    const arr = Array.from(allTags.values());
+    const rv: TagContainer[] = flatten(
+      arr.map((tag) => {
+        /* custom React Hook function to provide refs? */
+        return [tag /* , useRef(tag) */];
+      })
+    );
+    return rv;
   }
 
   useEffect(() => {
@@ -36,21 +65,31 @@ function Blog({ posts, postId }) {
     }
   });
 
-  if (posts && posts.length && isNaN(postId) === false) {
+  if (posts?.length && isNaN(postId) === false) {
     return (
-      <>
-        <BlogPost post={posts[postId]} />
-        <BlogPostNavigation
-          previousPost={posts[previousPostId]}
-          nextPost={posts[nextPostId]}
-        />
-      </>
+      <Center className="flex-row">
+        <div>
+          <BlogPost post={posts[postId]} />
+          <BlogPostNavigation
+            previousPost={posts[previousPostId]}
+            nextPost={posts[nextPostId]}
+          />
+        </div>
+      </Center>
     );
   }
+
   return (
-    <div className="blog-toc">
-      {BlogTableOfContents({ posts, handlePostNavigation })}
-    </div>
+    <Center className="h-screen flex-row">
+      <div className="blog-toc">
+        {BlogTableOfContents({ posts, handlePostNavigation })}
+      </div>
+
+      <BlogTags
+        classNames="ml-20 w-96 h-max flex flex-wrap"
+        tagContainers={generateTagContainers(posts)}
+      />
+    </Center>
   );
 }
 

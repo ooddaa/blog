@@ -24,7 +24,8 @@ ReactDOM.render(
         {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
         <Route
           path="blog"
-          element={<AppContent children={<Blog posts={posts} />} />}
+          element={<Blog posts={posts} />}
+          // element={<AppContent children={<Blog posts={posts} />} />}
         ></Route>
         {posts.map((post, idx) => {
           return (

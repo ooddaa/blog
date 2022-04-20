@@ -8,7 +8,7 @@ function BlogTopic({ post, onClick }) {
     // https://tailwindcss.com/docs/flex
     <div className="blog__topic flex gap-x-4 ">
       <div className="blog__topic__head w-10 font-bold shrink-0 ">{day}</div>
-      <div className="blog__topic__body ">
+      <div className="blog__topic__body p-1">
         {
           <Link to={post.routeName} onClick={(e) => onClick(post.id)}>
             {post.header}
@@ -21,7 +21,7 @@ function BlogTopic({ post, onClick }) {
 
 function BlogTOCGroup({ year, month, posts, onClick }) {
   return (
-    <div className="blog__toc-group flex-col pb-10 w-2/3">
+    <div className="blog__toc-group flex-col p-10 w-2/3 shadow">
       <div className="blog__toc-group__head ">
         <H3>{resolveMonth(month, { short: false })}</H3>
         {/* <H3>{resolveMonth(month, { short: true })}</H3> */}

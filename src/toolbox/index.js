@@ -2,6 +2,8 @@ import React from "react";
 import { Text, createStyles } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 
+import { Post } from "./types.d.ts";
+
 const log = (...args) => console.log(...args);
 
 function reverseString(str: string): string {
@@ -116,19 +118,6 @@ const H3: React.FC<H3Props> = ({ children, props, style, tailwindClasses }) => {
     </h3>
   );
 };
-
-interface Post {
-  id: number;
-  routeName: string;
-  header: string;
-  subheader: string;
-  dateCreated: [number, number, number];
-  author: string;
-  timeToRead: string;
-  timeToThink: string;
-  tags: string[];
-  body: JSX;
-}
 
 /**
  * Turns Post[] into a tree, sorting by year and month.
