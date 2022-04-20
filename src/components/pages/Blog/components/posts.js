@@ -17,7 +17,7 @@ const posts = [
     routeName: "setting-up-yahoo-prices-api-on-heroku",
     header: "Setting up Yahoo Prices API on Heroku",
     subheader: "Without the docs, it's unusable.",
-    dateCreated: [2022, 3, 12],
+    dateCreated: [2022, 3, 5],
     timeToRead: "2 min",
     timeToThink: "10 min",
     author: "oda",
@@ -234,7 +234,7 @@ def get_prices(tickers, attach_prices=False): ...`}
     header: "Git stash",
     subheader:
       "Haven't thought it through before making changes on this branch? No biggie - git stash it!",
-    dateCreated: [2022, 3, 5],
+    dateCreated: [2022, 3, 12],
     author: "oda",
     timeToRead: "3 min",
     timeToThink: "4.5 min",
@@ -372,13 +372,13 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
             that anyone would ever spend any of their valuable time
             reading/stealing/using my precious code.
           </p>
-          <div className="pb--2rem">
+          <div className="pb-12">
             Uploading my work to a public place changes how I think about the
             quality of my work. I have three rules:
           </div>
-          <div className="pb--2rem">
+          <div className="pb-12">
             <ol>
-              <li className="pb--2rem">
+              <li className="pb-12">
                 <div className="pb--1rem">
                   <Span
                     size="lg"
@@ -397,7 +397,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
                 imperfect than perfect and never").
               </li>
 
-              <li className="pb--2rem">
+              <li className="pb-12">
                 <div className="pb--1rem">
                   <Span
                     size="lg"
@@ -409,22 +409,26 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
                   </Span>
                 </div>
                 <div className="pb--1rem">
-                  I want my work to be something that I am not ashamed of. The
-                  only sure way to get there for me is to incrementally improve
-                  my code (logic, organization, comments). Since "incrementally"
-                  means "step by step over time" - I ran into the old{" "}
-                  <strong>WHAT_THE_HELL_IS_THIS_DOING_HERE</strong> problem.
+                  I want my work to be something that I am proud of. The only
+                  sure way to get there for me is to incrementally improve on my
+                  work. Since "incrementally" means "step by step over time" - I
+                  ran into the old{" "}
+                  <Blockquote className="" cite="- everyone">
+                    <Bold>WHAT_THE_HELL_IS_THIS_DOING_HERE ??</Bold>
+                  </Blockquote>
+                  <strong></strong> problem.
                 </div>
-                When it takes me more time to remember what I was trying to
-                achieve than actually incrementing the quality. Hence I make
-                myself spend time on adding code comments, documentation, and
-                notes. And if I'm completely honest, the benefit that I get when
-                I actually think of what I am trying to achive via writing code
-                far outweighs the benefits of having banged out some code for
-                the sake of code lines.{" "}
+                It usually takes me a lot of time to remember what I was trying
+                to achieve with this code, whether this code is even important
+                or it can be ignored. Hence I make myself spend time on adding
+                code comments, documentation, and notes. And if I am completely
+                honest, the benefit that I get when I actually think of what I
+                am trying to achive by way of writing code far outweighs the
+                benefits of having banged out some code and later rewrite it 5
+                times and delete twice.{" "}
               </li>
 
-              <li className="pb--2rem">
+              <li className="pb-12">
                 <div className="pb--1rem">
                   <Span
                     size="lg"
@@ -453,14 +457,14 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
             </ol>
           </div>
           <H3>Conclusion</H3>
-          <>
+          <div className="pb-16">
             Choosing to keep my code in a public repo
             <Emoji>
               <Super>🍉</Super>
             </Emoji>
             vs hoarding all of it in a private repo gives me motivation to
             develop myself as a professional.
-          </>
+          </div>
           <div className="subscript">
             <Text color="grey">
               <Emoji>
@@ -469,7 +473,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
               <i>
                 do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
                 rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
-                repo before you push!
+                public repo before you push!
               </i>
             </Text>
           </div>
@@ -681,18 +685,14 @@ function fun() {;
 export default posts;
 
 const stub = {
-  id: 2,
-  routeName: "blogpost2",
-  header: "Post 2",
-  subheader: "post 2 subheader",
+  id: 0,
+  routeName: "routeName",
+  header: "header",
+  subheader: "subheader",
   dateCreated: [2022, 2, 10],
-  author: "oda",
-  timeToRead: "3min",
-  timeToThink: "3min",
+  author: "author",
+  timeToRead: "timeToRead",
+  timeToThink: "timeToThink",
   tags: [],
-  body: (
-    <>
-      <div className="pb--2rem"></div>
-    </>
-  ),
+  body: <></>,
 };

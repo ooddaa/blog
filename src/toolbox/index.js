@@ -1,11 +1,14 @@
+import React from "react";
 import { Text, createStyles } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 
-function reverseString(str /* : string */) /* :string */ {
+const log = (...args) => console.log(...args);
+
+function reverseString(str: string): string {
   return str.split("").reverse().join("");
 }
 
-function resolveMonth(num /* : number */) /* :string */ {
+function resolveMonth(num: number, config: { short: boolean } = {}): string {
   const mapping = {
     1: "January",
     2: "February",
@@ -20,6 +23,8 @@ function resolveMonth(num /* : number */) /* :string */ {
     11: "November",
     12: "December",
   };
+
+  if (config.short) return mapping[num].slice(0, 3);
   return mapping[num];
 }
 
@@ -99,9 +104,8 @@ interface H3Props {
   tailwindClasses?: string[];
 }
 
-function H3<H3Props>({ children, props, style, tailwindClasses }) {
-  const useStyles = createStyles(() => ({}));
-  const { classes, cx } = useStyles();
+const H3: React.FC<H3Props> = ({ children, props, style, tailwindClasses }) => {
+  const { cx } = createStyles(() => ({}))();
   return (
     <h3
       className={cx(tailwindClasses ?? "font-bold text-2xl pb-4")}
@@ -111,9 +115,43 @@ function H3<H3Props>({ children, props, style, tailwindClasses }) {
       {children}
     </h3>
   );
+};
+
+interface Post {
+  id: number;
+  routeName: string;
+  header: string;
+  subheader: string;
+  dateCreated: [number, number, number];
+  author: string;
+  timeToRead: string;
+  timeToThink: string;
+  tags: string[];
+  body: JSX;
+}
+
+/**
+ * Turns Post[] into a tree, sorting by year and month.
+ *
+ * @nonPure Produces side effects.
+ * @param {Post} posts
+ * @param {Map} tree
+ * @returns {Map}
+ */
+function treefyPosts(posts: Post[], tree = new Map()): Map {
+  posts.forEach((post) => {
+    const [year, month] = post.dateCreated;
+    tree.has(year)
+      ? tree.get(year).has(month)
+        ? tree.get(year).get(month).push(post)
+        : tree.get(year).set(month, [post])
+      : tree.set(year, new Map().set(month, [post]));
+  });
+  return tree;
 }
 
 export {
+  log,
   reverseString,
   resolveMonth,
   Span,
@@ -123,4 +161,5 @@ export {
   JS,
   Emoji,
   H3,
+  treefyPosts,
 };

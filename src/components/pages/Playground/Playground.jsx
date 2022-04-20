@@ -5,7 +5,10 @@ import {
   Header,
   createStyles,
   keyframes,
+  Container,
 } from "@mantine/core";
+import BlogTOCGroup from "../Blog/components/BlogTOCGroup";
+
 // https://mantine.dev/core/app-shell/
 
 const log = (...args) => console.log(...args);
@@ -20,8 +23,8 @@ const roundTrip = keyframes({
 const useStyles = createStyles((theme, _params, getRef) => ({
   parent: {
     backgroundColor: "white",
-    height: "400px",
-    width: "800px",
+    // height: "400px",
+    // width: "800px",
     [`&:hover .${getRef("child")}`]: {
       animation: `${roundTrip} 1s ease-in forwards`,
     },
@@ -81,8 +84,12 @@ function Playground() {
       })}
     >
       <>
-        <div className={cx("parent", classes.parent)}>
-          {/* <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-6">
+        <Container /* size="sm" */ className={cx("parent", classes.parent)}>
+          <BlogTOCGroup></BlogTOCGroup>
+        </Container>
+        {/* <div > */}
+
+        {/* <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-6">
             <div className="shrink-0S">
               <img
                 className="h-12 w-12"
@@ -95,14 +102,14 @@ function Playground() {
               <p className="text-slate-500">You have a new message!</p>
             </div>
           </div> */}
-          <>
-            <div className="h-40 w-40 bg-red-900 mx-auto">
-              <div className="middle box h-39 w-39 bg-red-300 mx-auto">
-                {/* <div className="center m-10 box h-12 w-12 bg-red-900 mx-auto"></div> */}
-              </div>
-            </div>
-          </>
-        </div>
+        <>
+          {/* <div className="h-40 w-40 bg-red-900 mx-auto"> */}
+          {/* <div className="middle box h-39 w-39 bg-red-300 mx-auto"> */}
+          {/* <div className="center m-10 box h-12 w-12 bg-red-900 mx-auto"></div> */}
+          {/* </div> */}
+          {/* </div> */}
+        </>
+        {/* </div> */}
       </>
     </AppShell>
   );
