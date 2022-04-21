@@ -4,14 +4,20 @@ import { log } from "../../../../toolbox/index";
 import { createStyles } from "@mantine/core";
 import { TagContainer } from "../../../../toolbox/types.d.ts";
 
-const BlogTags: React.FC<TagContainer[]> = ({ classNames, tagContainers }) => {
+const BlogTags: React.FC<TagContainer[]> = ({
+  classNames,
+  tagContainers,
+  highlightedTags,
+}) => {
+  // log("BlogTags renders"); //ok
   // log(tagContainers);
   const useStyles = createStyles(() => ({}));
   const { cx } = useStyles();
   return (
     <div className={cx("blog-tags", classNames)}>
-      {tagContainers.map((tag /* , ref */) => (
-        <Tag tag={tag} /* ref={ref} */ />
+      {tagContainers.map((tag) => (
+        // <Tag tag={tag} key={tag} highlightedTags={["python", "api"]} />
+        <Tag tag={tag} key={tag} highlightedTags={highlightedTags} />
       ))}
     </div>
   );

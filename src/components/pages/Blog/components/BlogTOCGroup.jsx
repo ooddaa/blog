@@ -1,34 +1,24 @@
-import { Center, Container, MantineProvider, Stack } from "@mantine/core";
-import { Link } from "react-router-dom";
-import { H3, resolveMonth } from "../../../../toolbox";
+import BlogTopic from "./BlogTopic";
+import { H3, resolveMonth, log } from "../../../../toolbox";
 
-function BlogTopic({ post, onClick }) {
-  const [_, month, day] = post.dateCreated;
-  return (
-    // https://tailwindcss.com/docs/flex
-    <div className="blog__topic flex gap-x-4 ">
-      <div className="blog__topic__head w-10 font-bold shrink-0 ">{day}</div>
-      <div className="blog__topic__body p-1">
-        {
-          <Link to={post.routeName} onClick={(e) => onClick(post.id)}>
-            {post.header}
-          </Link>
-        }
-      </div>
-    </div>
-  );
-}
-
-function BlogTOCGroup({ year, month, posts, onClick }) {
+function BlogTOCGroup({ year, month, posts, onClick, setHighlightedTags }) {
+  // function highlightTags(
+  //   tags: string[],
+  //   config: { clear: boolean } = { clear: false }
+  // ) {}
   return (
     <div className="blog__toc-group flex-col p-10 w-2/3 shadow">
       <div className="blog__toc-group__head ">
         <H3>{resolveMonth(month, { short: false })}</H3>
-        {/* <H3>{resolveMonth(month, { short: true })}</H3> */}
       </div>
       <div className="blog__toc-group__body">
         {posts.map((post) => (
-          <BlogTopic key={post.id} post={post} onClick={onClick} />
+          <BlogTopic
+            key={post.id}
+            post={post}
+            onClick={onClick}
+            setHighlightedTags={setHighlightedTags}
+          />
         ))}
       </div>
     </div>

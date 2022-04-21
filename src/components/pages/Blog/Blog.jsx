@@ -13,6 +13,7 @@ function Blog({ posts, postId }) {
   const [currentPostId, setCurrentPostId] = useState(null);
   const [previousPostId, setPreviousPostId] = useState(null);
   const [nextPostId, setNextPostId] = useState(null);
+  const [highlightedTags, setHighlightedTags1] = useState([]);
 
   function handlePostNavigation(currentPostId_) {
     /* update currentPost */
@@ -58,6 +59,11 @@ function Blog({ posts, postId }) {
     return rv;
   }
 
+  function setHighlightedTags(tags: string[]) {
+    log("setHighlightedTags fires: ", tags);
+    setHighlightedTags1(tags);
+  }
+
   useEffect(() => {
     /* init previousPostId & nextPostId */
     if (posts && posts.length && isNaN(postId) === false) {
@@ -82,12 +88,22 @@ function Blog({ posts, postId }) {
   return (
     <Center className="h-screen flex-row">
       <div className="blog-toc">
-        {BlogTableOfContents({ posts, handlePostNavigation })}
+        {BlogTableOfContents({
+          posts,
+          handlePostNavigation,
+          setHighlightedTags,
+        })}
+        {/* <BlogTableOfContents
+          posts={posts}
+          handlePostNavigation={handlePostNavigation}
+          setHighlightedTags={setHighlightedTags}
+        /> */}
       </div>
 
       <BlogTags
         classNames="ml-20 w-96 h-max flex flex-wrap"
         tagContainers={generateTagContainers(posts)}
+        highlightedTags={highlightedTags}
       />
     </Center>
   );
