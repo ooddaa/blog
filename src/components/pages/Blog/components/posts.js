@@ -7,10 +7,30 @@ import {
   Emoji,
   H3,
 } from "../../../../toolbox/index.js";
-import { Code, Text, Blockquote } from "@mantine/core";
+import { Code, Text, Blockquote, Center } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import { Link } from "react-router-dom";
 
+const codeSnippet = `const a = 1;
+function fun() {
+ let smth = 0;
+ return smth;
+}`;
+
+function TLDR({ children, props }) {
+  return (
+    <div className="tl-dr pb-16">
+      <Span
+        variant="gradient"
+        gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+        weight={600}
+      >
+        TL/DR:{" "}
+      </Span>
+      {children}
+    </div>
+  );
+}
 const posts = [
   {
     id: 1,
@@ -29,66 +49,65 @@ const posts = [
       "documentation",
       "yahoo finance",
       "options trading",
+      "Interactive Brokers",
     ],
     body: (
-      <Text>
-        <>
-          <p>
-            Ok, so my dear wife, K, needed US stocks prices to be added to her
-            option trading log, which she runs on Google Sheets.
-          </p>
-          <p>
-            K, after a hard trading day, copy-pastes her option combos,
-            strangles and whatnot data to Sheets from Interactive Brokers' TWS.
-            Unfortunately, option trade data does not come with precise price of
-            the underlying at the moment of option trade's execution.
-          </p>
-          <div className="pb--1rem">Let's say she has this record:</div>
-          <div className="pb--1rem">
-            <Code block>
-              AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
-              0.57 3.59
-            </Code>
-          </div>
-          <p>
-            It would be handy to know how much AMD traded for at 11:43:35 on
-            November 19, 2020, right? Ok, maybe we aren't that fastidious, and
-            can round time to 11:43.
-          </p>
-          <p>
-            If so, then the easiest way to get stock prices is to use
-            YahooPrices API. ...of which no documentation in human-readable
-            format exists...
-          </p>
-          <p>
-            Ran Aroussi published a nice Python module - yfinance. Many thanks,
-            Ran! We are going to use this module to set up our simple Yahoo
-            Prices API on Heroku.
-          </p>
-          <div className="pb--1rem">
-            <strong>My initial logic was to:</strong>
-          </div>
-          <div className="pb--3rem">
-            <ol>
-              <li>launch a Python Yahoo Prices API on Heroku,</li>
-              <li>call it from the Sheets and</li>
-              <li>
-                automatically update K's trading logs with underlying prices.
-              </li>
-            </ol>
-          </div>
+      <Text className="leading-7">
+        <p>
+          Ok, so my dear wife, K, needed US stocks prices to be added to her
+          option trading log, which she runs on Google Sheets.
+        </p>
+        <p>
+          K, after a hard trading day, copy-pastes her option combos, strangles
+          and whatnot data to Sheets from Interactive Brokers' TWS.
+          Unfortunately, IB's option trade reports do not come with a precise
+          price of the underlying at the moment of option trade's execution.
+        </p>
+        <div className="pb--1rem">Let's say she has this record:</div>
+        <div className="pb--1rem">
+          <Code block>
+            AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
+            0.57 3.59
+          </Code>
+        </div>
+        <p>
+          It would be handy to know how much AMD traded for at 11:43:35 on
+          November 19, 2020, right? Ok, maybe we aren't that fastidious, and can
+          round time to 11:43.
+        </p>
+        <p>
+          If so, then the easiest way to get stock prices is to use YahooPrices
+          API. ...of which no documentation in human-readable format exists...
+        </p>
+        <p>
+          Ran Aroussi published a nice Python module - yfinance. Many thanks,
+          Ran! We are going to use this module to set up our simple Yahoo Prices
+          API on Heroku.
+        </p>
+        <div className="pb--1rem">
+          <strong>My initial logic was to:</strong>
+        </div>
+        <div className="pb--3rem">
+          <ol>
+            <li>launch a Python Yahoo Prices API on Heroku,</li>
+            <li>call it from the Sheets and</li>
+            <li>
+              automatically update K's trading logs with underlying prices.
+            </li>
+          </ol>
+        </div>
 
-          <div className="pb--1rem">
-            The API is now accessible on{" "}
-            <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
-            simply POST with an application/json body set as follows:
-          </div>
-          <div className="pb--2rem">
-            <Code block>{`{ "data": Ticker[] }`}</Code>
-          </div>
-          <div className="pb--1rem">Where each Ticker is:</div>
-          <div className="pb--2rem">
-            <Code block language="python">{`[
+        <div className="pb--1rem">
+          The API is now accessible on{" "}
+          <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
+          simply POST with an application/json body set as follows:
+        </div>
+        <div className="pb--2rem">
+          <Code block>{`{ "data": Ticker[] }`}</Code>
+        </div>
+        <div className="pb--1rem">Where each Ticker is:</div>
+        <div className="pb--2rem">
+          <Code block language="python">{`[
     ticker: str, 
     # price may be skipped for POST request, add null in Postman
     price: null, 
@@ -105,97 +124,105 @@ const posts = [
       sec:int
     ]
 ]`}</Code>
-          </div>
-          <div className="pb--1rem">
-            If it all goes right, Yahoo Prices API will add a
-          </div>
-          <div className="pb--1rem">
-            <Code block>price: float</Code>
-          </div>
-          <div className="pb--2rem">to each Ticker.</div>
+        </div>
+        <div className="pb--1rem">
+          If it all goes right, Yahoo Prices API will add a
+        </div>
+        <div className="pb--1rem">
+          <Code block>price: float</Code>
+        </div>
+        <div className="pb--2rem">to each Ticker.</div>
 
-          <div className="three-days-later pb--2rem">
-            <img src="/img/3dayslater.jpeg" alt="Some time has passed" />
-          </div>
-          <p>
-            As I am writing this, a month has passed since I launched the stuff
-            above, and I hardly can remember how things were arranged!
-          </p>
-          <div className="pb--1rem">
-            I am sending a POST request with Postman to{" "}
-            <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
-            JSON:
-          </div>
-          <div className="pb--1rem">
-            <Code block>
-              {`{ 
+        <div className="three-days-later pb--2rem">
+          <img
+            className="rounded-lg"
+            src="/img/3dayslater.jpeg"
+            alt="Some time has passed"
+          />
+        </div>
+        <p>
+          As I am writing this, a month has passed since I launched the stuff
+          above, and I hardly can remember how things were arranged!
+        </p>
+        <div className="pb--1rem">
+          I am sending a POST request with Postman to{" "}
+          <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
+          JSON:
+        </div>
+        <div className="pb--1rem">
+          <Code block>
+            {`{ 
     "data": [
         ["AMD", null, [2022, 3, 10], [15, 0, 0]]
     ]
 }`}
-            </Code>
-          </div>
-          <div className="pb--2rem">
-            But get a{" "}
-            <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
-              500 Internal Server Error
-            </a>{" "}
-            response, which is 😬
-          </div>
+          </Code>
+        </div>
+        <div className="pb--2rem">
+          But get a{" "}
+          <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
+            500 Internal Server Error
+          </a>{" "}
+          response, which is 😬
+        </div>
 
-          <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
-          <div className="pb--2rem">
-            <Code block>$ heroku logs -app=yahooprices --tail</Code>
-          </div>
+        <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
+        <div className="pb--2rem">
+          <Code block>$ heroku logs -app=yahooprices --tail</Code>
+        </div>
 
-          <div className="pb--1rem">
-            Lo and behold, we've got ourselves a bug!
-          </div>
-          <div className="yahoo-prices-bug pb--2rem">
-            <img src="/img/ypb.png" alt="Screenshot of Heroku logs" />
-          </div>
-          <div className="pb--1rem">🤔 ???</div>
-          <div className="pb--1rem">
-            Ah yes, it all comes back to me now - the last feature that I added
-            was to allow for all prices from the query to be returned as part of
-            the response. Then users could sort themselves out should the main
-            timestamp not be available. I did it by adding a new route:
-          </div>
-          <div className="pb--2rem">
-            <Code block>
-              <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
-            </Code>
-          </div>
+        <div className="pb--1rem">
+          Lo and behold, we've got ourselves a bug!
+        </div>
+        <div className="yahoo-prices-bug pb--2rem">
+          <img
+            className="rounded-lg"
+            src="/img/ypb.png"
+            alt="Screenshot of Heroku logs"
+          />
+        </div>
+        <div className="pb--1rem">🤔 ???</div>
+        <div className="pb--1rem">
+          Ah yes, it all comes back to me now - the last feature that I added
+          was to allow for all prices from the query to be returned as part of
+          the response. Then users could sort themselves out should the main
+          timestamp not be available. I did it by adding a new route:
+        </div>
+        <div className="pb--2rem">
+          <Code block>
+            <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
+          </Code>
+        </div>
 
-          <div className="pb--1rem">
-            But in so doing, I forgot to set a default value to the new argument
-          </div>
-          <div className="pb--1rem">
-            <Code block>attach_prices=False</Code>
-          </div>
-          <div className="pb--1rem">
-            of the underlying function that handles data requests for both
-            routes. I should have done like this:
-          </div>
-          <div className="pb--1rem">
-            <Code block>
-              {`# yahoo.py 
+        <div className="pb--1rem">
+          But in so doing, I forgot to set a default value to the new argument
+        </div>
+        <div className="pb--1rem">
+          <Code block>attach_prices=False</Code>
+        </div>
+        <div className="pb--1rem">
+          of the underlying function that handles data requests for both routes.
+          I should have done like this:
+        </div>
+        <div className="pb--1rem">
+          <Code block>
+            {`# yahoo.py 
 def get_prices(tickers, attach_prices=False): ...`}
-            </Code>
-          </div>
+          </Code>
+        </div>
 
-          <div className="pb--1rem">Now, when users call the old route:</div>
-          <div className="pb--1rem">
-            <Code block>
-              <strong>POST</strong> https://yahooprices.herokuapp.com/
-            </Code>
-          </div>
+        <div className="pb--1rem">Now, when users call the old route:</div>
+        <div className="pb--1rem">
+          <Code block>
+            <strong>POST</strong> https://yahooprices.herokuapp.com/
+          </Code>
+        </div>
 
-          <div className="pb--1rem">they get</div>
+        <div className="pb--1rem">they get</div>
 
-          <div className="pb--3rem">
-            <Code block>
-              {`{
+        <div className="pb--3rem">
+          <Code block>
+            {`{
     "data": [
         [
             "AMD",
@@ -213,25 +240,24 @@ def get_prices(tickers, attach_prices=False): ...`}
         ]
     ]
 }`}
-            </Code>
-          </div>
+          </Code>
+        </div>
 
-          <h5>I'll have a takeaway, please 🍟 </h5>
-          <div className="pb--3rem">
-            <ol>
-              <li>Write more WHY-comments in your code.</li>
-              <li>Set sensible defaults.</li>
-              <li>Test all the time.</li>
-            </ol>
-          </div>
-        </>
+        <H3>I'll have a takeaway, please 🍟 </H3>
+        <div className="pb--3rem">
+          <ol>
+            <li>Write more WHY-comments in your code.</li>
+            <li>Set sensible defaults.</li>
+            <li>Test all the time.</li>
+          </ol>
+        </div>
       </Text>
     ),
   },
   {
     id: 2,
     routeName: "git-stash",
-    header: "Git stash",
+    header: "git stash to the rescue",
     subheader:
       "Haven't thought it through before making changes on this branch? No biggie - git stash it!",
     dateCreated: [2022, 3, 12],
@@ -240,77 +266,72 @@ def get_prices(tickers, attach_prices=False): ...`}
     timeToThink: "4.5 min",
     tags: ["git"],
     body: (
-      <>
-        <div className="pb-4">
-          <Span
-            variant="gradient"
-            gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-            weight={600}
-          >
-            TL/DR:{" "}
-          </Span>
-          If you practice <i>write code first - think later approach</i>, then
-          learn to use these babies:
-        </div>
-        <div className="pb-8">
-          <ul>
-            <li>
-              <Code>git stash</Code>
-            </li>
-            <li>
-              <Code>git stash list</Code>
-            </li>
-            <li>
-              <Code>git stash pop</Code>
-            </li>
-          </ul>
-        </div>
+      <Text className="leading-7">
+        <TLDR>
+          If you practice everyone's favourite{" "}
+          <Bold>
+            <i>code first - think later</i>
+          </Bold>{" "}
+          approach, then these are your best friends:
+          <div className="pt-4">
+            <ul>
+              <li>
+                <Code>git stash</Code>
+              </li>
+              <li>
+                <Code>git stash list</Code>
+              </li>
+              <li>
+                <Code>git stash pop</Code>
+              </li>
+            </ul>
+          </div>
+        </TLDR>
 
         <H3>My workflow</H3>
-        <p>
-          Sometimes I struggle with keeping my coding organised - not least
-          because I haven't really coded as part of a large team with strict
-          coding practices/guidelines. So my projects are fair game for me - I
-          can touch any part of it whenever I want.
-        </p>
-
-        <p>
-          Which more often than not creates a lot of unnecessary code
-          re-writing. Or, even more often, after I wrote something I realise
-          that it logically belongs to another branch.
-        </p>
-
-        <div className="pb--1rem">If there is no other branch, I simply</div>
-        <div className="pb--2rem">
-          <Code block>
-            {`$ git checkout -b newBranch
-$ git add .
-$ git commit -m "stuff that should be on newBranch"`}
-          </Code>
+        <div className="pb-8">
+          Sometimes I struggle with keeping my coding organised. My projects are
+          fair game for me - I can touch any part of it whenever I want. Which
+          produces convoluted coding sessions.
         </div>
+
+        <div className="pb-8">
+          Which more often than not creates a lot of unnecessary code
+          re-writing. Or, even more often, after I wrote something, I realise
+          that it logically belongs to another branch.
+        </div>
+
+        <div className="pb--1rem">
+          If there is <span className="text-lg font-bold">NO</span> other
+          branch, I simply
+        </div>
+
+        <JS colorScheme="dark" noCopy classNames="pb-8">
+          {`$ git checkout -b newBranch
+$ git commit -am "stuff that should be on newBranch"`}
+        </JS>
 
         <div className="pb--1rem">
           If there <span className="text-lg font-bold">IS</span> the other
           branch that logically owns the changes, no biggie,{" "}
           <Code>git stash</Code> to the rescue!
         </div>
-        <div className="pb--2rem">
-          <Code block>
-            {`$ git stash     // all changes on current branch are 
-                // reverted, equals to git reset --hard
-$ git checkout anotherBranch
-$ git stash pop // there might be some conflicts for manual resolution, 
-                // I accept all incoming (stashed) changes
-$ git add .
-$ git commit -m "stuff that should have been on anotherBranch"`}
-          </Code>
-        </div>
 
+        <JS colorScheme="dark" noCopy classNames="pb-8">
+          {`$ git stash       // all changes on current branch are 
+                  // reverted, equals to git reset --hard
+$ git checkout anotherBranch
+$ git stash list  // shows us the stack of stash@{number}: WIP on <branchName>: <branchHash> <branchComment>
+$ git stash pop   // there might be some conflicts for manual resolution, 
+                  // I accept all incoming (stashed) changes
+$ git commit -am "stuff that should have been on anotherBranch"`}
+        </JS>
+
+        <H3>Voila! </H3>
         <div>
-          Voila! Now we have appropriately positioned and accounted for our
-          code. 🥳
+          We now have appropriately positioned and accounted for our code. 🥳
         </div>
-      </>
+      </Text>
     ),
   },
   {
@@ -324,160 +345,157 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     timeToThink: "3 min",
     tags: ["open source", "GitHub", "BitBucket", "git push"],
     body: (
-      <Text>
-        <>
-          <div className="blog-post__body__tldr">
-            <div className="pb--2rem">
-              <Span
-                variant="gradient"
-                gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-                weight={600}
-              >
-                TL/DR:{" "}
-              </Span>
-              Transition between hoarding behaviour and open source (in my case
-              private Bitbucket vs public GitHub) - takes a mindshift. The
-              question boils down to the famous quote from Aristotel:
-            </div>
-            <Blockquote className="pb--3rem" cite="- Aristotel">
-              Do I want to be a better developer/coder/programmer/professional?
-            </Blockquote>
-            <div className="pb--1rem">
-              If the answer is{" "}
-              <Span
-                variant="gradient"
-                gradient={{ from: "green", to: "lime", deg: 45 }}
-                weight={600}
-              >
-                YES
-              </Span>{" "}
-              - go public. If the answer is{" "}
-              <Span
-                variant="gradient"
-                gradient={{ from: "red", to: "pink", deg: 45 }}
-                weight={600}
-              >
-                {" "}
-                NO{" "}
-              </Span>
-              - stick with a private repo.
-            </div>
+      <Text className="leading-7">
+        <div className="blog-post__body__tldr">
+          <div className="pb--2rem">
+            <Span
+              variant="gradient"
+              gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+              weight={600}
+            >
+              TL/DR:{" "}
+            </Span>
+            Transition between hoarding behaviour and open source (in my case
+            private Bitbucket vs public GitHub) - takes a mindshift. The
+            question boils down to the famous quote from Aristotel:
           </div>
-
-          <H3>Public vs Private</H3>
-          <p>
-            Since the beginning of my coding hobby, in 2012, I was under the
-            impression that what I code matters. Not that I would be able to put
-            my finger on how exactly it mattered or why. Or why I was so sure
-            that anyone would ever spend any of their valuable time
-            reading/stealing/using my precious code.
-          </p>
-          <div className="pb-12">
-            Uploading my work to a public place changes how I think about the
-            quality of my work. I have three rules:
+          <Blockquote className="pb--3rem" cite="- Aristotel">
+            Do I want to be a better developer/coder/programmer/professional?
+          </Blockquote>
+          <div className="pb--1rem">
+            If the answer is{" "}
+            <Span
+              variant="gradient"
+              gradient={{ from: "green", to: "lime", deg: 45 }}
+              weight={600}
+            >
+              YES
+            </Span>{" "}
+            - go public. If the answer is{" "}
+            <Span
+              variant="gradient"
+              gradient={{ from: "red", to: "pink", deg: 45 }}
+              weight={600}
+            >
+              {" "}
+              NO{" "}
+            </Span>
+            - stick with a private repo.
           </div>
-          <div className="pb-12">
-            <ol>
-              <li className="pb-12">
-                <div className="pb--1rem">
-                  <Span
-                    size="lg"
-                    variant="gradient"
-                    gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-                    weight={600}
-                  >
-                    To push is better than to hoard.{" "}
-                  </Span>
-                </div>
-                Pushing to main branch forces me to focus on solving an issue
-                within the restricted timespan (I like those green commits, I
-                do). But at the same time I realise I don't want to push
-                garbage, so a this becomes a battle against{" "}
-                <strong>Unrelenting Standards</strong> (ie "it's better now and
-                imperfect than perfect and never").
-              </li>
+        </div>
 
-              <li className="pb-12">
-                <div className="pb--1rem">
-                  <Span
-                    size="lg"
-                    variant="gradient"
-                    gradient={{ from: "green", to: "yellow", deg: 45 }}
-                    weight={600}
-                  >
-                    To write documentation is better than to write code.{" "}
-                  </Span>
-                </div>
-                <div className="pb--1rem">
-                  I want my work to be something that I am proud of. The only
-                  sure way to get there for me is to incrementally improve on my
-                  work. Since "incrementally" means "step by step over time" - I
-                  ran into the old{" "}
-                  <Blockquote className="" cite="- everyone">
-                    <Bold>WHAT_THE_HELL_IS_THIS_DOING_HERE ??</Bold>
-                  </Blockquote>
-                  <strong></strong> problem.
-                </div>
-                It usually takes me a lot of time to remember what I was trying
-                to achieve with this code, whether this code is even important
-                or it can be ignored. Hence I make myself spend time on adding
-                code comments, documentation, and notes. And if I am completely
-                honest, the benefit that I get when I actually think of what I
-                am trying to achive by way of writing code far outweighs the
-                benefits of having banged out some code and later rewrite it 5
-                times and delete twice.{" "}
-              </li>
+        <H3>Public vs Private</H3>
+        <p>
+          Since the beginning of my coding hobby, in 2012, I was under the
+          impression that what I code matters. Not that I would be able to put
+          my finger on how exactly it mattered or why. Or why I was so sure that
+          anyone would ever spend any of their valuable time
+          reading/stealing/using my precious code.
+        </p>
+        <div className="pb-12">
+          Uploading my work to a public place changes how I think about the
+          quality of my work. I have three rules:
+        </div>
+        <div className="pb-12">
+          <ol>
+            <li className="pb-12">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+                  weight={600}
+                >
+                  To push is better than to hoard.{" "}
+                </Span>
+              </div>
+              Pushing to main branch forces me to focus on solving an issue
+              within the restricted timespan (I like those green commits, I do).
+              But at the same time I realise I don't want to push garbage, so a
+              this becomes a battle against{" "}
+              <strong>Unrelenting Standards</strong> (ie "it's better now and
+              imperfect than perfect and never").
+            </li>
 
-              <li className="pb-12">
-                <div className="pb--1rem">
-                  <Span
-                    size="lg"
-                    variant="gradient"
-                    gradient={{ from: "orange", to: "red", deg: 45 }}
-                    weight={600}
-                  >
-                    To compete is better that to delude yourself.{" "}
-                  </Span>
-                </div>
-                <div className="pb--1rem">
-                  This is the biggest one for me. I think open source allows
-                  ideas to compete. Even if they compete only within my own
-                  head, because, let's get real for a sec, no one is going to go
-                  through my repos with any level of attention. If they do, I'd
-                  be chaffed to bits to listen to their comments (after a couple
-                  of deep breaths that is).
-                </div>
-                Hoarding code in my drawer kills any opportunity for it to be
-                grown into something usable by actual humans. Pushing it out
-                there in the public gives it at least a chance (however small).
-                There is lots of work to do after just simple{" "}
-                <Code>git push</Code> but without the first step, there won't be
-                any others.
-              </li>
-            </ol>
-          </div>
-          <H3>Conclusion</H3>
-          <div className="pb-16">
-            Choosing to keep my code in a public repo
+            <li className="pb-12">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "green", to: "yellow", deg: 45 }}
+                  weight={600}
+                >
+                  To write documentation is better than to write code.{" "}
+                </Span>
+              </div>
+              <div className="pb--1rem">
+                I want my work to be something that I am proud of. The only sure
+                way to get there for me is to incrementally improve on my work.
+                Since "incrementally" means "step by step over time" - I ran
+                into the old{" "}
+                <Blockquote className="" cite="- everyone">
+                  <Bold>WHAT_THE_HELL_IS_THIS_DOING_HERE ??</Bold>
+                </Blockquote>
+                <strong></strong> problem.
+              </div>
+              It usually takes me a lot of time to remember what I was trying to
+              achieve with this code, whether this code is even important or it
+              can be ignored. Hence I make myself spend time on adding code
+              comments, documentation, and notes. And if I am completely honest,
+              the benefit that I get when I actually think of what I am trying
+              to achive by way of writing code far outweighs the benefits of
+              having banged out some code and later rewrite it 5 times and
+              delete twice.{" "}
+            </li>
+
+            <li className="pb-12">
+              <div className="pb--1rem">
+                <Span
+                  size="lg"
+                  variant="gradient"
+                  gradient={{ from: "orange", to: "red", deg: 45 }}
+                  weight={600}
+                >
+                  To compete is better that to delude yourself.{" "}
+                </Span>
+              </div>
+              <div className="pb--1rem">
+                This is the biggest one for me. I think open source allows ideas
+                to compete. Even if they compete only within my own head,
+                because, let's get real for a sec, no one is going to go through
+                my repos with any level of attention. If they do, I'd be chaffed
+                to bits to listen to their comments (after a couple of deep
+                breaths that is).
+              </div>
+              Hoarding code in my drawer kills any opportunity for it to be
+              grown into something usable by actual humans. Pushing it out there
+              in the public gives it at least a chance (however small). There is
+              lots of work to do after just simple <Code>git push</Code> but
+              without the first step, there won't be any others.
+            </li>
+          </ol>
+        </div>
+        <H3>Conclusion</H3>
+        <div className="pb-16">
+          Choosing to keep my code in a public repo
+          <Emoji>
+            <Super>🍉</Super>
+          </Emoji>
+          vs hoarding all of it in a private repo gives me motivation to develop
+          myself as a professional.
+        </div>
+        <div className="subscript">
+          <Text color="grey">
             <Emoji>
               <Super>🍉</Super>
             </Emoji>
-            vs hoarding all of it in a private repo gives me motivation to
-            develop myself as a professional.
-          </div>
-          <div className="subscript">
-            <Text color="grey">
-              <Emoji>
-                <Super>🍉</Super>
-              </Emoji>
-              <i>
-                do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
-                rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
-                public repo before you push!
-              </i>
-            </Text>
-          </div>
-        </>
+            <i>
+              do not forget to remove all <Bold>PID</Bold> - <Bold>P</Bold>
+              rivately <Bold>I</Bold>dentifiable <Bold>D</Bold>ata from your
+              public repo before you push!
+            </i>
+          </Text>
+        </div>
       </Text>
     ),
   },
@@ -490,22 +508,26 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     author: "oda",
     timeToRead: "3 min",
     timeToThink: "hours and hours",
-    tags: [],
+    tags: ["googlesheets", "Mantine.dev"],
     body: (
-      <>
+      <Text className="leading-7">
         <ol>
           <li>
-            1. <Span color="green">Done</Span> find library that styles html
-            code - mine looks horrible and takes forever to add
+            1.{" "}
+            <Span color="green">
+              Done - found <a href="https://mantine.dev/">Mantine.dev</a>
+            </Span>{" "}
+            find library that styles html code - mine looks horrible and takes
+            forever to add
           </li>
           <li>
             2. write a bunch of <i>1min solutions</i> based on the problems &
-            solutions from my google sheets
+            solutions from my googlesheets
           </li>
           <li>3. add links to whatever I mention in my posts</li>
         </ol>
         <p></p>
-      </>
+      </Text>
     ),
   },
   {
@@ -519,7 +541,7 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
     timeToThink: "15 min",
     tags: ["Mantine.dev", "CSS-in-JS", "Styled components", "React"],
     body: (
-      <>
+      <Text className="leading-7">
         <p>
           First thing that I discovered after starting this blog is that it is
           not exactly easy to present a code snippet so that it doesn't look
@@ -527,8 +549,8 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           time.
         </p>
         <p>
-          So Youtube algo decided to take care of my problem and suggested that
-          I watch{" "}
+          Youtube algo decided to take care of my problem and suggested that I
+          watch{" "}
           <a href="https://www.youtube.com/watch?v=LOpFYMPXqE4">
             2022 is gonna be wild for developers...
           </a>{" "}
@@ -547,11 +569,11 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
               <span style={{ color: "blue" }}>const</span> a = 1;
               <br />
               <span style={{ color: "blue" }}>function</span>{" "}
-              <span style={{ color: "orange" }}>fun</span>() {`{`};
+              <span style={{ color: "orange" }}>fun</span>() {`{`}
               <br />
               <span style={{ color: "blue" }}> let</span> smth = 0;
               <br />
-              <span style={{ color: "purple" }}> return</span> 0;
+              <span style={{ color: "purple" }}> return</span> smth;
               <br />
               {`}`}
               <br />
@@ -568,11 +590,11 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
   <span style={{ color: "blue" }}>const</span> a = 1;
   <br />
   <span style={{ color: "blue" }}>function</span>{" "}
-  <span style={{ color: "orange" }}>fun</span>() {\`{\`};
+  <span style={{ color: "orange" }}>fun</span>() {\`{\`}
   <br />
   <span style={{ color: "blue" }}> let</span> smth = 0;
   <br />
-  <span style={{ color: "purple" }}> return</span> 0;
+  <span style={{ color: "purple" }}> return</span> smth;
   <br />
   {\`}\`}
   <span style={{ color: "green" }}>
@@ -591,14 +613,21 @@ $ git commit -m "stuff that should have been on anotherBranch"`}
           highlight my code snippets. Voilà:
         </div>
         <div className="pb--3rem">
-          <Prism language="tsx">{`const a = 1;
-function fun() {;
- let smth = 0;
- return 0;
-}`}</Prism>
+          <Prism language="tsx">{codeSnippet}</Prism>
         </div>
-        <Text>Isn't it lovely? 💥</Text>
-      </>
+
+        <div className="pb-8">
+          Or use <Code>colorScheme="dark"</Code> to make it dark like{" "}
+          <a href="https://www.imdb.com/name/nm3211470/">Rober Eggers's</a>{" "}
+          movies:
+        </div>
+
+        <JS classNames="pb-8" colorScheme="dark">
+          {codeSnippet}
+        </JS>
+
+        <H3>Isn't it lovely? 💥</H3>
+      </Text>
     ),
   },
   {
@@ -612,10 +641,9 @@ function fun() {;
     timeToThink: "10min",
     tags: ["react", "useEffect", "useState", "x11"],
     body: (
-      <Text>
+      <Text className="leading-7">
         <div className="pb--2rem">
-          {/* <Text> */}I have been helping my dear wife 👩‍💻 with her
-          multiplication{" "}
+          I have been helping my dear wife 👩‍💻 with her multiplication{" "}
           <Link to="https://github.com/med4kat/x11">project</Link>. She needed
           the user to give an answer to a{" "}
           <GradientSpan from="orange" to="cyan">
@@ -623,7 +651,6 @@ function fun() {;
           </GradientSpan>{" "}
           problem. So my task was simple - to figure out how to do it without an{" "}
           <Code>{`<input>`}</Code> tag.
-          {/* </Text> */}
         </div>
         <div className="pb--2rem">
           <Text>
@@ -680,6 +707,150 @@ function fun() {;
       </Text>
     ),
   },
+  {
+    id: 7,
+    routeName: "routeName",
+    header: "git stash vs git reset",
+    subheader: "why oh why do I not stash enough?",
+    dateCreated: [2022, 4, 22],
+    author: "oda",
+    timeToRead: "1min",
+    timeToThink: "1min",
+    tags: ["git", "Netlify", "DevOps"],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+          In <a>previous post</a> I mentioned <Code>git stash</Code> commands.
+          Yesterday I made a rule to:{" "}
+          <Center className="pt-4">
+            <Text>
+              {" "}
+              <Code>git stash</Code> <Span color="red">instead of </Span>{" "}
+              <Code>git reset</Code>
+            </Text>
+          </Center>
+        </TLDR>
+        <H3>Of course it depends</H3>
+        <div className="pb-8">
+          on what kind of garbage code you are throwing away. If you are 100%
+          sure it should perish, then <Code>git reset --hard</Code> and never
+          look back. But what if you're wrong and you've just binned a code that
+          might worth at least 50kcal ??
+        </div>
+        <H3>Let me share my example.</H3>
+        <div className="pb-8">
+          Yesterday I helped my wife deploy her React project to{" "}
+          <a
+            className="hover:text-amber-600 underline decoration-solid"
+            href="https://www.netlify.com"
+          >
+            Netlify
+          </a>
+          . The build was failing because by default Netlify's build
+          configuration was set to treat React's warnings as errors.
+        </div>
+        <H3>Two ways to deal with it:</H3>
+        {/* <div className="pb-4">Two ways to deal with it:</div> */}
+        <div className="pb-8 ">
+          <ol className="ml-4 list-decimal ">
+            <li>Deal with warnings - correct the codebase.</li>
+            <li>Deal with Netlify's config - make it ignore warnings.</li>
+          </ol>
+        </div>
+
+        <H3>Dealing with warnings</H3>
+        <div className="pb-8">
+          As I wrote in my recent{" "}
+          <Link to="/setting-document-event-listeners-with-React-useEffect-hook">
+            Setting document event listeners with React useEffect hook
+          </Link>{" "}
+          blogpost, I used a <Code>useEffect</Code> hooks to set up document
+          listeners and React's linter warned me:
+          <Center className="pt-4">
+            <img
+              className="rounded-lg"
+              src="/img/missingDependency.png"
+              alt=""
+            />
+          </Center>
+        </div>
+        <div className="pb-8">
+          Naturally, I did not pay any attention to the warning, because:
+          <Blockquote cite="Donald Knuth">
+            Premature optimization is the root of all evil
+          </Blockquote>
+        </div>
+        <div className="pb-8">
+          That is until the moment when Netlify deployment was derailed off of
+          these unhandled warnings.
+        </div>
+        <H3>Long story short</H3>
+        <div className="pb-8">
+          I managed to wrap everything in <Code>useCallback</Code> hooks or move
+          function definitions inside useEffect hook so that its dependencies do
+          not change on each render. As per the suggestion:
+          <Center className="pt-4 pb-4">
+            <img
+              className="rounded-lg"
+              src="/img/wrapInuseCallback.png"
+              alt=""
+            />
+          </Center>
+          It was a bit of struggle. But then I was all set - no warnings from
+          compiler. Yas!
+        </div>
+        <div className="pb-8">
+          The only problem was that in a previous commit I added a dependency to
+          <JS>{`/* init state */
+  useEffect(() => {
+    reset();
+  }, []);`}</JS>
+          Like this:
+          <JS>{`/* init state */
+  useEffect(() => {
+    reset();
+  }, [reset]);`}</JS>
+          Again, as per Create-react-app's suggestion:
+          <Center className="pt-4 pb-4">
+            <img
+              className="rounded-lg"
+              src="/img/addResetAsDependency.png"
+              alt=""
+            />
+          </Center>
+          Which went horribly wrong - the app just kept re-setting its state,
+          because that's what <Code>reset()</Code> is for. But nevermind.
+          Important thing here is that I missed the fact that I broke the app
+          following compiler's advice and commited a bug. Then, after I wrangled
+          all warnings and was ready to show Netlify who's the boss, I quickly
+          peeked at whether the app was actually doing what it supposed to do.
+          Which it wasn't.
+        </div>
+        <div className="pb-8">
+          My quick reaction was to <Code>git reset --hard</Code>, correct the{" "}
+          <Code>reset</Code> as a dependency mistake and then follow Option 2 -
+          make Netlify ignore my warnings.{" "}
+        </div>
+        <div className="pb-8">
+          The only reason was that my panic dictated that it must have been the
+          current latest changes (a lot of wrangling with moving code/adding
+          dependencies/wrapping in useCallbacks) that introduced the error. What
+          I should have done was to{" "}
+          <JS noCopy>{`$ git stash save wrangleDeps`}</JS> which would've reset
+          the state anyways, BUT I'd have access to the work I had done. Which
+          turned out to be useful and not related to the bug that I caught. The
+          sad part - I need to do the wrangling again. But this time I'll{" "}
+          <Center className="pt-4">
+            <Text>
+              {" "}
+              <Code>git stash</Code> <Span color="red">instead of </Span>{" "}
+              <Code>git reset</Code>
+            </Text>
+          </Center>
+        </div>
+      </Text>
+    ),
+  },
 ];
 
 export default posts;
@@ -694,5 +865,5 @@ const stub = {
   timeToRead: "timeToRead",
   timeToThink: "timeToThink",
   tags: [],
-  body: <></>,
+  body: <Text className="leading-7"></Text>,
 };

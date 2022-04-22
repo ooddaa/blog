@@ -9,14 +9,13 @@ const BlogTags: React.FC<TagContainer[]> = ({
   tagContainers,
   highlightedTags,
 }) => {
-  // log("BlogTags renders"); //ok
-  // log(tagContainers);
   const useStyles = createStyles(() => ({}));
   const { cx } = useStyles();
+  const sortedTagContainers = tagContainers?.sort();
+  log(sortedTagContainers);
   return (
     <div className={cx("blog-tags", classNames)}>
       {tagContainers.map((tag) => (
-        // <Tag tag={tag} key={tag} highlightedTags={["python", "api"]} />
         <Tag tag={tag} key={tag} highlightedTags={highlightedTags} />
       ))}
     </div>

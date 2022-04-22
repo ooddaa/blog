@@ -75,9 +75,14 @@ function GradientSpan({ children, from, to, ...props }) {
   );
 }
 
-function JS({ children, ...props }) {
+function JS({ children, classNames, ...props }) {
   return (
-    <Prism language="javascript" {...props}>
+    <Prism
+      className={classNames}
+      language="javascript"
+      withLineNumbers
+      {...props}
+    >
       {children}
     </Prism>
   );
@@ -108,9 +113,13 @@ interface H3Props {
 
 const H3: React.FC<H3Props> = ({ children, props, style, tailwindClasses }) => {
   const { cx } = createStyles(() => ({}))();
+  const defaultClasses = "font-bold text-2xl pb-4 tracking-tight";
   return (
     <h3
-      className={cx(tailwindClasses ?? "font-bold text-2xl pb-4")}
+      className={cx(
+        tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
+      )}
+      // className={cx(tailwindClasses ?? "font-bold text-2xl pb-4")}
       style={style ?? {}}
       {...props}
     >

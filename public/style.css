@@ -221,7 +221,6 @@ p {
 ––––––––––––––––––––––––––––––––– */
 .blog-post {
   padding: var(---120);
-  /* border-radius: 5px; */
 }
 
 .blog-post__header {
@@ -264,7 +263,7 @@ p {
 }
 
 .blog-post__body li {
-  list-style: none;
+  /* list-style: none; */
 }
 
 .blog-post-navigation {
