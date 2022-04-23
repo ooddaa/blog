@@ -861,6 +861,56 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
       </Text>
     ),
   },
+  {
+    id: 8,
+    routeName: "git-clean",
+    header: "Removing untracked files with git clean",
+    subheader: "Cleaning untracked files",
+    dateCreated: [2022, 4, 23],
+    author: "oda",
+    timeToRead: "3min",
+    timeToThink: "2min",
+    tags: ["git", "TypeScript"],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+          My brave attempt to turn my JavaScript Create-React-App into a
+          TypeScript one by simply renaming all .jsx files into .tsx did not
+          work.
+        </TLDR>
+        <PB8>
+          To revert back all changes to my working tree I tried{" "}
+          <Code>git stash</Code> and, failing that,{" "}
+          <Code>git reset --hard</Code>. To my surprise neither worked - my new
+          .tsx copies of .jsx files remained in the folders.{" "}
+          <Code>git status</Code> called them "untracked files" and refused just
+          simply forget about them.
+        </PB8>
+        <PB8>
+          Ok, I need to remove these new untracked files somehow. I really hoped{" "}
+          <Code>git reset --hard</Code> would do all this work for me, like a
+          magic bullet. A bit of googling brings a new git toy in a form of{" "}
+          <Code>git clean</Code> command.
+        </PB8>
+        <PB8>
+          Actually first I do a dry-run to see which files will be removed -{" "}
+          <Code>git clean -d -n</Code>. All seems fine, let's go berserk on
+          these .tsx pesky unwanted untracked red-colored files.
+        </PB8>
+        <PB8>
+          <Code>git clean -d -f</Code> bam! Yas! all good now, files are gone,
+          peace restored.
+        </PB8>
+        <H3>Conclusion</H3>
+        <PB8>
+          If previously I always got away with either{" "}
+          <Code>git reset --hard</Code> or, lately, <Code>git stash</Code>, then
+          now I discovered that these two do not touch untracked files which
+          have to be forcefully removed with <Code>git clean -d -f</Code>{" "}
+        </PB8>
+      </Text>
+    ),
+  },
 ];
 
 export default posts;
