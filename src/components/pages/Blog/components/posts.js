@@ -6,6 +6,10 @@ import {
   JS,
   Emoji,
   H3,
+  H2,
+  P,
+  PB8,
+  TLDR,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote, Center } from "@mantine/core";
 import { Prism } from "@mantine/prism";
@@ -17,20 +21,6 @@ function fun() {
  return smth;
 }`;
 
-function TLDR({ children, props }) {
-  return (
-    <div className="tl-dr pb-16">
-      <Span
-        variant="gradient"
-        gradient={{ from: "indigo", to: "cyan", deg: 45 }}
-        weight={600}
-      >
-        TL/DR:{" "}
-      </Span>
-      {children}
-    </div>
-  );
-}
 const posts = [
   {
     id: 1,
@@ -289,17 +279,17 @@ def get_prices(tickers, attach_prices=False): ...`}
         </TLDR>
 
         <H3>My workflow</H3>
-        <div className="pb-8">
+        <PB8>
           Sometimes I struggle with keeping my coding organised. My projects are
           fair game for me - I can touch any part of it whenever I want. Which
           produces convoluted coding sessions.
-        </div>
+        </PB8>
 
-        <div className="pb-8">
+        <PB8>
           Which more often than not creates a lot of unnecessary code
           re-writing. Or, even more often, after I wrote something, I realise
           that it logically belongs to another branch.
-        </div>
+        </PB8>
 
         <div className="pb--1rem">
           If there is <span className="text-lg font-bold">NO</span> other
@@ -616,11 +606,11 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           <Prism language="tsx">{codeSnippet}</Prism>
         </div>
 
-        <div className="pb-8">
+        <PB8>
           Or use <Code>colorScheme="dark"</Code> to make it dark like{" "}
           <a href="https://www.imdb.com/name/nm3211470/">Rober Eggers's</a>{" "}
           movies:
-        </div>
+        </PB8>
 
         <JS classNames="pb-8" colorScheme="dark">
           {codeSnippet}
@@ -709,36 +699,34 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
   },
   {
     id: 7,
-    routeName: "routeName",
+    routeName: "git-stash-vs-git-reset",
     header: "git stash vs git reset",
     subheader: "why oh why do I not stash enough?",
     dateCreated: [2022, 4, 22],
     author: "oda",
-    timeToRead: "1min",
-    timeToThink: "1min",
+    timeToRead: "5min",
+    timeToThink: "2min",
     tags: ["git", "Netlify", "DevOps"],
     body: (
       <Text className="leading-7">
         <TLDR>
-          In <a>previous post</a> I mentioned <Code>git stash</Code> commands.
-          Yesterday I made a rule to:{" "}
-          <Center className="pt-4">
-            <Text>
-              {" "}
-              <Code>git stash</Code> <Span color="red">instead of </Span>{" "}
-              <Code>git reset</Code>
-            </Text>
-          </Center>
+          Yesterday, after ditching a bunch of useful code because I thought it
+          contained a bug which it did not, I made a rule to:
+          <Bold>
+            {" "}
+            <Code>git stash</Code> <Span color="red">instead of </Span>{" "}
+            <Code>git reset --hard</Code>
+          </Bold>
         </TLDR>
-        <H3>Of course it depends</H3>
-        <div className="pb-8">
+        <H2>Of course it depends</H2>
+        <PB8>
           on what kind of garbage code you are throwing away. If you are 100%
           sure it should perish, then <Code>git reset --hard</Code> and never
           look back. But what if you're wrong and you've just binned a code that
           might worth at least 50kcal ??
-        </div>
+        </PB8>
         <H3>Let me share my example.</H3>
-        <div className="pb-8">
+        <P pb={4}>
           Yesterday I helped my wife deploy her React project to{" "}
           <a
             className="hover:text-amber-600 underline decoration-solid"
@@ -747,21 +735,21 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
             Netlify
           </a>
           . The build was failing because by default Netlify's build
-          configuration was set to treat React's warnings as errors.
-        </div>
-        <H3>Two ways to deal with it:</H3>
-        {/* <div className="pb-4">Two ways to deal with it:</div> */}
-        <div className="pb-8 ">
-          <ol className="ml-4 list-decimal ">
-            <li>Deal with warnings - correct the codebase.</li>
-            <li>Deal with Netlify's config - make it ignore warnings.</li>
+          configuration was set to treat React's warnings as errors. Two plans
+          were obvious, I should either:
+        </P>
+        <PB8>
+          <ol className="ml-4 list-decimal">
+            <li className="mb-0">
+              Correct the codebase - get rid of warnings; or
+            </li>
+            <li>Correct Netlify's config - make it ignore warnings.</li>
           </ol>
-        </div>
-
-        <H3>Dealing with warnings</H3>
-        <div className="pb-8">
+        </PB8>
+        <H3>1. Dealing with warnings</H3>
+        <PB8>
           As I wrote in my recent{" "}
-          <Link to="/setting-document-event-listeners-with-React-useEffect-hook">
+          <Link to="/blog/setting-document-event-listeners-with-React-useEffect-hook">
             Setting document event listeners with React useEffect hook
           </Link>{" "}
           blogpost, I used a <Code>useEffect</Code> hooks to set up document
@@ -773,19 +761,19 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
               alt=""
             />
           </Center>
-        </div>
-        <div className="pb-8">
+        </PB8>
+        <PB8>
           Naturally, I did not pay any attention to the warning, because:
           <Blockquote cite="Donald Knuth">
             Premature optimization is the root of all evil
           </Blockquote>
-        </div>
-        <div className="pb-8">
+        </PB8>
+        <PB8>
           That is until the moment when Netlify deployment was derailed off of
           these unhandled warnings.
-        </div>
+        </PB8>
         <H3>Long story short</H3>
-        <div className="pb-8">
+        <PB8>
           I managed to wrap everything in <Code>useCallback</Code> hooks or move
           function definitions inside useEffect hook so that its dependencies do
           not change on each render. As per the suggestion:
@@ -798,15 +786,18 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           </Center>
           It was a bit of struggle. But then I was all set - no warnings from
           compiler. Yas!
-        </div>
-        <div className="pb-8">
-          The only problem was that in a previous commit I added a dependency to
-          <JS>{`/* init state */
+        </PB8>
+        <PB8>
+          <P pb={4}>
+            The only problem was that in a previous commit I added a dependency
+            to
+          </P>
+          <JS colorScheme="dark">{`/* init state */
   useEffect(() => {
     reset();
   }, []);`}</JS>
-          Like this:
-          <JS>{`/* init state */
+          <P pb={4}>Like this:</P>
+          <JS colorScheme="dark">{`/* init state */
   useEffect(() => {
     reset();
   }, [reset]);`}</JS>
@@ -825,29 +816,48 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           all warnings and was ready to show Netlify who's the boss, I quickly
           peeked at whether the app was actually doing what it supposed to do.
           Which it wasn't.
-        </div>
-        <div className="pb-8">
-          My quick reaction was to <Code>git reset --hard</Code>, correct the{" "}
-          <Code>reset</Code> as a dependency mistake and then follow Option 2 -
-          make Netlify ignore my warnings.{" "}
-        </div>
-        <div className="pb-8">
-          The only reason was that my panic dictated that it must have been the
-          current latest changes (a lot of wrangling with moving code/adding
-          dependencies/wrapping in useCallbacks) that introduced the error. What
-          I should have done was to{" "}
-          <JS noCopy>{`$ git stash save wrangleDeps`}</JS> which would've reset
-          the state anyways, BUT I'd have access to the work I had done. Which
-          turned out to be useful and not related to the bug that I caught. The
-          sad part - I need to do the wrangling again. But this time I'll{" "}
-          <Center className="pt-4">
-            <Text>
+        </PB8>
+        <PB8>
+          My quick panic reaction was that it must have been the current latest
+          changes (a lot of wrangling with moving code/adding
+          dependencies/wrapping in useCallbacks) that introduced the error. So I
+          decided to discard all convoluted code wrangling and hit{" "}
+          <Code>git reset --hard</Code>...
+        </PB8>
+        <PB8>
+          ... only to discover that nope, that code was not the reason the bug
+          existed. And yes, I{" "}
+          <a href="https://git-scm.com/docs/git-reset#Documentation/git-reset.txt---hard">
+            cannot
+          </a>{" "}
+          get it back.
+        </PB8>
+        <P pb={4}>What I should have done was to</P>
+        <P pb={4}>
+          <JS noCopy colorScheme="dark">{`$ git stash save wrangleDeps`}</JS>
+        </P>
+        <PB8>
+          which would've discarded all the changes in the current working tree
+          anyways, <Bold>AND</Bold> I'd have access to the work I had done.
+          Which turned out to be useful and not related to the bug that I
+          caught. The sad part - now I need to do the wrangling again. But this
+          time I'll
+        </PB8>
+
+        <PB8>
+          <Center>
+            <Bold>
               {" "}
               <Code>git stash</Code> <Span color="red">instead of </Span>{" "}
               <Code>git reset</Code>
-            </Text>
+            </Bold>
           </Center>
-        </div>
+        </PB8>
+        <H3 tailwindClasses="pb-4 pt-16">to be continued ...</H3>
+        <P>
+          My plan now is to correct the <Code>reset</Code> as a dependency
+          mistake and then follow Option 2 - make Netlify ignore my warnings.{" "}
+        </P>
       </Text>
     ),
   },

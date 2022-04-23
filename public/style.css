@@ -250,16 +250,16 @@ p {
 }
 
 .blog-post__body__tldr {
-  padding-bottom: var(---4rem);
+  /* padding-bottom: var(---4rem); */
 }
 
 .blog-post__body p {
-  padding-bottom: var(---2rem);
+  /* padding-bottom: var(---2rem); */
 }
 
 /* add 1rem padding after every pre section that wraps code */
 .blog-post__body pre {
-  padding-bottom: var(---1rem);
+  /* padding-bottom: var(---1rem); */
 }
 
 .blog-post__body li {

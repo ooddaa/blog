@@ -75,10 +75,14 @@ function GradientSpan({ children, from, to, ...props }) {
   );
 }
 
-function JS({ children, classNames, ...props }) {
+function JS({ children, tailwindClasses, ...props }) {
+  const { cx } = createStyles(() => ({}))();
+  const defaultClasses = "pb-4";
   return (
     <Prism
-      className={classNames}
+      className={cx(
+        tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
+      )}
       language="javascript"
       withLineNumbers
       {...props}
@@ -104,14 +108,14 @@ function Emoji({ children, props, style }) {
   );
 }
 
-interface H3Props {
+interface HProps {
   children: any;
   props?: Object;
   style?: Object;
   tailwindClasses?: string[];
 }
 
-const H3: React.FC<H3Props> = ({ children, props, style, tailwindClasses }) => {
+const H3: React.FC<HProps> = ({ children, props, style, tailwindClasses }) => {
   const { cx } = createStyles(() => ({}))();
   const defaultClasses = "font-bold text-2xl pb-4 tracking-tight";
   return (
@@ -119,12 +123,26 @@ const H3: React.FC<H3Props> = ({ children, props, style, tailwindClasses }) => {
       className={cx(
         tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
       )}
-      // className={cx(tailwindClasses ?? "font-bold text-2xl pb-4")}
       style={style ?? {}}
       {...props}
     >
       {children}
     </h3>
+  );
+};
+const H2: React.FC<HProps> = ({ children, props, style, tailwindClasses }) => {
+  const { cx } = createStyles(() => ({}))();
+  const defaultClasses = "font-bold text-3xl pb-4 tracking-tight";
+  return (
+    <h2
+      className={cx(
+        tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
+      )}
+      style={style ?? {}}
+      {...props}
+    >
+      {children}
+    </h2>
   );
 };
 
@@ -148,6 +166,41 @@ function treefyPosts(posts: Post[], tree = new Map()): Map {
   return tree;
 }
 
+function TLDR({ children, props }) {
+  return (
+    <div className="tl-dr pb-16" {...props}>
+      <Span
+        variant="gradient"
+        gradient={{ from: "indigo", to: "cyan", deg: 45 }}
+        weight={600}
+      >
+        TL/DR:{" "}
+      </Span>
+      {children}
+    </div>
+  );
+}
+function P({ children, pb, props, tailwindClasses }) {
+  const { cx } = createStyles(() => ({}))();
+  const defaultClasses = `pb-${pb ?? 0}`;
+  return (
+    <div
+      className={cx(
+        tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+function PB8({ children, props }) {
+  return (
+    <div className="pb-8" {...props}>
+      {children}
+    </div>
+  );
+}
+
 export {
   log,
   reverseString,
@@ -159,5 +212,9 @@ export {
   JS,
   Emoji,
   H3,
+  H2,
   treefyPosts,
+  TLDR,
+  P,
+  PB8,
 };
