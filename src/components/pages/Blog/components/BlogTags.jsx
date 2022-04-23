@@ -11,11 +11,10 @@ const BlogTags: React.FC<TagContainer[]> = ({
 }) => {
   const useStyles = createStyles(() => ({}));
   const { cx } = useStyles();
-  const sortedTagContainers = tagContainers?.sort();
-  log(sortedTagContainers);
+
   return (
     <div className={cx("blog-tags", classNames)}>
-      {tagContainers.map((tag) => (
+      {tagContainers?.sort().map((tag) => (
         <Tag tag={tag} key={tag} highlightedTags={highlightedTags} />
       ))}
     </div>

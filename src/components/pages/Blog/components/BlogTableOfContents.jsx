@@ -4,9 +4,6 @@ import { treefyPosts } from "../../../../toolbox";
 
 const log = (...args) => console.log(...args);
 
-// const border = "1px red solid";
-const border = "none";
-
 /**
  * Renders:
  *
@@ -63,11 +60,7 @@ export default function BlogTableOfContents({
   });
   return (
     <MantineProvider>
-      <Container className="mb-10 w-full" style={{ border }}>
-        <Stack align="center" justify="flex-start">
-          {children}
-        </Stack>
-      </Container>
+      <div className="blog-toc">{children}</div>
     </MantineProvider>
   );
 }

@@ -207,11 +207,6 @@ p {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 /* Table Of Contents
 ––––––––––––––––––––––––––––––––– */
-.blog-toc {
-  display: flex;
-  justify-content: center;
-  margin-top: var(---80);
-}
 
 .blog-toc ul {
   list-style: none;

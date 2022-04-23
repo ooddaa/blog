@@ -1,6 +1,5 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Center } from "@mantine/core";
-import { Link } from "react-router-dom";
 import BlogPost from "./components/BlogPost";
 import BlogPostNavigation from "./components/BlogPostNavigation";
 import BlogTableOfContents from "./components/BlogTableOfContents";
@@ -13,7 +12,31 @@ function Blog({ posts, postId }) {
   const [currentPostId, setCurrentPostId] = useState(null);
   const [previousPostId, setPreviousPostId] = useState(null);
   const [nextPostId, setNextPostId] = useState(null);
-  const [highlightedTags, setHighlightedTags1] = useState([]);
+  const [highlightedTags, setHighlightedTags] = useState([]);
+
+  /* get proper min height to render 'sticky' footer */
+  const [headerHeight] = useState(
+    document.getElementsByClassName("mantine-Header-root")[0]?.offsetHeight ??
+      64
+  );
+  const [footerHeight] = useState(
+    document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 32
+  );
+  const [minHeight, setMinHeight] = useState(
+    window.innerHeight - headerHeight - footerHeight
+  );
+
+  /** keep sticky footer  */
+  useEffect(() => {
+    function resizeHandler(e) {
+      setMinHeight(e.target.innerHeight - headerHeight - footerHeight);
+    }
+    window.addEventListener("resize", resizeHandler);
+
+    return () => {
+      window.removeEventListener("resize", resizeHandler);
+    };
+  }, []);
 
   function handlePostNavigation(currentPostId_) {
     /* update currentPost */
@@ -35,10 +58,17 @@ function Blog({ posts, postId }) {
     }
   }
 
+  useEffect(() => {
+    /* init previousPostId & nextPostId */
+    if (posts && posts.length && isNaN(postId) === false) {
+      handlePostNavigation(postId);
+    }
+  });
+
   function generateTagContainers(posts): TagContainer[] {
     /**
-     * @todo this also needs to add refs but atm I
-     * have no idea how to do it.
+     * @todo this also might be solved via adding refs to each
+     * Tag but atm I have no idea how to do it.
      * @param {Set} acc
      * @param {Post} post
      */
@@ -48,28 +78,15 @@ function Blog({ posts, postId }) {
     }
 
     const allTags: Set = posts.reduce(postsToTags, new Set());
-
     const arr = Array.from(allTags.values());
     const rv: TagContainer[] = flatten(
       arr.map((tag) => {
-        /* custom React Hook function to provide refs? */
+        /** @todo custom React Hook function to provide refs? */
         return [tag /* , useRef(tag) */];
       })
     );
     return rv;
   }
-
-  function setHighlightedTags(tags: string[]) {
-    log("setHighlightedTags fires: ", tags);
-    setHighlightedTags1(tags);
-  }
-
-  useEffect(() => {
-    /* init previousPostId & nextPostId */
-    if (posts && posts.length && isNaN(postId) === false) {
-      handlePostNavigation(postId);
-    }
-  });
 
   if (posts?.length && isNaN(postId) === false) {
     return (
@@ -86,19 +103,15 @@ function Blog({ posts, postId }) {
   }
 
   return (
-    <Center className="h-screen flex-row">
-      <div className="blog-toc">
-        {BlogTableOfContents({
-          posts,
-          handlePostNavigation,
-          setHighlightedTags,
-        })}
-        {/* <BlogTableOfContents
-          posts={posts}
-          handlePostNavigation={handlePostNavigation}
-          setHighlightedTags={setHighlightedTags}
-        /> */}
-      </div>
+    <Center
+      className="blog h-screen flex flex-row"
+      style={{ height: minHeight }}
+    >
+      {BlogTableOfContents({
+        posts,
+        handlePostNavigation,
+        setHighlightedTags,
+      })}
 
       <BlogTags
         classNames="ml-20 w-96 h-max flex flex-wrap"
