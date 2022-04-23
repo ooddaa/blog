@@ -14,7 +14,7 @@ export default function Tag({ tag, classNames, highlightedTags }) {
     <Center
       className={cx(
         classNames ??
-          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-100",
+          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50",
         highlightedTags?.includes(tag) ? "bg-yellow-200" : "bg-gray-200"
       )}
     >

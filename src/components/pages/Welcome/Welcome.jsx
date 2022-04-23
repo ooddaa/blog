@@ -7,6 +7,7 @@ function Welcome() {
   return (
     <div className="welcome-bg-img">
       <AppContent
+        style={{ backgroundColor: "rgb(250, 251, 253)" }}
         children={
           <div className="welcome">
             <div className="pb--1rem">

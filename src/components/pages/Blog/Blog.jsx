@@ -105,7 +105,7 @@ function Blog({ posts, postId }) {
   return (
     <Center
       className="blog h-screen flex flex-row"
-      style={{ height: minHeight }}
+      style={{ height: minHeight, backgroundColor: "rgb(250, 251, 253)" }}
     >
       {BlogTableOfContents({
         posts,
