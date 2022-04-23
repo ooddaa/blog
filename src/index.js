@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import "./index.tailwind.css";
 
-import reportWebVitals from "./reportWebVitals";
 import AppContent from "./components/AppContent";
 import Blog from "./components/pages/Blog/Blog";
 import Projects from "./components/pages/Projects";
@@ -12,9 +11,6 @@ import Projects from "./components/pages/Projects";
 import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
 import Playground from "./components/pages/Playground/Playground.jsx";
-
-// experiments.topLevelAwait = true;
-// await import("./index.css");
 
 ReactDOM.render(
   <BrowserRouter>
@@ -50,8 +46,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
