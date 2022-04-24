@@ -18,6 +18,9 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
       setClicked(false);
     } else {
       e.target.style.backgroundColor = "#fef08a"; // bg-yellow-200
+      e.target.style.backgroundColor = "#facc15"; // bg-yellow-400
+      // e.target.style.backgroundColor = "#67e8f9"; // bg-cyan-300
+      // e.target.style.backgroundColor = "#ccfbf1"; // bg-teal-100
       setClicked(true);
     }
   }
