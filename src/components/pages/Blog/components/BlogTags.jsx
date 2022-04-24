@@ -8,6 +8,7 @@ const BlogTags: React.FC<TagContainer[]> = ({
   classNames,
   tagContainers,
   highlightedTags,
+  sendTagUp,
 }) => {
   const useStyles = createStyles(() => ({}));
   const { cx } = useStyles();
@@ -15,7 +16,12 @@ const BlogTags: React.FC<TagContainer[]> = ({
   return (
     <div className={cx("blog-tags", classNames)}>
       {tagContainers?.sort().map((tag) => (
-        <Tag tag={tag} key={tag} highlightedTags={highlightedTags} />
+        <Tag
+          tag={tag}
+          key={tag}
+          highlightedTags={highlightedTags}
+          sendTagUp={sendTagUp}
+        />
       ))}
     </div>
   );

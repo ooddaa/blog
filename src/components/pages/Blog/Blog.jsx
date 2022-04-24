@@ -7,8 +7,12 @@ import BlogTags from "./components/BlogTags";
 import { log } from "../../../toolbox/index";
 import { TagContainer } from "../../../toolbox/types.d.ts";
 import flatten from "lodash/flatten";
+import identity from "lodash/identity";
 
 function Blog({ posts, postId }) {
+  /* State
+  ________________________________________________________________*/
+
   const [currentPostId, setCurrentPostId] = useState(null);
   const [previousPostId, setPreviousPostId] = useState(null);
   const [nextPostId, setNextPostId] = useState(null);
@@ -25,6 +29,12 @@ function Blog({ posts, postId }) {
   const [minHeight, setMinHeight] = useState(
     window.innerHeight - headerHeight - footerHeight
   );
+
+  const [filteredPosts, setFilteredPosts] = useState(posts ?? []);
+  const [clickedTags, setClickedTags] = useState(new Set());
+
+  /* !state
+  ________________________________________________________________*/
 
   /** keep sticky footer  */
   useEffect(() => {
@@ -102,13 +112,44 @@ function Blog({ posts, postId }) {
     );
   }
 
+  function getClickedTag(tag) {
+    /* Tag gets clicked, Blog knows about it. */
+
+    if (clickedTags.has(tag)) {
+      /* user is trying to remove tag from filter */
+      clickedTags.delete(tag);
+      setClickedTags(new Set([...clickedTags]));
+    } else {
+      /* user is adding tag to filter*/
+      clickedTags.add(tag);
+    }
+
+    /* posts must be filtered as per clickedTags */
+    let filtered;
+    if (clickedTags.size === 0) {
+      filtered = posts;
+    } else {
+      function isInClickedTags(x) {
+        return clickedTags.has(x);
+      }
+
+      filtered = posts.filter(({ tags }) => {
+        const rv = tags
+          .map(isInClickedTags) // clickedTags set has any of these tags
+          .some(identity); // which are true
+        return rv;
+      });
+    }
+    setFilteredPosts(filtered);
+  }
+
   return (
     <Center
       className="blog h-screen flex flex-row"
       style={{ height: minHeight, backgroundColor: "rgb(250, 251, 253)" }}
     >
       {BlogTableOfContents({
-        posts,
+        posts: filteredPosts,
         handlePostNavigation,
         setHighlightedTags,
       })}
@@ -117,6 +158,7 @@ function Blog({ posts, postId }) {
         classNames="ml-20 w-96 h-max flex flex-wrap"
         tagContainers={generateTagContainers(posts)}
         highlightedTags={highlightedTags}
+        sendTagUp={getClickedTag}
       />
     </Center>
   );
