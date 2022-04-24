@@ -129,10 +129,6 @@ function Blog({ posts, postId }) {
     if (clickedTags.size === 0) {
       filtered = posts;
     } else {
-      function isInClickedTags(x) {
-        return clickedTags.has(x);
-      }
-
       filtered = posts.filter(({ tags }) => {
         const rv = tags
           .map(isInClickedTags) // clickedTags set has any of these tags
@@ -141,6 +137,11 @@ function Blog({ posts, postId }) {
       });
     }
     setFilteredPosts(filtered);
+
+    //////////////////// FUN ////////////////////
+    function isInClickedTags(x) {
+      return clickedTags.has(x);
+    }
   }
 
   return (
