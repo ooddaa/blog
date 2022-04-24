@@ -21,6 +21,7 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
       e.target.style.backgroundColor = "#facc15"; // bg-yellow-400
       // e.target.style.backgroundColor = "#67e8f9"; // bg-cyan-300
       // e.target.style.backgroundColor = "#ccfbf1"; // bg-teal-100
+      // e.target.style.backgroundColor = "#BA3C3C"; //
       setClicked(true);
     }
   }
@@ -35,9 +36,11 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
         classNames ??
           "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none",
         highlightedTags?.includes(tag)
-          ? "bg-red-400"
-          : // ? "bg-yellow-200"
-            // "bg-gray-100"
+          ? "bg-red-500"
+          : // ? "bg-[#BA3C3C]"
+            // ? "bg-[#B8FFE7]"
+            // ? "bg-[#5ED65E]"
+            // ? "bg-[#4646B3]"
             "bg-transparent"
       )}
       onClick={handleClick}
