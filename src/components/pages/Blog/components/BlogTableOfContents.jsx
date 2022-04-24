@@ -60,7 +60,10 @@ export default function BlogTableOfContents({
   });
   return (
     <MantineProvider>
-      <div className="blog-toc">{children}</div>
+      <div className="blog-toc flex-none w-[600px] ">
+        {/* <div className="blog-toc border bg-red-100 flex-none w-[600px] lg:w-auto lg:shrink"> */}
+        {children}
+      </div>
     </MantineProvider>
   );
 }

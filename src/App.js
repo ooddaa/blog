@@ -23,7 +23,7 @@ const links = [
 
 function App() {
   return (
-    <div className="wrapper">
+    <div className="wrapper" style={{ backgroundColor: "rgb(250, 251, 253)" }}>
       <MantineHeader links={links} />
       <Outlet />
       <Footer />

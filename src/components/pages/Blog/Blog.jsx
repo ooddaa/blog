@@ -145,9 +145,12 @@ function Blog({ posts, postId }) {
   }
 
   return (
-    <Center
-      className="blog h-screen flex flex-row"
-      style={{ height: minHeight, backgroundColor: "rgb(250, 251, 253)" }}
+    <div
+      className="blog flex flex-row content-center mx-auto pt-24"
+      style={{
+        minHeight,
+        // backgroundColor: "rgb(250, 251, 253)"
+      }}
     >
       {BlogTableOfContents({
         posts: filteredPosts,
@@ -161,7 +164,7 @@ function Blog({ posts, postId }) {
         highlightedTags={highlightedTags}
         sendTagUp={getClickedTag}
       />
-    </Center>
+    </div>
   );
 }
 
