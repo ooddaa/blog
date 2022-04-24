@@ -21,6 +21,19 @@ function fun() {
  return smth;
 }`;
 
+const stub = {
+  id: 0,
+  routeName: "routeName",
+  header: "header",
+  subheader: "subheader",
+  dateCreated: [2022, 2, 10],
+  author: "author",
+  timeToRead: "timeToRead",
+  timeToThink: "timeToThink",
+  tags: [],
+  body: <Text className="leading-7"></Text>,
+};
+
 const posts = [
   {
     id: 1,
@@ -911,104 +924,15 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
       </Text>
     ),
   },
-
-  // {
-  //   id: 10,
-  //   routeName: "routeName10",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 11,
-  //   routeName: "routeName11",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 12,
-  //   routeName: "routeName12",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 13,
-  //   routeName: "routeName13",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 14,
-  //   routeName: "routeName14",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 15,
-  //   routeName: "routeName15",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
-  // {
-  //   id: 16,
-  //   routeName: "routeName16",
-  //   header: "header",
-  //   subheader: "subheader",
-  //   dateCreated: [2022, 2, 10],
-  //   author: "author",
-  //   timeToRead: "timeToRead",
-  //   timeToThink: "timeToThink",
-  //   tags: [],
-  //   body: <Text className="leading-7"></Text>,
-  // },
 ];
 
-export default posts;
+/* add posts */
+// for (let i = 100; i <= 130; i++) {
+//   posts.push({
+//     ...stub,
+//     id: i,
+//     routeName: `routeName${i}`,
+//   });
+// }
 
-const stub = {
-  id: 0,
-  routeName: "routeName",
-  header: "header",
-  subheader: "subheader",
-  dateCreated: [2022, 2, 10],
-  author: "author",
-  timeToRead: "timeToRead",
-  timeToThink: "timeToThink",
-  tags: [],
-  body: <Text className="leading-7"></Text>,
-};
+export default posts;

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import Tag from "./Tag.jsx";
-import { log } from "../../../../toolbox/index";
+import { log, emptyObject } from "../../../../toolbox/index";
 import { createStyles } from "@mantine/core";
 import { TagContainer } from "../../../../toolbox/types.d.ts";
 
 const BlogTags: React.FC<TagContainer[]> = ({
-  classNames,
   tagContainers,
   highlightedTags,
   sendTagUp,
+  classNames,
 }) => {
-  const useStyles = createStyles(() => ({}));
-  const { cx } = useStyles();
+  const { cx } = createStyles(emptyObject)();
+  const defaultClasses = "blog-tags ml-20 w-96 h-max flex flex-wrap p-max";
 
   return (
-    <div className={cx("blog-tags", classNames)}>
+    <div
+      className={cx(defaultClasses, classNames)}
+      // className={cx("blog-tags ml-20 w-96 h-max flex flex-wrap p-max border")}
+    >
       {tagContainers?.sort().map((tag) => (
         <Tag
           tag={tag}

@@ -200,6 +200,7 @@ function PB8({ children, props }) {
     </div>
   );
 }
+const emptyObject = () => ({});
 
 export {
   log,
@@ -217,4 +218,5 @@ export {
   TLDR,
   P,
   PB8,
+  emptyObject,
 };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Center } from "@mantine/core";
 import BlogPost from "./components/BlogPost";
 import BlogPostNavigation from "./components/BlogPostNavigation";
-import BlogTableOfContents from "./components/BlogTableOfContents";
+import BlogTOC from "./components/BlogTOC";
 import BlogTags from "./components/BlogTags";
 import { log } from "../../../toolbox/index";
 import { TagContainer } from "../../../toolbox/types.d.ts";
@@ -146,23 +146,29 @@ function Blog({ posts, postId }) {
 
   return (
     <div
-      className="blog flex flex-row content-center mx-auto pt-24"
+      className="blog flex flex-row content-center"
+      // className="blog border flex flex-row content-center mx-auto pt-24"
       style={{
         minHeight,
-        // backgroundColor: "rgb(250, 251, 253)"
       }}
     >
-      {BlogTableOfContents({
+      {BlogTOC({
         posts: filteredPosts,
         handlePostNavigation,
         setHighlightedTags,
+        classNames: ["basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
       })}
+      {/* <BlogTOC>
+        posts={filteredPosts} // ????
+        handlePostNavigation={handlePostNavigation}
+        setHighlightedTags={setHighlightedTags}
+      </BlogTOC> */}
 
       <BlogTags
-        classNames="ml-20 w-96 h-max flex flex-wrap"
         tagContainers={generateTagContainers(posts)}
         highlightedTags={highlightedTags}
         sendTagUp={getClickedTag}
+        classNames={["basis-1/4 pt-24"]}
       />
     </div>
   );
