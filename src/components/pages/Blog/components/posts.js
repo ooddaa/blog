@@ -932,6 +932,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
 //     ...stub,
 //     id: i,
 //     routeName: `routeName${i}`,
+//     tags: [`tag${i}`],
 //   });
 // }
 
