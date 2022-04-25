@@ -43,9 +43,7 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.sm,
     textDecoration: "none",
     color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
+      theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.black,
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
@@ -129,7 +127,7 @@ export default function MantineHeader({ links }: HeaderSearchProps) {
     <Header
       className={cx(
         "bg-transparent",
-        window.location.pathname === "/blog" && "border-0"
+        window.location.pathname === "/blog" && ["border-0", ""] // styling blog from here ;)
       )}
       height={HEADER_HEIGHT}
       mb={120}

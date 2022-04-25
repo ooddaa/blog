@@ -157,13 +157,7 @@ function Blog({ posts, postId }) {
         handlePostNavigation,
         setHighlightedTags,
         classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
-        // classNames: ["basis-3/5 sm:basis-5/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
       })}
-      {/* <BlogTOC>
-        posts={filteredPosts} // ????
-        handlePostNavigation={handlePostNavigation}
-        setHighlightedTags={setHighlightedTags}
-      </BlogTOC> */}
 
       <BlogTags
         tagContainers={generateTagContainers(posts)}
