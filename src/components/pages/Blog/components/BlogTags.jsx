@@ -16,7 +16,10 @@ const BlogTags: React.FC<TagContainer[]> = ({
   return (
     <div
       className={cx(defaultClasses, classNames)}
-      // className={cx("blog-tags ml-20 w-96 h-max flex flex-wrap p-max border")}
+      style={{
+        position: "sticky",
+        top: "0",
+      }}
     >
       {tagContainers?.sort().map((tag) => (
         <Tag

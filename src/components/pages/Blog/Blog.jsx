@@ -147,16 +147,15 @@ function Blog({ posts, postId }) {
   return (
     <div
       className="blog flex flex-col sm:flex-row content-center"
-      // className="blog border flex flex-row content-center mx-auto pt-24"
-      style={{
-        minHeight,
-      }}
+      style={{ minHeight }} // keeps footer sticky
     >
       {BlogTOC({
         posts: filteredPosts,
         handlePostNavigation,
         setHighlightedTags,
-        classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
+        classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D55347]"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
+        // classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D54E43]"], //https://tailwindcss.com/docs/flex-basis
+        // classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
       })}
 
       <BlogTags
@@ -164,6 +163,7 @@ function Blog({ posts, postId }) {
         highlightedTags={highlightedTags}
         sendTagUp={getClickedTag}
         classNames={[
+          // "basis-1/4 pt-24 w-96 h-max mx-auto",
           "basis-1/4 pt-24 w-96 mx-auto mb-20 sm:mt-0 sm:mb-10 md:ml-16 sm:ml-10 h-max p-max",
         ]}
       />
