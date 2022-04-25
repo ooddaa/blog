@@ -65,7 +65,9 @@ export default function BlogTOC({
   });
   return (
     <MantineProvider>
-      <div className={cx("blog-toc flex-none w-[600px]", classNames)}>
+      <div
+        className={cx("blog-toc flex-none w-[600px] -mt-[64px]", classNames)}
+      >
         {/* <div className={cx("blog-toc flex-none w-[600px]", classNames)> */}
         {/* <div className="blog-toc border bg-red-100 flex-none w-[600px] lg:w-auto lg:shrink"> */}
         {children}

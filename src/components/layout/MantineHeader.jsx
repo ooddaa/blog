@@ -12,6 +12,7 @@ import {
 import { useBooleanToggle } from "@mantine/hooks";
 import { ChevronDown } from "tabler-icons-react";
 import { Link } from "react-router-dom";
+import { log } from "../../toolbox";
 
 const HEADER_HEIGHT = 64;
 
@@ -87,8 +88,8 @@ interface HeaderSearchProps {
 
 export default function MantineHeader({ links }: HeaderSearchProps) {
   const [opened, toggleOpened] = useBooleanToggle(false);
-  const { classes } = useStyles();
-
+  const { classes, cx } = useStyles();
+  // log(window.location.pathname);
   const items = links.map((link) => {
     const menuItems = link.links?.map((item) => (
       <Menu.Item key={item.link}>{item.label}</Menu.Item>
@@ -125,7 +126,15 @@ export default function MantineHeader({ links }: HeaderSearchProps) {
   });
 
   return (
-    <Header height={HEADER_HEIGHT} mb={120} style={{ marginBottom: 0 }}>
+    <Header
+      className={cx(
+        "bg-transparent",
+        window.location.pathname === "/blog" && "border-0"
+      )}
+      height={HEADER_HEIGHT}
+      mb={120}
+      style={{ marginBottom: 0 }}
+    >
       <Container>
         <div className={classes.inner}>
           <Group spacing={5} className={classes.links}>
