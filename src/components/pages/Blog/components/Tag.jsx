@@ -34,7 +34,7 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
     <Center
       className={cx(
         classNames ??
-          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none",
+          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none hover:cursor-pointer",
         highlightedTags?.includes(tag)
           ? "bg-red-500"
           : // ? "bg-[#BA3C3C]"

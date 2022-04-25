@@ -739,14 +739,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(204 251 241 / var(--tw-bg-opacity));
 }
 
-.bg-red-400 {
+.bg-\[\#BA3C3C\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+  background-color: rgb(186 60 60 / var(--tw-bg-opacity));
 }
 
-.bg-gray-100 {
+.bg-\[\#B8FFE7\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(184 255 231 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#5ED65E\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(94 214 94 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#4646B3\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(70 70 179 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
