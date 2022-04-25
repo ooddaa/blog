@@ -11,7 +11,7 @@ const BlogTags: React.FC<TagContainer[]> = ({
   classNames,
 }) => {
   const { cx } = createStyles(emptyObject)();
-  const defaultClasses = "blog-tags ml-20 w-96 h-max flex flex-wrap p-max";
+  const defaultClasses = "blog-tags flex flex-wrap";
 
   return (
     <div

@@ -927,13 +927,13 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
 ];
 
 /* add posts */
-// for (let i = 100; i <= 130; i++) {
-//   posts.push({
-//     ...stub,
-//     id: i,
-//     routeName: `routeName${i}`,
-//     tags: [`tag${i}`],
-//   });
-// }
+for (let i = 100; i <= 130; i++) {
+  posts.push({
+    ...stub,
+    id: i,
+    routeName: `routeName${i}`,
+    tags: [`tag${i}`],
+  });
+}
 
 export default posts;

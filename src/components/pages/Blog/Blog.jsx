@@ -146,7 +146,7 @@ function Blog({ posts, postId }) {
 
   return (
     <div
-      className="blog flex flex-row content-center"
+      className="blog flex flex-col sm:flex-row content-center"
       // className="blog border flex flex-row content-center mx-auto pt-24"
       style={{
         minHeight,
@@ -156,7 +156,8 @@ function Blog({ posts, postId }) {
         posts: filteredPosts,
         handlePostNavigation,
         setHighlightedTags,
-        classNames: ["basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
+        classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
+        // classNames: ["basis-3/5 sm:basis-5/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
       })}
       {/* <BlogTOC>
         posts={filteredPosts} // ????
@@ -168,7 +169,9 @@ function Blog({ posts, postId }) {
         tagContainers={generateTagContainers(posts)}
         highlightedTags={highlightedTags}
         sendTagUp={getClickedTag}
-        classNames={["basis-1/4 pt-24"]}
+        classNames={[
+          "basis-1/4 pt-24 w-96 mx-auto mb-20 sm:mt-0 sm:mb-10 md:ml-16 sm:ml-10 h-max p-max",
+        ]}
       />
     </div>
   );
