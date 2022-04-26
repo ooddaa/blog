@@ -33,18 +33,27 @@ export default function BlogTOC({
    */
 
   /**
-   * Arrange posts by Month, by Date as a calendar.
+   * Arrange posts by Month / Date as a calendar.
    * 1. Turn Post[] into a Map (year=>month:Post[])
    * 2. Iterate over Map, producing BlogTOCGroup - a nominee for the
    * worst Component name ever:)
+   * 3. Sort
    */
   const postTree: Map = treefyPosts(posts);
+  // log(postTree);
   const children = [];
-  postTree.forEach((value, year) => {
-    value.forEach((posts, month) => {
+  /**
+   * hehe don't forget the map.forEach signature: (value, key, map, thisArg)
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach
+   *
+   * postTree = {2022 => {month => Post[]...}
+   */
+  postTree.forEach((months, year) => {
+    /* sort by month first */
+    // log(months.entries());
+    months.forEach((posts, month) => {
       children.push(
         <BlogTOCGroup
-          className={cx("BlogTOCGroup pl-0 ml-0")}
           key={`${year}${month}`}
           year={year}
           month={month}
@@ -63,6 +72,8 @@ export default function BlogTOC({
       );
     });
   });
+  /* I need to sort posts by month */
+  children.sort();
   return (
     <MantineProvider>
       <div className={cx("blog-toc flex-none -mt-[64px]", classNames)}>

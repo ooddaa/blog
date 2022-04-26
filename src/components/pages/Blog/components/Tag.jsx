@@ -19,6 +19,8 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
     } else {
       e.target.style.backgroundColor = "#fef08a"; // bg-yellow-200
       e.target.style.backgroundColor = "#facc15"; // bg-yellow-400
+      e.target.style.backgroundColor = "#7C7F65"; // https://coolors.co/d55347-d4cbe5-cfc7d2-7c7f65-5c6b73
+      e.target.style.backgroundColor = "#FABC3C"; // https://coolors.co/d55347-d4cbe5-cfc7d2-7c7f65-5c6b73
       // e.target.style.backgroundColor = "#67e8f9"; // bg-cyan-300
       // e.target.style.backgroundColor = "#ccfbf1"; // bg-teal-100
       // e.target.style.backgroundColor = "#BA3C3C"; //
@@ -36,8 +38,11 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
         classNames ??
           "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none hover:cursor-pointer",
         highlightedTags?.includes(tag)
-          ? "bg-red-500"
-          : // ? "bg-[#BA3C3C]"
+          ? "bg-[#FA7D5A]"
+          : // ? "bg-[#FA592D]"
+            // ? "bg-[#D55347]"
+            // ? "bg-red-500"
+            // ? "bg-[#BA3C3C]"
             // ? "bg-[#B8FFE7]"
             // ? "bg-[#5ED65E]"
             // ? "bg-[#4646B3]"

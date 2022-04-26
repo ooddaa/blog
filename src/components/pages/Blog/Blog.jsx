@@ -149,24 +149,31 @@ function Blog({ posts, postId }) {
       className="blog flex flex-col sm:flex-row content-center"
       style={{ minHeight }} // keeps footer sticky
     >
-      {BlogTOC({
-        posts: filteredPosts,
-        handlePostNavigation,
-        setHighlightedTags,
-        classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D55347]"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
-        // classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D54E43]"], //https://tailwindcss.com/docs/flex-basis
-        // classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
-      })}
+      <div className="left basis-full -mt-24 pb-24 sm:basis-3/5 bg-[#FA592D]">
+        {/* <div className="left basis-full -mt-24 pb-24 sm:basis-3/5 bg-[#FF4A19]"> */}
+        {BlogTOC({
+          posts: filteredPosts,
+          handlePostNavigation,
+          setHighlightedTags,
+          classNames: ["pt-48"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
+          // classNames: ["basis-full sm:basis-3/5 py-24 bg-[#D55347]"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
+          // classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D54E43]"], //https://tailwindcss.com/docs/flex-basis
+          // classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
+        })}
+      </div>
 
-      <BlogTags
-        tagContainers={generateTagContainers(posts)}
-        highlightedTags={highlightedTags}
-        sendTagUp={getClickedTag}
-        classNames={[
-          // "basis-1/4 pt-24 w-96 h-max mx-auto",
-          "basis-1/4 pt-24 w-96 mx-auto mb-20 sm:mt-0 sm:mb-10 md:ml-16 sm:ml-10 h-max p-max",
-        ]}
-      />
+      <div className="right basis-2/5 -mt-24 pb-24 bg-[#E9EAEC]">
+        <BlogTags
+          tagContainers={generateTagContainers(posts)}
+          highlightedTags={highlightedTags}
+          sendTagUp={getClickedTag}
+          classNames={[
+            // "basis-1/4 pt-24 w-96 h-max mx-auto",
+            "pt-48 w-96 mx-auto mb-20 sm:mt-0 sm:mb-10 md:ml-16 sm:ml-10 h-max p-max",
+            // "basis-1/4 pt-24 w-96 px-auto pb-20 sm:pt-0 sm:pb-10 md:pl-16 sm:pl-10 h-max p-max",
+          ]}
+        />
+      </div>
     </div>
   );
 }
