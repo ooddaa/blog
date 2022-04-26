@@ -92,10 +92,11 @@ function JS({ children, tailwindClasses, ...props }) {
   );
 }
 
-function Emoji({ children, props, style }) {
+function Emoji({ children, props, style, classNames }) {
+  const { cx } = createStyles(() => ({}))();
   return (
     <div
-      className="emoji"
+      className={cx("emoji", classNames)}
       style={
         style
           ? { display: "inline-block", ...style }

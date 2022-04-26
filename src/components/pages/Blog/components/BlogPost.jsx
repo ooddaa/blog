@@ -31,6 +31,22 @@ function BlogPost({ post, defaultHeader }) {
 
           {/* <h2>{header || defaultHeader}</h2> */}
         </div>
+        {/* <div className="blog-post__header__author flex flex-col">
+          <div className="one">
+            <Span className="oda">{author}</Span> | {day}
+            <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
+            {year}
+          </div>
+          <div className="two flex">
+            <Emoji classNames="text-lg">📖</Emoji> <Span>{timeToRead}</Span>
+          </div>
+          <div className="three flex">
+            <Emoji classNames="text-lg">🤔</Emoji>
+            <Span>{timeToThink}</Span>
+          </div>
+          <br></br>
+        </div> */}
+
         <div className="blog-post__header__author">
           <Span>
             {" "}
@@ -38,11 +54,11 @@ function BlogPost({ post, defaultHeader }) {
             <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
             {year}
             <br></br>
-            <Emoji>🤓</Emoji>
-            <Span>reading time: {timeToRead}</Span>
+            <Emoji>📖</Emoji>
+            <Span>{timeToRead}</Span>
             <br></br>
             <Emoji>🤔</Emoji>
-            <Span>thinking time: {timeToThink}</Span>{" "}
+            <Span>{timeToThink}</Span>{" "}
           </Span>
         </div>
       </div>
