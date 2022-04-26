@@ -9,24 +9,23 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
 
   function handleClick(e) {
     sendTagUp(tag);
-    if (clicked) {
-      // e.target.style.backgroundColor = "lightgrey";
-      // e.target.style.backgroundColor = "#e5e5e5"; //neutral-200
-      // e.target.style.backgroundColor = "#e7e5e4"; //stone-200
-      e.target.style.backgroundColor = "transparent"; //
+    if (!clicked) {
+      /* user selects tag  */
 
-      setClicked(false);
-    } else {
-      e.target.style.backgroundColor = "#fef08a"; // bg-yellow-200
-      e.target.style.backgroundColor = "#facc15"; // bg-yellow-400
-      e.target.style.backgroundColor = "#7C7F65"; // https://coolors.co/d55347-d4cbe5-cfc7d2-7c7f65-5c6b73
-      e.target.style.backgroundColor = "#FABC3C"; // https://coolors.co/d55347-d4cbe5-cfc7d2-7c7f65-5c6b73
-      // e.target.style.backgroundColor = "#67e8f9"; // bg-cyan-300
-      // e.target.style.backgroundColor = "#ccfbf1"; // bg-teal-100
-      // e.target.style.backgroundColor = "#BA3C3C"; //
+      /* https://coolors.co/d55347-d4cbe5-cfc7d2-7c7f65-5c6b73 */
+      e.target.style.backgroundColor = "#FABC3C";
+      /* shadow-md */
+      e.target.style.boxShadow =
+        "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)";
       setClicked(true);
+    } else {
+      /* user de-selects tag  */
+      e.target.style.backgroundColor = "transparent";
+      e.target.style.boxShadow = null;
+      setClicked(false);
     }
   }
+
   /**
    * @todo If nothing to highlight, all tags are yellow.
    * We aren't actually highlighting, we are dimming tags.
@@ -36,17 +35,8 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
     <Center
       className={cx(
         classNames ??
-          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none hover:cursor-pointer",
-        highlightedTags?.includes(tag)
-          ? "bg-[#FA7D5A]"
-          : // ? "bg-[#FA592D]"
-            // ? "bg-[#D55347]"
-            // ? "bg-red-500"
-            // ? "bg-[#BA3C3C]"
-            // ? "bg-[#B8FFE7]"
-            // ? "bg-[#5ED65E]"
-            // ? "bg-[#4646B3]"
-            "bg-transparent"
+          "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none hover:cursor-pointer hover:shadow-md",
+        highlightedTags?.includes(tag) ? "bg-[#FA7D5A]" : "bg-transparent"
       )}
       onClick={handleClick}
     >

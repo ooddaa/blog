@@ -150,15 +150,11 @@ function Blog({ posts, postId }) {
       style={{ minHeight }} // keeps footer sticky
     >
       <div className="left basis-full -mt-24 pb-24 sm:basis-3/5 bg-[#FA592D]">
-        {/* <div className="left basis-full -mt-24 pb-24 sm:basis-3/5 bg-[#FF4A19]"> */}
         {BlogTOC({
           posts: filteredPosts,
           handlePostNavigation,
           setHighlightedTags,
-          classNames: ["pt-48"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
-          // classNames: ["basis-full sm:basis-3/5 py-24 bg-[#D55347]"], //cedar chest -> https://coolors.co/d55347-d4d2d5-bfafa6-aa968a-6e6a6f
-          // classNames: ["basis-full sm:basis-3/5 pt-24 bg-[#D54E43]"], //https://tailwindcss.com/docs/flex-basis
-          // classNames: ["basis-full sm:basis-3/5 pt-24 bg-red-500"], //https://tailwindcss.com/docs/flex-basis
+          classNames: ["pt-48"],
         })}
       </div>
 
