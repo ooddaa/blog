@@ -146,10 +146,10 @@ function Blog({ posts, postId }) {
 
   return (
     <div
-      className="blog flex flex-col sm:flex-row content-center"
+      className="blog flex flex-col lg:flex-row content-center"
       style={{ minHeight }} // keeps footer sticky
     >
-      <div className="left basis-full -mt-24 pb-24 sm:basis-3/5 bg-[#FA592D]">
+      <div className="left basis-full -mt-24 pb-48 sm:basis-3/5 bg-[#FA592D]">
         {BlogTOC({
           posts: filteredPosts,
           handlePostNavigation,
@@ -163,11 +163,7 @@ function Blog({ posts, postId }) {
           tagContainers={generateTagContainers(posts)}
           highlightedTags={highlightedTags}
           sendTagUp={getClickedTag}
-          classNames={[
-            // "basis-1/4 pt-24 w-96 h-max mx-auto",
-            "pt-48 w-96 mx-auto mb-20 sm:mt-0 sm:mb-10 md:ml-16 sm:ml-10 h-max p-max",
-            // "basis-1/4 pt-24 w-96 px-auto pb-20 sm:pt-0 sm:pb-10 md:pl-16 sm:pl-10 h-max p-max",
-          ]}
+          classNames={["pt-24 w-96 mx-auto h-max p-max"]}
         />
       </div>
     </div>

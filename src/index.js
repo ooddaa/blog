@@ -1,4 +1,4 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import "./index.tailwind.css";
@@ -6,23 +6,17 @@ import "./index.tailwind.css";
 import AppContent from "./components/AppContent";
 import Blog from "./components/pages/Blog/Blog";
 import Projects from "./components/pages/Projects";
-// import Grids from "./components/Grids";
-// import BEMs from "./components/BEMs";
 import Welcome from "./components/pages/Welcome/Welcome";
 import posts from "./components/pages/Blog/components/posts";
 import Playground from "./components/pages/Playground/Playground.jsx";
 
-ReactDOM.render(
+const stuff = (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="" element={<Welcome />}></Route>
         {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
-        <Route
-          path="blog"
-          element={<Blog posts={posts} />}
-          // element={<AppContent children={<Blog posts={posts} />} />}
-        ></Route>
+        <Route path="blog" element={<Blog posts={posts} />}></Route>
         {posts.map((post, idx) => {
           return (
             <Route
@@ -40,9 +34,8 @@ ReactDOM.render(
         ></Route>
       </Route>
       <Route path="playground" element={<Playground />}></Route>
-      {/* <Route path="grids" element={<Grids />}></Route>
-      <Route path="bems" element={<BEMs />}></Route> */}
     </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
+  </BrowserRouter>
 );
+
+createRoot(document.getElementById("root")).render(stuff);

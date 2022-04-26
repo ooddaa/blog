@@ -9,6 +9,8 @@ import {
 } from "@mantine/core";
 import BlogTOCGroup from "../Blog/components/BlogTOCGroup";
 
+import Box from "./components/Box";
+
 // https://mantine.dev/core/app-shell/
 
 const log = (...args) => console.log(...args);
@@ -60,6 +62,9 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 // }
 
 function Playground() {
+  return <Box />;
+}
+function Playground2() {
   const { classes, cx } = useStyles();
   return (
     <AppShell

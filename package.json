@@ -11,7 +11,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-test-renderer": "^18.0.0",
-    "tabler-icons-react": "^1.43.0"
+    "tabler-icons-react": "^1.43.0",
+    "three": "^0.139.2"
   },
   "scripts": {
     "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.config.js -o ./src/index.css",
