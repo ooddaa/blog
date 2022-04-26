@@ -9,24 +9,24 @@ function Welcome() {
       <AppContent
         style={{ backgroundColor: "rgb(250, 251, 253)" }}
         children={
-          <div className="welcome">
-            <div className="pb--1rem">
+          <div className="welcome pt-12">
+            <div className="pb-4">
               <Title order={1}>Lorem, world!</Title>
             </div>
             <Text>
-              <div className="pb--1rem">
+              <div className="pb-4">
                 Welcome to my personal website! My name is{" "}
                 <span className="oda">oda</span>.
               </div>
 
-              <div className="pb--1rem">
+              <div className="pb-4">
                 I learn by doing, so every day, after breakfast, I like to have
                 a go at some challenging task: coding/learning
                 psychology/bringing up my lovely son/living here and now and
                 stuff like that.
               </div>
 
-              <div className="pb--1rem">
+              <div className="pb-4">
                 Over the past several years, working as a{" "}
                 <GradientSpan from="green" to="cyan">
                   Business Developer
@@ -35,7 +35,7 @@ function Welcome() {
                 ideas and projects of various quality.
               </div>
 
-              <div className="pb--1rem">
+              <div className="pb-4">
                 I have decided to put it all in one place online as a personal{" "}
                 <GradientSpan from="blue" to="grape">
                   portfolio
@@ -50,11 +50,11 @@ function Welcome() {
                 </GradientSpan>
               </div>
 
-              <div className="pb--1rem">
+              <div className="pb-4">
                 My <a href="https://github.com/med4kat">wife</a> is amazing and
                 we have a wonderful toddler son ☺️
               </div>
-              <div className="pb--1rem">
+              <div className="pb-4">
                 I also like <a href="https://www.wavebjj.co/">BJJ</a>.
               </div>
             </Text>

@@ -924,69 +924,69 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
       </Text>
     ),
   },
-  {
-    id: 9,
-    routeName: "routeName",
-    header: "Mango musings",
-    subheader: "What made me want to create knowledge graphs",
-    dateCreated: [2022, 1, 10],
-    author: "oda",
-    timeToRead: "5min",
-    timeToThink: "10min",
-    tags: ["knowledge graph", "Mango"],
-    body: (
-      <Text className="leading-7">
-        <TLDR>
-          Property-rich Knowledge Graphs can provide enough machine-readable
-          context for humans to build useful real-world services.
-        </TLDR>
-        <H3></H3>
+  // {
+  //   id: 9,
+  //   routeName: "routeName",
+  //   header: "Mango musings",
+  //   subheader: "What made me want to create knowledge graphs",
+  //   dateCreated: [2022, 1, 10],
+  //   author: "oda",
+  //   timeToRead: "5min",
+  //   timeToThink: "10min",
+  //   tags: ["knowledge graph", "Mango"],
+  //   body: (
+  //     <Text className="leading-7">
+  //       <TLDR>
+  //         Property-rich Knowledge Graphs can provide enough machine-readable
+  //         context for humans to build useful real-world services.
+  //       </TLDR>
+  //       <H3></H3>
 
-        <div className="div">
-          The key driving motive was to design a tool which would help ensure
-          that there are no copies of the same Node. The idea came up when I
-          worked for a family office and was dealing with bits and pieces of
-          data coming across my desk. I noticed that I would spend most of my
-          time and effort not on the value-generating activities relating to the
-          data, but on solving questions like: • What is the correct full
-          address of Person X? • Did we send that document to Y? • Where can I
-          find Z? It was obvious that the solutions to these questions (99% of
-          time that would be a source document, or colleague's advice) resided
-          within my colleague's minds or on their desktops/emails. We did have
-          an old and limited database that had some records of some legal
-          entities and natural persons - but to use that knowledge it had to be
-          checked and double-checked with colleagues first. Which in 50% of
-          situations required them requesting the info from their
-          counterparties. The problem was that once all the effort was made and
-          the relevant info was received, verified and utilized, it was simply
-          forgotten until the next time when same problem arrived. And when it
-          did, usually after a prolonged period of time, no one could easily
-          locate the previous result to reduce the amount of cognitive work.
-          Simple solution was to agree to share all such hard-earned knowledge,
-          but: • There was no simple way to do it. We tried Confluence - but it
-          required a learning curve that no one wanted. Everyone want to go on
-          writing emails and making phone calls. • No one wants to archive.
-          Archiving is a difficult mental work which is not rewarded in an
-          obvious, immediate way. Therefore no one does it. This creates a huge
-          (but familiar) tech debt in a form of knowledge search, repeating same
-          work that already has been done. On the upside this is how office
-          workers1.0 justify the time they spend in the office getting paid.
-          Readme.md Idea The idea behind the project is to build a tool to makes
-          it easy to perform • Create • Read • Update • Delete operations on
-          Neo4j Graph Database using JavaScript. Philosophy: Graphs are powerful
-          because they are visually obvious. You may draw a graph to simplify
-          something. It takes a purely abstract thought concept and makes it
-          appear as a 2D model in front of your eyes. Graphs are powerful
-          because they are simple. As a basic data structure a Node or (Node),
-          can represent any amount of data. If (Node1) and (Node2) have a way to
-          associate, then it could be expressed as
-          (Node1)-[:RELATES_TO]->(Node2). And there you have it - a full blown
-          Knowledge Graph! Now think of adding properties to Nodes and its
-          Relationships and the expressive potential is limitless.
-        </div>
-      </Text>
-    ),
-  },
+  //       <div className="div">
+  //         The key driving motive was to design a tool which would help ensure
+  //         that there are no copies of the same Node. The idea came up when I
+  //         worked for a family office and was dealing with bits and pieces of
+  //         data coming across my desk. I noticed that I would spend most of my
+  //         time and effort not on the value-generating activities relating to the
+  //         data, but on solving questions like: • What is the correct full
+  //         address of Person X? • Did we send that document to Y? • Where can I
+  //         find Z? It was obvious that the solutions to these questions (99% of
+  //         time that would be a source document, or colleague's advice) resided
+  //         within my colleague's minds or on their desktops/emails. We did have
+  //         an old and limited database that had some records of some legal
+  //         entities and natural persons - but to use that knowledge it had to be
+  //         checked and double-checked with colleagues first. Which in 50% of
+  //         situations required them requesting the info from their
+  //         counterparties. The problem was that once all the effort was made and
+  //         the relevant info was received, verified and utilized, it was simply
+  //         forgotten until the next time when same problem arrived. And when it
+  //         did, usually after a prolonged period of time, no one could easily
+  //         locate the previous result to reduce the amount of cognitive work.
+  //         Simple solution was to agree to share all such hard-earned knowledge,
+  //         but: • There was no simple way to do it. We tried Confluence - but it
+  //         required a learning curve that no one wanted. Everyone want to go on
+  //         writing emails and making phone calls. • No one wants to archive.
+  //         Archiving is a difficult mental work which is not rewarded in an
+  //         obvious, immediate way. Therefore no one does it. This creates a huge
+  //         (but familiar) tech debt in a form of knowledge search, repeating same
+  //         work that already has been done. On the upside this is how office
+  //         workers1.0 justify the time they spend in the office getting paid.
+  //         Readme.md Idea The idea behind the project is to build a tool to makes
+  //         it easy to perform • Create • Read • Update • Delete operations on
+  //         Neo4j Graph Database using JavaScript. Philosophy: Graphs are powerful
+  //         because they are visually obvious. You may draw a graph to simplify
+  //         something. It takes a purely abstract thought concept and makes it
+  //         appear as a 2D model in front of your eyes. Graphs are powerful
+  //         because they are simple. As a basic data structure a Node or (Node),
+  //         can represent any amount of data. If (Node1) and (Node2) have a way to
+  //         associate, then it could be expressed as
+  //         (Node1)-[:RELATES_TO]->(Node2). And there you have it - a full blown
+  //         Knowledge Graph! Now think of adding properties to Nodes and its
+  //         Relationships and the expressive potential is limitless.
+  //       </div>
+  //     </Text>
+  //   ),
+  // },
 ];
 
 /* add posts */
