@@ -201,6 +201,28 @@ function PB8({ children, props }) {
     </div>
   );
 }
+
+function M({ children, pb, props, tailwindClasses }) {
+  const { cx } = createStyles(() => ({}))();
+  const defaultClasses = `pb-${pb ?? 0}`;
+  return (
+    <div
+      className={cx(
+        tailwindClasses ? [defaultClasses, tailwindClasses] : defaultClasses
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
+function MB8({ children, props, tailwindClasses }) {
+  return (
+    <M pb={8} tailwindClasses={tailwindClasses} props={props}>
+      {children}
+    </M>
+  );
+}
 const emptyObject = () => ({});
 
 export {
@@ -219,5 +241,7 @@ export {
   TLDR,
   P,
   PB8,
+  M,
+  MB8,
   emptyObject,
 };

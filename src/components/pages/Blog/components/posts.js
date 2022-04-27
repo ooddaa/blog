@@ -9,9 +9,11 @@ import {
   H2,
   P,
   PB8,
+  M,
+  MB8,
   TLDR,
 } from "../../../../toolbox/index.js";
-import { Code, Text, Blockquote, Center } from "@mantine/core";
+import { Code, Text, Blockquote, Center, List } from "@mantine/core";
 import { Prism } from "@mantine/prism";
 import { Link } from "react-router-dom";
 
@@ -33,8 +35,170 @@ const stub = {
   tags: [],
   body: <Text className="leading-7"></Text>,
 };
-
+const SpongeBob = (
+  <GradientSpan from="yellow" to="orange">
+    SpongeBob
+  </GradientSpan>
+);
 const posts = [
+  {
+    id: 9,
+    routeName: "object-to-graph-mapping-tool",
+    header: "Object-To-Graph mapping tool",
+    subheader: "What made me want to create knowledge graphs",
+    dateCreated: [2022, 2, 10],
+    author: "oda",
+    timeToRead: "5min",
+    timeToThink: "10min",
+    tags: ["knowledge graphs", "Mango", "Neo4j"],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+          <Bold>
+            Property-rich Knowledge Graphs can provide criticall
+            machine-readable context for humans to build useful real-world
+            services.
+          </Bold>
+        </TLDR>
+
+        <H3>Single Source of Truth</H3>
+
+        <MB8>
+          In engineering an Enterprise Knowledge Graph (<Bold>EKG</Bold>) that
+          holds identity data the key challenge from the start was how to
+          ascertain the uniquness of data. How to make sure that the data
+          supplied to the EKG could be accessed as a Single Source of Truth (
+          <Bold>SST</Bold>) for its users?
+        </MB8>
+
+        <MB8>
+          The key architectual decision was made to design a platform which
+          would help ensure that there are no copies of the same Node. A Node
+          would constitue whatever user deemed a <Bold>mental entity </Bold> to
+          which they already attached a "uniquness" attribute in their minds.
+        </MB8>
+
+        <H3>For example</H3>
+
+        <MB8>
+          Suppose there is a CEO, {SpongeBob}, in our organization. All
+          employees have the same "unique" {SpongeBob} in mind when they talk
+          about him in the pub after work. But when it comes to representing{" "}
+          {SpongeBob} outside of employee's collective mind, say, writing an
+          email with some details/attributes of {SpongeBob}, then each employee
+          might refer to their "copy" of these attributes, located wherever (on
+          their desktops/in their emails/in folders on Sharepoint/on pages of
+          Confluence etc).
+        </MB8>
+        <MB8>
+          What's important here is that regardless of the quality and
+          consistency of this attribute data, there is not an equivalent digital
+          representation of {SpongeBob} that can easily be referred to by all
+          employees should they need to "speak" of him digitally. There is
+          seldom an SST representation of {SpongeBob} and as the result, a lot
+          of time is spent searching for the latest updated version of{" "}
+          {SpongeBob}'s attributes (long phone calls / emails to chase /
+          searching by text string and not by the meaning - {SpongeBob}-ness).
+        </MB8>
+
+        <MB8>
+          The essence, the "CEO"-ness is in fact transient -current CEO might
+          step down and another person can become a new CEO. In this case
+          everyone would make essential modifications to the notion of the
+          "current CEO". But {SpongeBob} won't go anywhere - it will persist in
+          the EKG as a new Chairsponge.
+        </MB8>
+
+        <H3>The Idea</H3>
+        <M pb={4}>
+          The idea came up when I worked for a family office and was dealing
+          with bits and pieces of data coming across my desk. I noticed that I
+          would spend most of my time and effort not on the value-generating
+          activities relating to the data, but on solving questions like:
+        </M>
+        <MB8>
+          <List>
+            <List.Item>
+              1. What is the correct full address of Person X? And at the point
+              of time T?
+            </List.Item>
+            <List.Item>
+              2. Did we send that document to Y? When? What was in it?
+            </List.Item>
+            <List.Item>3. Where can I find XYZ?</List.Item>
+          </List>
+        </MB8>
+
+        <MB8>
+          It was obvious that the solutions to these questions (99% of time that
+          would be a source document, or colleague's advice) resided within my
+          colleague's minds or on their desktops/emails. We did have an old and
+          limited database that had some records of some legal entities and
+          natural persons - but to use that knowledge it had to be checked and
+          double-checked with colleagues first.
+        </MB8>
+
+        <MB8>
+          Which in 50% of situations required them requesting the info from
+          their counterparties. The problem was that once all the effort was
+          made and the relevant info was received, verified and utilized, it was
+          simply forgotten until the next time when same problem arrived. And
+          when it did, usually after a prolonged period of time, no one could
+          easily locate the previous result to reduce the amount of cognitive
+          work.
+        </MB8>
+
+        <H3>Touch it if it's broken</H3>
+        <M pb={4}>
+          A simple solution was to agree to share all such hard-earned
+          knowledge, but:
+        </M>
+        <MB8>
+          <List>
+            <List.Item>
+              1. Everyone wants to go on writing emails and making phone calls
+              (status quo bias).
+            </List.Item>
+            <List.Item>
+              2. There was no simple way to do it. We tried Confluence - but it
+              required a learning curve that no one wanted (it at least did not
+              seem too exiting to do extra mental work for free).
+            </List.Item>
+          </List>
+        </MB8>
+        <MB8>
+          No one wants to archive. Archiving is a difficult mental work which is
+          not rewarded in an obvious, immediate way. Therefore no one does it at
+          will. This creates a huge (but familiar) tech debt in a form of
+          knowledge search, repeating same work that already has been done by
+          others.{" "}
+        </MB8>
+        <MB8>
+          On the upside this is how office workers v1.0 justify the time they
+          spend in the office getting paid.
+        </MB8>
+
+        <H3>Future solution</H3>
+        <MB8>
+          Office workers v2.0 need to recognize, embrace and be rewarded for
+          Knowledge Sharing activities. They need to be confident in knowing
+          that there is a Single Source of Truth, accessible without{" "}
+          <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_impedance_mismatch">
+            extra mental effort
+          </a>
+          . And if there is extra mental effort required (to upload knowledge),
+          then it is rewarded immediately (reputation/points/perks etc) to
+          recognize Knowledge Sharing as a critical value-generating activity of
+          the 21 century.
+        </MB8>
+        <MB8>
+          <GradientSpan from="blue" to="purple">
+            That is why I decided to solve Knowledge Management for Enterprises
+          </GradientSpan>
+        </MB8>
+      </Text>
+    ),
+  },
   {
     id: 1,
     routeName: "setting-up-yahoo-prices-api-on-heroku",
@@ -924,69 +1088,6 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
       </Text>
     ),
   },
-  // {
-  //   id: 9,
-  //   routeName: "routeName",
-  //   header: "Mango musings",
-  //   subheader: "What made me want to create knowledge graphs",
-  //   dateCreated: [2022, 1, 10],
-  //   author: "oda",
-  //   timeToRead: "5min",
-  //   timeToThink: "10min",
-  //   tags: ["knowledge graph", "Mango"],
-  //   body: (
-  //     <Text className="leading-7">
-  //       <TLDR>
-  //         Property-rich Knowledge Graphs can provide enough machine-readable
-  //         context for humans to build useful real-world services.
-  //       </TLDR>
-  //       <H3></H3>
-
-  //       <div className="div">
-  //         The key driving motive was to design a tool which would help ensure
-  //         that there are no copies of the same Node. The idea came up when I
-  //         worked for a family office and was dealing with bits and pieces of
-  //         data coming across my desk. I noticed that I would spend most of my
-  //         time and effort not on the value-generating activities relating to the
-  //         data, but on solving questions like: • What is the correct full
-  //         address of Person X? • Did we send that document to Y? • Where can I
-  //         find Z? It was obvious that the solutions to these questions (99% of
-  //         time that would be a source document, or colleague's advice) resided
-  //         within my colleague's minds or on their desktops/emails. We did have
-  //         an old and limited database that had some records of some legal
-  //         entities and natural persons - but to use that knowledge it had to be
-  //         checked and double-checked with colleagues first. Which in 50% of
-  //         situations required them requesting the info from their
-  //         counterparties. The problem was that once all the effort was made and
-  //         the relevant info was received, verified and utilized, it was simply
-  //         forgotten until the next time when same problem arrived. And when it
-  //         did, usually after a prolonged period of time, no one could easily
-  //         locate the previous result to reduce the amount of cognitive work.
-  //         Simple solution was to agree to share all such hard-earned knowledge,
-  //         but: • There was no simple way to do it. We tried Confluence - but it
-  //         required a learning curve that no one wanted. Everyone want to go on
-  //         writing emails and making phone calls. • No one wants to archive.
-  //         Archiving is a difficult mental work which is not rewarded in an
-  //         obvious, immediate way. Therefore no one does it. This creates a huge
-  //         (but familiar) tech debt in a form of knowledge search, repeating same
-  //         work that already has been done. On the upside this is how office
-  //         workers1.0 justify the time they spend in the office getting paid.
-  //         Readme.md Idea The idea behind the project is to build a tool to makes
-  //         it easy to perform • Create • Read • Update • Delete operations on
-  //         Neo4j Graph Database using JavaScript. Philosophy: Graphs are powerful
-  //         because they are visually obvious. You may draw a graph to simplify
-  //         something. It takes a purely abstract thought concept and makes it
-  //         appear as a 2D model in front of your eyes. Graphs are powerful
-  //         because they are simple. As a basic data structure a Node or (Node),
-  //         can represent any amount of data. If (Node1) and (Node2) have a way to
-  //         associate, then it could be expressed as
-  //         (Node1)-[:RELATES_TO]->(Node2). And there you have it - a full blown
-  //         Knowledge Graph! Now think of adding properties to Nodes and its
-  //         Relationships and the expressive potential is limitless.
-  //       </div>
-  //     </Text>
-  //   ),
-  // },
 ];
 
 /* add posts */
