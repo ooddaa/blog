@@ -149,7 +149,7 @@ function Blog({ posts, postId }) {
       className="blog flex flex-col lg:flex-row content-center"
       style={{ minHeight }} // keeps footer sticky
     >
-      <div className="left basis-full -mt-24 pb-48 sm:basis-3/5 bg-[#FA592D]">
+      <div className="left basis-full -mt-24 pb-48 sm:basis-3/5 bg-[#fd5e47]">
         {BlogTOC({
           posts: filteredPosts,
           handlePostNavigation,

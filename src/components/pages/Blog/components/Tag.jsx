@@ -36,7 +36,7 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
       className={cx(
         classNames ??
           "p-2 pl-3 pr-3 m-2 h-auto w-max rounded-full text-sm transition delay-50 select-none hover:cursor-pointer hover:shadow-md",
-        highlightedTags?.includes(tag) ? "bg-[#FA7D5A]" : "bg-transparent"
+        highlightedTags?.includes(tag) ? "bg-[#FABC3C]" : "bg-transparent"
       )}
       onClick={handleClick}
     >
