@@ -4,6 +4,7 @@ import {
   Super,
   GradientSpan,
   JS,
+  JSDark,
   Emoji,
   H3,
   H2,
@@ -818,6 +819,26 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
     tags: ["react", "useEffect", "useState", "x11"],
     body: (
       <Text className="leading-7">
+        <TLDR>
+        The most important thing to remember here is that <Code>useEffect</Code> hook runs its logic (produces effects) <Bold>ON EVERY RENDER</Bold>. But there are simple techniques to fine-tune this behaviour: 
+        <div className="pt-4">
+            <ul>
+              <li>
+                <Code>[]</Code>
+              </li>
+              <li>
+                <Code>[dependencies]</Code>
+              </li>
+              <li>
+                <Code>return a clean up function</Code>
+              </li>
+            </ul>
+          </div>
+        </TLDR>
+
+        <H2>
+          Active listening
+        </H2>
         <div className="pb--2rem">
           I have been helping my dear wife 👩‍💻 with her multiplication{" "}
           <Link to="https://github.com/med4kat/x11">project</Link>. She needed
@@ -841,13 +862,15 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           {/* </Text> */}
         </MB4>
         <MB4>
-          <Prism language="tsx">{`useEffect(() => {
-    initState();
-  }, []);
+          <JSDark>{`// note the empty [] passed as the second argument
+// that is what makes this set up run once after component renders
+useEffect(() => {
+  initState();
+}, []);
 
-  // or as one line
-  useEffect(initState, []); 
-`}</Prism>
+// or as a one liner
+useEffect(initState, []); 
+`}</JSDark>
           {/* <Prism>{`useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -856,33 +879,57 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
   }, [answerArr, task.product, isCorrectAnswer]);`}</Prism> */}
         </MB4>
         <MB4>
-          Important detail is the empty array passed as the second argument.
+          Important detail here is the empty array passed as the second argument.
           This sets the <Code>useEffect</Code> to fire only once per the
           Component's lifecycle. Namely - right after the Component has been
           rendered to the DOM.
         </MB4>
-        <div className="pb--3rem">
+        <MB4>
           This signature gives us the functionality of{" "}
           <Code>componentDidMount</Code> lifecycle method of the classic style
-          of <Prism language="tsx">MyComponent extends React.Component</Prism>{" "}
-        </div>
-        {/* <MB4></MB4> */}
+          of
+        </MB4>
+        <MB4>
+        <JSDark>MyComponent extends React.Component</JSDark>
+        </MB4>
 
         <MB4>
-          Today, however, I needed useEffect to help me do more than this. As I
-          needed tp grab user's key strokes I had to listen to{" "}
-          <Code>keydown</Code> events.
+          My first approach to user input was to set up an <Code>{`<input></input>`}</Code> element and then user would have to click on it and enter their answer. Then we could grab whatever user entered and deal with it accordingly.
+        </MB4>
+
+        <MB4>
+          But in this instance, K wanted user to simply use keyboards to enter numerical answers, without clicking on anything with the mouse. So <Code>{`<input></input>`}</Code> was out of the question.
+        </MB4>
+
+        <MB4>
+          Apparently, I needed to grab user's key strokes so I had to listen to <Code>keydown</Code> events.
+        </MB4>
+
+        <MB4>
+          Which brings us to the following code:
+        </MB4>
+
+        <JSDark>
+{`/* add listeners */
+useEffect(() => {
+  document.addEventListener("keydown", handleKeyDown);
+  return () => {
+    document.removeEventListener("keydown", handleKeyDown);
+  };
+}, [answerArr, task.product, isCorrectAnswer]);`}
+        </JSDark>
+
+        <MB4>
+          Let me explain what's going on here:
         </MB4>
         <MB4>
-          <ol>
-            <li>
-              I'll listen to <Code>keydown</Code> events -{" "}
-              <JS>document.addEventListener</JS>
-            </li>
-            <li></li>
-            <li></li>
+        <ol>
+            <li>Line 3. We ask the browser to fire a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event" alt='link to document keydown event for reference'>Keydown event and provide a function that will be called with that event as the only argument - in our case we call it <Code>handleKeyDown</Code></a></li>
+            <li>Lines 4 and 5. Clean up. If the component within which we are setting this functionality is ever removed from the DOM (unmounted), this is how we tell useEffect what to do to clean things up. This is the equivalent of using <Code>componentWillUnmount</Code> lifecycle method from React class component, which is called immediately <a href="https://reactjs.org/docs/react-component.html#componentwillunmount" alt="reference link to componentWillUnmount">before the component is destroyed</a>. Here we simply don't want our event listeners to clutter and will clean them up, tidy tidy tidy up.</li>
+            <li>Line 7. Performance optimization. To make useEffect efficient, we may provide a dependecy array - if nothing in this array changes, useEffect will skip and not perform its actions, adding and removing listeners in this case. <a href="https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects">Check this tip</a></li>
           </ol>
         </MB4>
+
       </Text>
     ),
   },
@@ -986,10 +1033,10 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
     reset();
   }, []);`}</JS>
           <P pb={4}>Like this:</P>
-          <JS colorScheme="dark">{`/* init state */
+          <JSDark>{`/* init state */
   useEffect(() => {
     reset();
-  }, [reset]);`}</JS>
+  }, [reset]);`}</JSDark>
           Again, as per Create-react-app's suggestion:
           <Center className="pt-4 pb-4">
             <img

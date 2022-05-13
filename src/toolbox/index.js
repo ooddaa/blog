@@ -92,7 +92,13 @@ function JS({ children, tailwindClasses, ...props }) {
   );
 }
 
-function Emoji({ children, whitespace, style, classNames, ...rest }) {
+function JSDark({ children, tailwindClasses, ...props }) {
+  return <JS colorScheme="dark" tailwindClasses={tailwindClasses} {...props}>{children}</JS>
+}
+
+
+
+function Emoji({ children, whitespace=true, style, classNames, ...rest }) {
   const { cx } = createStyles(() => ({}))();
   return (
     <div
@@ -257,6 +263,7 @@ export {
   Super,
   GradientSpan,
   JS,
+  JSDark,
   Emoji,
   H3,
   H2,
