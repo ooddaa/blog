@@ -1147,6 +1147,32 @@ useEffect(() => {
       </Text>
     ),
   },
+  {
+    id: 9,
+    routeName: "routeName",
+    header: "Philosophy of coding #1",
+    subheader: "dealing with tech debt vs piling up more tech debt",
+    dateCreated: [2022, 5, 13],
+    author: "oda",
+    timeToRead: "5min",
+    timeToThink: "whole life",
+    tags: [
+      "philosophy",
+      "tech debt",
+      "efficiency"
+    ],
+    body: <Text className="leading-7">
+      <TLDR>
+        I have been asking myself - how do I balance finishing old projects/tasks (aka dealing with tech debt) vs starting new projects/tasks?
+        What's the rule of thumb? If I have 30min - should I go and increment onto my old projects vs should I vantage into something from "Need to try before I die" list?
+
+        I do not have a clear answer to it. I guess it depends on what goal I want to achieve.
+
+        Incrementing on old "less dopamine-promising" projects actually might provide MORE positive results than I expect. Namely, I value competence very highly, therefore a simple iteration over something that I had tried/touched/done in the past seems to offer me a larger multiplication factor in terms of assessing the value that I get out of this activity. Example: I never liked doing my homework in two stages, as we where taught at school: 1. first draft, 2. then - the "clean" version for the teached. If I remember correctly (which I might not!) I tried to skip the "draft" version and go for the clean one to save myself time. What I was missing out on, though, was the repetition part of the learning. "Repetition is the mother of learning" - as the Russian saying goes. To me the demand to make any homework in two stages was about making sure that the "clean" version was readable for the teacher. Our "drafts" were never checked so no emphasis on the fact that a 'draft' is a highly valuable part of the learning process, a 'sandbox' was ever made. 
+        Also, as the result of my wanting to get things done quickly, I had missed the opportunity to get comfortable and respectful to the incrementing method of producing work. I would have a go at something, if it didn't turn out the way I was expecting (nothing does in the first go, cmon), then I'd not hesitate to destroy the product and start again from scratch. I don't think this is the best approach because: 1) It taught me to devalue the results of my work - if I'm comfortable starting all over again, it must be that my work is not worth saving. 2) Complex systems are not created in one go, first simple blocks are obtained then they are iteratively combined into increasingly complex systems. What can be mistaken for a complex system that works is a complicated system that does not work. The latter is what most probably results from a "lets write this post in one go" approach (which I won't by the way - I have a 3step process - 3 iterations). 
+      </TLDR>
+    </Text>,
+  }
 ];
 
 /* add posts */
