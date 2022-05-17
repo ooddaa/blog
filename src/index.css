@@ -496,6 +496,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -6rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .-mt-\[64px\] {
   margin-top: -64px;
 }
@@ -541,12 +545,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 10rem;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
 .h-1\/2 {
   height: 50%;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-auto {
@@ -752,6 +756,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-24 {
   padding-top: 6rem;
+}
+
+.pt-12 {
+  padding-top: 3rem;
 }
 
 .pl-3 {
