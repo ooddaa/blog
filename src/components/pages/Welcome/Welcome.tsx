@@ -19,7 +19,7 @@ function Welcome(): JSX.Element {
         </div>
       </section>
 
-      <section className="welcome--lorem font-['Inter'] h-1/3 w-full bg-orange-400/50 flex flex-col justify-center items-center text-gray-800 ">
+      <section className="welcome--lorem font-['Inter'] h-1/3 w-full bg-baby-powder flex flex-col justify-center items-center text-gray-800 ">
         <div className="welcome--lorem--container w-1/4"> 
         <div className="mb-24 text-[48px] font-semibold">
           {/* <Title order={1}>Lorem, world!</Title> */}
