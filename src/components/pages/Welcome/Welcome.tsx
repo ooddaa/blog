@@ -32,11 +32,11 @@ function Welcome(): JSX.Element {
       /* stick navbar-links to the top */
       // console.dir(navbarLinks.getBoundingClientRect())
       console.log('we need to get sticky!')
-      navbarLinks.style.setProperty('position', 'fixed')
-      navbarLinks.style.setProperty('top', '5px')
+      navbarLinks?.style?.setProperty('position', 'fixed')
+      navbarLinks?.style?.setProperty('top', '5px')
     } else {
-      navbarLinks.style.removeProperty('position')
-      navbarLinks.style.removeProperty('top')
+      navbarLinks?.style?.removeProperty('position')
+      navbarLinks?.style?.removeProperty('top')
     }
     }
     return inner

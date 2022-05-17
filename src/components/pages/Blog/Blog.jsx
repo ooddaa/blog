@@ -8,6 +8,7 @@ import { log } from "../../../toolbox/index";
 import { TagContainer } from "../../../toolbox/types.d.ts";
 import flatten from "lodash/flatten";
 import identity from "lodash/identity";
+import MantineHeader from "../../layout/MantineHeader";
 
 function Blog({ posts, postId }) {
   /* State
@@ -143,13 +144,33 @@ function Blog({ posts, postId }) {
       return clickedTags.has(x);
     }
   }
-
+  const links = [
+    {
+      link: "/",
+      label: "Main",
+    },
+    {
+      link: "/blog",
+      label: "Blog",
+    },
+    {
+      link: "https://github.com/ooddaa",
+      label: "Projects",
+    },
+    // {
+    //   link: "/playground",
+    //   label: "Playground",
+    // },
+  ];
+  
   return (
     <div
-      className="blog flex flex-col lg:flex-row content-center"
-      style={{ minHeight }} // keeps footer sticky
+    // className="blog flex flex-col lg:flex-row content-center"
+    className="blog flex flex-col lg:flex-row"
+    style={{ minHeight }} // keeps footer sticky
     >
-      <div className="left basis-full -mt-24 pb-48 sm:basis-3/5 bg-[#fd5e47]">
+      <div className="left basis-full pb-48 sm:basis-3/5 bg-[#fd5e47]">
+      <MantineHeader links={links}></MantineHeader>
         {BlogTOC({
           posts: filteredPosts,
           handlePostNavigation,
@@ -158,7 +179,7 @@ function Blog({ posts, postId }) {
         })}
       </div>
 
-      <div className="right basis-2/5 -mt-24 pb-24 bg-[#E9EAEC]">
+      <div className="right basis-2/5 pb-24 bg-[#E9EAEC]">
         <BlogTags
           tagContainers={generateTagContainers(posts)}
           highlightedTags={highlightedTags}
