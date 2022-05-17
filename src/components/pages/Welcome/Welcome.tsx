@@ -14,7 +14,6 @@ function Welcome(): JSX.Element {
 
   return (
     <div className={`welcome w-screen`} style={{ height: windowHeight }}>
-
       {/* Oda */}
       <section className="welcome--name h-1/3 w-full bg-white flex justify-center items-center">
         <div className="font-['Italiana'] font-medium text-7xl text-black-500">
@@ -29,25 +28,28 @@ function Welcome(): JSX.Element {
             hello, world!
           </div>
 
-          <div className="mb-16 text-lg font-normal flex flex-row justify-center items-center gap-4">
-            welcome to my{" "}
-            <a href="https://github.com/ooddaa">
-              <GradientSpan from="blue" to="grape">
-                portfolio
-              </GradientSpan>
-            </a>{" "}
-            <Span color="grey">|</Span>{" "}
-            <Link to="/blog">
-              <GradientSpan from="grape" to="orange">
-                blog
-              </GradientSpan>
-            </Link>{" "}
-            <Span color="grey">|</Span>{" "}
-            <Link to="/playground">
-              <GradientSpan from="orange" to="green">
-                playground
-              </GradientSpan>
-            </Link>
+          <div className="mb-16 text-lg font-normal flex flex-col justify-center items-center gap-4">
+            <div>welcome to my</div>
+
+            <div className="navbar-links">
+              <a href="https://github.com/ooddaa">
+                <GradientSpan from="blue" to="grape">
+                  portfolio
+                </GradientSpan>
+              </a>{" "}
+              <Span color="grey">|</Span>{" "}
+              <Link to="/blog">
+                <GradientSpan from="grape" to="orange">
+                  blog
+                </GradientSpan>
+              </Link>{" "}
+              <Span color="grey">|</Span>{" "}
+              <Link to="/playground">
+                <GradientSpan from="orange" to="green">
+                  playground
+                </GradientSpan>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -70,16 +72,16 @@ function Welcome(): JSX.Element {
                 ideas and projects that I would like to keep playing with.
               </div>
 
-              <div className="pb-4">
+              <div className="mb-4">
                 My <a href="https://github.com/med4kat">wife</a> is amazing and
                 we have a wonderful toddler son ☺️
               </div>
-              <div className="pb-4">
+              <div className="mb-8">
                 I also like <a href="https://www.wavebjj.co/">BJJ</a>.
               </div>
 
-              <div className="pb-4">
-                <Bold>Please to poke around and let's chat.</Bold>
+              <div className="mb-4 flex justify-center">
+                <Bold>Please poke around and let's chat.</Bold>
               </div>
             </Text>
           </div>
@@ -92,4 +94,3 @@ function Welcome(): JSX.Element {
   );
 }
 export default Welcome;
-
