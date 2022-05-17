@@ -30,32 +30,5 @@ const stuff = (
     </Routes>
   </BrowserRouter>
 )
-const stuffOld = (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="" element={<Welcome />}></Route>
-        {/* Create Routes for all posts, as we want each to have its own link -> user can open posts in tabs */}
-        <Route path="blog" element={<Blog posts={posts} />}></Route>
-        {posts.map((post, idx) => {
-          return (
-            <Route
-              key={post.id}
-              path={`blog/${post.routeName}`}
-              element={
-                <AppContent children={<Blog posts={posts} postId={idx} />} />
-              }
-            ></Route>
-          );
-        })}
-        <Route
-          path="projects"
-          element={<AppContent children={<Projects />} />}
-        ></Route>
-      </Route>
-      <Route path="playground" element={<Playground />}></Route>
-    </Routes>
-  </BrowserRouter>
-);
 
 createRoot(document.getElementById("root")).render(stuff);

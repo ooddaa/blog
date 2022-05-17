@@ -11,33 +11,23 @@ function Welcome(): JSX.Element {
    * all text - is centered in the second with background image
    */
   const [windowHeight] = useState(`${window.innerHeight * 3 + 4}px`);
-  // const [navbarLinks] = useState(document.getElementsByClassName("navbar-links")[0])
-  
 
   const handleScroll = (offsetY) => {
     const inner = (e) => {
       // window.pageYOffset // how much page has been scrolled by Y axis
-    // document.body.offsetHeight // total doc.body height == windowHeight
-    // window.innerHeight // screen height
-    const howMuchUserScrolledPrc = window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
-    // console.log(howMuchUserScrolledPrc)
-    
-    // /* record elements' initial offset from the top */
-    // const offsetY = navbarLinks.getBoundingClientRect().top
-    // console.assert(typeof offsetY === 'number', 'offsetY is expected to be a number')
-    // console.log(offsetY, window.pageYOffset)
-    /* calculate  */
-    const navbarLinks = document.getElementsByClassName("navbar-links")[0]
-    if (window.pageYOffset >= offsetY) {
-      /* stick navbar-links to the top */
-      // console.dir(navbarLinks.getBoundingClientRect())
-      console.log('we need to get sticky!')
-      navbarLinks?.style?.setProperty('position', 'fixed')
-      navbarLinks?.style?.setProperty('top', '5px')
-    } else {
-      navbarLinks?.style?.removeProperty('position')
-      navbarLinks?.style?.removeProperty('top')
-    }
+      // document.body.offsetHeight // total doc.body height == windowHeight
+      // window.innerHeight // screen height
+      const howMuchUserScrolledPrc = window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+      /* calculate  */
+      const navbarLinks: any = document.getElementsByClassName("navbar-links")[0]
+      if (window.pageYOffset >= offsetY) {
+        /* stick navbar-links to the top */
+        navbarLinks?.style?.setProperty('position', 'fixed')
+        navbarLinks?.style?.setProperty('top', '5px')
+      } else {
+        navbarLinks?.style?.removeProperty('position')
+        navbarLinks?.style?.removeProperty('top')
+      }
     }
     return inner
   }
@@ -57,10 +47,6 @@ function Welcome(): JSX.Element {
           oda
         </div>
       </section>
-
-      {/* <div className="some-dumb-wrapper">
-      <div className="sticky-div" style={{ position: 'sticky', top: 0 }}>blablablab</div>
-      </div> */}
 
       {/* hello world */}
       <section className="welcome--lorem font-['Inter'] h-1/3 w-full bg-baby-powder flex flex-col justify-center items-center text-gray-900">
