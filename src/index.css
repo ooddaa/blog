@@ -466,40 +466,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-backdrop-sepia:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .fixed {
   position: fixed;
 }
@@ -526,8 +492,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: auto;
 }
 
-.mb-20 {
-  margin-bottom: 5rem;
+.-mt-24 {
+  margin-top: -6rem;
 }
 
 .-mt-\[64px\] {
@@ -575,6 +541,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 10rem;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
 .h-auto {
   height: auto;
 }
@@ -589,6 +563,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-40 {
   width: 10rem;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .w-10 {
@@ -620,8 +602,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-basis: 100%;
 }
 
-.basis-1\/4 {
-  flex-basis: 25%;
+.basis-2\/5 {
+  flex-basis: 40%;
 }
 
 .transform {
@@ -663,6 +645,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .gap-x-4 {
   -webkit-column-gap: 1rem;
           column-gap: 1rem;
@@ -694,19 +680,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
-.bg-\[\#D55347\] {
+.bg-\[\#fd5e47\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(213 83 71 / var(--tw-bg-opacity));
+  background-color: rgb(253 94 71 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#D54E43\] {
+.bg-\[\#E9EAEC\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(213 78 67 / var(--tw-bg-opacity));
-}
-
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+  background-color: rgb(233 234 236 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -724,44 +705,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
-.bg-yellow-200 {
+.bg-\[\#FABC3C\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
-}
-
-.bg-yellow-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.bg-cyan-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(103 232 249 / var(--tw-bg-opacity));
-}
-
-.bg-teal-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(204 251 241 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#BA3C3C\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(186 60 60 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#B8FFE7\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(184 255 231 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#5ED65E\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(94 214 94 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#4646B3\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(70 70 179 / var(--tw-bg-opacity));
+  background-color: rgb(250 188 60 / var(--tw-bg-opacity));
 }
 
 .p-6 {
@@ -780,11 +726,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
-.py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -795,6 +736,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-8 {
   padding-bottom: 2rem;
+}
+
+.pb-48 {
+  padding-bottom: 12rem;
+}
+
+.pt-48 {
+  padding-top: 12rem;
+}
+
+.pb-24 {
+  padding-bottom: 6rem;
 }
 
 .pt-24 {
@@ -821,6 +774,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 4rem;
 }
 
+.font-\[\'Italiana\'\] {
+  font-family: 'Italiana';
+}
+
 .text-2xl {
   font-size: 1.5rem;
 }
@@ -833,20 +790,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 1.25rem;
 }
 
-.text-6xl {
-  font-size: 4rem;
+.text-7xl {
+  font-size: 5rem;
 }
 
-.text-sm {
-  font-size: .875rem;
+.text-6xl {
+  font-size: 4rem;
 }
 
 .text-lg {
   font-size: 1.125rem;
 }
 
+.text-sm {
+  font-size: .875rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .leading-7 {
@@ -883,6 +848,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .outline {
   outline-style: solid;
 }
@@ -908,35 +879,35 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:text-\[\#E9EAEC\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(233 234 236 / var(--tw-text-opacity));
+}
+
 .hover\:text-amber-600:hover {
   --tw-text-opacity: 1;
   color: rgb(217 119 6 / var(--tw-text-opacity));
 }
 
+.hover\:shadow-md:hover {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 @media (min-width: 640px) {
-  .sm\:mt-0 {
-    margin-top: 0px;
-  }
-
-  .sm\:mb-10 {
-    margin-bottom: 2.5rem;
-  }
-
-  .sm\:ml-10 {
-    margin-left: 2.5rem;
-  }
-
   .sm\:basis-3\/5 {
     flex-basis: 60%;
   }
-
-  .sm\:flex-row {
-    flex-direction: row;
-  }
 }
 
-@media (min-width: 768px) {
-  .md\:ml-16 {
-    margin-left: 4rem;
+@media (min-width: 1024px) {
+  .lg\:flex-row {
+    flex-direction: row;
   }
 }
