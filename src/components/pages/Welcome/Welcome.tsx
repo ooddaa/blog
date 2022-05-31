@@ -53,7 +53,7 @@ function Welcome(): JSX.Element {
         <div className="container-1-4 w-1/4">
 
           {/* hell world */}
-          <div className="mb-32 text-[64px] font-semibold flex flex-row justify-center items-center">
+          <div className="mb-32 text-[64px] font-semibold flex flex-row justify-center items-center" style={{ textAlign: "center" }}>
             hello, world!
           </div>
 
@@ -109,14 +109,11 @@ function Welcome(): JSX.Element {
                 I also like <a href="https://www.wavebjj.co/">BJJ</a>.
               </div>
 
-              <div className="mb-4 flex justify-center">
-                <Bold>Please poke around and let's chat.</Bold>
-              </div>
             </Text>
           </div>
         </div>
         <div className="welcome-footer h-1/6 flex flex-col justify-end items-center">
-          <AppFooter classes="lol"></AppFooter>
+          <AppFooter classes=""></AppFooter>
         </div>
       </section>
     </div>

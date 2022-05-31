@@ -11,6 +11,10 @@ import identity from "lodash/identity";
 import MantineHeader from "../../layout/MantineHeader";
 
 function Blog({ posts, postId }) {
+
+  /* scroll to top */
+  // const [{ x, y }, setScrollTo] = useState({ x: 0, y: 0});
+  // window.scrollTo(x,y)
   /* State
   ________________________________________________________________*/
 
@@ -20,16 +24,16 @@ function Blog({ posts, postId }) {
   const [highlightedTags, setHighlightedTags] = useState([]);
 
   /* get proper min height to render 'sticky' footer */
-  const [headerHeight] = useState(
-    document.getElementsByClassName("mantine-Header-root")[0]?.offsetHeight ??
-      64
-  );
-  const [footerHeight] = useState(
-    document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 32
-  );
-  const [minHeight, setMinHeight] = useState(
-    window.innerHeight - headerHeight - footerHeight
-  );
+  // const [headerHeight] = useState(
+  //   document.getElementsByClassName("mantine-Header-root")[0]?.offsetHeight ??
+  //     64
+  // );
+  // const [footerHeight] = useState(
+  //   document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 32
+  // );
+  // const [minHeight, setMinHeight] = useState(
+  //   window.innerHeight - headerHeight - footerHeight
+  // );
 
   const [filteredPosts, setFilteredPosts] = useState(posts ?? []);
   const [clickedTags, setClickedTags] = useState(new Set());
@@ -38,16 +42,16 @@ function Blog({ posts, postId }) {
   ________________________________________________________________*/
 
   /** keep sticky footer  */
-  useEffect(() => {
-    function resizeHandler(e) {
-      setMinHeight(e.target.innerHeight - headerHeight - footerHeight);
-    }
-    window.addEventListener("resize", resizeHandler);
+  // useEffect(() => {
+  //   function resizeHandler(e) {
+  //     setMinHeight(e.target.innerHeight - headerHeight - footerHeight);
+  //   }
+  //   window.addEventListener("resize", resizeHandler);
 
-    return () => {
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", resizeHandler);
+  //   };
+  // }, []);
 
   function handlePostNavigation(currentPostId_) {
     /* update currentPost */
@@ -167,7 +171,7 @@ function Blog({ posts, postId }) {
     <div
     // className="blog flex flex-col lg:flex-row content-center"
     className="blog flex flex-col lg:flex-row"
-    style={{ minHeight }} // keeps footer sticky
+    // style={{ minHeight }} // keeps footer sticky
     >
       <div className="left basis-full pb-48 sm:basis-3/5 bg-[#fd5e47]">
       <MantineHeader links={links}></MantineHeader>
@@ -175,7 +179,8 @@ function Blog({ posts, postId }) {
           posts: filteredPosts,
           handlePostNavigation,
           setHighlightedTags,
-          classNames: ["pt-48"],
+          // classNames: ["pt-48"],
+          classNames: ["pt-24"],
         })}
       </div>
 
