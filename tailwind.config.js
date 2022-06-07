@@ -17,7 +17,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        "baby-powder": '#FBFAF6'
+        "baby-powder": '#FBFAF6',
+        "bg-primary-grey": "#E4EAF1" 
       }
     },
   },

@@ -29,17 +29,11 @@ function Blog({ posts, postId }) {
   /* !state
   ________________________________________________________________*/
 
-  /** keep sticky footer  */
-  // useEffect(() => {
-  //   function resizeHandler(e) {
-  //     setMinHeight(e.target.innerHeight - headerHeight - footerHeight);
-  //   }
-  //   window.addEventListener("resize", resizeHandler);
-
-  //   return () => {
-  //     window.removeEventListener("resize", resizeHandler);
-  //   };
-  // }, []);
+  /* init  */
+  useEffect(() => {
+    /* scroll to top */
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   function handlePostNavigation(currentPostId_) {
     /* update currentPost */
@@ -147,32 +141,33 @@ function Blog({ posts, postId }) {
     },
     {
       link: "https://github.com/ooddaa",
-      label: "Projects",
+      label: "Github",
     },
-    // {
-    //   link: "/playground",
-    //   label: "Playground",
-    // },
+    {
+      link: "/playground",
+      label: "Playground",
+    },
   ];
   
   return (
     <div
-    // className="blog flex flex-col lg:flex-row content-center"
     className="blog flex flex-col lg:flex-row"
-    // style={{ minHeight }} // keeps footer sticky
     >
-      <div className="left basis-full pb-48 sm:basis-3/5 bg-[#fd5e47]">
+      {/* <div className="left basis-full pb-48 sm:basis-3/5 bg-[#fd5e47]"> */}
+      {/* <div className="left basis-full pb-48 sm:basis-3/5 bg-[#E9EAEC]"> */}
+      <div className="left basis-full pb-48 sm:basis-3/5 bg-baby-powder h-screen">
       <MantineHeader links={links}></MantineHeader>
         {BlogTOC({
           posts: filteredPosts,
           handlePostNavigation,
           setHighlightedTags,
-          // classNames: ["pt-48"],
           classNames: ["pt-24"],
         })}
       </div>
 
-      <div className="right basis-2/5 pb-24 bg-[#E9EAEC]">
+      {/* <div className="right basis-2/5 pb-24 bg-[#E9EAEC]"> */}
+      {/* <div className="right basis-2/5 pb-24 bg-[#E4EAF1]"> */}
+      <div className="right basis-2/5 pb-24 bg-white">
         <BlogTags
           tagContainers={generateTagContainers(posts)}
           highlightedTags={highlightedTags}

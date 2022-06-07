@@ -9,7 +9,8 @@ export default function BlogTopic({ post, onClick, setHighlightedTags }) {
         {day}
       </div>
       <div
-        className="blog__topic__body p-1 text-md hover:text-white"
+        className="blog__topic__body p-1 text-md"
+        // className="blog__topic__body p-1 text-md hover:text-white"
         // className="blog__topic__body p-1 text-md hover:text-[#E9EAEC]"
         onMouseEnter={() => {
           setHighlightedTags?.(post.tags);

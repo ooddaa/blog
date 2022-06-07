@@ -11,7 +11,6 @@ function Welcome(): JSX.Element {
    * all text - is centered in the second with background image
    */
   const [windowHeight] = useState(`${window.innerHeight * 3 + 4}px`);
-  // const [offsetY, setNavbarOffsetY] = useState<number>(JSON.parse(localStorage.getItem("offsetY")))
 
   const handleScroll = (offsetY: number) => {
     const inner = (e: Event) => {
@@ -51,12 +50,10 @@ function Welcome(): JSX.Element {
 
     /* save elements' initial offset from the top to persist in localStorage*/
     if (!localStorage.getItem("offsetY")) {
-      // localStorage.clear()
 
+      /* save initial offset */
       const offsetY = navbarLinks.getBoundingClientRect().top
-      console.log('init offsetY to', offsetY)
       localStorage.setItem("offsetY", JSON.stringify(offsetY))
-      // setNavbarOffsetY(JSON.parse(localStorage.getItem("offsetY")))
 
       /* remember window size */
       localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
@@ -66,31 +63,19 @@ function Welcome(): JSX.Element {
     /* update if user has resized window */
     const oldWindow = JSON.parse(localStorage.getItem("windowSize"))
     const currentWindow = window.innerHeight
-    // console.table({
-    //   oldWindow, currentWindow,
-    // })
+
     if (oldWindow !== currentWindow) {
       console.log("oldWindow !== currentWindow")
 
-      // console.table({
-      //   oldOffset: localStorage.getItem("offsetY"),
-      //   newOffsetY: navbarLinks.getBoundingClientRect().top + window.pageYOffset
-      // })
-      /* reset offsetY */
+      /* adjust offsetY */
       localStorage.removeItem("offsetY")
+      /* pay attention - if the window was resized whilst not being scrolled up to the top - add pageYOffset  */
       localStorage.setItem("offsetY", JSON.stringify(navbarLinks.getBoundingClientRect().top + window.pageYOffset))
-      // setNavbarOffsetY(navbarLinks.getBoundingClientRect().top + window.pageYOffset)
 
-      /* reset window */
+      /* remember window size */
       localStorage.removeItem("windowSize")
       localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
     }
-    // console.log('offsetY', offsetY)
-    
-    // console.assert(
-    //   typeof offsetY === "number",
-    //   "offsetY is expected to be a number"
-    //   );
 
     /* set up scroll observer */
     window.addEventListener("scroll", handleScroll(JSON.parse(localStorage.getItem("offsetY"))));

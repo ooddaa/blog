@@ -42,17 +42,15 @@ const useStyles = createStyles((theme) => ({
     padding: "8px 12px",
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color:
-      theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.black,
+    color: "#999",
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
+    transition: "all .3s",
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-    },
+      color: "#333",
+      textDecoration: "underline"
+    }
   },
 
   linkLabel: {
