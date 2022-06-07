@@ -23,18 +23,6 @@ function Blog({ posts, postId }) {
   const [nextPostId, setNextPostId] = useState(null);
   const [highlightedTags, setHighlightedTags] = useState([]);
 
-  /* get proper min height to render 'sticky' footer */
-  // const [headerHeight] = useState(
-  //   document.getElementsByClassName("mantine-Header-root")[0]?.offsetHeight ??
-  //     64
-  // );
-  // const [footerHeight] = useState(
-  //   document.getElementsByClassName("App-footer")[0]?.offsetHeight ?? 32
-  // );
-  // const [minHeight, setMinHeight] = useState(
-  //   window.innerHeight - headerHeight - footerHeight
-  // );
-
   const [filteredPosts, setFilteredPosts] = useState(posts ?? []);
   const [clickedTags, setClickedTags] = useState(new Set());
 

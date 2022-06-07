@@ -13,7 +13,7 @@ const links = [
   },
   {
     link: "https://github.com/ooddaa",
-    label: "Projects",
+    label: "Github",
   },
   // {
   //   link: "/playground",

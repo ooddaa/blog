@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import AppFooter from "../../layout/Footer";
 import { Text } from "@mantine/core";
 import { GradientSpan, Span, Bold } from "../../../toolbox";
@@ -11,34 +11,91 @@ function Welcome(): JSX.Element {
    * all text - is centered in the second with background image
    */
   const [windowHeight] = useState(`${window.innerHeight * 3 + 4}px`);
+  // const [offsetY, setNavbarOffsetY] = useState<number>(JSON.parse(localStorage.getItem("offsetY")))
 
-  const handleScroll = (offsetY) => {
-    const inner = (e) => {
-      // window.pageYOffset // how much page has been scrolled by Y axis
-      // document.body.offsetHeight // total doc.body height == windowHeight
-      // window.innerHeight // screen height
-      const howMuchUserScrolledPrc = window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+  const handleScroll = (offsetY: number) => {
+    const inner = (e: Event) => {
+      /* window.pageYOffset // how much page has been scrolled by Y axis */
+      /* window.innerHeight // screen height == document.body.offsetHeight */
+
       /* calculate  */
-      const navbarLinks: any = document.getElementsByClassName("navbar-links")[0]
+      const navbarLinks: any =
+        document.getElementsByClassName("navbar-links")[0];
+
+        // console.table({
+        //   pageYOffset: window.pageYOffset,
+        //   innerHeight: window.innerHeight,
+        //   scrolled: window.pageYOffset / window.innerHeight,
+        //   storedOffsetY: offsetY,
+        //   realOffsetY: navbarLinks.getBoundingClientRect().top
+        // })
+
       if (window.pageYOffset >= offsetY) {
         /* stick navbar-links to the top */
-        navbarLinks?.style?.setProperty('position', 'fixed')
-        navbarLinks?.style?.setProperty('top', '5px')
+        navbarLinks?.style?.setProperty("position", "fixed");
+        navbarLinks?.style?.setProperty("top", "5px");
       } else {
-        navbarLinks?.style?.removeProperty('position')
-        navbarLinks?.style?.removeProperty('top')
+        navbarLinks?.style?.removeProperty("position");
+        navbarLinks?.style?.removeProperty("top");
       }
-    }
-    return inner
-  }
-  /* set up scroll observer */
+    };
+    return inner;
+  };
+
+  /* init */
   useEffect(() => {
-    const navbarLinks = document.getElementsByClassName("navbar-links")[0]
-    /* record elements' initial offset from the top */
-    const offsetY = navbarLinks.getBoundingClientRect().top
-    console.assert(typeof offsetY === 'number', 'offsetY is expected to be a number')
-    window.addEventListener('scroll', handleScroll(offsetY))
-  }, [])
+    /* scroll to top */
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const navbarLinks = document.getElementsByClassName("navbar-links")[0];
+
+    /* save elements' initial offset from the top to persist in localStorage*/
+    if (!localStorage.getItem("offsetY")) {
+      // localStorage.clear()
+
+      const offsetY = navbarLinks.getBoundingClientRect().top
+      console.log('init offsetY to', offsetY)
+      localStorage.setItem("offsetY", JSON.stringify(offsetY))
+      // setNavbarOffsetY(JSON.parse(localStorage.getItem("offsetY")))
+
+      /* remember window size */
+      localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
+    }
+
+
+    /* update if user has resized window */
+    const oldWindow = JSON.parse(localStorage.getItem("windowSize"))
+    const currentWindow = window.innerHeight
+    // console.table({
+    //   oldWindow, currentWindow,
+    // })
+    if (oldWindow !== currentWindow) {
+      console.log("oldWindow !== currentWindow")
+
+      // console.table({
+      //   oldOffset: localStorage.getItem("offsetY"),
+      //   newOffsetY: navbarLinks.getBoundingClientRect().top + window.pageYOffset
+      // })
+      /* reset offsetY */
+      localStorage.removeItem("offsetY")
+      localStorage.setItem("offsetY", JSON.stringify(navbarLinks.getBoundingClientRect().top + window.pageYOffset))
+      // setNavbarOffsetY(navbarLinks.getBoundingClientRect().top + window.pageYOffset)
+
+      /* reset window */
+      localStorage.removeItem("windowSize")
+      localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
+    }
+    // console.log('offsetY', offsetY)
+    
+    // console.assert(
+    //   typeof offsetY === "number",
+    //   "offsetY is expected to be a number"
+    //   );
+
+    /* set up scroll observer */
+    window.addEventListener("scroll", handleScroll(JSON.parse(localStorage.getItem("offsetY"))));
+  }, []);
+
   return (
     <div className={`welcome w-screen`} style={{ height: windowHeight }}>
       {/* Oda */}
@@ -51,22 +108,18 @@ function Welcome(): JSX.Element {
       {/* hello world */}
       <section className="welcome--lorem font-['Inter'] h-1/3 w-full bg-baby-powder flex flex-col justify-center items-center text-gray-900">
         <div className="container-1-4 w-1/4">
-
           {/* hell world */}
-          <div className="mb-32 text-[64px] font-semibold flex flex-row justify-center items-center" style={{ textAlign: "center" }}>
-            hello, world!
+          <div
+            className="mb-32 text-[64px] font-semibold flex flex-row justify-center items-center"
+            style={{ textAlign: "center" }}
+          >
+            {'Hello, World!'}
           </div>
 
           <div className="mb-16 text-lg font-normal flex flex-col justify-center items-center gap-4 relative">
             <div>welcome to my</div>
 
             <div className="navbar-links">
-              <a href="https://github.com/ooddaa">
-                <GradientSpan from="blue" to="grape">
-                  portfolio
-                </GradientSpan>
-              </a>{" "}
-              <Span color="grey">|</Span>{" "}
               <Link to="/blog">
                 <GradientSpan from="grape" to="orange">
                   blog
@@ -77,7 +130,13 @@ function Welcome(): JSX.Element {
                 <GradientSpan from="orange" to="green">
                   playground
                 </GradientSpan>
-              </Link>
+              </Link>{" "}
+              <Span color="grey">|</Span>{" "}
+              <a href="https://github.com/ooddaa">
+                <GradientSpan from="blue" to="grape">
+                  github
+                </GradientSpan>
+              </a>
             </div>
           </div>
         </div>
@@ -108,7 +167,6 @@ function Welcome(): JSX.Element {
               <div className="mb-8">
                 I also like <a href="https://www.wavebjj.co/">BJJ</a>.
               </div>
-
             </Text>
           </div>
         </div>

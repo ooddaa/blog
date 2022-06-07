@@ -795,12 +795,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 12rem;
 }
 
-.pb-24 {
-  padding-bottom: 6rem;
-}
-
 .pt-24 {
   padding-top: 6rem;
+}
+
+.pb-24 {
+  padding-bottom: 6rem;
 }
 
 .pl-3 {
