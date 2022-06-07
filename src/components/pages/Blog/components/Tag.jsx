@@ -16,7 +16,7 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
       // e.target.style.backgroundColor = "#fbc350";
       // e.target.style.backgroundColor = "#FABC3C";
       // e.target.style.backgroundColor = "#FABCCC";
-      e.target.style.backgroundColor = "#D0D6B3";
+      e.target.style.backgroundColor = "#D0D6B3"; // pale-spring-bud
       /* shadow-md */
       e.target.style.boxShadow =
         "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)";
@@ -42,7 +42,7 @@ export default function Tag({ tag, classNames, highlightedTags, sendTagUp }) {
         highlightedTags?.includes(tag) ? 
         // "bg-[#FABC3C]" : 
         // "bg-[#D0D6B3]" : 
-        "bg-[#FABCCC]" : 
+        "bg-orchid-pink" : 
         "bg-transparent"
       )}
       onClick={handleClick}
