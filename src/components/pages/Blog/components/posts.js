@@ -4,6 +4,7 @@ import {
   Super,
   GradientSpan,
   JS,
+  JSDark,
   Emoji,
   H3,
   H2,
@@ -11,6 +12,7 @@ import {
   PB8,
   M,
   MB8,
+  MB4,
   TLDR,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote, Center, List } from "@mantine/core";
@@ -110,12 +112,12 @@ const posts = [
         </MB8>
 
         <H3>The Idea</H3>
-        <M pb={4}>
+        <MB4>
           The idea came up when I worked for a family office and was dealing
           with bits and pieces of data coming across my desk. I noticed that I
           would spend most of my time and effort not on the value-generating
           activities relating to the data, but on solving questions like:
-        </M>
+        </MB4>
         <MB8>
           <List>
             <List.Item>
@@ -149,10 +151,10 @@ const posts = [
         </MB8>
 
         <H3>Touch it if it's broken</H3>
-        <M pb={4}>
+        <MB4>
           A simple solution was to agree to share all such hard-earned
           knowledge, but:
-        </M>
+        </MB4>
         <MB8>
           <List>
             <List.Item>
@@ -211,6 +213,7 @@ const posts = [
     tags: [
       "python",
       "api",
+      "REST",
       "postman",
       "heroku",
       "documentation",
@@ -220,40 +223,47 @@ const posts = [
     ],
     body: (
       <Text className="leading-7">
-        <p>
-          Ok, so my dear wife, K, needed US stocks prices to be added to her
-          option trading log, which she runs on Google Sheets.
-        </p>
-        <p>
+        <TLDR>
+          Setting up a REST API on Heroku to retreive Yahoo! Finance stock prices as close as possible to daily option trades is easier if you write some documentation.
+          Well, any software maintenance is easier with documentation. DOCUMENTATION!
+        </TLDR>
+
+        <H2>
+          What do you do when your wife trades US stock options?
+        </H2>
+        <MB8>
+          You try to stay out of it as much as possble <Emoji whitespace={false} >😂</Emoji> . But how can I say no when my dear wife, K, asks me to help her add US stocks prices to her
+          option trading log, which she runs on Google Sheets?
+        </MB8>
+
+        <H3>So</H3>
+        <MB8>
           K, after a hard trading day, copy-pastes her option combos, strangles
           and whatnot data to Sheets from Interactive Brokers' TWS.
           Unfortunately, IB's option trade reports do not come with a precise
           price of the underlying at the moment of option trade's execution.
-        </p>
-        <div className="pb--1rem">Let's say she has this record:</div>
-        <div className="pb--1rem">
-          <Code block>
-            AMD ??? 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL
-            0.57 3.59
-          </Code>
-        </div>
-        <p>
+        </MB8>
+        <MB4>Let's say she has this record:</MB4>
+        <MB4>
+            <JS noCopy colorScheme="dark">{`AMD [STOCK PRICE ???] 19/11/2020 11:43:35 BTO LONG CALL +3 AMD NOV27'20 93 CALL 0.57 3.59`}</JS>
+        </MB4>
+        <MB8>
           It would be handy to know how much AMD traded for at 11:43:35 on
-          November 19, 2020, right? Ok, maybe we aren't that fastidious, and can
-          round time to 11:43.
-        </p>
-        <p>
+          November 19, 2020, right? Ok, maybe we aren't that fastidious and can
+          round time down to 11:43.
+        </MB8>
+        <MB8>
           If so, then the easiest way to get stock prices is to use YahooPrices
           API. ...of which no documentation in human-readable format exists...
-        </p>
-        <p>
-          Ran Aroussi published a nice Python module - yfinance. Many thanks,
-          Ran! We are going to use this module to set up our simple Yahoo Prices
-          API on Heroku.
-        </p>
-        <div className="pb--1rem">
+        </MB8>
+        <MB8>
+          Ran Aroussi published a nice Python package - <a href="https://pypi.org/project/yfinance/" alt="link to yfinance package">yfinance</a>. Many thanks,
+          Ran! We are going to use this package to set up our simple Yahoo! Prices
+          REST API on Heroku.
+        </MB8>
+        <MB4>
           <strong>My initial logic was to:</strong>
-        </div>
+        </MB4>
         <div className="pb--3rem">
           <ol>
             <li>launch a Python Yahoo Prices API on Heroku,</li>
@@ -264,15 +274,15 @@ const posts = [
           </ol>
         </div>
 
-        <div className="pb--1rem">
+        <MB4>
           The API is now accessible on{" "}
           <a href="https://yahooprices.herokuapp.com">Heroku</a>. To use it -
           simply POST with an application/json body set as follows:
-        </div>
+        </MB4>
         <div className="pb--2rem">
           <Code block>{`{ "data": Ticker[] }`}</Code>
         </div>
-        <div className="pb--1rem">Where each Ticker is:</div>
+        <MB4>Where each Ticker is:</MB4>
         <div className="pb--2rem">
           <Code block language="python">{`[
     ticker: str, 
@@ -292,12 +302,12 @@ const posts = [
     ]
 ]`}</Code>
         </div>
-        <div className="pb--1rem">
+        <MB4>
           If it all goes right, Yahoo Prices API will add a
-        </div>
-        <div className="pb--1rem">
+        </MB4>
+        <MB4>
           <Code block>price: float</Code>
-        </div>
+        </MB4>
         <div className="pb--2rem">to each Ticker.</div>
 
         <div className="three-days-later pb--2rem">
@@ -311,12 +321,12 @@ const posts = [
           As I am writing this, a month has passed since I launched the stuff
           above, and I hardly can remember how things were arranged!
         </p>
-        <div className="pb--1rem">
+        <MB4>
           I am sending a POST request with Postman to{" "}
           <a href="https://yahooprices.herokuapp.com">Heroku</a> with a proper
           JSON:
-        </div>
-        <div className="pb--1rem">
+        </MB4>
+        <MB4>
           <Code block>
             {`{ 
     "data": [
@@ -324,7 +334,7 @@ const posts = [
     ]
 }`}
           </Code>
-        </div>
+        </MB4>
         <div className="pb--2rem">
           But get a{" "}
           <a href="https://www.lifewire.com/500-internal-server-error-explained-2622938">
@@ -333,14 +343,14 @@ const posts = [
           response, which is 😬
         </div>
 
-        <div className="pb--1rem">Let's investigate, shall we 🕵🏻‍♂️</div>
+        <MB4>Let's investigate, shall we 🕵🏻‍♂️</MB4>
         <div className="pb--2rem">
           <Code block>$ heroku logs -app=yahooprices --tail</Code>
         </div>
 
-        <div className="pb--1rem">
+        <MB4>
           Lo and behold, we've got ourselves a bug!
-        </div>
+        </MB4>
         <div className="yahoo-prices-bug pb--2rem">
           <img
             className="rounded-lg"
@@ -348,44 +358,44 @@ const posts = [
             alt="Screenshot of Heroku logs"
           />
         </div>
-        <div className="pb--1rem">🤔 ???</div>
-        <div className="pb--1rem">
+        <MB4>🤔 ???</MB4>
+        <MB4>
           Ah yes, it all comes back to me now - the last feature that I added
           was to allow for all prices from the query to be returned as part of
           the response. Then users could sort themselves out should the main
           timestamp not be available. I did it by adding a new route:
-        </div>
+        </MB4>
         <div className="pb--2rem">
           <Code block>
             <strong>POST</strong> https://yahooprices.herokuapp.com/allPrices
           </Code>
         </div>
 
-        <div className="pb--1rem">
+        <MB4>
           But in so doing, I forgot to set a default value to the new argument
-        </div>
-        <div className="pb--1rem">
+        </MB4>
+        <MB4>
           <Code block>attach_prices=False</Code>
-        </div>
-        <div className="pb--1rem">
+        </MB4>
+        <MB4>
           of the underlying function that handles data requests for both routes.
           I should have done like this:
-        </div>
-        <div className="pb--1rem">
+        </MB4>
+        <MB4>
           <Code block>
             {`# yahoo.py 
 def get_prices(tickers, attach_prices=False): ...`}
           </Code>
-        </div>
+        </MB4>
 
-        <div className="pb--1rem">Now, when users call the old route:</div>
-        <div className="pb--1rem">
+        <MB4>Now, when users call the old route:</MB4>
+        <MB4>
           <Code block>
             <strong>POST</strong> https://yahooprices.herokuapp.com/
           </Code>
-        </div>
+        </MB4>
 
-        <div className="pb--1rem">they get</div>
+        <MB4>they get</MB4>
 
         <div className="pb--3rem">
           <Code block>
@@ -468,21 +478,21 @@ def get_prices(tickers, attach_prices=False): ...`}
           that it logically belongs to another branch.
         </PB8>
 
-        <div className="pb--1rem">
+        <MB4>
           If there is <span className="text-lg font-bold">NO</span> other
           branch, I simply
-        </div>
+        </MB4>
 
         <JS colorScheme="dark" noCopy classNames="pb-8">
           {`$ git checkout -b newBranch
 $ git commit -am "stuff that should be on newBranch"`}
         </JS>
 
-        <div className="pb--1rem">
+        <MB4>
           If there <span className="text-lg font-bold">IS</span> the other
           branch that logically owns the changes, no biggie,{" "}
           <Code>git stash</Code> to the rescue!
-        </div>
+        </MB4>
 
         <JS colorScheme="dark" noCopy classNames="pb-8">
           {`$ git stash       // all changes on current branch are 
@@ -529,7 +539,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           <Blockquote className="pb--3rem" cite="- Aristotel">
             Do I want to be a better developer/coder/programmer/professional?
           </Blockquote>
-          <div className="pb--1rem">
+          <MB4>
             If the answer is{" "}
             <Span
               variant="gradient"
@@ -548,7 +558,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
               NO{" "}
             </Span>
             - stick with a private repo.
-          </div>
+          </MB4>
         </div>
 
         <H3>Public vs Private</H3>
@@ -566,7 +576,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
         <div className="pb-12">
           <ol>
             <li className="pb-12">
-              <div className="pb--1rem">
+              <MB4>
                 <Span
                   size="lg"
                   variant="gradient"
@@ -575,7 +585,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
                 >
                   To push is better than to hoard.{" "}
                 </Span>
-              </div>
+              </MB4>
               Pushing to main branch forces me to focus on solving an issue
               within the restricted timespan (I like those green commits, I do).
               But at the same time I realise I don't want to push garbage, so a
@@ -585,7 +595,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
             </li>
 
             <li className="pb-12">
-              <div className="pb--1rem">
+              <MB4>
                 <Span
                   size="lg"
                   variant="gradient"
@@ -594,8 +604,8 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
                 >
                   To write documentation is better than to write code.{" "}
                 </Span>
-              </div>
-              <div className="pb--1rem">
+              </MB4>
+              <MB4>
                 I want my work to be something that I am proud of. The only sure
                 way to get there for me is to incrementally improve on my work.
                 Since "incrementally" means "step by step over time" - I ran
@@ -604,7 +614,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
                   <Bold>WHAT_THE_HELL_IS_THIS_DOING_HERE ??</Bold>
                 </Blockquote>
                 <strong></strong> problem.
-              </div>
+              </MB4>
               It usually takes me a lot of time to remember what I was trying to
               achieve with this code, whether this code is even important or it
               can be ignored. Hence I make myself spend time on adding code
@@ -616,7 +626,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
             </li>
 
             <li className="pb-12">
-              <div className="pb--1rem">
+              <MB4>
                 <Span
                   size="lg"
                   variant="gradient"
@@ -625,15 +635,15 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
                 >
                   To compete is better that to delude yourself.{" "}
                 </Span>
-              </div>
-              <div className="pb--1rem">
+              </MB4>
+              <MB4>
                 This is the biggest one for me. I think open source allows ideas
                 to compete. Even if they compete only within my own head,
                 because, let's get real for a sec, no one is going to go through
                 my repos with any level of attention. If they do, I'd be chaffed
                 to bits to listen to their comments (after a couple of deep
                 breaths that is).
-              </div>
+              </MB4>
               Hoarding code in my drawer kills any opportunity for it to be
               grown into something usable by actual humans. Pushing it out there
               in the public gives it at least a chance (however small). There is
@@ -723,9 +733,9 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           </a>{" "}
           which introduced me to <a href="https://mantine.dev">Mantine!</a>
         </p>
-        <div className="pb--1rem">
+        <MB4>
           So now instead of writing a bunch of ugly spans and styles like this:
-        </div>
+        </MB4>
         <div className="pb--2rem">
           <pre>
             <code>
@@ -774,11 +784,11 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           </pre>
         </div>
 
-        <div className="pb--1rem">
+        <MB4>
           ... I can just use a <Code>{"<Prism />"}</Code> component from{" "}
           <a href="https://mantine.dev/others/prism/">Mantine Prism</a> to
           highlight my code snippets. Voilà:
-        </div>
+        </MB4>
         <div className="pb--3rem">
           <Prism language="tsx">{codeSnippet}</Prism>
         </div>
@@ -809,6 +819,26 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
     tags: ["react", "useEffect", "useState", "x11"],
     body: (
       <Text className="leading-7">
+        <TLDR>
+        The most important thing to remember here is that <Code>useEffect</Code> hook runs its logic (produces effects) <Bold>ON EVERY RENDER</Bold>. But there are simple techniques to fine-tune this behaviour: 
+        <div className="pt-4">
+            <ul>
+              <li>
+                <Code>[]</Code>
+              </li>
+              <li>
+                <Code>[dependencies]</Code>
+              </li>
+              <li>
+                <Code>return a clean up function</Code>
+              </li>
+            </ul>
+          </div>
+        </TLDR>
+
+        <H2>
+          Active listening
+        </H2>
         <div className="pb--2rem">
           I have been helping my dear wife 👩‍💻 with her multiplication{" "}
           <Link to="https://github.com/med4kat/x11">project</Link>. She needed
@@ -825,52 +855,81 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
           </Text>
         </div>
 
-        <div className="pb--1rem">
+        <MB4>
           {/* <Text> */}
           Last time I used the <Code>useEffect</Code> hook, it was to initialize
           my Component's state. It looked quite straightforward:
           {/* </Text> */}
-        </div>
-        <div className="pb--1rem">
-          <Prism language="tsx">{`useEffect(() => {
-    initState();
-  }, []);
-`}</Prism>
+        </MB4>
+        <MB4>
+          <JSDark>{`// note the empty [] passed as the second argument
+// that is what makes this set up run once after component renders
+useEffect(() => {
+  initState();
+}, []);
+
+// or as a one liner
+useEffect(initState, []); 
+`}</JSDark>
           {/* <Prism>{`useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [answerArr, task.product, isCorrectAnswer]);`}</Prism> */}
-        </div>
-        <div className="pb--1rem">
-          Important detail is the empty array passed as the second argument.
+        </MB4>
+        <MB4>
+          Important detail here is the empty array passed as the second argument.
           This sets the <Code>useEffect</Code> to fire only once per the
           Component's lifecycle. Namely - right after the Component has been
           rendered to the DOM.
-        </div>
-        <div className="pb--3rem">
+        </MB4>
+        <MB4>
           This signature gives us the functionality of{" "}
           <Code>componentDidMount</Code> lifecycle method of the classic style
-          of <Prism language="tsx">MyComponent extends React.Component</Prism>{" "}
-        </div>
-        {/* <div className="pb--1rem"></div> */}
+          of
+        </MB4>
+        <MB4>
+        <JSDark>MyComponent extends React.Component</JSDark>
+        </MB4>
 
-        <div className="pb--1rem">
-          Today, however, I needed useEffect to help me do more than this. As I
-          needed tp grab user's key strokes I had to listen to{" "}
-          <Code>keydown</Code> events.
-        </div>
-        <div className="pb--1rem">
-          <ol>
-            <li>
-              I'll listen to <Code>keydown</Code> events -{" "}
-              <JS>document.addEventListener</JS>
-            </li>
-            <li></li>
-            <li></li>
+        <MB4>
+          My first approach to user input was to set up an <Code>{`<input></input>`}</Code> element and then user would have to click on it and enter their answer. Then we could grab whatever user entered and deal with it accordingly.
+        </MB4>
+
+        <MB4>
+          But in this instance, K wanted user to simply use keyboards to enter numerical answers, without clicking on anything with the mouse. So <Code>{`<input></input>`}</Code> was out of the question.
+        </MB4>
+
+        <MB4>
+          Apparently, I needed to grab user's key strokes so I had to listen to <Code>keydown</Code> events.
+        </MB4>
+
+        <MB4>
+          Which brings us to the following code:
+        </MB4>
+
+        <JSDark>
+{`/* add listeners */
+useEffect(() => {
+  document.addEventListener("keydown", handleKeyDown);
+  return () => {
+    document.removeEventListener("keydown", handleKeyDown);
+  };
+}, [answerArr, task.product, isCorrectAnswer]);`}
+        </JSDark>
+
+        <MB4>
+          Let me explain what's going on here:
+        </MB4>
+        <MB4>
+        <ol>
+            <li>Line 3. We ask the browser to fire a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event" alt='link to document keydown event for reference'>Keydown event and provide a function that will be called with that event as the only argument - in our case we call it <Code>handleKeyDown</Code></a></li>
+            <li>Lines 4 and 5. Clean up. If the component within which we are setting this functionality is ever removed from the DOM (unmounted), this is how we tell useEffect what to do to clean things up. This is the equivalent of using <Code>componentWillUnmount</Code> lifecycle method from React class component, which is called immediately <a href="https://reactjs.org/docs/react-component.html#componentwillunmount" alt="reference link to componentWillUnmount">before the component is destroyed</a>. Here we simply don't want our event listeners to clutter and will clean them up, tidy tidy tidy up.</li>
+            <li>Line 7. Performance optimization. To make useEffect efficient, we may provide a dependecy array - if nothing in this array changes, useEffect will skip and not perform its actions, adding and removing listeners in this case. <a href="https://reactjs.org/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects">Check this tip</a></li>
           </ol>
-        </div>
+        </MB4>
+
       </Text>
     ),
   },
@@ -974,10 +1033,10 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
     reset();
   }, []);`}</JS>
           <P pb={4}>Like this:</P>
-          <JS colorScheme="dark">{`/* init state */
+          <JSDark>{`/* init state */
   useEffect(() => {
     reset();
-  }, [reset]);`}</JS>
+  }, [reset]);`}</JSDark>
           Again, as per Create-react-app's suggestion:
           <Center className="pt-4 pb-4">
             <img
@@ -1088,6 +1147,32 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
       </Text>
     ),
   },
+  {
+    id: 9,
+    routeName: "routeName",
+    header: "Philosophy of coding #1",
+    subheader: "dealing with tech debt vs piling up more tech debt",
+    dateCreated: [2022, 5, 13],
+    author: "oda",
+    timeToRead: "5min",
+    timeToThink: "whole life",
+    tags: [
+      "philosophy",
+      "tech debt",
+      "efficiency"
+    ],
+    body: <Text className="leading-7">
+      <TLDR>
+        I have been asking myself - how do I balance finishing old projects/tasks (aka dealing with tech debt) vs starting new projects/tasks?
+        What's the rule of thumb? If I have 30min - should I go and increment onto my old projects vs should I vantage into something from "Need to try before I die" list?
+
+        I do not have a clear answer to it. I guess it depends on what goal I want to achieve.
+
+        Incrementing on old "less dopamine-promising" projects actually might provide MORE positive results than I expect. Namely, I value competence very highly, therefore a simple iteration over something that I had tried/touched/done in the past seems to offer me a larger multiplication factor in terms of assessing the value that I get out of this activity. Example: I never liked doing my homework in two stages, as we where taught at school: 1. first draft, 2. then - the "clean" version for the teached. If I remember correctly (which I might not!) I tried to skip the "draft" version and go for the clean one to save myself time. What I was missing out on, though, was the repetition part of the learning. "Repetition is the mother of learning" - as the Russian saying goes. To me the demand to make any homework in two stages was about making sure that the "clean" version was readable for the teacher. Our "drafts" were never checked so no emphasis on the fact that a 'draft' is a highly valuable part of the learning process, a 'sandbox' was ever made. 
+        Also, as the result of my wanting to get things done quickly, I had missed the opportunity to get comfortable and respectful to the incrementing method of producing work. I would have a go at something, if it didn't turn out the way I was expecting (nothing does in the first go, cmon), then I'd not hesitate to destroy the product and start again from scratch. I don't think this is the best approach because: 1) It taught me to devalue the results of my work - if I'm comfortable starting all over again, it must be that my work is not worth saving. 2) Complex systems are not created in one go, first simple blocks are obtained then they are iteratively combined into increasingly complex systems. What can be mistaken for a complex system that works is a complicated system that does not work. The latter is what most probably results from a "lets write this post in one go" approach (which I won't by the way - I have a 3step process - 3 iterations). 
+      </TLDR>
+    </Text>,
+  }
 ];
 
 /* add posts */
