@@ -187,6 +187,13 @@ function TLDR({ children, ...props }) {
     </div>
   );
 }
+
+interface ParagraphProps {
+  children: any;
+  tailwindClasses?: string[];
+  props?: Object;
+}
+
 function P({ children, pb, tailwindClasses, ...props }) {
   const { cx } = createStyles(() => ({}))();
   const defaultClasses = `pb-${pb ?? 0}`;
@@ -212,7 +219,7 @@ function PB8({ children, tailwindClasses, ...props }) {
   );
 }
 
-function PB4({ children, tailwindClasses, ...props }) {
+function PB4({ children, tailwindClasses, ...props }: ParagraphProps) {
   return (
     <P
     pb={4}

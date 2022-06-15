@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppFooter from "../../layout/Footer";
-import { Text } from "@mantine/core";
-import { GradientSpan, Span, Bold } from "../../../toolbox";
+import { Text, Highlight } from "@mantine/core";
+import { GradientSpan, Span, Bold, PB4 } from "../../../toolbox";
 import { Link } from "react-router-dom";
 
 function Welcome(): JSX.Element {
@@ -130,8 +130,8 @@ function Welcome(): JSX.Element {
       {/* image with paralax */}
       <section className="welcome--img h-1/3 w-full">
         <div className="welcome-last-text h-5/6 w-full flex flex-col justify-start items-center">
-          <div className="mt-48 container-1-4 w-1/4 ">
-            <Text>
+          <div className="mt-48 ml-48 mr-48 pl-36 pr-36">
+            <Text size='lg'>
               <div className="pb-4">
                 Over the past decade, working as a{" "}
                 <GradientSpan from="green" to="cyan">
@@ -143,7 +143,13 @@ function Welcome(): JSX.Element {
                 </GradientSpan>{" "}
                 I have accumulated a bunch of googlesheets, notes, business
                 ideas and projects that I would like to keep playing with.
+                
+                To ogranize those a bit better and motivate myself to develop <Highlight highlight={"more, I created this blog."}>more, I created this blog.</Highlight>
               </div>
+
+              <PB4>
+                  <Bold>Fun fact:</Bold> the highlighted phrase above was actually synthesized by <a href="https://copilot.github.com/">GitHubCopilot</a>. <i>I'm not sure if it's a good idea to use a third-party service to synthesize text, but I'm sure it's a good idea to use a third-party service to synthesize text.</i> {'<-'} as was this one as well...
+              </PB4>
 
               <div className="mb-4">
                 My <a href="https://github.com/med4kat">wife</a> is amazing and
