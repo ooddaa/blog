@@ -26,7 +26,9 @@ export default function Portfolio() {
       <div
         className="portfolio-toc"
         css={{
-          margin: "36px",
+          padding: "36px",
+          borderRight: `1px solid ${ReferenceFormStyles.colors["border-primary"]}`,
+          boxShadow: `0 0 10px ${ReferenceFormStyles.colors["border-primary"]}`,
         }}
       >
         <TableOfContents links={links} active={""}></TableOfContents>
