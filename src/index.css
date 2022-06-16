@@ -508,6 +508,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 12rem;
 }
 
+.ml-48 {
+  margin-left: 12rem;
+}
+
+.mr-48 {
+  margin-right: 12rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -812,6 +820,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-24 {
   padding-bottom: 6rem;
+}
+
+.pl-36 {
+  padding-left: 9rem;
+}
+
+.pr-36 {
+  padding-right: 9rem;
 }
 
 .pb-8 {

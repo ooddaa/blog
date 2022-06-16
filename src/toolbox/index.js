@@ -190,7 +190,7 @@ function TLDR({ children, ...props }) {
 
 interface ParagraphProps {
   children: any;
-  tailwindClasses?: string[];
+  tailwindClasses?: string;
   props?: Object;
 }
 

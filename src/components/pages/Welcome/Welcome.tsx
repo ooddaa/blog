@@ -3,6 +3,7 @@ import AppFooter from "../../layout/Footer";
 import { Text, Highlight } from "@mantine/core";
 import { GradientSpan, Span, Bold, PB4 } from "../../../toolbox";
 import { Link } from "react-router-dom";
+import "./welcome.css";
 
 function Welcome(): JSX.Element {
   /**
@@ -21,13 +22,13 @@ function Welcome(): JSX.Element {
       const navbarLinks: any =
         document.getElementsByClassName("navbar-links")[0];
 
-        // console.table({
-        //   pageYOffset: window.pageYOffset,
-        //   innerHeight: window.innerHeight,
-        //   scrolled: window.pageYOffset / window.innerHeight,
-        //   storedOffsetY: offsetY,
-        //   realOffsetY: navbarLinks.getBoundingClientRect().top
-        // })
+      // console.table({
+      //   pageYOffset: window.pageYOffset,
+      //   innerHeight: window.innerHeight,
+      //   scrolled: window.pageYOffset / window.innerHeight,
+      //   storedOffsetY: offsetY,
+      //   realOffsetY: navbarLinks.getBoundingClientRect().top
+      // })
 
       if (window.pageYOffset >= offsetY) {
         /* stick navbar-links to the top */
@@ -44,41 +45,47 @@ function Welcome(): JSX.Element {
   /* init */
   useEffect(() => {
     /* scroll to top */
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
 
     const navbarLinks = document.getElementsByClassName("navbar-links")[0];
 
     /* save elements' initial offset from the top to persist in localStorage*/
     if (!localStorage.getItem("offsetY")) {
-
       /* save initial offset */
-      const offsetY = navbarLinks.getBoundingClientRect().top
-      localStorage.setItem("offsetY", JSON.stringify(offsetY))
+      const offsetY = navbarLinks.getBoundingClientRect().top;
+      localStorage.setItem("offsetY", JSON.stringify(offsetY));
 
       /* remember window size */
-      localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
+      localStorage.setItem("windowSize", JSON.stringify(window.innerHeight));
     }
 
-
     /* update if user has resized window */
-    const oldWindow = JSON.parse(localStorage.getItem("windowSize"))
-    const currentWindow = window.innerHeight
+    const oldWindow = JSON.parse(localStorage.getItem("windowSize"));
+    const currentWindow = window.innerHeight;
 
     if (oldWindow !== currentWindow) {
-      console.log("oldWindow !== currentWindow")
+      console.log("oldWindow !== currentWindow");
 
       /* adjust offsetY */
-      localStorage.removeItem("offsetY")
+      localStorage.removeItem("offsetY");
       /* pay attention - if the window was resized whilst not being scrolled up to the top - add pageYOffset  */
-      localStorage.setItem("offsetY", JSON.stringify(navbarLinks.getBoundingClientRect().top + window.pageYOffset))
+      localStorage.setItem(
+        "offsetY",
+        JSON.stringify(
+          navbarLinks.getBoundingClientRect().top + window.pageYOffset
+        )
+      );
 
       /* remember window size */
-      localStorage.removeItem("windowSize")
-      localStorage.setItem('windowSize', JSON.stringify(window.innerHeight))
+      localStorage.removeItem("windowSize");
+      localStorage.setItem("windowSize", JSON.stringify(window.innerHeight));
     }
 
     /* set up scroll observer */
-    window.addEventListener("scroll", handleScroll(JSON.parse(localStorage.getItem("offsetY"))));
+    window.addEventListener(
+      "scroll",
+      handleScroll(JSON.parse(localStorage.getItem("offsetY")))
+    );
   }, []);
 
   return (
@@ -91,18 +98,18 @@ function Welcome(): JSX.Element {
       </section>
 
       {/* hello world */}
-      <section className="welcome--lorem font-['Inter'] h-1/3 w-full bg-baby-powder flex flex-col justify-center items-center text-gray-900">
+      <section className="welcome--lorem font-['Italiana'] h-1/3 w-full bg-baby-powder flex flex-col justify-center items-center text-gray-900">
         <div className="container-1-4 w-1/4">
           {/* hell world */}
           <div
             className="mb-32 text-[64px] font-semibold flex flex-row justify-center items-center"
             style={{ textAlign: "center" }}
           >
-            {'Hello, World!'}
+            {"Hello, World!"}
           </div>
 
-          <div className="mb-16 text-lg font-normal flex flex-col justify-center items-center gap-4 relative">
-            <div>welcome to my</div>
+          <div className="mb-16 text-[20px] flex flex-col justify-center items-center gap-4 relative">
+            <span>welcome to my</span>
 
             <div className="navbar-links">
               <Link to="/blog">
@@ -127,41 +134,53 @@ function Welcome(): JSX.Element {
         </div>
       </section>
 
+      {/* bio */}
+      <section className="bio">
+        <section className="welcome-last-text bg-[#F9FAFD] h-5/6 w-full flex flex-col justify-start items-center">
+          <Text size="lg" className=" m-48 px-36 font-['Inter']">
+            <div className="pb-4">
+              Over the past decade, working as a{" "}
+              <GradientSpan from="green" to="cyan">
+                Business Developer
+              </GradientSpan>{" "}
+              /{" "}
+              <GradientSpan from="red" to="orange">
+                Software Engineer
+              </GradientSpan>{" "}
+              I have accumulated a bunch of googlesheets, notes, business ideas
+              and projects that I would like to keep playing with. To ogranize
+              those a bit better and motivate myself to develop{" "}
+              <Highlight highlight={"more, I created this blog."}>
+                more, I created this blog.
+              </Highlight>
+            </div>
+
+            <PB4 tailwindClasses="mt-12">
+              <Bold>Fun fact:</Bold> the highlighted phrase above was actually
+              synthesized by{" "}
+              <a href="https://copilot.github.com/">GitHubCopilot</a>.{" "}
+              <i>
+                I'm not sure if it's a good idea to use a third-party service to
+                synthesize text, but I'm sure it's a good idea to use a
+                third-party service to synthesize text.
+              </i>{" "}
+              {"<-"} as was this one as well...
+            </PB4>
+
+            <PB4 tailwindClasses="mt-12">
+              My <a href="https://github.com/med4kat">wife</a> is amazing and we
+              have a wonderful toddler son ☺️
+            </PB4>
+
+            <div className="mb-8">
+              I also like <a href="https://www.wavebjj.co/">BJJ</a>.
+            </div>
+          </Text>
+        </section>
+      </section>
       {/* image with paralax */}
-      <section className="welcome--img h-1/3 w-full">
-        <div className="welcome-last-text h-5/6 w-full flex flex-col justify-start items-center">
-          <div className="mt-48 ml-48 mr-48 pl-36 pr-36">
-            <Text size='lg'>
-              <div className="pb-4">
-                Over the past decade, working as a{" "}
-                <GradientSpan from="green" to="cyan">
-                  Business Developer
-                </GradientSpan>{" "}
-                /{" "}
-                <GradientSpan from="red" to="orange">
-                  Software Engineer
-                </GradientSpan>{" "}
-                I have accumulated a bunch of googlesheets, notes, business
-                ideas and projects that I would like to keep playing with.
-                
-                To ogranize those a bit better and motivate myself to develop <Highlight highlight={"more, I created this blog."}>more, I created this blog.</Highlight>
-              </div>
-
-              <PB4>
-                  <Bold>Fun fact:</Bold> the highlighted phrase above was actually synthesized by <a href="https://copilot.github.com/">GitHubCopilot</a>. <i>I'm not sure if it's a good idea to use a third-party service to synthesize text, but I'm sure it's a good idea to use a third-party service to synthesize text.</i> {'<-'} as was this one as well...
-              </PB4>
-
-              <div className="mb-4">
-                My <a href="https://github.com/med4kat">wife</a> is amazing and
-                we have a wonderful toddler son ☺️
-              </div>
-              <div className="mb-8">
-                I also like <a href="https://www.wavebjj.co/">BJJ</a>.
-              </div>
-            </Text>
-          </div>
-        </div>
-        <div className="welcome-footer h-1/6 flex flex-col justify-end items-center">
+      <section className="welcome--img bg-center h-1/5 w-full">
+        <div className="welcome-footer h-full flex flex-col justify-end items-center">
           <AppFooter classes=""></AppFooter>
         </div>
       </section>
