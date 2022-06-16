@@ -15,10 +15,10 @@ const links = [
     link: "https://github.com/ooddaa",
     label: "Github",
   },
-  // {
-  //   link: "/playground",
-  //   label: "Playground",
-  // },
+  {
+    link: "/portfolio",
+    label: "Portfolio",
+  },
 ];
 
 function App() {

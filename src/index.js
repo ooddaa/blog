@@ -9,6 +9,7 @@ import Projects from "./components/pages/Projects";
 import Welcome from "./components/pages/Welcome/Welcome.tsx";
 import posts from "./components/pages/Blog/components/posts";
 import Playground from "./components/pages/Playground/Playground.jsx";
+import Portfolio from "./components/pages/Portfolio/Portfolio.tsx";
 
 const stuff = (
   <BrowserRouter>
@@ -27,6 +28,7 @@ const stuff = (
           );
         })}
       <Route path="playground" element={<Playground />}></Route>
+      <Route path="portfolio" element={<Portfolio />}></Route>
     </Routes>
   </BrowserRouter>
 )
