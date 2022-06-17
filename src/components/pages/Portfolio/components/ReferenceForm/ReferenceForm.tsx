@@ -1,9 +1,9 @@
 /**@jsxImportSource @emotion/react */
 import React, { FormEvent, useState, ChangeEvent } from "react";
 import { Global } from "@emotion/react";
-import { mq, styles, utils } from "./styles/styleSystem.ts";
-import InputField from "./InputField.tsx";
-import CustomSelect from "./CustomSelect.tsx";
+import { mq, styles, utils } from "./styles/styleSystem";
+import InputField from "./InputField";
+import CustomSelect from "./CustomSelect";
 import {
   DataModel,
   UseFormInputResult,

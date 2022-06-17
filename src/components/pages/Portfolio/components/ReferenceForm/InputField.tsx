@@ -1,7 +1,7 @@
 /**@jsxImportSource @emotion/react */
 import React from "react";
 import { CSSObject } from "./interfaces";
-import { styles } from "./styles/styleSystem.ts";
+import { styles } from "./styles/styleSystem";
 
 interface InputFieldProps {
   label?: string;

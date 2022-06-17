@@ -1,15 +1,15 @@
 /**@jsxImportSource @emotion/react */
 
 import React, {useState} from "react";
-import TableOfContents from "./components/TableOfContents.tsx";
-import ReferenceForm from "./components/ReferenceForm/ReferenceForm.tsx";
-import CustomSelect from './components/ReferenceForm/CustomSelect.tsx';
-import { selectStyles } from './components/ReferenceForm/ReferenceForm.tsx'
-import InputField from './components/ReferenceForm/InputField.tsx'
-import { inputStyles } from './components/ReferenceForm/ReferenceForm.tsx'
-import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem.ts";
+import TableOfContents from "./components/TableOfContents";
+import ReferenceForm from "./components/ReferenceForm/ReferenceForm";
+import CustomSelect from './components/ReferenceForm/CustomSelect';
+import { selectStyles } from './components/ReferenceForm/ReferenceForm'
+import InputField from './components/ReferenceForm/InputField'
+import { inputStyles } from './components/ReferenceForm/ReferenceForm'
+import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem";
 
-const components = {
+const components: { [key: string]: JSX.Element } = {
   "ReferenceForm": (<ReferenceForm />),
   "CustomSelect": (<CustomSelect 
     styles={selectStyles}
@@ -18,8 +18,9 @@ const components = {
       { value: "Rollercoaster: 🎢" }, 
       { value: "Queen: ♕" },
     ]}
+    onChange={(e) => console.log(e.target.value)}
     />),
-  "InputField": (<InputField styles={inputStyles('text')}/>),
+  "InputField": (<InputField value="" onChange={e=> console.log(e.target.value)}{...inputStyles('text')}/>),
 }
 
 const links = [
@@ -30,7 +31,7 @@ const links = [
 
 
 export default function Portfolio() {
-  const [currentComponent, setCurrentComponent] = useState(components[0]);
+  const [currentComponent, setCurrentComponent] = useState<JSX.Element>(components['ReferenceForm']);
   
   const selectComponent = (componentName: string) => {
     setCurrentComponent(components[componentName]);
