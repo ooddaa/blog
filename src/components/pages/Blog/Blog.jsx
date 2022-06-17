@@ -11,9 +11,6 @@ import identity from "lodash/identity";
 import MantineHeader from "../../layout/MantineHeader";
 
 function Blog({ posts, postId }) {
-  /* scroll to top */
-  // const [{ x, y }, setScrollTo] = useState({ x: 0, y: 0});
-  // window.scrollTo(x,y)
   /* State
   ________________________________________________________________*/
 
@@ -141,6 +138,10 @@ function Blog({ posts, postId }) {
     {
       link: "https://github.com/ooddaa",
       label: "Github",
+    },
+    {
+      link: "/portfolio",
+      label: "Portfolio",
     },
     {
       link: "/playground",

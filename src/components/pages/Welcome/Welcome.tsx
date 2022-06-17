@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AppFooter from "../../layout/Footer";
 import { Text, Highlight } from "@mantine/core";
 import { GradientSpan, Span, Bold, PB4 } from "../../../toolbox";
@@ -12,81 +12,6 @@ function Welcome(): JSX.Element {
    * all text - is centered in the second with background image
    */
   const [windowHeight] = useState(`${window.innerHeight * 3 + 4}px`);
-
-  // const handleScroll = (offsetY: number) => {
-  //   const inner = (e: Event) => {
-  //     /* window.pageYOffset // how much page has been scrolled by Y axis */
-  //     /* window.innerHeight // screen height == document.body.offsetHeight */
-
-  //     /* calculate  */
-  //     const navbarLinks: any =
-  //       document.getElementsByClassName("navbar-links")[0];
-
-  //     // console.table({
-  //     //   pageYOffset: window.pageYOffset,
-  //     //   innerHeight: window.innerHeight,
-  //     //   scrolled: window.pageYOffset / window.innerHeight,
-  //     //   storedOffsetY: offsetY,
-  //     //   realOffsetY: navbarLinks.getBoundingClientRect().top
-  //     // })
-
-  //     if (window.pageYOffset >= offsetY) {
-  //       /* stick navbar-links to the top */
-  //       navbarLinks?.style?.setProperty("position", "fixed");
-  //       navbarLinks?.style?.setProperty("top", "5px");
-  //     } else {
-  //       navbarLinks?.style?.removeProperty("position");
-  //       navbarLinks?.style?.removeProperty("top");
-  //     }
-  //   };
-  //   return inner;
-  // };
-
-  /* init */
-  // useEffect(() => {
-    /* scroll to top */
-    // window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // const navbarLinks = document.getElementsByClassName("navbar-links")[0];
-
-    // /* save elements' initial offset from the top to persist in localStorage*/
-    // if (!localStorage.getItem("offsetY")) {
-    //   /* save initial offset */
-    //   const offsetY = navbarLinks.getBoundingClientRect().top;
-    //   localStorage.setItem("offsetY", JSON.stringify(offsetY));
-
-    //   /* remember window size */
-    //   localStorage.setItem("windowSize", JSON.stringify(window.innerHeight));
-    // }
-
-    // /* update if user has resized window */
-    // const oldWindow = JSON.parse(localStorage.getItem("windowSize"));
-    // const currentWindow = window.innerHeight;
-
-    // if (oldWindow !== currentWindow) {
-    //   console.log("oldWindow !== currentWindow");
-
-    //   /* adjust offsetY */
-    //   localStorage.removeItem("offsetY");
-    //   /* pay attention - if the window was resized whilst not being scrolled up to the top - add pageYOffset  */
-    //   localStorage.setItem(
-    //     "offsetY",
-    //     JSON.stringify(
-    //       navbarLinks.getBoundingClientRect().top + window.pageYOffset
-    //     )
-    //   );
-
-    //   /* remember window size */
-    //   localStorage.removeItem("windowSize");
-    //   localStorage.setItem("windowSize", JSON.stringify(window.innerHeight));
-    // }
-
-    // /* set up scroll observer */
-    // window.addEventListener(
-    //   "scroll",
-    //   handleScroll(JSON.parse(localStorage.getItem("offsetY")))
-    // );
-  // }, []);
 
   return (
     <div className={`welcome w-screen`} style={{ height: windowHeight }}>
@@ -116,19 +41,32 @@ function Welcome(): JSX.Element {
                 <GradientSpan from="grape" to="orange">
                   blog
                 </GradientSpan>
-              </Link>{" "}
+              </Link>
+              
+              {" "}
               <Span color="grey">|</Span>{" "}
-              <Link to="/playground">
-                <GradientSpan from="orange" to="green">
-                  playground
+              <Link to="/portfolio">
+                <GradientSpan from="green" to="black">
+                portfolio
                 </GradientSpan>
-              </Link>{" "}
+              </Link>
+              
+              {" "}
               <Span color="grey">|</Span>{" "}
               <a href="https://github.com/ooddaa">
                 <GradientSpan from="blue" to="grape">
                   github
                 </GradientSpan>
               </a>
+
+              {" "}
+              <Span color="grey">|</Span>{" "}
+              <Link to="/playground">
+                <GradientSpan from="orange" to="green">
+                  playground
+                </GradientSpan>
+              </Link>
+
             </div>
           </div>
         </div>
