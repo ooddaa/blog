@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStyles, Box, Text, Group } from '@mantine/core';
+import { createStyles, Text, Group } from '@mantine/core';
 import { ListSearch } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
@@ -19,6 +19,7 @@ const useStyles = createStyles((theme) => ({
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      cursor: 'pointer',
     },
   },
 
@@ -39,21 +40,20 @@ const useStyles = createStyles((theme) => ({
 interface TableOfContentsProps {
   links: { label: string; link: string; order: number }[];
   active: string;
+  onClick: (link: string) => void;
 }
 
-export default function TableOfContents({ links, active }: TableOfContentsProps) {
+export default function TableOfContents({ links, active, onClick }: TableOfContentsProps) {
   const { classes, cx } = useStyles();
   const items = links.map((item) => (
-    <Box<'a'>
-      component="a"
-      href={item.link}
-      onClick={(event) => event.preventDefault()}
-      key={item.label}
+    
+    <div 
       className={cx(classes.link, { [classes.linkActive]: active === item.link })}
-      sx={(theme) => ({ paddingLeft: item.order * theme.spacing.md })}
+      key={item.label}
+      onClick={() => onClick(item.link)}
     >
-      {item.label}
-    </Box>
+{item.label}
+    </div>
   ));
 
   return (

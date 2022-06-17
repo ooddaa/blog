@@ -558,6 +558,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }

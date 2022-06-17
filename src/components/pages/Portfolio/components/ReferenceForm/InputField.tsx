@@ -28,7 +28,6 @@ const localStyles = {
     "flex-direction": "column",
     marginBottom: styles.spacing[16],
   },
-
   label: {
     fontSize: styles.spacing[12],
     fontWeight: 400,
@@ -109,8 +108,8 @@ function InputField({
         {...inputClassNames}
         type={type || "text"}
         css={styles?.input || localStyles.input}
-        value={value}
-        onChange={onChange}
+        value={value || ""}
+        onChange={(e) => onChange && onChange(e)}
         disabled={disabled}
         required={required}
       />

@@ -189,7 +189,7 @@ const localStyles = {
   },
 };
 
-const selectStyles = {
+export const selectStyles = {
   control: {
     height: styles.spacing[36],
     borderRadius: styles["border-radius"].primary,
@@ -248,7 +248,7 @@ const selectStyles = {
   },
 };
 
-const inputStyles = (type: "text" | "date"): { styles: CSSObject } => {
+export const inputStyles = (type: "text" | "date"): { styles: CSSObject } => {
   return {
     styles: {
       label: localStyles.label,

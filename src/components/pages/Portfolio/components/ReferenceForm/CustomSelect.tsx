@@ -70,7 +70,7 @@ const defaultStyles = {
 
 function CustomSelect({ options, value, onChange, disabled, styles, testId }: CustomSelectProps) {
   const [isOpen, toggleOpen] = useState(false);
-  const [currentValue, setCurrentValue] = useState(value)
+  const [currentValue, setCurrentValue] = useState(value || "Custom select")
 
   return (
     <div className="custom-select">
@@ -134,7 +134,7 @@ function CustomSelect({ options, value, onChange, disabled, styles, testId }: Cu
                 test-id={`__option--${i}`}
                 onClick={() => {
                   setCurrentValue(option.value)
-                  onChange({ target: { type: 'select', value: option.value }})
+                  onChange && onChange({ target: { type: 'select', value: option.value }})
                   toggleOpen(x => !x)
                 }}
                 css={styles ? styles.option : defaultStyles.option}
