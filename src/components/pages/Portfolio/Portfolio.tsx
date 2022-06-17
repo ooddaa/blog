@@ -4,29 +4,24 @@ import React, {useState} from "react";
 import TableOfContents from "./components/TableOfContents";
 import ReferenceForm from "./components/ReferenceForm/ReferenceForm";
 import CustomSelect from './components/ReferenceForm/CustomSelect';
-import { selectStyles } from './components/ReferenceForm/ReferenceForm'
-import InputField from './components/ReferenceForm/InputField'
-import { inputStyles } from './components/ReferenceForm/ReferenceForm'
 import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem";
 
 const components: { [key: string]: JSX.Element } = {
-  "ReferenceForm": (<ReferenceForm />),
-  "CustomSelect": (<CustomSelect 
-    styles={selectStyles}
+  "Reference Form": (<ReferenceForm />),
+  "Custom Select": (<CustomSelect 
     value={"Portfolio"} 
     options={[
-      { value: "Rollercoaster: 🎢" }, 
-      { value: "Queen: ♕" },
+      { value: "🎢 Rollercoaster" }, /**@todo add a header to option */
+      { value: "♕ Queen" },
+      { value: "🏂 Snowboarding" },
     ]}
     onChange={(e) => console.log(e.target.value)}
     />),
-  "InputField": (<InputField value="" onChange={e=> console.log(e.target.value)}{...inputStyles('text')}/>),
 }
 
 const links = [
-  { label: "Reference Form", link: "ReferenceForm", order: 1 },
-  { label: "Custom Select", link: "CustomSelect", order: 2 },
-  { label: "Input Field", link: "InputField", order: 2 },
+  { label: "Reference Form", link: "Reference Form", order: 1 },
+  { label: "Custom Select", link: "Custom Select", order: 2 },
 ];
 
 

@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import './styles/CustomSelect.css'
+import {styles} from "./styles/styleSystem"
 import { CustomSelectProps, Option } from './interfaces'
 
 const defaultStyles = {
   control: {
-    width: "400px",
-    height: "50px",
-    borderRadius: "9px",
-    border: "1px solid black",
+    height: styles.spacing[36],
+    borderRadius: styles["border-radius"].xlarge, // 8px
+    border: `1px solid ${styles.colors["border-primary"]}`,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -16,46 +16,50 @@ const defaultStyles = {
   },
   body: {
     height: "100%",
-    width: "100%",
+    width: "400px",
     backgroundColor: "white",
-    borderRadius: "9px 0 0 9px",
+    borderRadius: `${styles["border-radius"].xlarge} 0 0 ${styles["border-radius"].xlarge}`,
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
-    padding: "0 0 0 18px",
+    padding: `0 0 0 ${styles.spacing[16]}`,
+    color: styles.colors["text-primary"],
+    fontSize: styles.spacing[12],
   },
   arrow: {
     height: "100%",
-    width: "50px",
+    width: styles.spacing[48],
     backgroundColor: "white",
-    borderRadius: "0 9px 9px 0",
-    borderLeft: "1px solid grey",
+    borderRadius: `0 ${styles["border-radius"].xlarge} ${styles["border-radius"].xlarge} 0`,
+    borderLeft: `1px solid ${styles.colors["border-primary"]}`,
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
   },
   optionsList: {
-    width: '400px',
-    backgroundColor: 'white',
-    border: "1px solid grey",
-    borderRadius: '9px',
+    width: "300px",
+    backgroundColor: "white",
+    border: `1px solid ${styles.colors["border-primary"]}`,
+    borderRadius: `${styles["border-radius"].xlarge}`,
     "& div:first-of-type": {
-      borderRadius: '9px 9px 0 0',
+      borderRadius: `${styles["border-radius"].xlarge} ${styles["border-radius"].xlarge} 0 0`,
     },
     "& div:last-child": {
-      borderRadius: '0 0 9px 9px',
+      borderRadius: `0 0 ${styles["border-radius"].xlarge} ${styles["border-radius"].xlarge}`,
     },
   },
   option: {
-    width: "398px",
-    height: "40px",
-    padding: '9px 18px',
+    width: "100%",
+    height: styles.spacing[36],
+    padding: `0 ${styles.spacing[16]}`,
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
+    color: styles.colors["text-primary"],
+    fontSize: styles.spacing[12],
     "&:hover": {
-      backgroundColor: 'pink',
-    }
+      backgroundColor: styles.colors["bg-primary"],
+    },
   },
   chevron: {
     height: "20px",

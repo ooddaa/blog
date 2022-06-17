@@ -1,6 +1,5 @@
-/**@jsxImportSource @emotion/react */
 import React from 'react';
-import { createStyles, Text, Group } from '@mantine/core';
+import { createStyles, Box, Text, Group } from '@mantine/core';
 import { ListSearch } from 'tabler-icons-react';
 
 const useStyles = createStyles((theme) => ({
@@ -20,7 +19,6 @@ const useStyles = createStyles((theme) => ({
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-      cursor: 'pointer',
     },
   },
 
@@ -41,23 +39,21 @@ const useStyles = createStyles((theme) => ({
 interface TableOfContentsProps {
   links: { label: string; link: string; order: number }[];
   active: string;
-  onClick: (link: string) => void;
 }
 
-export default function TableOfContents({ links, active, onClick }: TableOfContentsProps) {
+export function TableOfContents({ links, active }: TableOfContentsProps) {
   const { classes, cx } = useStyles();
   const items = links.map((item) => (
-    
-    <div 
-      className={cx(classes.link, { [classes.linkActive]: active === item.link })}
+    <Box<'a'>
+      component="a"
+      href={item.link}
+      onClick={(event) => event.preventDefault()}
       key={item.label}
-      onClick={() => onClick(item.link)}
-      css={{
-        paddingLeft: `${item.order * 1}rem`
-      }}
+      className={cx(classes.link, { [classes.linkActive]: active === item.link })}
+      sx={(theme) => ({ paddingLeft: item.order * theme.spacing.md })}
     >
-{item.label}
-    </div>
+      {item.label}
+    </Box>
   ));
 
   return (
