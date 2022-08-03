@@ -5,8 +5,14 @@ import TableOfContents from "./components/TableOfContents";
 import ReferenceForm from "./components/ReferenceForm/ReferenceForm";
 import CustomSelect from "./components/ReferenceForm/CustomSelect";
 import TicTacToe from "./components/TicTacToe/TicTacToe";
+import Accordion from "./components/Accordion/Accordion";
+import Carousel from "./components/Carousel/Carousel";
+import Pagination from "./components/Pagination/Pagination";
+import Table from "./components/Tables/Table1";
+import Resizable from "./components/Resizable/Resizable";
 import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem";
 import MantineHeader, { HEADER_HEIGHT } from "../../layout/MantineHeader";
+import lorem from './components/lorem'
 
 const headerLinks = [
   {
@@ -33,7 +39,6 @@ const headerLinks = [
 
 const components: { [key: string]: JSX.Element } = {
   "Reference Form": <ReferenceForm />,
-  "TicTacToe": <TicTacToe />,
   "Custom Select": (
     <CustomSelect
       value={"Portfolio"}
@@ -45,12 +50,63 @@ const components: { [key: string]: JSX.Element } = {
       onChange={(e) => console.log(e.target.value)}
     />
   ),
+  "TicTacToe": <TicTacToe />,
+  "Accordion": <Accordion />,
+  "Carousel": <Carousel />,
+  "Pagination": <Pagination pages={20}/>,
+  "Table": <Table />,
+  "Resizable": <Resizable
+    height={"400px"}
+    width={"1000px"}
+    horizontal
+    border
+    _css={{
+      margin: "150px",
+      boxShadow: "0 0 10px 2px #e5e7eb",
+    }}
+    dividerCSS={{
+      width: "14px",
+      backgroundColor: "#f3f4f6",
+      border: "1px solid #e5e7eb",
+      borderRadius: "5px",
+      "&:hover .divider-handle": {
+        backgroundColor: "#d1d5db",
+        transitionDelay: "80ms",
+      },
+    }}
+  >
+    <div
+      className="child--a"
+      css={{
+        padding: "20px",
+        backgroundColor: "#fde68a",
+      }}
+    >
+      {lorem}
+      <br/>
+      {lorem}
+    </div>
+    <div
+      className="child--b"
+      css={{
+        padding: "20px",
+        backgroundColor: "#fee2e2",
+      }}
+    >
+      {lorem}
+    </div>
+</Resizable>
 };
 
 const links = [
   { label: "Reference Form", link: "Reference Form", order: 1 },
   { label: "Custom Select", link: "Custom Select", order: 2 },
   { label: "TicTacToe", link: "TicTacToe", order: 1 },
+  { label: "Accordion", link: "Accordion", order: 1 },
+  { label: "Carousel", link: "Carousel", order: 1 },
+  { label: "Pagination", link: "Pagination", order: 1 },
+  { label: "Table", link: "Table", order: 1 },
+  { label: "Resizable", link: "Resizable", order: 1 },
 ];
 
 export default function Portfolio() {
@@ -94,12 +150,16 @@ export default function Portfolio() {
         <div
           className="portfolio-workspace"
           css={{
-            height: "auto",
+            // height: "auto",
             backgroundColor: ReferenceFormStyles.colors["bg-primary"],
             display: "flex",
             justifyContent: "center",
-            alignItems: "center",
+            // alignItems: "center",
+            alignItems: "flex-start",
+            paddingTop: '100px',
+            paddingBottom: '100px',
           }}
+          style={{ minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`}}
         >
           {currentComponent}
         </div>
