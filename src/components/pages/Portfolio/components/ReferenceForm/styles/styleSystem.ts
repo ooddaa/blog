@@ -1,13 +1,16 @@
 /* 
 SYSTEMS
 
---- 01 TYPOGRAPHY
+--- 01 TYPOGRAPHY (px)
+
+12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 48 / 60 / 72 / 96 / 120 / 144 / 180
+
 --- 02 COLORS
 --- 03 BORDERS
 --- 04 SPACING
 --- 05 BREAKPOINTS
 
-*/
+*/ 
 
 export const spacing = {
   0: "0",

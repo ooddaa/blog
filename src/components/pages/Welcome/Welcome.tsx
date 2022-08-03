@@ -90,13 +90,10 @@ function Welcome(): JSX.Element {
               /{" "}
               <GradientSpan from="red" to="orange">
                 Software Engineer
-              </GradientSpan>{" "}
+              </GradientSpan>,{" "}
               I have accumulated a bunch of googlesheets, notes, business ideas
               and projects that I would like to keep playing with. To ogranize
-              those a bit better and motivate myself to develop{" "}
-              <Highlight highlight={"more, I created this blog."}>
-                more, I created this blog.
-              </Highlight>
+              those a bit better and motivate myself to develop <span style={{ backgroundColor: '#F7E4A0'}}>more, I created this blog.</span>
             </div>
 
             <PB4 tailwindClasses="mt-12">
