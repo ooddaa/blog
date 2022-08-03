@@ -10,6 +10,8 @@ import Carousel from "./components/Carousel/Carousel";
 import Pagination from "./components/Pagination/Pagination";
 import Table from "./components/Tables/Table1";
 import Resizable from "./components/Resizable/Resizable";
+import NameForm from "./components/NameForm/NameForm";
+import WelcomeBackForm from "./components/WelcomeBackForm/WelcomeBack";
 import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem";
 import MantineHeader, { HEADER_HEIGHT } from "../../layout/MantineHeader";
 import lorem from './components/lorem'
@@ -95,18 +97,24 @@ const components: { [key: string]: JSX.Element } = {
     >
       {lorem}
     </div>
-</Resizable>
+</Resizable>,
+  "NameForm": <NameForm />,
+  "WelcomeBackForm": <WelcomeBackForm />,
 };
 
 const links = [
-  { label: "Reference Form", link: "Reference Form", order: 1 },
-  { label: "Custom Select", link: "Custom Select", order: 2 },
+  { label: "Forms", link: "", order: 1 },
+  { label: "Reference", link: "Reference Form", order: 2 },
+  { label: "Person details", link: "NameForm", order: 2 },
+  { label: "Welcome back", link: "WelcomeBackForm", order: 2 },
+  { label: "Custom select", link: "Custom Select", order: 2 },
   { label: "TicTacToe", link: "TicTacToe", order: 1 },
   { label: "Accordion", link: "Accordion", order: 1 },
   { label: "Carousel", link: "Carousel", order: 1 },
   { label: "Pagination", link: "Pagination", order: 1 },
   { label: "Table", link: "Table", order: 1 },
   { label: "Resizable", link: "Resizable", order: 1 },
+  
 ];
 
 export default function Portfolio() {
