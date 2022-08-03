@@ -74,7 +74,7 @@ function Welcome(): JSX.Element {
 
       {/* bio */}
       <section className="bio">
-        <div className="welcome-last-text bg-[#F9FAFD] h-5/6 w-full flex flex-col justify-start items-center">
+        <div className="welcome-last-text pt-24 bg-[#F9FAFD] h-5/6 w-full flex flex-col justify-start items-center">
           <Text size="lg" className={`
           my-12 mx-8 px-8 
           sm:md-16 sm:px-16 

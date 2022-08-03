@@ -185,7 +185,7 @@ p {
   margin-left: auto;
   margin-right: auto;
   width: 60%;
-  margin-top: var(--app-header-height);
+  /* margin-top: var(--app-header-height); */
   background-color: var(--white);
   background-color: transparent;
   /* after adding Mantine header I have to substract 2 * --app-header-height (2 * 64px) */

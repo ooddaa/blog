@@ -3,6 +3,30 @@ import { Fragment } from "react";
 import { resolveMonth } from "../../../../toolbox/index.js";
 import { Text, Image } from "@mantine/core";
 import { Span, Emoji } from "../../../../toolbox";
+import MantineHeader from "../../../layout/MantineHeader";
+
+const links = [
+  {
+    link: "/",
+    label: "Main",
+  },
+  {
+    link: "/blog",
+    label: "Blog",
+  },
+  {
+    link: "https://github.com/ooddaa",
+    label: "Github",
+  },
+  {
+    link: "/portfolio",
+    label: "Portfolio",
+  },
+  {
+    link: "/playground",
+    label: "Playground",
+  },
+];
 
 const propTypes = {
   defaultHeader: PropTypes.string,
@@ -24,6 +48,9 @@ function BlogPost({ post, defaultHeader }) {
   } = post;
   const [year, month, day] = dateCreated;
   return (
+    <>
+      <MantineHeader links={links}></MantineHeader>
+    
     <div className="blog-post">
       <div className="blog-post__header">
         <div className="log-post__header__title pb-8 font-bold text-6xl">
@@ -64,6 +91,7 @@ function BlogPost({ post, defaultHeader }) {
       </div>
       <div className="blog-post__body">{body}</div>
     </div>
+    </>
   );
 }
 

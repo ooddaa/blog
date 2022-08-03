@@ -12,6 +12,7 @@ import Table from "./components/Tables/Table1";
 import Resizable from "./components/Resizable/Resizable";
 import NameForm from "./components/NameForm/NameForm";
 import WelcomeBackForm from "./components/WelcomeBackForm/WelcomeBack";
+// import DesktopWorkspace from "./components/Desktop/DesktopWorkspace";
 import { styles as ReferenceFormStyles } from "./components/ReferenceForm/styles/styleSystem";
 import MantineHeader, { HEADER_HEIGHT } from "../../layout/MantineHeader";
 import lorem from './components/lorem'
@@ -38,6 +39,8 @@ const headerLinks = [
     label: "Playground",
   },
 ];
+
+
 
 const components: { [key: string]: JSX.Element } = {
   "Reference Form": <ReferenceForm />,
@@ -100,6 +103,7 @@ const components: { [key: string]: JSX.Element } = {
 </Resizable>,
   "NameForm": <NameForm />,
   "WelcomeBackForm": <WelcomeBackForm />,
+  // "Desktop": <DesktopWorkspace />,
 };
 
 const links = [
@@ -114,7 +118,7 @@ const links = [
   { label: "Pagination", link: "Pagination", order: 1 },
   { label: "Table", link: "Table", order: 1 },
   { label: "Resizable", link: "Resizable", order: 1 },
-  
+  // { label: "Desktop", link: "Desktop", order: 1 },
 ];
 
 export default function Portfolio() {

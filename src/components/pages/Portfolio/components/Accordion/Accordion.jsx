@@ -76,7 +76,7 @@ export function AccordeonElement({ elm }) {
     >
       <div className={`top-green-border`}></div>
       <div className={`accordeon__head`}>
-        <div className="left">
+        <div className="accordeon-left">
           <div className={`accordeon__head--id ${isOpen && "text-green"}`}>
             {elm.id}
           </div>
