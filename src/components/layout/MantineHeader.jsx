@@ -14,7 +14,7 @@ import { ChevronDown } from "tabler-icons-react";
 import { Link } from "react-router-dom";
 import { log } from "../../toolbox";
 
-const HEADER_HEIGHT = 64;
+export const HEADER_HEIGHT = 64;
 
 const useStyles = createStyles((theme) => ({
   inner: {
