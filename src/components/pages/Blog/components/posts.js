@@ -16,8 +16,12 @@ import {
   TLDR,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote, Center, List } from "@mantine/core";
-import { Prism } from "@mantine/prism";
 import { Link } from "react-router-dom";
+import { Prism } from "@mantine/prism";
+import { Prism as PrismRenderer } from 'prism-react-renderer';
+
+(typeof global !== 'undefined' ? global : window).Prism = PrismRenderer;
+import('prismjs/components/prism-elixir');
 
 const codeSnippet = `const a = 1;
 function fun() {
@@ -1199,7 +1203,7 @@ useEffect(() => {
           Put .heex into templates
         </H2>
         <MB8>
-        To address this issue, we can employ the <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#embed_templates/2" alt="link to embed_templates docs" class="text-sky-700 hover:underline">embed_templates/2</a> function provided by Phoenix LiveView. By placing our .heex files into separate template files and importing (or embedding) them into our module, we can achieve better code organization and improve readability.
+        To address this issue, we can employ the <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#embed_templates/2" alt="link to embed_templates docs" className="text-sky-700 hover:underline">embed_templates/2</a> function provided by Phoenix LiveView. By placing our .heex files into separate template files and importing (or embedding) them into our module, we can achieve better code organization and improve readability.
         </MB8>
 
         {/* <H3>So</H3> */}
@@ -1214,12 +1218,12 @@ useEffect(() => {
 <MB4>
 Inside our my_module.ex file, we can use the embed_templates/2 function to import all .heex files from the current folder. Here's an example:
 </MB4>
-<Code block language="elixir">{`defmodule MyModule do
+<Prism block language="elixir">{`defmodule MyModule do
   embed_templates "*"    # This will grab all .heex files in the current folder
 
   def my_module_template(assigns)
 end
-`}</Code>
+`}</Prism>
 
         </MB4>
         <MB8>
@@ -1233,7 +1237,7 @@ end
         <MB4>
         We can now provide attributes that the component expects to get, improving the organization and readability of our code.
         </MB4>
-        <Code block language="elixir">{`defmodule MyModule do
+        <Prism block language="elixir">{`defmodule MyModule do
   embed_templates "*"     # This will grab all .heex files in the current folder
 
   attr :name, :string, required: true     # we need a name
@@ -1241,10 +1245,10 @@ end
   def my_module_template(assigns)
 
 end
-`}</Code>
+`}</Prism>
 <MB4></MB4>
 
-        <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#module-attributes" alt="link to embed_templates docs" class="text-sky-700 hover:underline">Attributes</a> are a great tool to use when you want to document the expected usage of the component. Which is always a good practice. 
+        <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#module-attributes" alt="link to embed_templates docs" className="text-sky-700 hover:underline">Attributes</a> are a great tool to use when you want to document the expected usage of the component. Which is always a good practice. 
 <MB4></MB4>
 
         By separating our markup into individual template files and utilizing the embed_templates/2 function, we can achieve a cleaner and more maintainable codebase in Phoenix LiveView.
