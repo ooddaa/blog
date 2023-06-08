@@ -28,7 +28,8 @@ function Blog({ posts, postId }) {
   /* init  */
   useEffect(() => {
     /* scroll to top */
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   }, []);
 
   function handlePostNavigation(currentPostId_) {
