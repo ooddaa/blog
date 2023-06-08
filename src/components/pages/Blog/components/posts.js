@@ -1172,7 +1172,86 @@ useEffect(() => {
         Also, as the result of my wanting to get things done quickly, I had missed the opportunity to get comfortable and respectful to the incrementing method of producing work. I would have a go at something, if it didn't turn out the way I was expecting (nothing does in the first go, cmon), then I'd not hesitate to destroy the product and start again from scratch. I don't think this is the best approach because: 1) It taught me to devalue the results of my work - if I'm comfortable starting all over again, it must be that my work is not worth saving. 2) Complex systems are not created in one go, first simple blocks are obtained then they are iteratively combined into increasingly complex systems. What can be mistaken for a complex system that works is a complicated system that does not work. The latter is what most probably results from a "lets write this post in one go" approach (which I won't by the way - I have a 3step process - 3 iterations). 
       </TLDR>
     </Text>,
-  }
+  },
+  {
+    id: 10,
+    routeName: "improve-code-organization-in-phoenix-liveview",
+    header: "Improve code organisation with embed_templates/2 in Phoenix LiveView",
+    subheader: "Extract .heex markup into separate files",
+    dateCreated: [2023, 6, 8],
+    timeToRead: "5 min",
+    timeToThink: "30 min",
+    author: "oda",
+    tags: [
+      "code organisation",
+      ".heex",
+      "Elixir",
+      "Phoenix",
+      "Phoenix LiveView"
+    ],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+        One of the challenges we often face when working with Phoenix LiveView is the growing size of module files due to the inclusion of .heex markup. With logic and views combined in a single file, it becomes difficult to read and work with the code.
+        </TLDR>
+
+        <H2>
+          Put .heex into templates
+        </H2>
+        <MB8>
+        To address this issue, we can employ the <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#embed_templates/2" alt="link to embed_templates docs" class="text-sky-700 hover:underline">embed_templates/2</a> function provided by Phoenix LiveView. By placing our .heex files into separate template files and importing (or embedding) them into our module, we can achieve better code organization and improve readability.
+        </MB8>
+
+        {/* <H3>So</H3> */}
+        <MB4>
+        To get started, we need to create a directory structure that separates our module file from the .heex templates. For example:
+        </MB4>
+        <MB4>
+            <JS noCopy colorScheme="dark">{`/..
+|-- my_module.ex
+|-- my_module_template.html.heex
+`}</JS>
+<MB4>
+Inside our my_module.ex file, we can use the embed_templates/2 function to import all .heex files from the current folder. Here's an example:
+</MB4>
+<Code block language="elixir">{`defmodule MyModule do
+  embed_templates "*"    # This will grab all .heex files in the current folder
+
+  def my_module_template(assigns)
+end
+`}</Code>
+
+        </MB4>
+        <MB8>
+        With this setup, the .heex templates are compiled at compile time and become available as function components within our module. 
+        </MB8>
+
+        <H2>
+          Provide attributes and improve code quality
+        </H2>
+
+        <MB4>
+        We can now provide attributes that the component expects to get, improving the organization and readability of our code.
+        </MB4>
+        <Code block language="elixir">{`defmodule MyModule do
+  embed_templates "*"     # This will grab all .heex files in the current folder
+
+  attr :name, :string, required: true     # we need a name
+  attr :nickname, :string                # and might have a nickname as well
+  def my_module_template(assigns)
+
+end
+`}</Code>
+<MB4></MB4>
+
+        <a href="https://hexdocs.pm/phoenix_live_view/Phoenix.Component.html#module-attributes" alt="link to embed_templates docs" class="text-sky-700 hover:underline">Attributes</a> are a great tool to use when you want to document the expected usage of the component. Which is always a good practice. 
+<MB4></MB4>
+
+        By separating our markup into individual template files and utilizing the embed_templates/2 function, we can achieve a cleaner and more maintainable codebase in Phoenix LiveView.
+
+      </Text>
+    ),
+  },
 ];
 
 /* add posts */
