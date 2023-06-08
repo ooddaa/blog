@@ -1,9 +1,10 @@
 import { Container, createStyles, MantineProvider, Stack } from "@mantine/core";
 import BlogTOCGroup from "./BlogTOCGroup";
 import { treefyPosts, emptyObject } from "../../../../toolbox";
+import { Post } from "../../../../toolbox/types";
 import { CircleX } from "tabler-icons-react";
 
-const log = (...args) => console.log(...args);
+// const log = (...args) => console.log(...args);
 
 /**
  * Renders:
@@ -13,12 +14,19 @@ const log = (...args) => console.log(...args);
  * Center - Month-on-month list of links to posts. Head == MMM DD Body = Topic
  */
 
+type BlogTOCparams = {
+  posts: Post[],
+  handlePostNavigation: Function,
+  setHighlightedTags: Function,
+  classNames: string[],
+}
+
 export default function BlogTOC({
   posts,
   handlePostNavigation,
   setHighlightedTags,
   classNames,
-} = {}) {
+} = {} as BlogTOCparams) {
   if (posts === undefined || posts.length === 0) {
     return <h2>No posts yet</h2>;
   }
@@ -39,9 +47,10 @@ export default function BlogTOC({
    * worst Component name ever:)
    * 3. Sort
    */
-  const postTree: Map = treefyPosts(posts);
+  const postTree: Map<any, any> = treefyPosts(posts);
   // log(postTree);
-  const children = [];
+  const children: any[] = [];
+  
   /**
    * hehe don't forget the map.forEach signature: (value, key, map, thisArg)
    * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach
@@ -51,7 +60,7 @@ export default function BlogTOC({
   postTree.forEach((months, year) => {
     /* sort by month first */
     // log(months.entries());
-    months.forEach((posts, month) => {
+    months.forEach((posts: any, month: any) => {
       children.push(
         <BlogTOCGroup
           key={`${year}${month}`}
@@ -60,10 +69,9 @@ export default function BlogTOC({
           /* I need to sort posts by day */
           posts={posts.sort(
             (
-              { dateCreated: [_a, __a, dayA] },
-              { dateCreated: [_b, __b, dayB] }
-            ) => {
-              return dayA - dayB;
+              a: Post, b: Post
+              ) => {
+              return a.dateCreated[2] - b.dateCreated[2];
             }
           )}
           onClick={handlePostNavigation}
