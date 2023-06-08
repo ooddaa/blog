@@ -10,6 +10,7 @@ import {
   H2,
   P,
   PB8,
+  PB4,
   M,
   MB8,
   MB4,
@@ -199,7 +200,7 @@ const posts = [
         </MB8>
         <MB8>
           <GradientSpan from="blue" to="purple">
-            That is why I decided to solve Knowledge Management for Enterprises
+            That is why I want to help solve Knowledge Management for Enterprises
           </GradientSpan>
         </MB8>
       </Text>
@@ -1154,12 +1155,13 @@ useEffect(() => {
   {
     id: 9,
     routeName: "routeName",
-    header: "Philosophy of coding #1",
-    subheader: "dealing with tech debt vs piling up more tech debt",
+    header: "Rant #1. Balancing Housekeeping and Exploration: Maximizing Results under Time Constraints",
+    subheader: "",
     dateCreated: [2022, 5, 13],
     author: "oda",
     timeToRead: "5min",
     timeToThink: "whole life",
+    version: "0.0.2",
     tags: [
       "philosophy",
       "tech debt",
@@ -1167,14 +1169,44 @@ useEffect(() => {
     ],
     body: <Text className="leading-7">
       <TLDR>
-        I have been asking myself - how do I balance finishing old projects/tasks (aka dealing with tech debt) vs starting new projects/tasks?
-        What's the rule of thumb? If I have 30min - should I go and increment onto my old projects vs should I vantage into something from "Need to try before I die" list?
-
-        I do not have a clear answer to it. I guess it depends on what goal I want to achieve.
-
-        Incrementing on old "less dopamine-promising" projects actually might provide MORE positive results than I expect. Namely, I value competence very highly, therefore a simple iteration over something that I had tried/touched/done in the past seems to offer me a larger multiplication factor in terms of assessing the value that I get out of this activity. Example: I never liked doing my homework in two stages, as we where taught at school: 1. first draft, 2. then - the "clean" version for the teached. If I remember correctly (which I might not!) I tried to skip the "draft" version and go for the clean one to save myself time. What I was missing out on, though, was the repetition part of the learning. "Repetition is the mother of learning" - as the Russian saying goes. To me the demand to make any homework in two stages was about making sure that the "clean" version was readable for the teacher. Our "drafts" were never checked so no emphasis on the fact that a 'draft' is a highly valuable part of the learning process, a 'sandbox' was ever made. 
-        Also, as the result of my wanting to get things done quickly, I had missed the opportunity to get comfortable and respectful to the incrementing method of producing work. I would have a go at something, if it didn't turn out the way I was expecting (nothing does in the first go, cmon), then I'd not hesitate to destroy the product and start again from scratch. I don't think this is the best approach because: 1) It taught me to devalue the results of my work - if I'm comfortable starting all over again, it must be that my work is not worth saving. 2) Complex systems are not created in one go, first simple blocks are obtained then they are iteratively combined into increasingly complex systems. What can be mistaken for a complex system that works is a complicated system that does not work. The latter is what most probably results from a "lets write this post in one go" approach (which I won't by the way - I have a 3step process - 3 iterations). 
+      In the end of the day, choosing the right combination of "Housekeeping" vs "Exploration" depends on what I suck at. I should attack what bores me the most. This way I'll grab the biggest gain per unit of effort. 
       </TLDR>
+      <H2>Intro</H2>
+      I often find myself pondering over a common dilemma: How do I strike a balance between completing old projects and tasks, which often involve dealing with technical debt, versus starting new endeavors? What guidelines should I follow? Even when I have only 30 minutes to spare, should I dedicate that time to incrementing progress on existing projects or venture into something from my "Need to try before I die" list?
+      <PB8></PB8>
+      While there's no definitive answer, the approach may depend on the long-term goals I want to achieve. Surprisingly, focusing on seemingly less exciting or rewarding projects can yield more positive results than anticipated. Personally, I place a high value on competence, and because of this iterating over past work offers me a multiplier effect in terms of assessing its value.
+
+      <PB8></PB8>
+      In simple words - it turns out that at this point of my life the best solution for me is to spend 2/3 of my work time improving on the existing stuff, iterating over what I have done ("housekeeping") and the rest - 1/3 - to do something completely new and creative. 
+      <PB8></PB8>
+      <PB8></PB8>
+
+      <H2>Example of the Learning Process</H2>
+      Let me draw a parallel from my school days. I recall how I disliked the two-stage approach to completing homework: the first draft followed by the "clean" version for the teacher. In an attempt to save time, which I'd spend on "Exploration", I often skipped working on the draft version of my home assignment and jumped straight into creating the final version. 
+      <PB8></PB8>
+      However, this approach overlooked the crucial aspect of repetition in the learning process. As the saying goes, "practice makes it perfect." The requirement for a draft was not solely about ensuring the readability of the final version for the teacher ("that's how I explained it to myself"); it was also intended to foster a valuable learning experience — an opportunity to experiment and refine my work by iterating over it in a "sandbox" environment. Unfortunately, by rushing to finish quickly, I missed the chance to become comfortable and respectful of the iterative method of producing quality work. So my "Housekeeping" sucked a lot.
+      <PB8></PB8>
+      On the upside, I heavily invested into "Exploration" so I was constantly engaged into creative/explorative/testing/breaking activities. Through which I learned other useful skills - "perseverance" - when stuff doesn't work out the first time, keep going until it does. 
+      <PB8></PB8>
+      <PB8></PB8>
+
+      <H2>Drawbacks of the "Do-It-In-One-Go" Approach</H2>
+      There are a few reasons why this Do-It-In-One-Go approach is not ideal. 
+      <PB8></PB8>
+      <Span className="font-bold">Firstly, </Span>
+it taught me to devalue the results of my work. If I became accustomed to starting from scratch without hesitation, it implied that my previous efforts were not worth saving and improving upon. I could always start anew. 
+      <PB8></PB8>
+      <Span className="font-bold">Secondly, </Span> complex systems are rarely created in a single attempt. Instead, they are built by piecing together simple blocks and iteratively combining them into increasingly complex structures. Mistaking a complicated, non-functional system for a functioning complex system often arises from a "let's write this post in one go" mentality, which fails to account for the importance of incremental progress. And access to that is what I missed by not spending enough time carefully drilling through the fundamentals of most of my home assignments. 
+      <PB8></PB8>
+      I was optimising for "Exploration" behaviour aka "chasing dopamine". 
+      <PB8></PB8>
+      <PB8></PB8>
+      <H2>Conclusion</H2>
+      In conclusion, finding the right balance between housekeeping activities, which involve addressing existing projects or tasks, and exploration, which entails starting new endeavors, is a constant challenge. And this challenge is well seen at school. However, by recognizing the value of incremental work and the benefits of repetition in the learning process, we can make more informed choices. So, the next time I have a limited amount of time or resources, I'd consider the potential positive outcomes of incrementing on "less dopamine-promising" projects rather than solely focusing on the allure of new ventures. 
+      <PB8></PB8>
+      <PB8></PB8>
+      <H2>Remember: </H2>
+      true competence is cultivated through a combination of revisiting old ground and exploring new horizons.
     </Text>,
   },
   {
