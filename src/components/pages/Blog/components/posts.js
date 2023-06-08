@@ -820,7 +820,7 @@ $ git commit -am "stuff that should have been on anotherBranch"`}
     author: "oda",
     timeToRead: "4min",
     timeToThink: "10min",
-    tags: ["react", "useEffect", "useState", "x11"],
+    tags: ["react", "useEffect", "useState"],
     body: (
       <Text className="leading-7">
         <TLDR>
