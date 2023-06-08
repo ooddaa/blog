@@ -44,6 +44,7 @@ function BlogPost({ post, defaultHeader }) {
     body,
     author,
     timeToRead,
+    version,
     // timeToThink,
   } = post;
   const [year, month, day] = dateCreated;
@@ -60,13 +61,14 @@ function BlogPost({ post, defaultHeader }) {
 
         <div className="blog-post__header__author">
           <div className="flex flex-row gap-8 justify-center items-center border-t">
-            <div><Span> by </Span><Span className="oda">{author}</Span> </div>
+            <div> <Span className="oda">{author}</Span> </div>
             <div> 
-              <Span>{day}</Span><Span className="superscript">th</Span>  <Span>{resolveMonth(month)},{" "}{year}</Span>
+              {day} {resolveMonth(month)},{" "}{year}
             </div>
-              <div>
-                <Span>{timeToRead} read</Span>
-              </div>
+            <div>
+              {timeToRead} read
+            </div>
+            {version ? <div>version: {version}</div> : ""}
             <div>
             </div>
           </div>
