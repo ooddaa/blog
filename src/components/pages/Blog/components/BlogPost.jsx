@@ -39,12 +39,12 @@ const defaultProps = {
 function BlogPost({ post, defaultHeader }) {
   const {
     header,
-    subheader,
+    // subheader,
     dateCreated,
     body,
     author,
     timeToRead,
-    timeToThink,
+    // timeToThink,
   } = post;
   const [year, month, day] = dateCreated;
   return (
@@ -56,37 +56,20 @@ function BlogPost({ post, defaultHeader }) {
         <div className="log-post__header__title pb-8 font-bold text-6xl">
           <h1>{header || defaultHeader}</h1>
 
-          {/* <h2>{header || defaultHeader}</h2> */}
         </div>
-        {/* <div className="blog-post__header__author flex flex-col">
-          <div className="one">
-            <Span className="oda">{author}</Span> | {day}
-            <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
-            {year}
-          </div>
-          <div className="two flex">
-            <Emoji classNames="text-lg">📖</Emoji> <Span>{timeToRead}</Span>
-          </div>
-          <div className="three flex">
-            <Emoji classNames="text-lg">🤔</Emoji>
-            <Span>{timeToThink}</Span>
-          </div>
-          <br></br>
-        </div> */}
 
         <div className="blog-post__header__author">
-          <Span>
-            {" "}
-            <Span className="oda">{author}</Span> | {day}
-            <Span className="superscript">th</Span> {resolveMonth(month)},{" "}
-            {year}
-            <br></br>
-            <Emoji>📖</Emoji>
-            <Span>{timeToRead}</Span>
-            <br></br>
-            <Emoji>🤔</Emoji>
-            <Span>{timeToThink}</Span>{" "}
-          </Span>
+          <div className="flex flex-row gap-8 justify-center items-center border-t">
+            <div><Span> by </Span><Span className="oda">{author}</Span> </div>
+            <div> 
+              <Span>{day}</Span><Span className="superscript">th</Span>  <Span>{resolveMonth(month)},{" "}{year}</Span>
+            </div>
+              <div>
+                <Span>{timeToRead} read</Span>
+              </div>
+            <div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="blog-post__body">{body}</div>
