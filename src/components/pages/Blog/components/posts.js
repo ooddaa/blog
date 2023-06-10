@@ -15,6 +15,7 @@ import {
   MB8,
   MB4,
   TLDR,
+  WebLink,
 } from "../../../../toolbox/index.js";
 import { Code, Text, Blockquote, Center, List } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -1286,6 +1287,246 @@ end
         By separating our markup into individual template files and utilizing the embed_templates/2 function, we can achieve a cleaner and more maintainable codebase in Phoenix LiveView.
 
       </Text>
+    ),
+  },
+  {
+    id: 11,
+    routeName: "use-custom-fonts-with-phoenix-liveview",
+    header: "Use Custom Fonts with Phoenix LiveView to get rid of FOUT",
+    subheader: "hint: .ttf are evil, use .woff2",
+    dateCreated: [2023, 6, 10],
+    timeToRead: "15 min",
+    timeToThink: "30 min",
+    author: "oda",
+    tags: [
+      "fonts",
+      ".heex",
+      "Phoenix",
+      "LiveView",
+      "FOUT",
+      ".ttf",
+      ".woff2"
+    ],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+          <Code>:phoenix, "~> 1.7.2"</Code>
+          <Code>:phoenix_live_view, "~> 0.18.18"</Code>
+          <PB4></PB4>
+        <WebLink href="https://www.zachleat.com/web/webfont-glossary/#fout" alt="Flash Of Unstyled Text link">FOUT</WebLink> or <b>Flash Of Unstyled Text</b> is a pesky bug that really makes my OCD sad. 
+          To get rid of it, I needed to stop linking Google Fonts from cdn and instead, provide them as ready-to-use assets. This way client does not need to wait precious milliseconds while fonts are downloaded and no FOUT occurs. 
+
+        The process of downloading and using custom fonts for Phoenix LiveView seems a bit involved at first and it helps to have a step-by-step guide at hand to start with. 
+        <PB4></PB4>
+        <img
+            className="rounded-lg"
+            src="/img/fout.gif"
+            alt="FOUT bug"
+          />
+        </TLDR>
+      
+        <H2>Introduction</H2>
+
+Managing fonts efficiently is essential for creating visually appealing and consistent designs. In this blog post, we'll explore a systematic approach to download, convert, and integrate fonts into your project using Google Fonts as an example. By following these step-by-step instructions, you'll be able to optimize font loading, eliminate Flash of Unstyled Text (FOUT), and enhance the overall user experience.
+<PB8></PB8>
+<PB8></PB8>
+
+<H2>Step-by-Step Guide</H2>
+
+<H3>1. Downloading Fonts from Google Fonts</H3>
+
+Visit the <WebLink href="https://fonts.google.com/specimen/Inter?query=Inter">Google Fonts website</WebLink>.
+Select the desired font, in this case, "Inter."
+Click the download font family button to save the font files to your computer.
+<PB8></PB8>
+
+<H3>2. Converting Font Files</H3>
+
+This is the most important bit that took me a while to figure out. It turns out that Phoenix LiveView is not friendly to .ttf that you get from GoogleFonts. Therefore, convert the downloaded .ttf font file to .woff2 format using a tool like <WebLink href="https://cloudconvert.com/ttf-to-woff2">CloudConvert</WebLink>.
+<PB8></PB8>
+
+<H3>3. Creating Font Folder</H3>
+
+If you are running a mix project (which you should), your directory stuctrure by default looks something like this: 
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+my_awesome_project/
+  |-- assets 
+  |-- config
+  |-- lib
+  |-- priv
+  |-- rel
+  |-- test
+  |-- mix.exs
+`}</JS>
+With the <Code>/assets</Code> folder containing things that <Code>esbuild</Code> will process at compile time (configured via `config/config.exs`). This is what my <Code>/assets</Code> folder looks like before adding fonts:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+my_awesome_project/
+  |-- assets 
+      |-- css
+      |-- js
+      |-- vendor
+      |-- tailwind.config.js
+`}</JS>
+
+This is what it will look like after I add <Code>Inter</Code> font in the correct format and the correct .css rules. So I go ahead, put my inter.woff2 here and proceed to create an empty <Code>inter.css</Code>: 
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+my_awesome_project/
+  |-- assets 
+      |-- css
+      |-- fonts
+          |-- inter
+              |-- inter.woff2
+              |-- inter.css
+      |-- js
+      |-- vendor
+      |-- tailwind.config.js
+`}</JS>
+<PB8></PB8>
+
+<H3>4. Adding Font CSS</H3>
+
+In the <Code>my_awesome_project/assets/fonts/inter/inter.css</Code> file, define the <WebLink href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face">@font-face rule</WebLink> to specify font properties and paths for both the <Code>.woff2</Code> font file (and, optionally <Code>.woff</Code> for weird old browsers).
+<PB4></PB4>
+Result:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+# my_awesome_project/assets/fonts/inter/inter.css
+
+@font-face {
+  font-family: 'Inter';
+  src: url('inter.woff2') format('woff2');
+}
+`}</JS>
+<PB8></PB8>
+
+<H3>5. Configuring esbuild</H3>
+
+Locate the "config.exs" file in your project:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+my_awesome_project/
+  |-- config 
+      |-- config.exs
+      |-- dev.exs
+      |-- prod.exs
+      |-- runtime.exs
+      |-- test.exs
+`}</JS>
+
+Now add paths to <Code>inter.css</Code> and <Code>inter.woff2</Code> to make esbuild process and copy these files to <Code>--outdir=../priv/static/assets</Code> 
+<PB4></PB4>
+Before:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+# my_awesome_project/config/config.exs
+
+config :esbuild,
+version: "0.17.11",
+default: [
+  args:
+    ~w(js/app.js --bundle --target=es2015 --outdir=../priv/static/assets --external:/fonts/* --external:/images/* --external:/temp/*),
+  cd: Path.expand("../assets", __DIR__),
+  env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+]
+`}</JS>
+
+
+After:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+# my_awesome_project/config/config.exs
+
+config :esbuild,
+version: "0.17.11",
+default: [
+  args:
+    ~w(js/app.js --bundle --target=es2015 --outdir=../priv/static/assets --external:/fonts/* --external:/images/* --external:/temp/*),
+  cd: Path.expand("../assets", __DIR__),
+  env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+]
+`}</JS>
+
+<PB4></PB4>
+<Code>--loader</Code> option tells esbuild how to treat .woff2 extetion files. In this case no special treatment needed, esbuild will copy it, adding a unique identifier, to make sure we can later update it on the client, should it need to change, ie perform a <WebLink href="https://sparkbox.com/foundry/browser_cache_busting_explained">cash bust</WebLink>.
+
+
+<PB8></PB8>
+<H3>Extending Tailwind Configuration</H3>
+
+To be able to use our new font as a TailwindCSS class <Code>className="font-inter"</Code> instead of the usual <Code>className="font-[Inter]"</Code> we could extend <Code>tailwind.config.js</Code> file.
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+my_awesome_project/
+  |-- assets 
+      ...
+      |-- tailwind.config.js
+`}</JS>
+
+Under the <Code>fontFamily</Code> section, add the "Inter" font as an option, along with a fallback font if desired:
+<PB4></PB4>
+Before:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+// my_awesome_project/assets/tailwind.config.js
+
+module.exports = {
+  // ...other stuff
+  theme: {
+    extend: {
+      // put things in here
+    }
+  }
+}
+`}</JS>
+
+After:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+// my_awesome_project/assets/tailwind.config.js
+
+module.exports = {
+  // ...other stuff
+  theme: {
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'system-ui'],
+      }
+    }
+  }
+}
+`}</JS>
+
+<PB8></PB8>
+<H3>Linking Font Stylesheet</H3>
+
+In your project's root HTML file (e.g., <Code>root.html.heex</Code>), add a link to the font's CSS file <Code>my_awesome_project/assets/fonts/inter/inter.css</Code>.
+Ensure that the link is placed before any content that requires the font like this, ie above the <Code>app.css</Code>:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+// my_awesome_project/assets/tailwind.config.js
+...
+<head>
+<link phx-track-static rel="stylesheet" href={~p"/assets/fonts/inter/inter.css"} />
+<link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+</head>
+...
+`}</JS>
+
+<PB8></PB8>
+<H3>Optimizing Font Loading</H3>
+
+Congratulations! All should work now! 
+By linking the font stylesheet, you've pre-loaded the fonts, reducing the likelihood of FOUT (Flash of Unstyled Text).
+
+For further optimization, consider loading the entire font family as base64-encoded data. Refer to the <WebLink href="https://www.zachleat.com/web/comprehensive-webfonts/#critical-foft-with-data-uri">expert advice</WebLink> for detailed instructions.
+
+<PB8></PB8>
+<H3>Conclusion</H3>
+By following these steps, you've successfully integrated the "Inter" font into your project, ensuring a consistent and visually pleasing user experience. By optimizing font loading and eliminating FOUT, you've taken a crucial step toward enhancing your design's overall impact. Enjoy the benefits of a well-managed font system, providing a polished and professional touch to your web projects.
+</Text>
     ),
   },
 ];

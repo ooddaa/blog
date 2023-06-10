@@ -932,6 +932,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-family: 'Inter';
 }
 
+.font-\[Inter\] {
+  font-family: Inter;
+}
+
 .text-2xl {
   font-size: 1.5rem;
 }
@@ -992,6 +996,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   letter-spacing: -0.025em;
 }
 
+.text-sky-700 {
+  --tw-text-opacity: 1;
+  color: rgb(3 105 161 / var(--tw-text-opacity));
+}
+
 .text-gray-500 {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1015,11 +1024,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
-.text-sky-700 {
-  --tw-text-opacity: 1;
-  color: rgb(3 105 161 / var(--tw-text-opacity));
 }
 
 .underline {

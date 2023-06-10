@@ -259,6 +259,12 @@ function MB4({ children, tailwindClasses, ...props }) {
   );
 }
 
+function WebLink({ children, tailwindClasses, href, alt, ...props }) {
+  return (<a href={href} alt={alt} className={tailwindClasses || "text-sky-700 hover:underline"}>{children}</a>);
+}
+
+
+
 const emptyObject = () => ({});
 
 export {
@@ -283,4 +289,5 @@ export {
   MB8,
   MB4,
   emptyObject,
+  WebLink
 };
