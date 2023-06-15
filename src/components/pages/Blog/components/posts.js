@@ -1298,6 +1298,7 @@ end
     timeToRead: "15 min",
     timeToThink: "30 min",
     author: "oda",
+    version: "0.0.2",
     tags: [
       "fonts",
       ".heex",
@@ -1528,6 +1529,313 @@ For further optimization, consider loading the entire font family as base64-enco
 <PB8></PB8>
 <H3>Conclusion</H3>
 By following these steps, you've successfully integrated the "Inter" font into your project, ensuring a consistent and visually pleasing user experience. By optimizing font loading and eliminating FOUT, you've taken a crucial step toward enhancing your design's overall impact. Enjoy the benefits of a well-managed font system, providing a polished and professional touch to your web projects.
+</Text>
+    ),
+  },
+  {
+    id: 12,
+    routeName: "aoc-2021-d6",
+    header: "Advent Of Code: 2021, Day 6",
+    subheader: "--- Day 6: Lanternfish ---",
+    dateCreated: [2023, 6, 15],
+    timeToRead: "5 min",
+    timeToThink: "30 min",
+    author: "oda",
+    version: "0.0.1",
+    tags: [
+      "advent of code",
+      "elixir",
+      "LiveBook",
+      "genetic algorithms",
+    ],
+    body: (
+      <Text className="leading-7">
+        <TLDR>
+        <WebLink href="https://adventofcode.com/2021/day/6">Lanternfish</WebLink> grow exponentially! As does any population
+          that just procreates over and over. They must be immortal or something... 
+
+          The best approach for this task is to use a genetic algorithm, that evolves a population over a number of generations. Of course I did not start with it 😂
+        </TLDR>
+      
+        <H2>Introduction</H2>
+
+        Genetic algorithms are something I never expected to use in my day-to-day Elixir. <WebLink href="https://www.youtube.com/watch?v=NWXSiZ-vi-o">This talk</WebLink> by Sean Moriarity introduced me to the concept and I immediately ordered Sean's book: <WebLink href="https://www.amazon.co.uk/Genetic-Algorithms-Elixir-Problems-Evolution/dp/168050794X/ref=sr_1_1?crid=3E31871QHHXAX&keywords=Sean+Moriarity&qid=1686837419&sprefix=sean+moriarty%2Caps%2C137&sr=8-1">Genetic Algorithms in Elixir: Solve Problems Using Evolution</WebLink>. I mean, who wouldn't want Mother Nature to help you out with Advent Of Code, for example? Yep!
+
+<PB8></PB8>
+<PB8></PB8>
+
+<H3>Part 1</H3>
+
+As always, I solved the first part of the puzzle, the most straightforward way possible - with a list. 
+It worked, as the input had to be iterated over 80 times. Quite manageable for a LiveBook session.
+AOC is all about making it WAY harder in <Bold>Part 2</Bold>.
+<PB8></PB8>
+
+<H3>Part 2</H3>
+
+Why is it still going?? 🤔 I asked myself after 5min of waiting. Ah I see, that pesky <Code>exponential</Code> in front of <Code>growth</Code>. Maybe if I remove a couple of <Code>Enum.reverse(list)</Code>, it will do the trick? 
+<PB4></PB4>
+Well, nope 😁. Alright, what do we have here? 
+<PB8></PB8>
+
+<H3>The actual problem</H3>
+Well it turns out that following each individual unit of the population (aka 🐟) is not what we want here at all. What we want is to know the `size` of each age group. Because we can work with groups of fish (`schools of fish` 🤔) and represent the problem with a neat map. 
+<PB8></PB8>
+
+<H3>Use the algorithm</H3>
+So the best way for me to solve this was to follow the simple algorithm. I am not the smartest bunny in the world, so when I cannot immediately see the required shape, I need a simple algorithm to go step-by-step.
+<PB4></PB4>
+The steps are:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+create_population(input)
+|> evaluate()
+|> select_parents()
+|> procreate()
+|> repeat()
+`}</JS>
+
+Which translates into a skeleton module:
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+  @moduledoc """
+
+  """
+  def population(input) do
+    # must not screw this up here
+  end
+
+  def select_parents(population) do
+    # gonna be easy
+  end
+
+  def procreate(population) do
+    # that's where the nature does its thing
+  end
+
+  def count(population) do
+    # we need a final answer to be an integer
+  end
+
+  def run(population, days) do
+    # run, Nature, run!
+  end
+end
+`}</JS>
+
+<PB8></PB8>
+<H2>Solution</H2>
+
+Once I have a skeleton of the solution (which I am sure is gonna work, because Mother Nature said so), I just throw myself against the keyboard until the test input answer matches. 
+
+<PB8></PB8>
+<H3>1. Population</H3>
+Step one: define a population.
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+
+  @doc"""
+  I want represent population as a
+  collection of {age, size} buckets. 
+  Then it will have all the info that
+  I need to:
+  - select_parents
+  - procreate
+
+  Example:
+  Fish.population([3, 4, 3, 1, 2])
+  %{0 => 0, 1 => 1, 2 => 1, 3 => 2, 4 => 1, 5 => 0, 6 => 0, 7 => 0, 8 => 0}
+  Which tells us that we have {3, 2} == two fishes that have 3 days before 
+  they produce 3 baby-fishes. I want to pad age buckets to have a full 
+  picture of the population per age group.
+  Therefore the %{5 => 0, 6 => 0, 7 => 0, 8 => 0} bit
+  """
+  def population(input) do
+    0..8
+    |> Enum.map(&{&1, 0})
+    |> Map.new()
+    |> Map.merge(Enum.frequencies(input))
+  end
+
+end
+`}</JS>
+
+<PB8></PB8>
+<H3>2. Select Parents</H3>
+Step two: find out how many parents we will work with. In our case it's easy - just pick the "0" age bucket (0 days left to have sex of its life, assuming they give birth immediately... hm what's the gestation period of lanternfish??). Anyways...
+<PB4></PB4>
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+
+  ...
+
+  @doc"""
+  The easiest part, as our data structure has the answer ready
+  """
+  def select_parents(population), do: Map.get(population, 0, 0)
+
+end
+`}</JS>
+
+<PB8></PB8>
+<H3>3. Procreate!!</H3>
+I mean EVOLVE! I decided to lump a bunch of things together here because 
+I think of them as happening all at once and they all constitute one <Code>transition</Code> 
+between old and new states:
+<ul>
+  <li><Code>add children</Code></li>
+  <li><Code>age population</Code></li>
+  <li><Code>reset parents</Code></li>
+</ul>
+<PB4></PB4>
+Horrible function name that only captures a part of what's going on - is a 
+signature move of mine. Let's move on:
+<PB4></PB4>
+
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+
+  ...
+
+  @doc"""
+  I'm going to do all "generation moving forward" actions in one
+  place. It should really be called "evolve(population)" but 
+  I'm bad at naming things until it's too late. 
+  """
+  def procreate(population) do
+    # get the parents == they also represent the number of children
+    # as per "One baby fish per parent per week" policy.
+    parents = select_parents(population)
+
+    population
+    |> Enum.map(fn
+      {age, size} when age == 0 -> {8, size}  # baby making part
+      {age, size} -> {age - 1, size}          # everyone is getting older part
+    end)
+    |> Map.new()
+    |> Map.update(6, 0, &(&1 + parents))      # parents get a week long rest
+  end
+
+end
+`}</JS>
+
+<PB8></PB8>
+<H3>4. Count and run</H3>
+Fuf, hopefully we have not run into a pesky <Code>n+1</Code> problem here, so let's wrap up with counting and termination criteria. 
+<PB4></PB4>
+
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+
+  ...
+
+  @doc"""
+  Easy-peasy, count the fish!
+  """
+  def count(population) do
+    population
+    |> Map.values()
+    |> Enum.sum()
+  end
+
+  @doc"""
+  Stop once we have no days/generations left.
+  Othervise, go on, fish, frolic all you like! 
+  """
+  def run(population, 0), do: count(population)
+  def run(population, days) do
+    run(procreate(population), days - 1)
+  end
+
+end
+`}</JS>
+<PB8></PB8>
+
+<H3>The whole thing</H3>
+Also on my <WebLink href="https://github.com/ooddaa/advent_of_code/blob/main/2021/elixir/day-06/day-06.livemd">Github</WebLink>.
+<PB4></PB4>
+
+<JS noCopy colorScheme="dark">{`
+defmodule Fish do
+
+  @doc"""
+  I want represent population as a
+  collection of {age, size} buckets. 
+  Where age == the number of days until the fish
+  creates a new lanternfish.
+
+  Then it will have all the info that
+  I need to:
+  - select_parents
+  - procreate
+
+  Example:
+  Fish.population([3, 4, 3, 1, 2])
+  %{0 => 0, 1 => 1, 2 => 1, 3 => 2, 4 => 1, 5 => 0, 6 => 0, 7 => 0, 8 => 0}
+  Which tells us that we have {3, 2} == two fishes that have 3 days before 
+  they produce 3 baby-fishes. I want to pad age buckets to have a full 
+  picture of the population per age group.
+  Therefore the %{5 => 0, 6 => 0, 7 => 0, 8 => 0} bit
+  """
+  def population(input) do
+    0..8
+    |> Enum.map(&{&1, 0})
+    |> Map.new()
+    |> Map.merge(Enum.frequencies(input))
+  end
+
+  @doc"""
+  The easiest part, as our data structure has the answer ready
+  """
+  def select_parents(population), do: Map.get(population, 0, 0)
+
+  @doc"""
+  I'm going to do all "generation moving forward" actions in one
+  place. It should really be called "evolve(population)" but 
+  I'm bad at naming things until it's too late. 
+  """
+  def procreate(population) do
+    # get the parents == they also represent the number of children
+    # as per "One baby fish per parent per week" policy.
+    parents = select_parents(population)
+
+    population
+    |> Enum.map(fn
+      {age, size} when age == 0 -> {8, size}  # baby making part
+      {age, size} -> {age - 1, size}          # everyone is getting older part
+    end)
+    |> Map.new()
+    |> Map.update(6, 0, &(&1 + parents))      # parents get a week long rest
+  end
+
+  @doc"""
+  Easy-peasy, count the fish!
+  """
+  def count(population) do
+    population
+    |> Map.values()
+    |> Enum.sum()
+  end
+
+  @doc"""
+  Stop once we have no days/generations left.
+  Othervise, go on, fish, frolic all you like! 
+  """
+  def run(population, 0), do: count(population)
+  def run(population, days) do
+    run(procreate(population), days - 1)
+  end
+
+end
+`}</JS>
+
+<PB8></PB8>
+<H3>Conclusion</H3>
+This gave me answer in no time, as all this algo does is adding groups of fish and creating a few maps along the way. What it definitely doesn't do is creating loooooooong lists, iterating over them, incrementing each element, ie it works with <Code>populations</Code>, evolving them over a number of generations. Each population is very efficiently represented as a collection of <Code>{"{agent, size}"}</Code> buckets. These tuples are perfect as they can be worked with by Enum and Map modules with no fuzz at all. 
+<PB4></PB4>
+To sum up, I liked the genetic algo approach (granted, this task doesn't leave many other choices tbf), as it helps to clearly state the problem and offers an intuitive step-by-step approach that we all know from Mother Nature herself.
 </Text>
     ),
   },
