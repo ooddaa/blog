@@ -1454,7 +1454,7 @@ default: [
 
 
 <PB8></PB8>
-<H3>Extending Tailwind Configuration</H3>
+<H3>6. Extending Tailwind Configuration</H3>
 
 To be able to use our new font as a TailwindCSS class <Code>className="font-inter"</Code> instead of the usual <Code>className="font-[Inter]"</Code> we could extend <Code>tailwind.config.js</Code> file.
 <PB4></PB4>
@@ -1500,13 +1500,13 @@ module.exports = {
 `}</JS>
 
 <PB8></PB8>
-<H3>Linking Font Stylesheet</H3>
+<H3>7. Linking Font Stylesheet</H3>
 
 In your project's root HTML file (e.g., <Code>root.html.heex</Code>), add a link to the font's CSS file <Code>my_awesome_project/assets/fonts/inter/inter.css</Code>.
 Ensure that the link is placed before any content that requires the font like this, ie above the <Code>app.css</Code>:
 <PB4></PB4>
 <JS noCopy colorScheme="dark">{`
-// my_awesome_project/assets/tailwind.config.js
+// my_awesome_project/lib/my_awesome_project_web/components/layouts/root.html.heex
 ...
 <head>
 <link phx-track-static rel="stylesheet" href={~p"/assets/fonts/inter/inter.css"} />
@@ -1515,8 +1515,10 @@ Ensure that the link is placed before any content that requires the font like th
 ...
 `}</JS>
 
+<Bold>Fun fact: <Code>~p"/assets/fonts/Inter/inter.css"</Code> path (note the upcased <Code>Inter</Code>) would also work locally, but it will take away a couple of hours of your time, when you deploy to <WebLink href="https://fly.io/docs/speedrun/">fly.io</WebLink> (or elsewhere?) and find that your fonts aren't available as assets 🫣. I'll write another another blogpost about deploying to fly.io in future. </Bold>
+
 <PB8></PB8>
-<H3>Optimizing Font Loading</H3>
+<H3>8. Optimizing Font Loading</H3>
 
 Congratulations! All should work now! 
 By linking the font stylesheet, you've pre-loaded the fonts, reducing the likelihood of FOUT (Flash of Unstyled Text).
